@@ -1,0 +1,409 @@
+---
+date: "9/3/2019"
+output: html_document
+fig_width: 12 
+fig_height: 4 
+---
+
+## Setup
+
+```{r setup}
+library(tidyverse)
+library(ggridges)
+library(pwr) 
+library(grid)
+library(gtable)
+
+library(boot)
+library(bootES)
+
+
+library(ggthemes)
+
+library(ggbeeswarm)
+
+library(tidybayes)
+library(cowplot)
+library(broom)
+library(Hmisc)
+
+theme_set(theme_tidybayes() + panel_border() + background_grid())
+
+
+df <- read.csv("../results/study/CSV/TidyR.csv")%>% 
+  mutate( value = as.numeric( as.character(value)) )  
+
+df_acc <- filter( df, measure == 'accuracy')
+df_acc$value = as.numeric( as.character(df_acc$value ))
+
+
+df_time<- filter( df, measure == "minutesOnTask") 
+df_time$value = as.numeric( as.character(df_time$value ))
+
+
+#filter out measurement that don't make the cut as far as timespent;
+# dfv <- filter( df, measure != 'minutesOnTask' | as.numeric( as.character(value))<10)
+
+dfp <- read.csv("../results/study/CSV/participantInfoTidyR.csv")
+
+wilcox <- read.csv("../results/study/CSV/wilcox.csv")
+ci_values <- read.csv("../results/study/CSV/stats.csv")
+
+
+
+
+```
+
+
+```{r}
+
+visType.colors <- c(adjMatrix = "#05b4dd", nodeLink = "#f4aa4a")
+
+
+labels.measure <- c(
+  "minutesOnTask"  = "Time (minutes)",
+  "accuracy"= "Accuracy",
+  "difficulty"= "Difficulty",
+  "confidence" = "Confidence"
+)
+
+labels.visType <- c(nodeLink = 'NL', adjMatrix = 'AM');
+
+
+```
+
+
+## CI Values
+
+```{r, warning=FALSE}
+# Bootstrap 95% CI for mean
+# function to obtain mean from the data (with indexing)
+mean.fun <- function(D, d) {
+  return( mean(D[d]) )
+}
+
+reportCI <- function(data, attr) {
+  # bootstrapping with 1000 replications
+  ci <- boot.ci(
+    boot(data=data[[attr]], statistic=mean.fun, R=1000, sim="ordinary")
+  )
+  
+  print(nrow(data))
+
+  cat( "M=",     round( mean( data[[attr]] ), 2), "~",
+       "[", round( ci$bca[,4]          , 2), ",",
+       round( ci$bca[,5]          , 2), "]",
+       sep="")
+}
+
+citext <- function(task, measure_) {
+  
+df_tmp <- df %>% 
+  filter(measure==measure_) 
+
+df_tmp$value = as.numeric( as.character(df_tmp$value ))
+
+nl = df_tmp %>% 
+  filter(taskId == task & visType == "nodeLink")
+
+adj = df_tmp %>% 
+  filter(taskId == task & visType == "adjMatrix")
+
+cat( paste(task," | node link\n") )
+reportCI(nl, "value")
+cat( "\n" )
+
+
+cat( paste(task," | adj matrix\n") )
+reportCI(adj, "value")
+cat( "\n" )
+cat( "\n" )
+
+}
+
+
+ cat("\n\n =========ACCURACIES======== \n\n")
+
+for (task in seq(12,12,1)){
+  citext(paste("S-task", sprintf("%.2d",task),sep=""),"accuracy")
+}
+
+ cat("\n\n =========TIMES======== \n\n")
+
+for (task in seq(12,12,1)){
+  citext(paste("S-task", sprintf("%.2d",task),sep=""),"minutesOnTask")
+}
+
+```
+
+## Effect Sizes
+
+```{r, warning=FALSE}
+
+reportES <- function(data, attr, group) {
+
+  lvs <- levels(data[[group]])
+
+  b <- bootES(data,
+              data.col=attr,
+              group.col=group,
+              contrast=lvs, # normal cases c(group1=1, group2=-1), but for 2 groups, it's simplified.
+              effect.type="cohens.d")
+
+  cat( "d=", round( b$t0, 2), "~",
+       "[", round( b$bounds[1], 2), ",",
+       round( b$bounds[2], 2), "]",
+       sep="")
+}
+
+estext <- function(task, measure_) {
+  
+df_tmp <- df %>% 
+  filter(measure==measure_) 
+
+df_tmp$value = as.numeric( as.character(df_tmp$value ))
+
+esd = df_tmp %>% 
+  filter(taskId == task)
+
+cat( paste(task, "\n") )
+reportES(esd, "value", "visType")
+cat( "\n" )
+cat( "\n" )
+
+
+}
+cat("\n\n =========ACCURACIES======== \n\n")
+
+for (task in seq(1,16,1)){
+  estext(paste("S-task", sprintf("%.2d",task),sep=""),"acccuracy")
+}
+
+cat("\n\n =========TIMES======== \n\n")
+
+for (task in seq(1,16,1)){
+  estext(paste("S-task", sprintf("%.2d",task),sep=""),"minutesOnTask")
+}
+```
+
+
+
+## Wilcox Test and p-values
+```{r }
+
+dfw <- data.frame(pIndex=double(),
+                 W=integer(),
+                 taskId=character(),
+                 stringsAsFactors=FALSE)
+
+wtest <- function(task,filterMeasure) {
+t_nl = df %>% 
+   filter(measure==filterMeasure)  %>%
+   filter(taskId == task & visType == "nodeLink") %>%
+   mutate(value = as.numeric( as.character(value )))  
+
+t_adj = df %>% 
+   filter(measure==filterMeasure)  %>%
+   filter(taskId == task & visType == "adjMatrix") %>%
+   mutate(value = as.numeric( as.character(value )))  
+
+# p = 0.06-- promising at the pilot level
+print(task)
+return (wilcox.test(t_nl$value, t_adj$value))
+}
+
+
+for (task in seq(1,16,1)){
+  print (wtest(paste("S-task", sprintf("%.2d",task),sep=""),"accuracy"))
+}
+
+for (task in seq(1,16,1)){
+  print (wtest(paste("S-task", sprintf("%.2d",task),sep=""),"minutesOnTask"))
+}
+
+for (task in seq(1,16,1)){
+  #print (wtest(paste("S-task", sprintf("%.2d",task),sep=""),"confidence"))
+}
+
+for (task in seq(1,16,1)){
+  #print (wtest(paste("S-task", sprintf("%.2d",task),sep=""),"difficulty"))
+}
+
+
+
+
+```
+
+
+
+
+# Violin Plots
+```{r, fig.width=7, fig.height=2.5 } 
+
+
+vplot <- function(task) {
+  
+  print(task)
+
+sdf = df %>% filter( taskId == task )
+tt = as.character(sdf[1,]$taskTitle)
+prompt = as.character(sdf[1,]$taskPrompt)
+number = as.character(sdf[1,]$taskNumber)
+
+acc_stats = wilcox %>% filter( taskNumber == number & measure == "accuracy" )
+time_stats = wilcox %>% filter( taskNumber == number & measure == "time" )
+
+ci_acc_NL = ci_values %>% filter( taskNumber == number & measure == "accuracy" & vis== 'nodeLink' )
+ci_acc_AM = ci_values %>% filter( taskNumber == number & measure == "accuracy"  & vis== 'adjMatrix' )
+
+ci_time_NL = ci_values %>% filter( taskNumber == number & measure == "time" & vis== 'nodeLink' )
+ci_time_AM = ci_values %>% filter( taskNumber == number & measure == "time"  & vis== 'adjMatrix' )
+
+
+gridLines <- function(x) { 
+  if (max(x) < 2) seq(0, 1, .25) 
+  else if (max(x) == 7.3) seq (1,7,2)
+    else seq(0,6,2) 
+}
+
+axisRange <- function(x) { 
+  if (max(x) < 2) c(0, 1) 
+  else if (max(x) == 7) c(1,7)
+    else c(0,6) 
+}
+
+gridLabels <- function(x) { 
+  if (max(as.numeric(x)) < 1.1) seq(0, 1, .5) 
+  else if (max(as.numeric(x)) == 7.3) seq (1,7,2)
+    else seq(0, 5,1 )
+    #else seq(0, round(max(x)), round(max(x)/3)) 
+}
+
+ymin <- function(values, args) {
+  # yValues <- ci_values %>% 
+  # filter(taskId == task & measure==measure_) 
+  # 
+  # print(strsplit(yValues$M, 'M='))
+# df_tmp$value = as.numeric( as.character(df_tmp$value ))
+# 
+# nl = df_tmp %>% 
+#   filter(taskId == task & visType == "nodeLink")
+# 
+# adj = df_tmp %>% 
+#   filter(taskId == task & visType == "adjMatrix")
+# 
+  
+  
+  print(args)
+  return(0.75)
+}
+
+
+ciboot <- function(values) {
+#  values = as.numeric( as.character(values ))
+
+  ci <- boot.ci(
+    boot(data=values, statistic=mean.fun, R=1000, sim="ordinary")
+  )
+  
+  dfci = data.frame(
+    ymin = round( ci$bca[,4], 2),
+    ymax = round( ci$bca[,5], 2),
+    y = round( mean( values ), 2)
+    )
+  
+# S-task12  | node link
+# M=3.46~[3.02,4.75]
+# S-task12  | adj matrix
+# M=3.43~[3.05,3.94]
+
+  print(length(values))
+  return(dfci)
+}
+
+plotData <-df %>% 
+  filter( measure == "accuracy" | measure == "minutesOnTask"  )  %>% 
+             # | measure == "difficulty" | measure == "confidence") %>% 
+    filter( taskId == task ) %>% 
+   mutate( value = as.numeric( as.character(value)) ) %>% 
+   mutate( label = labels.measure[as.character(measure)] ) %>% 
+     mutate( visLabel = labels.visType[as.character(visType)] ) %>% 
+
+  mutate( label = factor(label, levels=c("Accuracy","Time (minutes)", "Confidence","Difficulty")));
+
+
+
+# df %>% 
+#   filter( measure == "accuracy" | measure == "minutesToComplete" | 
+#             measure == "difficulty" | measure == "confidence") %>% 
+#     filter( taskId == task ) %>% 
+#   mutate( value = as.numeric( as.character(value)) ) %>% 
+#   ggplot(aes(x=visType, y=value, fill=visType, color=visType)) +
+#     facet_wrap(. ~ measure, scales="free", nrow=1) +
+#     geom_violin() +
+#     stat_summary(fun.data = "mean_cl_boot", colour = "green", size = 0.5, alpha=0.5) +
+#   coord_flip() + 
+#     labs(
+#       title = tt,
+#       subtitle = task
+#     )
+# 
+
+#d=data.frame(drink=c("coffee","tea","water"), mean=c(3,6,2), lower=c(2.6,5.6,1.8), upper=c(3.5,6.3,2.8))
+# ggplot() + 
+# geom_pointrange(data=d, mapping=aes(x=drink, y=mean, ymin=upper, ymax=lower)) 
+#
+#print(d);
+
+print(nrow(plotData))
+
+  ggplot(data=plotData, aes(x=visLabel, y=value, fill=visType, color=visType)) +
+    facet_wrap(. ~ label, scales="free", nrow=1) +
+    geom_violin(show.legend=FALSE) +
+  # fun.data = "mean_cl_boot"
+    stat_summary(fun.data=ciboot, colour = "black", size = 0.5, alpha=.5, show.legend=FALSE) +
+  coord_flip() + 
+    labs(
+      # title = paste(number, '-', tt),
+      # subtitle = paste(number, '-', tt) , #prompt,
+       # caption = paste('W=',acc_stats$W,' p=',acc_stats$'p.value', acc_stats$d, '    ', 'W=',time_stats$W,'p=',time_stats$'p.value', time_stats$d, '\n' ,ci_acc_NL$M,  ci_acc_AM$M, ci_time_NL$M, ci_time_AM$M )
+      #      caption = paste(' W=',acc_stats$W,' p=',acc_stats$'p.value', acc_stats$d, '    ', '         W=',time_stats$W,'p=',time_stats$'p.value', time_stats$d, '\n' ,'NL:', ci_acc_NL$M,  'AM:', ci_acc_AM$M, '         NL:', ci_time_NL$M,'AM:', ci_time_AM$M )
+
+    )+
+    theme ( plot.margin=grid::unit(c(0,0,0,0), "mm"), plot.caption = element_text(hjust = 0, vjust =10,  face = "italic")) + 
+    xlab ("") + 
+    ylab("")+
+    scale_fill_manual(values=visType.colors)+
+    scale_color_manual(values=visType.colors)+      
+    scale_y_continuous(breaks = gridLines, limits = axisRange) #,labels = gridLabels) 
+
+
+
+filename <- paste("violins/",gsub(" ", "", paste(number,tt), fixed = TRUE),".pdf", sep="")
+ ggsave(filename, width = 7, height = 1.5, units = "in")
+}
+
+ # vplot('S-task03')
+
+for (task in seq(12,12,1)){
+ vplot(paste("S-task", sprintf("%.2d",task),sep=""))
+}
+
+```
+
+
+
+checking out the filtering
+
+```{r}
+plotData <- df %>% 
+  filter( measure == "accuracy" | measure == "minutesOnTask"  )  %>% 
+             # | measure == "difficulty" | measure == "confidence") %>% 
+    filter( taskId == "S-task12" ) %>% 
+   mutate( value = as.numeric( as.character(value)) ) %>% 
+   mutate( label = labels.measure[as.character(measure)] ) %>% 
+     mutate( visLabel = labels.visType[as.character(visType)] ) %>% 
+
+  mutate( label = factor(label, levels=c("Accuracy","Time (minutes)", "Confidence","Difficulty")));
+```
+

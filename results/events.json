@@ -1,0 +1,58 @@
+{
+    "video": {
+        "label":"video",
+        "type":"longAction",
+        "start":"Start phase : Video",
+        "end":"Start phase : Training - Manual",
+        "level":0
+    },
+    "training-user": {
+        "label":"Training-user",
+        "type":"longAction",
+        "start":"Start phase: Training - Manual",
+        "end":"Start phase: Training - CS",
+        "level":0
+    },
+    "training-computerAssisted": {
+        "label":"Training-computerAssisted",
+        "type":"longAction",
+        "start":"Start phase: Training - CS",
+        "end":["Start phase: Tasks - CS","Start phase: Tasks - Manual"],
+        "level":0
+    },
+    "study-user": {
+        "label":"Study-user",
+        "type":"longAction",
+        "start":"Start phase: Tasks - Manual",
+        "end":["Start phase: Tasks - CS", "Start phase: Final Feedback"],
+        "level":0
+    },
+    "study-computerAssisted": {
+        "label":"Study-computerAssisted",
+        "type":"longAction",
+        "start":"Start phase: Tasks - CS",
+        "end":["Start phase: Tasks - Manual", "Start phase: Final Feedback"],
+        "level":0
+    },
+    "task": {
+        "label":"Task",
+        "type":"longAction",
+        "start":"Start task",
+        "end":["Feedback started","Complete task"],
+        "level":1
+    },
+    "feedback": {
+        "label":"Final Feedback",
+        "type":"longAction",
+        "start":"Start phase: Final Feedback",
+        "end":"Final Feedback",
+        "level":0
+    },
+    "unfocused tab": {
+        "label":"Browse Away",
+        "type":"longAction",
+        "start":"Out of focus",
+        "end":"In Focus",
+        "level":0
+    }
+}

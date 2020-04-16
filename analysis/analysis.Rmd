@@ -1,0 +1,664 @@
+---
+title: "analysis"
+date: "8/23/2019"
+output: html_document
+---
+
+## Setup
+
+```{r setup}
+library(tidyverse)
+library(ggridges)
+library(pwr) 
+library(grid)
+library(gtable)
+
+library(boot)
+library(bootES)
+
+
+library(ggbeeswarm)
+
+library(tidybayes)
+library(cowplot)
+library(broom)
+
+theme_set(theme_tidybayes() + panel_border() + background_grid())
+
+
+#df <- read.csv("../results/pilot/CSV/TidyR.csv")
+df <- read.csv("../results/study/CSV/TidyR.csv")
+dfp <- read.csv("../results/study/CSV/participantInfoTidyR.csv")
+```
+
+
+## Data Cleaning / Types
+
+```{r}
+
+df_acc <- df %>% 
+  filter(measure=="accuracy") 
+
+df_acc$value = as.numeric( as.character(df_acc$value ))
+
+
+df_acc
+```
+
+## Quick Check Charts
+
+95% CIs + jitter (don't trust those point positions)
+
+```{r}
+
+df %>% 
+  filter(measure=="accuracy") %>% 
+  mutate( value = as.numeric( as.character(value)) ) %>% 
+  ggplot( aes(x=taskId, y=value) ) +
+    geom_jitter( alpha = 0.2, width=0.1, height=0.3 ) + 
+    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, position = position_nudge(x=0.25, y=0), alpha=0.5) +
+  coord_flip() +
+    facet_grid(. ~ visType)
+
+df %>% 
+  filter(measure=="accuracy") %>% 
+  mutate( value = as.numeric( as.character(value)) ) %>% 
+  ggplot( aes(x=taskId, y=value) ) +
+    geom_jitter( alpha = 0.2, width=0.1, height=0.3 ) + 
+    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, position = position_nudge(x=0.25, y=0), alpha=0.5) +
+  coord_flip() +
+    facet_grid(. ~ visType)
+
+## beeswarm big chart
+## ci plots with titles and new tidyr
+## hypothesis column
+## task centric and hypothesis centric charts
+## time and difficulty and correctness and confidence
+## confidence ellipse
+## age education and gender
+## compare to prior and pilot
+
+```
+
+we can do the same with distributions, ridges
+
+```{r}
+df %>% 
+  filter(measure=="accuracy") %>% 
+  mutate( value = as.numeric( as.character(value)) ) %>% 
+  ggplot( aes(x=value, y=taskId) ) +
+    geom_density_ridges() +
+    facet_grid(. ~ visType)
+
+```
+
+
+, and density plots (look meh-- could probably combine + color for a better look)
+
+```{r, fig.height=10, fig.width=10}
+
+df %>% 
+  filter(measure=="accuracy") %>% 
+  mutate( value = as.numeric( as.character(value)) ) %>% 
+  ggplot( aes(value) ) +
+    geom_density( alpha = 0.2 ) +
+    facet_grid(taskId ~ visType)
+
+```
+
+
+## Power Analysis
+
+```{r}
+
+powerAnalysisGraph <- function(m1, m2, stdev, iterNum=15){
+  # stdev <- sd_duration.median
+  # m1 <- mean(search$duration.median)
+  # m2 <- mean(nonsearch$duration.median)
+  # # m1 <- mean(foresight$duration.median)
+  # # m2 <- mean(nonsearch$duration.median)
+  
+  iteration <- 15
+  
+  difference <- 0
+  effectSize <- 0
+  numParticipants <- 0
+  
+  for(step in 1:iteration)
+  {
+    difference[step] <- abs(m1 - m2) * (0.9 ^ (step-1))
+    effectSize[step] <- difference[step] / stdev
+    numParticipants[step] <- pwr.t.test( 
+      d=effectSize[step], 
+      sig.level=.05, 
+      power=0.8, 
+      type="two.sample", 
+      alternative="greater" 
+    )$n * 1.15 * 2
+  }
+  
+  #dual axis code online: https://rpubs.com/kohske/dual_axis_in_ggplot2
+  grid.newpage()
+  
+  pw <- data.frame(difference=difference, numParticipants=numParticipants, effectSize=effectSize)
+  p1 <- ggplot(pw,aes(x=difference)) + geom_line(aes(y = numParticipants)) +
+    scale_y_continuous(breaks = pretty(pw$numParticipants, n = 10))
+  p2<- ggplot(pw,aes(x=difference)) + geom_line(aes(y = effectSize)) +
+    theme(panel.background = element_rect(fill = NA))+
+    scale_y_continuous(breaks = pretty(pw$effectSize, n = 10))
+  p2
+  
+  # extract gtable
+  g1 <- ggplot_gtable(ggplot_build(p1))
+  g2 <- ggplot_gtable(ggplot_build(p2))
+  
+  # overlap the panel of 2nd plot on that of 1st plot
+  pp <- c(subset(g1$layout, name == "panel", se = t:r))
+  g <- gtable_add_grob(g1, g2$grobs[[which(g2$layout$name == "panel")]], pp$t, pp$l, pp$b, pp$l)
+  
+  # axis tweaks
+  ia <- which(g2$layout$name == "axis-l")
+  ga <- g2$grobs[[ia]]
+  ax <- ga$children[[2]]
+  ax$widths <- rev(ax$widths)
+  ax$grobs <- rev(ax$grobs)
+  ax$grobs[[1]]$x <- ax$grobs[[1]]$x - unit(1, "npc") + unit(0.15, "cm")
+  g <- gtable_add_cols(g, g2$widths[g2$layout[ia, ]$l], length(g$widths) - 1)
+  g <- gtable_add_grob(g, ax, pp$t, length(g$widths) - 1, pp$b)
+  
+  # draw it
+  grid.draw(g)
+}
+
+```
+
+
+then, we test it out with some parameters estimated by eye from our charts so far
+
+```{r}
+# task 8 (reading values from graph, could do exact later)
+powerAnalysisGraph(0.5, 0.6, 0.25)
+
+# task 13 (reading values from graph, could do exact later)
+powerAnalysisGraph(0.2, 0.4, 0.10)
+```
+
+Now we want to get better estimates for parameters.
+We need Means from each group, on each task, and a pooled stdev.
+
+```{r}
+
+# task 08
+sd_t08 = df_acc %>% 
+  filter(taskId == "S-task08") %>% 
+  summarise(
+    stdev = sd(value)
+  )
+
+m_nl_t08 = df_acc %>% 
+  filter(taskId == "S-task08" & visType == "nodeLink") %>% 
+  summarise(
+    mean = mean(value)
+  )
+
+m_adj_t08 = df_acc %>% 
+  filter(taskId == "S-task08" & visType == "adjMatrix") %>% 
+  summarise(
+    mean = mean(value)
+  )
+
+# task 13
+sd_t13 = df_acc %>% 
+  filter(taskId == "S-task13") %>% 
+  summarise(
+    stdev = sd(value)
+  )
+
+m_nl_t13 = df_acc %>% 
+  filter(taskId == "S-task13" & visType == "nodeLink") %>% 
+  summarise(
+    mean = mean(value)
+  )
+
+m_adj_t13 = df_acc %>% 
+  filter(taskId == "S-task13" & visType == "adjMatrix") %>% 
+  summarise(
+    mean = mean(value)
+  )
+
+```
+... and now some more accurate power analysis graphs
+
+```{r}
+
+powerAnalysisGraph(m_adj_t08[,1], m_nl_t08[,1], sd_t08[,1])
+
+powerAnalysisGraph(m_adj_t13[,1], m_nl_t13[,1], sd_t13[,1])
+
+```
+
+
+
+Interpreting the task 13 graph: 
+"Given no changes in Means or pooled stdev, and assuming a t-test, you'd need ~225 people total to find a medium effect size."
+
+
+## Rank-style tests
+
+Given the data isn't technically continuous at the measurement level, we might consider non-parametric tests:
+
+```{r}
+t13_nl = df_acc %>% 
+  filter(taskId == "S-task13" & visType == "nodeLink")
+
+t13_adj = df_acc %>% 
+  filter(taskId == "S-task13" & visType == "adjMatrix")
+
+# p = 0.06-- promising at the pilot level
+wilcox.test(t13_nl$value, t13_adj$value)
+```
+
+```{r}
+wtest <- function(task) {
+t13_nl = df_acc %>% 
+  filter(taskId == task & visType == "nodeLink")
+
+t13_adj = df_acc %>% 
+  filter(taskId == task & visType == "adjMatrix")
+
+# p = 0.06-- promising at the pilot level
+print(task)
+wilcox.test(t13_nl$value, t13_adj$value)
+}
+
+wtest("S-task01")
+wtest("S-task02")
+wtest("S-task03")
+wtest("S-task04")
+wtest("S-task05")
+wtest("S-task06")
+wtest("S-task07")
+wtest("S-task08")
+wtest("S-task09")
+wtest("S-task10")
+wtest("S-task11")
+wtest("S-task12")
+wtest("S-task13")
+wtest("S-task14")
+wtest("S-task15")
+wtest("S-task16")
+```
+
+
+## CIs
+
+```{r, warning=FALSE}
+
+# Bootstrap 95% CI for mean
+# function to obtain mean from the data (with indexing)
+mean.fun <- function(D, d) {
+  return( mean(D[d]) )
+}
+
+reportCI <- function(data, attr) {
+  # bootstrapping with 1000 replications
+  ci <- boot.ci(
+    boot(data=data[[attr]], statistic=mean.fun, R=1000, sim="ordinary")
+  )
+
+  cat( "M=",     round( mean( data[[attr]] ), 2), "~",
+       "[", round( ci$bca[,4]          , 2), ",",
+       round( ci$bca[,5]          , 2), "]",
+       sep="")
+}
+
+citext <- function(task, measure_) {
+  
+df_tmp <- df %>% 
+  filter(measure==measure_) 
+
+df_tmp$value = as.numeric( as.character(df_tmp$value ))
+
+nl = df_tmp %>% 
+  filter(taskId == task & visType == "nodeLink")
+
+adj = df_tmp %>% 
+  filter(taskId == task & visType == "adjMatrix")
+
+cat( paste(task," | node link\n") )
+reportCI(nl, "value")
+cat( "\n" )
+
+
+cat( paste(task," | adj matrix\n") )
+reportCI(adj, "value")
+cat( "\n" )
+cat( "\n" )
+
+
+}
+# cat("\n\n =========ACCURACIES======== \n\n")
+# 
+# citext("S-task01", "accuracy")
+# citext("S-task02", "accuracy")
+# citext("S-task03", "accuracy")
+# citext("S-task04", "accuracy")
+# citext("S-task05", "accuracy")
+# citext("S-task06", "accuracy")
+# citext("S-task07", "accuracy")
+# citext("S-task08", "accuracy")
+# citext("S-task09", "accuracy")
+# citext("S-task10", "accuracy")
+# citext("S-task11", "accuracy")
+# citext("S-task12", "accuracy")
+# citext("S-task12A", "accuracy")
+# citext("S-task12B", "accuracy")
+# citext("S-task13", "accuracy")
+# citext("S-task14", "accuracy")
+# citext("S-task15", "accuracy")
+# #citext("S-task16", "accuracy")
+# 
+ cat("\n\n =========TIMES======== \n\n")
+# 
+# citext("S-task01", "minutesOnTask")
+# citext("S-task02", "minutesOnTask")
+# citext("S-task03", "minutesOnTask")
+# citext("S-task04", "minutesOnTask")
+# citext("S-task05", "minutesOnTask")
+# citext("S-task06", "minutesOnTask")
+# citext("S-task07", "minutesOnTask")
+# citext("S-task08", "minutesOnTask")
+# citext("S-task09", "minutesOnTask")
+# citext("S-task10", "minutesOnTask")
+# citext("S-task11", "minutesOnTask")
+# citext("S-task12", "minutesOnTask")
+# citext("S-task13", "minutesOnTask")
+# citext("S-task14", "minutesOnTask")
+# citext("S-task15", "minutesOnTask")
+# citext("S-task16", "minutesOnTask")
+
+
+for (task in seq(1,16,1)){
+  citext(paste("S-task", sprintf("%.2d",task),sep=""),"minutesOnTask")
+
+}
+
+# cat("\n\n =========DIFFICULTY======== \n\n")
+# for (task in seq(1,16,1)){
+#   citext(paste("S-task", sprintf("%.2d",task),sep=""),"difficulty")
+# 
+# }
+# 
+# cat("\n\n =========CONFIDENCE======== \n\n")
+# for (task in seq(1,16,1)){
+#     citext(paste("S-task", sprintf("%.2d",task),sep=""),"confidence")
+# 
+# }
+
+
+```
+
+
+## Effect Sizes
+
+Note: at least as of 10-Sep-2019, negative effect sizes appear to mean "the adjMatrix wins" aka the adjMatrix has a higher accuracy
+
+```{r, warning=FALSE}
+
+
+reportES <- function(data, attr, group) {
+
+  lvs <- levels(data[[group]])
+
+  b <- bootES(data,
+              data.col=attr,
+              group.col=group,
+              contrast=lvs, # normal cases c(group1=1, group2=-1), but for 2 groups, it's simplified.
+              effect.type="cohens.d")
+
+  cat( "d=", round( b$t0, 2), "~",
+       "[", round( b$bounds[1], 2), ",",
+       round( b$bounds[2], 2), "]",
+       sep="")
+}
+
+estext <- function(task, measure_) {
+  
+df_tmp <- df %>% 
+  filter(measure==measure_) 
+
+df_tmp$value = as.numeric( as.character(df_tmp$value ))
+
+esd = df_tmp %>% 
+  filter(taskId == task)
+
+cat( paste(task, "\n") )
+reportES(esd, "value", "visType")
+cat( "\n" )
+cat( "\n" )
+
+
+}
+cat("\n\n =========ACCURACIES======== \n\n")
+
+estext("S-task01", "accuracy")
+estext("S-task02", "accuracy")
+estext("S-task03", "accuracy")
+estext("S-task04", "accuracy")
+estext("S-task05", "accuracy")
+estext("S-task06", "accuracy")
+estext("S-task07", "accuracy")
+estext("S-task08", "accuracy")
+estext("S-task09", "accuracy")
+estext("S-task10", "accuracy")
+estext("S-task11", "accuracy")
+estext("S-task12", "accuracy")
+estext("S-task13", "accuracy")
+estext("S-task14", "accuracy")
+estext("S-task15", "accuracy")
+#estext("S-task16", "accuracy")
+
+cat("\n\n =========TIMES======== \n\n")
+
+estext("S-task01", "minutesOnTask")
+estext("S-task02", "minutesOnTask")
+estext("S-task03", "minutesOnTask")
+estext("S-task04", "minutesOnTask")
+estext("S-task05", "minutesOnTask")
+estext("S-task06", "minutesOnTask")
+estext("S-task07", "minutesOnTask")
+estext("S-task08", "minutesOnTask")
+estext("S-task09", "minutesOnTask")
+estext("S-task10", "minutesOnTask")
+estext("S-task11", "minutesOnTask")
+estext("S-task12", "minutesOnTask")
+estext("S-task13", "minutesOnTask")
+estext("S-task14", "minutesOnTask")
+estext("S-task15", "minutesOnTask")
+estext("S-task16", "minutesOnTask")
+```
+
+## TODO Subtract CIs?
+
+## TODO Tidybayes-style eye plots (in progress + may be abandoned)
+
+```{r}
+# df %>% 
+#   filter(measure=="accuracy") %>% 
+#   mutate( value = as.numeric(value) ) %>% 
+#   ggplot( aes(x=taskId, dist="norm", arg1=value) ) +
+#   geom_halfeyeh() +
+  
+
+
+m_acc = lm(value ~ taskId, data = df_acc)
+
+summary(m_acc)
+
+tidy(m_acc)
+
+m_acc %>%
+  tidy() %>%
+  ggplot() +
+  geom_halfeyeh( aes(x=term, y=estimate)) 
+
+
+```
+
+
+## Participant Info
+
+```{r}
+fct_unique(dfp$measure)
+
+dfp %>% 
+  filter(measure == "age") %>% 
+  mutate( value = as.numeric( as.character(value)) ) %>% 
+  ggplot() +
+    geom_density( aes(x=value), fill="blue", alpha=0.75 ) 
+
+dfp %>% 
+  filter(measure == "age") %>% 
+  mutate( value = as.numeric( as.character(value)) ) %>% 
+  ggplot(aes(x="age", y=value)) +
+    geom_beeswarm(priority='random',cex=2, alpha=0.6) +
+  coord_flip() +
+  xlab("") + ylab("")
+
+```
+
+
+## Task Beeswarms
+
+```{r, fig.width=8, fig.height=2}
+
+fct_unique(df$measure)
+
+# TODO scales fix for each measure (make global plot and use to fix scales)... but have to do for each measure!
+# TODO color choices could be better
+# TODO figure width and height?
+# TODO manual order for measures?
+
+vplot <- function(task) {
+
+sdf = df %>% filter( taskId == task )
+tt = as.character(sdf[1,]$taskTitle)
+
+df %>% 
+  filter( measure == "accuracy" | measure == "minutesToComplete" | 
+            measure == "difficulty" | measure == "confidence") %>% 
+    filter( taskId == task ) %>% 
+  mutate( value = as.numeric( as.character(value)) ) %>% 
+  ggplot(aes(x=visType, y=value, fill=visType, color=visType)) +
+    facet_wrap(. ~ measure, scales="free", nrow=1) +
+    geom_violin() +
+    stat_summary(fun.data = "mean_cl_boot", colour = "green", size = 0.5, alpha=0.5) +
+  coord_flip() + 
+    labs(
+      title = tt,
+      subtitle = task
+    )
+  
+ggsave(paste("violins/",task,".pdf", sep=""), width = 10, height = 2.5, units = "in")
+}
+
+vplot("S-task01")
+vplot("S-task02")
+vplot("S-task03")
+vplot("S-task04")
+vplot("S-task05")
+vplot("S-task06")
+vplot("S-task07")
+vplot("S-task08")
+vplot("S-task09")
+vplot("S-task10")
+vplot("S-task11")
+vplot("S-task12")
+vplot("S-task13")
+vplot("S-task14")
+vplot("S-task15")
+vplot("S-task16")
+
+```
+
+
+## Beeswarm debugging
+
+
+## Grouped Charts
+
+T1/T2
+
+T4/T5
+
+T10/T11
+
+T13/T14
+
+```{r, fig.width=10, fig.height=6}
+
+df %>% 
+  filter( measure == "accuracy" ) %>% 
+  filter( taskId == "S-task01" | taskId == "S-task02" ) %>% 
+  mutate( value = as.numeric( as.character(value)) ) %>% 
+  mutate( condition = paste(taskId, visType, sep="_") ) %>% 
+  ggplot(aes(x=condition, y=value, fill=visType, color=visType)) +
+  geom_jitter( alpha = 0.3, height=0.01, width=0.25  ) +
+    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.75) +
+  coord_flip()
+
+ggsave("comparisons/S-task01_S-task02.pdf")
+
+df %>% 
+  filter( measure == "accuracy" ) %>% 
+  filter( taskId == "S-task04" | taskId == "S-task05" ) %>% 
+  mutate( value = as.numeric( as.character(value)) ) %>% 
+  mutate( condition = paste(taskId, visType, sep="_") ) %>% 
+  ggplot(aes(x=condition, y=value, fill=visType, color=visType)) +
+  geom_jitter( alpha = 0.3, height=0.01, width=0.25  ) +
+    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.75) +
+  coord_flip()
+
+ggsave("comparisons/S-task04_S-task05.pdf")
+
+
+df %>% 
+  filter( measure == "accuracy" ) %>% 
+  filter( taskId == "S-task10" | taskId == "S-task11" ) %>% 
+  mutate( value = as.numeric( as.character(value)) ) %>% 
+  mutate( condition = paste(taskId, visType, sep="_") ) %>% 
+  ggplot(aes(x=condition, y=value, fill=visType, color=visType)) +
+  geom_jitter( alpha = 0.3, height=0.01, width=0.25  ) +
+    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.75) +
+  coord_flip()
+
+ggsave("comparisons/S-task10_S-task11.pdf")
+
+df %>% 
+  filter( measure == "accuracy" ) %>% 
+  filter( taskId == "S-task13" | taskId == "S-task14" ) %>% 
+  mutate( value = as.numeric( as.character(value)) ) %>% 
+  mutate( condition = paste(taskId, visType, sep="_") ) %>% 
+  ggplot(aes(x=condition, y=value, fill=visType, color=visType)) +
+  geom_jitter( alpha = 0.3, height=0.01, width=0.25  ) +
+    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.75) +
+  coord_flip()
+
+ggsave("comparisons/S-task13_S-task14.pdf")
+
+
+
+```
+
+## S-Task12 debugging
+
+```{r}
+df %>% 
+  filter( measure == "accuracy" ) %>% 
+  filter( taskId == "S-task12") %>% 
+  mutate( value = as.numeric( as.character(value)) ) %>% 
+  ggplot(aes(x=visType, y=value, fill=visType, color=visType)) +
+  geom_jitter( alpha = 0.3, height=0.01, width=0.01  ) + 
+  coord_flip()
+```
+

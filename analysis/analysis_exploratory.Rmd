@@ -1,0 +1,608 @@
+---
+date: "9/3/2019"
+output: html_document
+fig_width: 12 
+fig_height: 4 
+---
+
+## Setup
+
+```{r setup}
+library(tidyverse)
+library(ggridges)
+library(pwr) 
+library(grid)
+library(gtable)
+
+library(ggthemes)
+
+library(ggbeeswarm)
+
+library(tidybayes)
+library(cowplot)
+library(broom)
+library(Hmisc)
+
+theme_set(theme_tidybayes() + panel_border() + background_grid())
+
+
+#df <- read.csv("../results/pilot/CSV/TidyR.csv")
+df <- read.csv("../results/study/CSV/TidyR.csv")
+  #mutate( value = as.numeric( as.character(value)) )  
+
+averages<- filter( df, measure == 'minutesOnTask') %>% 
+  mutate( value = as.numeric( as.character(value)) ) %>% 
+  group_by(taskNumber) %>% summarise_at(vars(value), funs(mean, min,max, sd))
+
+df_acc <- filter( df, measure == 'accuracy')
+
+#filter out measurement that don't make the cut as far as timespent;
+dfv <- filter( df, measure != 'minutesOnTask' | as.numeric( as.character(value))<10)
+
+dfp <- read.csv("../results/study/CSV/participantInfoTidyR.csv")
+
+dfc <- read.csv("../results/study/MaxQDA/codesTidy.csv")
+
+wilcox <- read.csv("../results/study/CSV/wilcox.csv")
+ci_values <- read.csv("../results/study/CSV/stats.csv")
+
+
+dfprov <- read.csv("../results/study/CSV/provenanceTidy.csv")
+
+
+
+```
+
+
+``` {r}
+visType.colors <- c(adjMatrix = "#05b4dd", nodeLink = "#f4aa4a")
+
+```
+
+
+```{r fig.width=5, fig.height=17}
+# 
+# user_provenance <- 
+#   dfprov %>%
+#    filter(grepl("sort", event))  %>%
+#     mutate(prolificId = id) %>%
+#      group_by(taskId,event,prolificId) %>%
+#     count()
+# 
+#  user_provenance_data <- merge(user_provenance, df_acc, by="prolificId")
+ 
+  answerFrequency <- function(task) {
+    
+    sdf = df %>% filter( taskNumber == task )
+tt = as.character(sdf[1,]$taskTitle)
+prompt = as.character(sdf[1,]$taskPrompt)
+number = as.character(sdf[1,]$taskNumber)
+
+
+    data <- sdf %>%
+   filter(measure == 'nodeAnswer' | measure == 'valueAnswer')  %>%
+     group_by(value,visType) %>%
+    count()
+
+ data$value <- factor(data$value, levels = unique(data$value[order(-data$n)]))
+ 
+  ggplot(data=data,aes(x=visType, y=n,fill=visType)) +
+  geom_bar(stat="identity")+
+   facet_grid(value ~ .)+
+  theme(strip.text.y = element_text(angle=0),  panel.grid.major = element_blank())+
+  coord_flip()+
+  # ylab("Event Frequency")+
+  scale_fill_manual(values=visType.colors)+  labs(
+      title = paste(task,'-',tt,sep=""),
+      subtitle = prompt
+      # caption = paste('W(acc) = ',acc_stats$W,' p-value(acc) = ',acc_stats$'p.value',  '\n', 'W(time) = ',time_stats$W,'p-value(time) = ',time_stats$'p.value' )
+    )+
+    xlab('Answer')+
+    ylab('Frequency')+
+    theme(axis.text.x=element_text(angle = -90, hjust = 0))
+
+  
+   ggsave(paste("charts/taskAnswers/horizont_",task,".pdf",sep=""), width=5, height=17, units="in")
+  
+  }
+
+
+ # answerFrequency('T12')
+for (task in seq(1,16,1)){
+  answerFrequency(paste('T',sprintf("%.2d",task),sep=""))
+}
+
+
+# ggplot(data=data, aes(x=visType, y=n/150, fill=visType)) +
+#   geom_bar(stat="identity")+
+#    facet_grid(event ~ taskId)+
+#   theme(strip.text.y = element_text(angle=0),  panel.grid.major = element_blank())+
+#   coord_flip()+
+#   ylab("Event Frequency")+
+#   scale_fill_manual(values=visType.colors)
+#   
+# # ggsave("charts/vis_provenance.pdf", width=5, height=8, units="in")
+# 
+# ggsave("charts/task_provenance.pdf", width=15, height=10, units="in")
+
+
+```
+
+
+
+```{r fig.width=15, fig.height=10}
+
+data <- 
+  dfprov %>%
+  # filter(grepl("sort", event))  %>%
+   filter(event!= 'Finished Task' & event!= 'startedProvenance')  %>%
+   mutate( event = ifelse(grepl("sort", event), "sort", as.character(event)))  %>%
+  mutate( event = ifelse(event == 'Searched for Node', "search", as.character(event)))  %>%
+    mutate( event = ifelse(event == 'answerBox', "Select Answer", as.character(event)))  %>%
+      mutate( event = ifelse(event == 'Hard Selected a Node', "Select Answer", as.character(event)))  %>%
+        mutate( event = ifelse(event == 'Hard Unselected a Node', "Unselect Answer", as.character(event)))  %>%
+    mutate( event = ifelse(event == 'colLabel', "Highlight Neighbors", as.character(event)))  %>%
+        mutate( event = ifelse(event == 'Unselect Node', "Un-Highlight Neighbors", as.character(event)))  %>%
+
+      mutate( event = ifelse(event == 'Select Node', "Highlight Neighbors", as.character(event)))  %>%
+
+
+  group_by(taskId,event,visType) %>%
+  count()
+
+
+ggplot(data=data, aes(x=visType, y=n/150, fill=visType)) +
+  geom_bar(stat="identity")+
+   facet_grid(event ~ taskId)+
+  theme(strip.text.y = element_text(angle=0),  panel.grid.major = element_blank())+
+  coord_flip()+
+  ylab("Event Frequency")+
+  scale_fill_manual(values=visType.colors)
+  
+# ggsave("charts/vis_provenance.pdf", width=5, height=8, units="in")
+
+ggsave("charts/task_provenance.pdf", width=15, height=10, units="in")
+
+
+```
+
+
+```{r fig.width=7, fig.height=5}
+
+data <- 
+  dfc %>%
+  filter(Code != 'edge-count-insight' & Code != 'incorrect-attribute-insight' & Code != 'incorrect-topology-insight' & Code != 'meaningless-insight' 
+         & Code != 'general-comment' & Code != 'no-insight' & Code != 'question-insight' & Code !='overview-topology-attribute-insight')  %>%
+  group_by(Code,visType) %>%
+  count()
+
+#data$Code <- factor(data$Code, levels = data$Code[order(data$n)])
+
+
+data <-mutate(data,type=ifelse(grepl("topology-attribute", Code), "topology-attribute",
+                               ifelse(grepl("topology", Code), "topology",
+                                      ifelse(grepl("attribute", Code), "attribute", "Other")))) 
+
+
+#data$n
+
+data$Code <- factor(data$Code, levels = unique(data$Code[order(-data$n)]))
+
+
+
+ggplot(data=data, aes(x=visType, y=n, fill=visType)) +
+  geom_bar(stat="identity",show.legend=FALSE)+
+   facet_grid(Code ~ .)+
+  theme(strip.text.y = element_text(angle=0))+
+
+    #theme_tufte()+
+  #theme(axis.text.x=element_text(angle = -90, hjust = 0))+
+  #theme(axis.text.y=element_text(angle = -90, hjust = 0))+
+
+  
+  coord_flip()+
+  ylab("Code Frequency")+
+  scale_fill_manual(values=visType.colors)
+
+
+ggsave(paste("charts/insights",".pdf", sep=""), width = 7, height =5, units = "in")
+
+  
+```
+
+
+## Data Cleaning / Types
+
+```{r fig.width=6, fig.height=6}
+df %>% 
+  filter(measure=="accuracy") %>% 
+  mutate( value = as.numeric( as.character(value)) ) %>% 
+  ggplot( aes(x=taskOrder, y=value) ) +
+    geom_point(aes(color=visType, alpha=0.1))+
+    #geom_density_ridges() +
+    facet_grid(taskId ~ visType)+
+      theme(strip.text.y = element_text(angle=0))+
+    ylim(c(-.5,1.5))+
+ylab("Accuracy")+
+  xlab("Task Order")
+
+
+ggsave("charts/learning_effects.pdf", width = 6, height =6, units = "in")
+
+
+```
+
+```{r}
+
+dfw <- data.frame(pIndex=double(),
+                 W=integer(),
+                 taskId=character(),
+                 stringsAsFactors=FALSE)
+
+wtest <- function(task,filterMeasure) {
+t_nl = df %>% 
+   filter(measure==filterMeasure)  %>%
+   filter(taskId == task & visType == "nodeLink") %>%
+   mutate(value = as.numeric( as.character(value )))  
+
+t_adj = df %>% 
+   filter(measure==filterMeasure)  %>%
+   filter(taskId == task & visType == "adjMatrix") %>%
+   mutate(value = as.numeric( as.character(value )))  
+
+# p = 0.06-- promising at the pilot level
+print(task)
+return (wilcox.test(t_nl$value, t_adj$value))
+}
+
+
+for (task in seq(1,16,1)){
+  print (wtest(paste("S-task", sprintf("%.2d",task),sep=""),"accuracy"))
+}
+
+for (task in seq(1,16,1)){
+  print (wtest(paste("S-task", sprintf("%.2d",task),sep=""),"minutesOnTask"))
+}
+
+for (task in seq(1,16,1)){
+  #print (wtest(paste("S-task", sprintf("%.2d",task),sep=""),"confidence"))
+}
+
+for (task in seq(1,16,1)){
+  #print (wtest(paste("S-task", sprintf("%.2d",task),sep=""),"difficulty"))
+}
+
+
+
+
+```
+
+```{r, fig.width=15, fig.height=10}
+
+df_acc <- df %>% 
+  filter(measure=="accuracy") 
+
+df_acc$value = as.numeric( as.character(df_acc$value ))
+
+
+df_time<- df %>% 
+  filter(measure=="minutesOnTask") 
+
+df_time$value = as.numeric( as.character(df_time$value ))
+
+
+newFrame <- merge(df_time,df_acc, by="prolificId")
+
+#newFrame
+
+ggplot(newFrame, aes(x = value.x, y = value.y)) +
+#ggplot(newFrame, aes(x = taskOrder.x, y = value.y)) +
+  #geom_jitter( aes(color=visType.y, alpha = 0.2, size=2) ) + 
+   geom_point(aes(color=visType.y, alpha=0.1, size=3))+
+  facet_wrap(vars(taskNumber.y,visType.y),nrow = 5)+
+    #facet_grid  ~ visType.y ) +
+    xlab("Time") +
+    ylab("Accuracy")
+
+ggsave(paste("charts/time_vs_accuracy_facet_wrap.pdf", sep=""), width = 15, height =10, units = "in")
+
+```
+
+``` {r fig.width=7, fig.height=3}
+
+axisRange <- function(x) { 
+  print (x)
+  if (max(x) < 3) c(0, 1) 
+    else c(0,5) 
+}
+
+df$labels<- paste(df$taskNumber,df$taskTitle); 
+
+
+
+
+  
+dfv %>% 
+  filter(topology != 'NA' & (measure=="accuracy" )) %>%  # | measure == 'minutesOnTask' | measure == 'confidence' | measure == 'difficulty')) %>% 
+  mutate( value = as.numeric( as.character(value)) ) %>% 
+   mutate( label = labels.measure[as.character(measure)] ) %>% 
+     mutate( visLabel = labels.visType[as.character(visType)] ) %>% 
+      mutate( label = factor(label, levels=c("Accuracy","Time (minutes)", "Confidence","Difficulty"))) %>%
+        mutate( topology = factor(topology, levels=c("single node","neighbors", "paths","clusters"))) %>%
+
+
+  ggplot( aes(x=visLabel, y=value, color=visType, fill=visType) ) +
+      geom_violin(show.legend=FALSE) +
+
+    #geom_jitter( alpha = 0.2, width=0.1, height=0.3 ) + 
+    stat_summary(fun.data = "mean_cl_boot", colour = "black", size = 0.5,alpha=0.5, show.legend=FALSE) +
+  coord_flip() +
+     facet_grid( attributes ~ topology, scales='free')+
+    theme(strip.text.y = element_text(angle=0))+
+   xlab ("") + 
+    ylab("")+
+  
+    scale_fill_manual(values=visType.colors)+
+    scale_color_manual(values=visType.colors) 
+      #scale_y_continuous(limits = axisRange) #,labels = gridLabels) 
+
+#ggsave("charts/stats_by_hypothesis.pdf", width = 8, height = 3 , units = "in")
+
+
+
+
+```
+
+
+
+```{r}
+
+experience <- mutate(filter(dfp,measure=="visExperience"), visExperience = ifelse(as.numeric( as.character(value)) <3, "low (1-2)",
+                                     ifelse(as.numeric( as.character(value))<6, "medium (3-5)", "high (6-7)"))) 
+acc <- mutate( filter(dfp,measure=="averageAccuracy"), avgAcc = round(as.numeric(as.character(value)),digits=2) ) 
+
+time <- mutate( filter(dfp,measure=="minutesOnTask"), timeValue = round(as.numeric(as.character(value)),digits=2) ) 
+
+vis_type <- unique(select(df,"prolificId","visType"))
+
+
+newFrame <- merge(experience,acc, by="prolificId")
+
+newFrame <- merge(newFrame,vis_type, by="prolificId")
+
+newFrame <- merge(newFrame,time, by="prolificId")
+
+
+newFrame$visExperience <- factor(newFrame$visExperience, levels= c("low (1-2)","medium (3-5)","high (6-7)"))
+
+
+
+
+#ggplot(newFrame, aes(x = timeValue, y = avgAcc)) +
+#    geom_point(aes(color=visType))+
+#    facet_grid(visType ~ .) +
+#    xlab("Time") +
+#    ylab("Average Accuracy")
+
+
+ggplot(newFrame, aes(x = visType, y = avgAcc)) +
+      geom_beeswarm(priority='random', cex=4,alpha=0.3,size=3,aes(color=visType)) +
+    #geom_point(aes(color=visType,alpha=0.5,size=3))+
+
+    facet_grid(. ~ visExperience) +
+  stat_summary(fun.data = "mean_cl_boot", colour = "black", size = 0.5, alpha=1) +
+    xlab("vis experience") +
+    ylab("mean accuracy")
+
+
+ggplot(newFrame, aes(x = visType, y = timeValue)) +
+    geom_beeswarm(priority='random',cex=4,alpha=0.3,size=3,aes(color=visType)) +
+
+    #geom_point(aes(color=visType,alpha=0.5,size=3))+
+    facet_grid(. ~ visExperience) +
+  stat_summary(fun.data = "mean_cl_boot", colour = "black", size = 0.5, alpha=1) +
+    xlab("vis experience") +
+    ylab("time")
+
+```
+
+
+```{r}
+
+dfp %>% 
+  filter(measure == "age") %>% 
+  mutate( value = as.numeric( as.character(value)) ) %>% 
+  ggplot(aes(x="age", y=value)) +
+    geom_beeswarm(priority='density',cex=2, alpha=.6) +
+  coord_flip() +
+  xlab("") + ylab("")
+
+
+histogramFunc <- function(var) {
+data<- filter(dfp,measure == var) 
+  ggplot(data=data, aes(data$value)) + 
+    geom_histogram(stat="count") +
+    xlab(var) 
+
+    ggsave(paste("charts/",var,".pdf", sep=""), width = 7, height = 2, units = "in")
+}
+
+histogramFunc("age");
+histogramFunc("browser");
+histogramFunc("sex");
+histogramFunc("degree");
+histogramFunc("visExperience");
+
+
+```
+
+
+```{r}
+
+labels.measure <- c(
+  "minutesOnTask"  = "Time (minutes)",
+  "accuracy"= "Accuracy",
+  "difficulty"= "Difficulty",
+  "confidence" = "Confidence"
+)
+
+labels.visType <- c(nodeLink = 'NL', adjMatrix = 'AM');
+
+
+```
+
+
+
+```{r, fig.width=7, fig.height=2.5} 
+
+
+vplot <- function(task) {
+
+sdf = df %>% filter( taskId == task )
+tt = as.character(sdf[1,]$taskTitle)
+prompt = as.character(sdf[1,]$taskPrompt)
+number = as.character(sdf[1,]$taskNumber)
+
+acc_stats = wilcox %>% filter( taskNumber == number & measure == "accuracy" )
+time_stats = wilcox %>% filter( taskNumber == number & measure == "time" )
+
+ci_acc_NL = ci_values %>% filter( taskNumber == number & measure == "accuracy" & vis== 'nodeLink' )
+ci_acc_AM = ci_values %>% filter( taskNumber == number & measure == "accuracy"  & vis== 'adjMatrix' )
+
+ci_time_NL = ci_values %>% filter( taskNumber == number & measure == "time" & vis== 'nodeLink' )
+ci_time_AM = ci_values %>% filter( taskNumber == number & measure == "time"  & vis== 'adjMatrix' )
+
+
+gridLines <- function(x) { 
+  if (max(x) < 2) seq(0, 1, .25) 
+  else if (max(x) == 7.3) seq (1,7,2)
+    else seq(0,6,2) 
+}
+
+axisRange <- function(x) { 
+  if (max(x) < 2) c(0, 1) 
+  else if (max(x) == 7) c(1,7)
+    else c(0,6) 
+}
+
+gridLabels <- function(x) { 
+  if (max(as.numeric(x)) < 1.1) seq(0, 1, .5) 
+  else if (max(as.numeric(x)) == 7.3) seq (1,7,2)
+    else seq(0, 5,1 )
+    #else seq(0, round(max(x)), round(max(x)/3)) 
+}
+
+
+
+plotData <-df %>% 
+  filter( measure == "accuracy" | measure == "minutesOnTask"  )  %>% 
+             # | measure == "difficulty" | measure == "confidence") %>% 
+    filter( taskId == task ) %>% 
+  mutate( value = as.numeric( as.character(value)) ) %>% 
+   mutate( label = labels.measure[as.character(measure)] ) %>% 
+     mutate( visLabel = labels.visType[as.character(visType)] ) %>% 
+
+  mutate( label = factor(label, levels=c("Accuracy","Time (minutes)", "Confidence","Difficulty")));
+
+
+
+  ggplot(data=plotData, aes(x=visLabel, y=value, fill=visType, color=visType)) +
+    facet_wrap(. ~ label, scales="free_x", nrow=1) +
+    geom_violin(show.legend=FALSE) +
+    stat_summary(fun.data = "mean_cl_boot", colour = "black", size = 0.5, alpha=.5, show.legend=FALSE) +
+  coord_flip() + 
+    labs(
+      #title = paste(number, '-', tt),
+      # subtitle = paste(number, '-', tt) , #prompt,
+       caption = paste('W=',acc_stats$W,' p=',acc_stats$'p.value', acc_stats$d, '    ', 'W=',time_stats$W,'p=',time_stats$'p.value', time_stats$d, '\n' ,ci_acc_NL$M,  ci_acc_AM$M, ci_time_NL$M, ci_time_AM$M )
+      #      caption = paste(' W=',acc_stats$W,' p=',acc_stats$'p.value', acc_stats$d, '    ', '         W=',time_stats$W,'p=',time_stats$'p.value', time_stats$d, '\n' ,'NL:', ci_acc_NL$M,  'AM:', ci_acc_AM$M, '         NL:', ci_time_NL$M,'AM:', ci_time_AM$M )
+
+    )+
+    theme ( plot.margin=grid::unit(c(0,0,0,0), "mm"), plot.caption = element_text(hjust = 0, vjust =10,  face = "italic")) + 
+    xlab ("") + 
+    ylab("")+
+    scale_fill_manual(values=visType.colors)+
+    scale_color_manual(values=visType.colors)+      
+    scale_y_continuous(breaks = gridLines, limits = axisRange) #,labels = gridLabels) 
+
+
+
+filename <- paste("violins/",gsub(" ", "", paste(number,tt), fixed = TRUE),".pdf", sep="")
+
+#ggsave(paste("violins/",task,".pdf", sep=""), width = 10, height = 2.5, units = "in")
+ggsave(filename, width = 7, height = 2.5, units = "in")
+
+
+# system2(command = "pdfcrop", 
+#         args    = c(filename, 
+#                     paste(filename,'_cropped.pdf', sep="")
+#         ))
+
+}
+
+# vplot('S-task08')
+
+```
+
+
+```{r}
+
+for (task in seq(1,16,1)){
+  #vplot(paste("S-task", sprintf("%.2d",task),sep=""))
+}
+
+
+ vplot('S-task03')
+# vplot('S-task12A')
+# vplot('S-task12B')
+
+
+  
+```
+
+``` {r fig.width=10, fig.height=16}
+
+plotData <-df %>% 
+  filter( measure == "accuracy" | measure == "minutesOnTask" | 
+            measure == "difficulty" | measure == "confidence") %>% 
+   # filter( taskId == task ) %>% 
+  mutate( value = as.numeric( as.character(value)) ) %>% 
+   mutate( label = labels.measure[as.character(measure)] ) %>% 
+     mutate( visLabel = labels.visType[as.character(visType)] ) %>% 
+
+  mutate( label = factor(label, levels=c("Accuracy","Time (minutes)", "Confidence","Difficulty")));
+
+  ggplot(data=plotData, aes(x=visLabel, y=value, fill=visType, color=visType)) +
+    facet_grid(taskId ~ label, scales="free_x") +
+    geom_violin(show.legend=FALSE) +
+    stat_summary(fun.data = "mean_cl_boot", colour = "black", size = 0.5, alpha=.75, show.legend=FALSE) +
+  coord_flip() + 
+    scale_fill_manual(values=visType.colors)+
+    scale_color_manual(values=visType.colors)     
+  #scale_y_continuous(breaks = gridLines) #,labels = gridLabels) 
+
+```
+
+
+``` {r, fig.width=8, fig.height=2}
+
+vplot("S-task02")
+vplot("S-task03")
+vplot("S-task04")
+vplot("S-task05")
+vplot("S-task06")
+vplot("S-task07")
+vplot("S-task08")
+vplot("S-task09")
+vplot("S-task10")
+vplot("S-task11")
+vplot('S-task12')
+vplot('S-task12A')
+vplot('S-task12B')
+vplot("S-task13")
+vplot("S-task14")
+vplot("S-task15")
+vplot("S-task16")
+
+```
+
