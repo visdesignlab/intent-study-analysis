@@ -77,13 +77,13 @@ function makePlots(provData) {
   //   .append("g")
   //   .attr("class", "participantGroup");
 
-  participantGroupsEnter
-    .append("rect")
-    .attr("class", "typeRect")
-    .attr("x", - 20)
-    .attr("y", 0)
-    .attr("height", height)
-    .attr("width", 5); //width  + 20 + margin.right);
+  // participantGroupsEnter
+  //   .append("rect")
+  //   .attr("class", "typeRect")
+  //   .attr("x", - 20)
+  //   .attr("y", 0)
+  //   .attr("height", height)
+  //   .attr("width", 5); //width  + 20 + margin.right);
 
   let opacityScale = d3
     .scaleLinear()
@@ -92,7 +92,7 @@ function makePlots(provData) {
 
   var x = d3.scaleLinear().range([0, width]);
 
-  x.domain([0, 75 * 60 * 1000]);
+  x.domain([0, 40 * 60 * 1000]);
 
   var y = d3.scaleLinear().range([height - 10, 0]);
   y.domain([-2, 2]); //provData[index].provEvents.filter(e=>e.type === type && e.level === undefined).length-1+2]);
@@ -123,12 +123,12 @@ function makePlots(provData) {
     .attr("y", y(3))
     .style("text-anchor", "end");
 
-    participantGroupsEnter
-    .append("text")
-    .attr("class", "visType")
-    .attr("x", -40)
-    .attr("y", y(0))
-    .style("text-anchor", "end");
+    // participantGroupsEnter
+    // .append("text")
+    // .attr("class", "visType")
+    // .attr("x", -40)
+    // .attr("y", y(0))
+    // .style("text-anchor", "end");
 
   
 
@@ -200,17 +200,19 @@ function makePlots(provData) {
   rects
     .on("mouseover", d => {
       let tooltipContent;
-      if (d.label == "task") {
+      if (d.label == "Task") {
         tooltipContent =
           d.task && d.task.id !== undefined
             ? "<strong>" +
-              d.task.id +
+              "Task:" + d.task.id +
               "</strong>" +
               "[" +
-              d.task.data.answer.accuracy +
-              "]" +
+              d.task.result.accuracy +
+              "]" 
+              +
               "<br/>" +
-              d.task.data.prompt
+              d.task.categoryColumn + "/" + d.task.difficulty 
+              
             : "";
       } else {
         tooltipContent =
@@ -313,19 +315,19 @@ function makePlots(provData) {
    .select('.id')
     .text(d => d.id)
   
-  participantGroups
-  .select('.visType')
-    .text(d=>
-      d
-        ? d.visType == "adjMatrix"
-          ? "AM"
-          : "NL"
-        : "NA"
-    )
+  // participantGroups
+  // .select('.visType')
+  //   .text(d=>
+  //     d
+  //       ? d.visType == "adjMatrix"
+  //         ? "AM"
+  //         : "NL"
+  //       : "NA"
+  //   )
 
   let labels = participantGroups
     .selectAll(".label")
-    .data((d, i) => d.provEvents.filter(e => e.type === "longAction"));
+    .data((d, i) => d.provEvents.filter(e => e.type === "longAction").sort((a,b)=>a.time>b.time ? 1: 0));
 
   let labelsEnter = labels
     .enter()
@@ -339,21 +341,22 @@ function makePlots(provData) {
   labels
     // .attr("x", d => x(Date.parse(d.startTime) || Date.parse(d.time)))
     // .attr("y", (d, i) => y(d.level)) //y(d.participantOrder))
-    .attr("transform", d => {
+    .attr("transform", (d,ii) => {
+
+      let yTranslate = d.level -1.5 
       let time = Date.parse(d.startTime) || x(Date.parse(d.time));
-      return (
-        "translate(" +
+      return ("translate(" +
         x(time - d.participantStartTime) +
         "," +
-        y(d.level - 1.5) +
+        y(yTranslate) +
         ") rotate(0)"
-      );
+      ) 
     })
-    .attr("dy", 5)
+    // .attr("dy", 5)
     .style("text-anchor", "start")
     .style("font-size", 12)
     .attr("class", d => "label " + d.label.replace(/ /g, ""))
-    .text(d => (d.level == 0 && d.label !== "browse away" ? d.label : ""));
+    .text(d => (d.level == 0 && d.label !== "Browse Away" ? d.label.replace('Training','Tr.').replace('computerAssisted','comp') : ""));
 
   rects = participantGroups.selectAll(".s-event")
   // .data([])
@@ -391,6 +394,7 @@ function makePlots(provData) {
 }
 
 async function drawProvenance(sortOrder) {
+
   //add tooltip
   d3.select("body")
     .append("div")
@@ -402,64 +406,58 @@ async function drawProvenance(sortOrder) {
   );
 
   participantResults = await d3.json(
-    "results/" + mode + "/JSON/processed_results.json"
+    "results/" + mode + "/JSON/study_results.json"
   );
 
-  let sortedProvData = provData.sort((a, b) => {
-    let aResults = participantResults.find(d => d.data.workerID == a.id);
-    let bResults = participantResults.find(d => d.data.workerID == b.id);
 
-    if (!aResults || !bResults) {
-      return 0;
-    }
+  let sortedProvData = provData; //will sort on average accuracy later; 
 
-    if (sortOrder) {
-      // let isANodeLink = aResults.data['S-task01'].visType === 'nodeLink';
-      // let isBNodeLink = bResults.data['S-task01'].visType === 'nodeLink';
+  // let sortedProvData = provData.sort((a, b) => {
+  //   let aResults = participantResults.find(d => d.data.workerID == a.id);
+  //   let bResults = participantResults.find(d => d.data.workerID == b.id);
 
-      // return (isANodeLink && isBNodeLink) ? 0 : isANodeLink ? -1 : 1
+  //   if (!aResults || !bResults) {
+  //     return 0;
+  //   }
 
-      return aResults.data.averageAccuracy > bResults.data.averageAccuracy
-        ? -1
-        : 1;
+  //   if (sortOrder) {
 
-      // return aResults.data[sortOrder].answer.accuracy > bResults.data[sortOrder].answer.accuracy ? -1 : 1
-    } else {
-      // let isANodeLink = aResults.data['S-task01'].visType === 'nodeLink';
-      // let isBNodeLink = bResults.data['S-task01'].visType === 'nodeLink';
-
-      // return (isANodeLink && isBNodeLink) ? 0 : isANodeLink ? -1 : 1
-
-      // return Date.parse(aResults.data['S-task01'].startTime) < Date.parse(bResults.data['S-task01'].startTime) ? -1 : 1
-      return aResults.data.averageAccuracy > bResults.data.averageAccuracy
-        ? -1
-        : 1;
-    }
-  });
+  //     return aResults.data.averageAccuracy > bResults.data.averageAccuracy
+  //       ? -1
+  //       : 1;
+  //   } else {
+  //     return aResults.data.averageAccuracy > bResults.data.averageAccuracy
+  //       ? -1
+  //       : 1;
+  //   }
+  // });
 
   sortedProvData.map((p, i) => {
     let participantResult = participantResults.find(
-      d => d.data.workerID == p.id
+      d => d.data.participantId == p.id
     );
 
-    p.averageAccuracy = participantResult.data.averageAccuracy;
+ 
+    //compute average accuracy; 
+    p.averageAccuracy = participantResult.data.avgAcc;
 
 
-    let resultsArray = Object.entries(participantResult.data);
+    // let resultsArray = Object.entries(participantResult.data);
 
-    //associate results data for each task
-    p.provEvents.map(e => {
-      if (e.label === "task") {
-        let data = resultsArray.filter(r => r[0] === e.task)[0];
-        // console.log(e,resultsArray,data)
-        if (data) {
-          e.order = data[1].order;
-          e.task = { id: data[0], data: data[1] };
-          p.visType = e.task.data.visType;
-        }
-      }
-    });
+    // //associate results data for each task
+    // p.provEvents.map(e => {
+    //   if (e.label === "task") {
+    //     let data = resultsArray.filter(r => r[0] === e.task)[0];
+    //     // console.log(e,resultsArray,data)
+    //     if (data) {
+    //       e.order = data[1].order;
+    //       e.task = { id: data[0], data: data[1] };
+    //       p.visType = e.task.data.visType;
+    //     }
+    //   }
+    // });
   });
+
 
   makePlots(sortedProvData);
 }

@@ -64,12 +64,31 @@ div.tooltip {
     fill:none
 }
 
+
+
 .task.wrong, .exitedtour{
     fill:rgb(179, 0, 0);
 }
 
-.event.training{
+.event.video{
     fill:#2366d1
+}
+
+.event.Training-user{
+    fill:#a061db
+}
+
+.event.Training-computerAssisted{
+    fill:#521e83
+}
+
+
+.event.Study-user{
+    fill:#61db75
+}
+
+.event.Study-computerAssisted{
+    fill:#247532
 }
 
 .event{
@@ -78,7 +97,7 @@ div.tooltip {
     stroke-width:3px;
 }
 
-.browseaway{
+.BrowseAway{
     fill:rgb(59, 59, 59);
     stroke:none;
     opacity:1;

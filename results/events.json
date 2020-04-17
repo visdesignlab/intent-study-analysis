@@ -1,58 +1,58 @@
 {
-    "video": {
+    "Start phase: Video": {
         "label":"video",
         "type":"longAction",
-        "start":"Start phase : Video",
-        "end":"Start phase : Training - Manual",
+        "start":"Start phase: Video",
+        "end":["Start phase: Training - Manual"],
         "level":0
     },
-    "training-user": {
+    "Start phase: Training - Manual": {
         "label":"Training-user",
         "type":"longAction",
         "start":"Start phase: Training - Manual",
-        "end":"Start phase: Training - CS",
+        "end":["Start phase: Training - CS"],
         "level":0
     },
-    "training-computerAssisted": {
+    "Start phase: Training - CS": {
         "label":"Training-computerAssisted",
         "type":"longAction",
         "start":"Start phase: Training - CS",
         "end":["Start phase: Tasks - CS","Start phase: Tasks - Manual"],
         "level":0
     },
-    "study-user": {
+    "Start phase: Tasks - Manual": {
         "label":"Study-user",
         "type":"longAction",
         "start":"Start phase: Tasks - Manual",
         "end":["Start phase: Tasks - CS", "Start phase: Final Feedback"],
         "level":0
     },
-    "study-computerAssisted": {
+    "Start phase: Tasks - CS": {
         "label":"Study-computerAssisted",
         "type":"longAction",
         "start":"Start phase: Tasks - CS",
         "end":["Start phase: Tasks - Manual", "Start phase: Final Feedback"],
         "level":0
     },
-    "task": {
+    "Start task": {
         "label":"Task",
         "type":"longAction",
         "start":"Start task",
         "end":["Feedback started","Complete task"],
         "level":1
     },
-    "feedback": {
+    "Start phase: Final Feedback": {
         "label":"Final Feedback",
         "type":"longAction",
         "start":"Start phase: Final Feedback",
-        "end":"Final Feedback",
+        "end":["Final Feedback"],
         "level":0
     },
-    "unfocused tab": {
+    "Out of focus": {
         "label":"Browse Away",
         "type":"longAction",
         "start":"Out of focus",
-        "end":"In Focus",
+        "end":["In Focus"],
         "level":0
     }
 }
