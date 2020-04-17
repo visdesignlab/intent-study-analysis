@@ -126,7 +126,7 @@ function processProvenance(mode) {
 
     //update total on study time
 
-    let totalStudyTime=   participantEventArray[participantEventArray.length-1].startTime - participantEventArray[0].startTime 
+    let totalStudyTime=   participantEventArray[participantEventArray.length-1].endTime - participantEventArray[0].startTime 
     //update total on participant_info
     let timeOnTask =   totalStudyTime - browsedAwayTime;
 
