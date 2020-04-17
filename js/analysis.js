@@ -21,6 +21,14 @@ function hideTooltip() {
 
 function makePlots(provData) {
 
+
+  function millisToMinutesAndSeconds(millis) {
+    var minutes = Math.floor(millis / 60000);
+    var seconds = ((millis % 60000) / 1000).toFixed(0);
+    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+  }
+
+
   console.log(provData)
   var margin = { top: 50, right: 15, bottom: 25, left: 150 };
 
@@ -109,19 +117,28 @@ function makePlots(provData) {
     .call(xAxis);
 
     
+      
+    participantGroupsEnter
+    .append("text")
+    .attr("class", "time")
+    .attr("x", x.range()[1])
+    .attr("y", 0)
+    .style("text-anchor", "end");
+
+
     participantGroupsEnter
     .append("text")
     .attr("class", "rank")
     .attr("x", x.range()[1])
-    .attr("y", 0)
+    .attr("y", y(3))
     .style("text-anchor", "end");
 
     participantGroupsEnter
     .append("text")
     .attr("class", "id")
-    .attr("x", x.range()[1])
+    .attr("x", x.range()[0])
     .attr("y", y(3))
-    .style("text-anchor", "end");
+    .style("text-anchor", "start");
 
     // participantGroupsEnter
     // .append("text")
@@ -211,7 +228,7 @@ function makePlots(provData) {
               "]" 
               +
               "<br/>" +
-              d.task.categoryColumn + "/" + d.task.difficulty 
+              d.task.type + "/" + d.task.difficulty 
               
             : "";
       } else {
@@ -308,6 +325,12 @@ function makePlots(provData) {
     .select('.rank')
     .text(d=>"Avg Accuracy:" +
       Math.round(d.averageAccuracy * 100) / 100     
+    )
+
+    participantGroups
+    .select('.time')
+    .text(d=>"Time: " +
+      millisToMinutesAndSeconds(d.timeOnTask) + " [" + millisToMinutesAndSeconds(d.totalStudyTime) + "]"   
     )
    
 

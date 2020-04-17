@@ -39,8 +39,13 @@ function processProvenance(mode) {
     participantEventArray = [];
 
     let r = results.find(r => r.data.participantId === participant.id);
-    r.data.browsedAwayTime = 0;
 
+    //remove all events prior to the 'Start phase: Video' task ; 
+    let startVideoEvent = participant.data.indexOf(participant.data.find(p=>p.label == 'Start phase: Video'));
+    participant.data.startedVideoTime = 
+    participant.data.splice(0,startVideoEvent) 
+
+    let browsedAwayTime = 0;
     // let p = study_participants.find(p => p.id === participant.id);
 // console.log(eventTypes)
     participant.data.map(action => {
@@ -107,34 +112,12 @@ function processProvenance(mode) {
             if (startObj.label == 'Task'){
               startObj.task.result= r.data[startObj.task.id]
             }
-            let minutesBrowsedAway =
-              (Date.parse(startObj.endTime) - Date.parse(startObj.startTime)) /
-              1000 /
-              60;
+            
 
             if (
-              startObj.label === "browse away" &&
-              startObj.task &&
-              startObj.task[0] === "S"
-            ) {
-              //only adjust time for browse away events during task completions
-              if (
-                Date.parse(startObj.startTime) <
-                Date.parse(r.data["S-task16"].endTime)
-              ) {
-                if (minutesBrowsedAway < 50) {
-                  r.data.browsedAwayTime =
-                    r.data.browsedAwayTime + minutesBrowsedAway;
+              startObj.label === "Browse Away"){
+              browsedAwayTime =browsedAwayTime +  (Date.parse(startObj.endTime) - Date.parse(startObj.startTime)) 
 
-                  //catch case where browse away is logged at several hours;
-                  r.data[startObj.task].minutesOnTask =
-                    Math.round(
-                      (r.data[startObj.task].minutesOnTask -
-                        minutesBrowsedAway) *
-                        10
-                    ) / 10;
-                }
-              }
             }
           }
         }
@@ -142,12 +125,14 @@ function processProvenance(mode) {
     });
 
     //update total on study time
-    r.data.overallMinutesOnTask =
-      r.data.overallMinutesToComplete - r.data.browsedAwayTime;
-    //update total on participant_info
-    // p.data.minutesOnTask = r.data.overallMinutesOnTask;
 
-    events.push({ id: participant.id, provEvents: participantEventArray });
+    let totalStudyTime=   participantEventArray[participantEventArray.length-1].startTime - participantEventArray[0].startTime 
+    //update total on participant_info
+    let timeOnTask =   totalStudyTime - browsedAwayTime;
+
+    console.log('browsed away', browsedAwayTime)
+
+    events.push({ id: participant.id, totalStudyTime, timeOnTask, provEvents: participantEventArray });
     // console.log(participantEventArray.filter(e=>e.type === 'longAction' && e.endTime === undefined))
   });
 
@@ -166,3 +151,4 @@ function processProvenance(mode) {
   console.log("exported provenance_processed_results.json");
 
 }
+
