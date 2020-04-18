@@ -27,8 +27,8 @@ theme_set(theme_tidybayes() + panel_border() + background_grid())
 
 
 #df <- read.csv("../results/pilot/CSV/TidyR.csv")
-df <- read.csv("../results/study/CSV/TidyR.csv")
-dfp <- read.csv("../results/study/CSV/participantInfoTidyR.csv")
+df <- read.csv("../results/pilot/CSV/TidyR.csv")
+dfp <- read.csv("../results/pilot/CSV/participantInfoTidyR.csv")
 ```
 
 
@@ -58,16 +58,25 @@ df %>%
     geom_jitter( alpha = 0.2, width=0.1, height=0.3 ) + 
     stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, position = position_nudge(x=0.25, y=0), alpha=0.5) +
   coord_flip() +
-    facet_grid(. ~ visType)
+    facet_grid(. ~ userDriven)
 
 df %>% 
-  filter(measure=="accuracy") %>% 
+  filter(measure=="difficulty") %>% 
   mutate( value = as.numeric( as.character(value)) ) %>% 
   ggplot( aes(x=taskId, y=value) ) +
     geom_jitter( alpha = 0.2, width=0.1, height=0.3 ) + 
     stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, position = position_nudge(x=0.25, y=0), alpha=0.5) +
   coord_flip() +
-    facet_grid(. ~ visType)
+    facet_grid(. ~ userDriven)
+
+df %>% 
+  filter(measure=="confidence") %>% 
+  mutate( value = as.numeric( as.character(value)) ) %>% 
+  ggplot( aes(x=taskId, y=value) ) +
+    geom_jitter( alpha = 0.2, width=0.1, height=0.3 ) + 
+    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, position = position_nudge(x=0.25, y=0), alpha=0.5) +
+  coord_flip() +
+    facet_grid(. ~ userDriven)
 
 ## beeswarm big chart
 ## ci plots with titles and new tidyr
@@ -85,10 +94,10 @@ we can do the same with distributions, ridges
 ```{r}
 df %>% 
   filter(measure=="accuracy") %>% 
-  mutate( value = as.numeric( as.character(value)) ) %>% 
+  mutate( value = as.numeric(as.character(value)) ) %>% 
   ggplot( aes(x=value, y=taskId) ) +
     geom_density_ridges() +
-    facet_grid(. ~ visType)
+    facet_grid(. ~ userDriven)
 
 ```
 
@@ -102,7 +111,7 @@ df %>%
   mutate( value = as.numeric( as.character(value)) ) %>% 
   ggplot( aes(value) ) +
     geom_density( alpha = 0.2 ) +
-    facet_grid(taskId ~ visType)
+    facet_grid(taskId ~ userDriven)
 
 ```
 
