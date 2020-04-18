@@ -1,0 +1,22 @@
+{
+  "name": "intent-study-analysis",
+  "version": "1.0.0",
+  "description": "This repository contains all the survey results from the User Intent crowdsourced study as well as the R scripts used to analyze them and the d3 code used to generalize an interactive visualization of the provenance data.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/visdesignlab/intent-study-analysis.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/visdesignlab/intent-study-analysis/issues"
+  },
+  "homepage": "https://github.com/visdesignlab/intent-study-analysis#readme",
+  "dependencies": {
+    "csv-writer": "^1.6.0"
+  }
+}
