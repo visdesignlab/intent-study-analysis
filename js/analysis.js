@@ -227,7 +227,7 @@ function makePlots(provData) {
         ? d.task.data.answer.correct == 0
         : false
     )
-    .attr('fill',d=>(d.task && d.task.result) ? color(d.task.result.accuracy) : '')
+    // .attr('fill',d=>(d.task && d.task.result) ? color(d.task.result.accuracy) : '')
   // .classed('sortedOn', d=>sortOrder && d.task && d.task.id == sortOrder)
 
   rects
