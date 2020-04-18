@@ -191,6 +191,7 @@ function makePlots(provData) {
 
     rectGroupsEnter.append('rect').attr('class','baseRect')
     rectGroupsEnter.append('rect').attr('class','autoCompleteRect')
+    rectGroupsEnter.append('text').attr('class','rankLabel')
 
 
 
@@ -225,22 +226,23 @@ function makePlots(provData) {
     })
 
     rectGroups.select('.autoCompleteRect')
-    .attr("height", d => {
-      let ac = d.task && d.task.result && d.task.result.interactionDetails.autoCompleteUsed;
-      let diff = x(Date.parse(d.endTime)) - x(Date.parse(d.startTime));
+    .attr("height", 5)
+    // d => {
+    //   let ac = d.task && d.task.result && d.task.result.interactionDetails.autoCompleteUsed;
+    //   let diff = x(Date.parse(d.endTime)) - x(Date.parse(d.startTime));
       
 
-       if (ac){
-         let rankScale = d3.scaleLinear().domain([1,4]).range([10,2])
-         return rankScale(d.task.result.interactionDetails.rankOfPredictionUsed);
-       } else {
-         return 0
-       }
+    //    if (ac){
+    //      let rankScale = d3.scaleLinear().domain([1,4]).range([10,2])
+    //      return rankScale(d.task.result.interactionDetails.rankOfPredictionUsed);
+    //    } else {
+    //      return 0
+    //    }
     
-    })
+    // })
     .attr("x", d => {
       let time = Date.parse(d.startTime) || x(Date.parse(d.time));
-      return x(time - d.participantStartTime)+2;
+      return x(time - d.participantStartTime)//+2;
     })
 
     .attr("y", (d, i) => {
@@ -248,27 +250,59 @@ function makePlots(provData) {
       if (d.task && d.task.result){
         initialY= staggerScale(d.task.result.accuracy)-5
 
-        let ac = d.task && d.task.result && d.task.result.interactionDetails.autoCompleteUsed;
-        let diff = x(Date.parse(d.endTime)) - x(Date.parse(d.startTime));
+        // let ac = d.task && d.task.result && d.task.result.interactionDetails.autoCompleteUsed;
+        // let diff = x(Date.parse(d.endTime)) - x(Date.parse(d.startTime));
         
   
-         if (ac){
-          let rankScale = d3.scaleLinear().domain([1,4]).range([10,2])
-           return initialY - rankScale(d.task.result.interactionDetails.rankOfPredictionUsed);
-         } else {
-           return 0
-         }
-
+        //  if (ac){
+        //   let rankScale = d3.scaleLinear().domain([1,4]).range([10,2])
+        //    return initialY - rankScale(d.task.result.interactionDetails.rankOfPredictionUsed);
+        //  } else {
+        //    return 0
+        //  }
+        return initialY
 
       } else {
         return y(d.level)//y(d.participantOrder))
       }
     })
-    .attr("width", 3)
+    .attr("width", d => {
+      let ac = d.task && d.task.result && d.task.result.interactionDetails.autoCompleteUsed;
+      let diff = x(Date.parse(d.endTime)) - x(Date.parse(d.startTime));
+
+      return ac ? diff :0;
+    })
     .attr("class", d => {
       let className = "event autoCompleteRect " + d.label.replace(/ /g, "") ;
       return className
     })
+
+    rectGroups.select('.rankLabel')
+    .attr("x", d => {
+      let time = Date.parse(d.startTime) || x(Date.parse(d.time));
+      return x(time - d.participantStartTime)//+2;
+    })
+    .attr("y", (d, i) => {
+      let initialY;
+      if (d.task && d.task.result){
+        initialY= staggerScale(d.task.result.accuracy)-5
+        return initialY
+
+      } else {
+        return y(d.level)
+      }
+    })
+    .text(d => {
+      let ac = d.task && d.task.result && d.task.result.interactionDetails.autoCompleteUsed;
+      return ac ? d.task.result.interactionDetails.rankOfPredictionUsed :'';
+    })
+    .attr('class',d => {
+      let rank = d.task && d.task.result && d.task.result.interactionDetails.rankOfPredictionUsed;
+      return rank ? (rank>3 ? 'rankLabel wrong' : rank >2 ? 'rankLabel medium' : 'rankLabel') : false;
+    })
+    
+
+
   
     // .attr('fill',d=>(d.task && d.task.result) ? color(d.task.result.accuracy) : '')
   // .classed('sortedOn', d=>sortOrder && d.task && d.task.id == sortOrder)

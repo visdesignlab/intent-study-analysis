@@ -64,17 +64,34 @@ div.tooltip {
     fill:none
 }
 
-.hard{
-fill:#1f78b4
+
+
+.rankLabel{
+    font-size: 8px;
+    opacity:.7;
+}
+
+.rankLabel.medium{
+    fill:rgb(194, 123, 1);
+    font-weight:bold
+}
+
+.rankLabel.wrong{
+    fill:red;
+    font-weight:bold;
 }
 
 .easy{
-    fill:#fc8d62
+    fill:#b5b2b2
 }
 
 .medium{
-    fill:#33a02c
+    fill:#525252
 }
+
+.hard{
+    fill:#000000
+    }
 
 
 .task.wrong, .exitedtour{
@@ -87,7 +104,13 @@ fill:#1f78b4
 } */
 
 .event.baseRect{
-    opacity:.5;
+    opacity:.6;
+    stroke:white;
+    stroke-width:3px;
+}
+
+.event.autoCompleteRect{
+    opacity:.8;
     stroke:white;
     stroke-width:3px;
 }
