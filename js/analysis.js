@@ -200,7 +200,6 @@ function makePlots(provData) {
       return x(time - d.participantStartTime);
     })
     .attr("y", (d, i) => {
-      console.log(d)
       if (d.task && d.task.result){
         return y(d.task.result.accuracy*2)
 
@@ -222,43 +221,42 @@ function makePlots(provData) {
     //     ? opacityScale(d.task.id.match(/\d+/g).map(Number))
     //     : "";
     // });
-    .classed("wrong", d =>
-      d.task && d.task.data && d.task.data.answer
-        ? d.task.data.answer.correct == 0
-        : false
+    .classed("autoCompleted", d =>
+      d.task && d.task.result && d.task.result.interactionDetails.autoCompleteUsed
     )
     // .attr('fill',d=>(d.task && d.task.result) ? color(d.task.result.accuracy) : '')
   // .classed('sortedOn', d=>sortOrder && d.task && d.task.id == sortOrder)
 
   rects
-    .on("mouseover", d => {
-      let tooltipContent;
-      if (d.label == "Task") {
-        tooltipContent =
-          d.task && d.task.id !== undefined
-            ? "<strong>" +
-              "Task:" + d.task.id +
-              "</strong>" +
-              "[" +
-              d.task.result.accuracy +
-              "]" 
-              +
-              "<br/>" +
-              d.task.type + "/" + d.task.difficulty 
-              
-            : "";
-      } else {
-        tooltipContent =
-          d.label +
-          ":" +
-          Math.round(
-            (Date.parse(d.endTime) - Date.parse(d.startTime)) / 1000 / 6
-          ) /
-            10 +
-          "min";
-      }
-      showTooltip(d.endTime ? tooltipContent : d.label);
-    })
+  .on("mouseover", d => {
+    let tooltipContent;
+    if (d.label == "Task") {
+      // console.log(d)
+      tooltipContent =
+        d.task && d.task.id !== undefined
+          ? "<strong>" +
+            "Task:" + d.task.id +
+            "</strong>" +
+            "[" +
+            d.task.result.accuracy +
+            "]" 
+            +
+            "<br/>" +
+            d.task.type + "/" + d.task.difficulty 
+            
+          : "";
+    } else {
+      tooltipContent =
+        d.label +
+        ":" +
+        Math.round(
+          (Date.parse(d.endTime) - Date.parse(d.startTime)) / 1000 / 6
+        ) /
+          10 +
+        "min";
+    }
+    showTooltip(d.endTime ? tooltipContent : d.label);
+  })
     .on("mouseout", hideTooltip)
     .on("click", d => {
       if (d.order !== undefined) {

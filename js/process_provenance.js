@@ -110,7 +110,7 @@ function processProvenance(mode) {
             //add accuracy from results
 
             if (startObj.label == "Task") {
-              startObj.task.result = r.data[startObj.task.id];
+              startObj.task.result = r.data.tasks[startObj.task.id];
             }
 
             if (startObj.label === "Browse Away") {

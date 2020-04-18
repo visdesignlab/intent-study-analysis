@@ -46,6 +46,12 @@ div.tooltip {
     fill:purple
 }
 
+.event.Task.autoCompleted{
+
+    stroke:black;
+    stroke-width:2px;
+}
+
 /* .guidedtour,.secondguidedtour{
     fill:rgb(128, 57, 82);
 } */
