@@ -46,12 +46,6 @@ div.tooltip {
     fill:purple
 }
 
-.event.Task.autoCompleted{
-
-    stroke:black;
-    stroke-width:2px;
-}
-
 /* .guidedtour,.secondguidedtour{
     fill:rgb(128, 57, 82);
 } */
@@ -87,6 +81,23 @@ fill:#1f78b4
     fill:rgb(179, 0, 0);
 }
 
+/* .event{
+    stroke:white;
+    stroke-width:3px;
+} */
+
+.event.baseRect{
+    opacity:.5;
+    stroke:white;
+    stroke-width:3px;
+}
+
+.event.BrowseAway{
+    opacity:.8;
+    stroke-width:0px;
+}
+
+
 .event.video{
     fill:#2366d1
 }
@@ -108,11 +119,11 @@ fill:#1f78b4
     fill:#247532
 }
 
-.event{
+/* .event{
     opacity:.5;
     stroke:white;
     stroke-width:3px;
-}
+} */
 
 .BrowseAway{
     fill:rgb(59, 59, 59);

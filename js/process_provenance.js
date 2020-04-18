@@ -5,11 +5,15 @@ const fs = require("fs");
 
 (async function () {
   let mode = process.argv[2];
-  console.log("mode is ", mode);
-  // switch (mode) {
+  // let script = process.argv[3]
+  // console.log("mode is ", mode);
+  // switch (script) {
   //   case "provenance":
   //     processProvenance();
   //     break;
+  //   case "tidy":
+  //       exportResults(mode)
+  //       break;
   // }
 
   processProvenance(mode);

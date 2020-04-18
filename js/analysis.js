@@ -109,6 +109,7 @@ function makePlots(provData) {
   var y = d3.scaleLinear().range([height - 10, 0]);
   y.domain([-2, 2]); //provData[index].provEvents.filter(e=>e.type === type && e.level === undefined).length-1+2]);
 
+  let staggerScale = d3.scaleLinear().range([35,0]).domain([0,1])
   let xAxis = d3
     .axisBottom(x)
     .ticks(10)
@@ -176,32 +177,38 @@ function makePlots(provData) {
     .attr("class", d =>  'typeRect ' + d.visType );
 
     
-  let rects = participantGroups
+  let rectGroups = participantGroups
     .selectAll(".event")
     .data((d, i) => d.provEvents.filter(e => e.type === "longAction").map(p=>{
         p.participantStartTime = startTime(d)
       return p
     }));
 
-  let rectsEnter = rects
+  let rectGroupsEnter = rectGroups
     .enter()
-    .append("rect")
+    .append("g")
     .attr("class", "event")
 
+    rectGroupsEnter.append('rect').attr('class','baseRect')
+    rectGroupsEnter.append('rect').attr('class','autoCompleteRect')
 
-  rects.exit().remove();
 
-  rects = rectsEnter.merge(rects);
 
+  rectGroups.exit().remove();
+
+  rectGroups = rectGroupsEnter.merge(rectGroups);
+
+  let rects = rectGroups.select('.baseRect')
   rects
     .attr("height", 15)
     .attr("x", d => {
       let time = Date.parse(d.startTime) || x(Date.parse(d.time));
       return x(time - d.participantStartTime);
     })
+
     .attr("y", (d, i) => {
       if (d.task && d.task.result){
-        return y(d.task.result.accuracy*2)
+        return staggerScale(d.task.result.accuracy)
 
       } else {
         return y(d.level)//y(d.participantOrder))
@@ -213,21 +220,60 @@ function makePlots(provData) {
       return diff || 0;
     })
     .attr("class", d => {
-      let className = "event " + d.label.replace(/ /g, "") ;
+      let className = "event baseRect " + d.label.replace(/ /g, "") ;
       return d.task ? className + " " + d.task.type +  " " + d.task.difficulty : className
     })
-    // .style("opacity", d => {
-    //   return d.task && d.task.id
-    //     ? opacityScale(d.task.id.match(/\d+/g).map(Number))
-    //     : "";
-    // });
-    .classed("autoCompleted", d =>
-      d.task && d.task.result && d.task.result.interactionDetails.autoCompleteUsed
-    )
+
+    rectGroups.select('.autoCompleteRect')
+    .attr("height", d => {
+      let ac = d.task && d.task.result && d.task.result.interactionDetails.autoCompleteUsed;
+      let diff = x(Date.parse(d.endTime)) - x(Date.parse(d.startTime));
+      
+
+       if (ac){
+         let rankScale = d3.scaleLinear().domain([1,4]).range([10,2])
+         return rankScale(d.task.result.interactionDetails.rankOfPredictionUsed);
+       } else {
+         return 0
+       }
+    
+    })
+    .attr("x", d => {
+      let time = Date.parse(d.startTime) || x(Date.parse(d.time));
+      return x(time - d.participantStartTime)+2;
+    })
+
+    .attr("y", (d, i) => {
+      let initialY;
+      if (d.task && d.task.result){
+        initialY= staggerScale(d.task.result.accuracy)-5
+
+        let ac = d.task && d.task.result && d.task.result.interactionDetails.autoCompleteUsed;
+        let diff = x(Date.parse(d.endTime)) - x(Date.parse(d.startTime));
+        
+  
+         if (ac){
+          let rankScale = d3.scaleLinear().domain([1,4]).range([10,2])
+           return initialY - rankScale(d.task.result.interactionDetails.rankOfPredictionUsed);
+         } else {
+           return 0
+         }
+
+
+      } else {
+        return y(d.level)//y(d.participantOrder))
+      }
+    })
+    .attr("width", 3)
+    .attr("class", d => {
+      let className = "event autoCompleteRect " + d.label.replace(/ /g, "") ;
+      return className
+    })
+  
     // .attr('fill',d=>(d.task && d.task.result) ? color(d.task.result.accuracy) : '')
   // .classed('sortedOn', d=>sortOrder && d.task && d.task.id == sortOrder)
 
-  rects
+  rectGroups
   .on("mouseover", d => {
     let tooltipContent;
     if (d.label == "Task") {
@@ -243,8 +289,15 @@ function makePlots(provData) {
             +
             "<br/>" +
             d.task.type + "/" + d.task.difficulty 
-            
+          
           : "";
+
+          if (d.task.result.interactionDetails.autoCompleteUsed){
+            tooltipContent = tooltipContent 
+            +
+            "<br/>" +
+            'Rank: ' + d.task.result.interactionDetails.rankOfPredictionUsed + " [" + d.task.result.interactionDetails.selectedPrediction +"]"
+          }
     } else {
       tooltipContent =
         d.label +
