@@ -29,8 +29,12 @@ function makePlots(provData) {
   }
 
 
-  console.log(provData)
+  let maxTime = provData.reduce((acc,currValue)=> currValue.totalStudyTime > acc? currValue.totalStudyTime : acc,0)+200000;
   var margin = { top: 50, right: 15, bottom: 25, left: 150 };
+
+  let color = d3.scaleLinear()
+  .domain([0,.5,1])
+  .range(['brown', 'blue'])
 
   var height = 180;
   var width = (window.screen.availWidth - margin.left - margin.right)/2 ;
@@ -100,7 +104,7 @@ function makePlots(provData) {
 
   var x = d3.scaleLinear().range([0, width]);
 
-  x.domain([0, 40 * 60 * 1000]);
+  x.domain([0, maxTime]);
 
   var y = d3.scaleLinear().range([height - 10, 0]);
   y.domain([-2, 2]); //provData[index].provEvents.filter(e=>e.type === type && e.level === undefined).length-1+2]);
@@ -195,13 +199,24 @@ function makePlots(provData) {
       let time = Date.parse(d.startTime) || x(Date.parse(d.time));
       return x(time - d.participantStartTime);
     })
-    .attr("y", (d, i) => y(d.level)) //y(d.participantOrder))
+    .attr("y", (d, i) => {
+      console.log(d)
+      if (d.task && d.task.result){
+        return y(d.task.result.accuracy*2)
+
+      } else {
+        return y(d.level)//y(d.participantOrder))
+      }
+    })
     .attr("width", d => {
       let diff = x(Date.parse(d.endTime)) - x(Date.parse(d.startTime));
 
       return diff || 0;
     })
-    .attr("class", d => "event " + d.label.replace(/ /g, ""))
+    .attr("class", d => {
+      let className = "event " + d.label.replace(/ /g, "") ;
+      return d.task ? className + " " + d.task.type +  " " + d.task.difficulty : className
+    })
     // .style("opacity", d => {
     //   return d.task && d.task.id
     //     ? opacityScale(d.task.id.match(/\d+/g).map(Number))
@@ -211,7 +226,8 @@ function makePlots(provData) {
       d.task && d.task.data && d.task.data.answer
         ? d.task.data.answer.correct == 0
         : false
-    );
+    )
+    // .attr('fill',d=>(d.task && d.task.result) ? color(d.task.result.accuracy) : '')
   // .classed('sortedOn', d=>sortOrder && d.task && d.task.id == sortOrder)
 
   rects

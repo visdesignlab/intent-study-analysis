@@ -64,6 +64,17 @@ div.tooltip {
     fill:none
 }
 
+.hard{
+fill:#1f78b4
+}
+
+.easy{
+    fill:#fc8d62
+}
+
+.medium{
+    fill:#33a02c
+}
 
 
 .task.wrong, .exitedtour{
