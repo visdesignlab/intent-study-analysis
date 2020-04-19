@@ -336,9 +336,9 @@ async function exportTidy(mode, results) {
   results.map((participantData) => {
     let id = participantData.data.participantId;
 
-    Object.keys(participantData.data.tasks).map((taskId) => {
+    Object.keys(participantData.data.tasks).filter(taskId=>participantData.data.tasks[taskId].training !== 'yes').map((taskId) => {
       let taskInfo = participantData.data.tasks[taskId];
-
+     
       let createTidyRow = function (measure, value) {
         return {
           prolificId: id,
@@ -354,9 +354,7 @@ async function exportTidy(mode, results) {
         };
       };
 
-      if (taskInfo.accuracy>1){
-        console.log('gotcha',taskInfo.accuracy)
-      }
+   
       let timeOnTask = Date.parse(taskInfo.completedAt) - Date.parse(taskInfo.startedAt);
       rRows.push(createTidyRow("accuracy", taskInfo.accuracy));
       rRows.push(createTidyRow("difficulty", taskInfo.user_difficulty));

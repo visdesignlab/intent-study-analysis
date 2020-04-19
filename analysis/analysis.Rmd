@@ -40,9 +40,11 @@ df_acc <- df %>%
   filter(measure=="accuracy") 
 
 df_acc$value = as.numeric( as.character(df_acc$value ))
-
-
 df_acc
+
+uniqueTasks<- unique(df_acc[["taskId"]])
+print (length(uniqueTasks))
+
 ```
 
 ## Quick Check Charts
@@ -51,30 +53,41 @@ df_acc
 
 ```{r}
 
-df_acc %>% 
-  ggplot( aes(x=taskId, y=value) ) +
-    geom_point( shape=1 , colour="#A9A9A9") +
+g<- df_acc %>% 
+  ggplot( aes(x=group, y=value) ) +
+    geom_point( shape=1 , aes(color=taskDifficulty, fill=taskDifficulty)) +
     stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
   coord_flip() +
     facet_grid(. ~ userDriven)
 
-df %>% 
-  filter(measure=="difficulty") %>% 
-  mutate( value = as.numeric( as.character(value)) ) %>% 
-  ggplot( aes(x=taskId, y=value) ) +
-    geom_point( shape=1 , colour="#A9A9A9") +
-    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
-  coord_flip() +
-    facet_grid(. ~ userDriven)
+mcb <- ggplot_build(g)$data[[2]]
+print (mcb)
+g + geom_text(data = mcb,
+              aes(x = x, y = 0, label = round(y,3)),
+              color = "blue", size=3,
+              vjust = 1)  +
+  facet_grid(. ~ PANEL) 
+  # coord_flip() +
+  #   facet_grid(. ~ userDriven)
 
-df %>% 
-  filter(measure=="confidence") %>% 
-  mutate( value = as.numeric( as.character(value)) ) %>% 
-  ggplot( aes(x=taskId, y=value) ) +
-    geom_point( shape=1 , colour="#A9A9A9") +
-    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
-  coord_flip() +
-    facet_grid(. ~ userDriven)
+# df %>% 
+#   filter(measure=="difficulty") %>% 
+#   mutate( value = as.numeric( as.character(value)) ) %>% 
+#   ggplot( aes(x=taskId, y=value) ) +
+#     geom_point( shape=1 , aes(colour=taskDifficulty)) +
+#     stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
+#   coord_flip() +
+#     facet_grid(. ~ userDriven)
+# 
+# df %>% 
+#   filter(measure=="confidence") %>% 
+#   mutate( value = as.numeric( as.character(value)) ) %>% 
+#   ggplot( aes(x=taskId, y=value) ) +
+#     geom_point( shape=1 , colour="#A9A9A9") +
+#     stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
+#   coord_flip() +
+#     facet_grid(. ~ userDriven)
+
 
 ## beeswarm big chart
 ## ci plots with titles and new tidyr

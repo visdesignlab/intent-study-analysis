@@ -30,14 +30,14 @@ function makePlots(provData) {
 
 
   let maxTime = provData.reduce((acc,currValue)=> currValue.totalStudyTime > acc? currValue.totalStudyTime : acc,0)+200000;
-  var margin = { top: 50, right: 15, bottom: 25, left: 150 };
+  var margin = { top: 50, right: 15, bottom: 25, left: 50 };
 
   let color = d3.scaleLinear()
   .domain([0,.5,1])
   .range(['brown', 'blue'])
 
   var height = 180;
-  var width = (window.screen.availWidth - margin.left - margin.right)/2 ;
+  var width = (window.screen.availWidth - margin.left - margin.right) ;
 
   width = width - margin.left - margin.right;
   height = height - margin.top - margin.bottom;
@@ -346,9 +346,12 @@ function makePlots(provData) {
   })
     .on("mouseout", hideTooltip)
     .on("click", d => {
-      if (d.order !== undefined) {
-        d3.selectAll('.frames').classed('selected',f=>f.task.id === d.task.id )
-      }
+      let url = 'localhost:3000/?graphPath='+d.task.result.graph;
+      console.log('clicked',url)
+      window.open(
+        url,
+        '_blank' // <- This is what makes it open in a new window.
+      );
     });
 
   //   let diff = participantGroups
