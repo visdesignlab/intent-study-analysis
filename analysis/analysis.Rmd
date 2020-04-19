@@ -51,12 +51,10 @@ df_acc
 
 ```{r}
 
-df %>% 
-  filter(measure=="accuracy") %>% 
-  mutate( value = as.numeric( as.character(value)) ) %>% 
+df_acc %>% 
   ggplot( aes(x=taskId, y=value) ) +
-    geom_jitter( alpha = 0.2, width=0.1, height=0.3 ) + 
-    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, position = position_nudge(x=0.25, y=0), alpha=0.5) +
+    geom_point( shape=1 , colour="#A9A9A9") +
+    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
   coord_flip() +
     facet_grid(. ~ userDriven)
 
@@ -64,8 +62,8 @@ df %>%
   filter(measure=="difficulty") %>% 
   mutate( value = as.numeric( as.character(value)) ) %>% 
   ggplot( aes(x=taskId, y=value) ) +
-    geom_jitter( alpha = 0.2, width=0.1, height=0.3 ) + 
-    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, position = position_nudge(x=0.25, y=0), alpha=0.5) +
+    geom_point( shape=1 , colour="#A9A9A9") +
+    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
   coord_flip() +
     facet_grid(. ~ userDriven)
 
@@ -73,8 +71,8 @@ df %>%
   filter(measure=="confidence") %>% 
   mutate( value = as.numeric( as.character(value)) ) %>% 
   ggplot( aes(x=taskId, y=value) ) +
-    geom_jitter( alpha = 0.2, width=0.1, height=0.3 ) + 
-    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, position = position_nudge(x=0.25, y=0), alpha=0.5) +
+    geom_point( shape=1 , colour="#A9A9A9") +
+    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
   coord_flip() +
     facet_grid(. ~ userDriven)
 

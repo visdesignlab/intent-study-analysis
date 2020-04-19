@@ -164,7 +164,6 @@ function processProvenance(mode) {
 function exportResults(mode) {
   let rawdata = fs.readFileSync("results/" + mode + "/JSON/study_results.json");
   let results = JSON.parse(rawdata);
-
   // exportCSV(results);
   exportTidy(mode, results);
 }
@@ -320,6 +319,7 @@ async function exportTidy(mode, results) {
     "taskDifficulty",
     "taskType",
     "userDriven",
+    "group",
     "measure",
     "value",
   ];
@@ -348,14 +348,23 @@ async function exportTidy(mode, results) {
           taskDifficulty: taskInfo.difficulty,
           taskType: taskInfo.type,
           userDriven: taskInfo["user-driven"],
+          group: taskInfo.group.replace('_manual_','_').replace('_supported_','_'),
           measure,
           value,
         };
       };
 
+      if (taskInfo.accuracy>1){
+        console.log('gotcha',taskInfo.accuracy)
+      }
+      let timeOnTask = Date.parse(taskInfo.completedAt) - Date.parse(taskInfo.startedAt);
       rRows.push(createTidyRow("accuracy", taskInfo.accuracy));
       rRows.push(createTidyRow("difficulty", taskInfo.user_difficulty));
       rRows.push(createTidyRow("confidence", taskInfo.user_confidence));
+    
+
+      rRows.push(createTidyRow("secondsOnTask", timeOnTask/1000));
+
     });
   });
 
