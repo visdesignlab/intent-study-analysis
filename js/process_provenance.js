@@ -336,8 +336,16 @@ async function exportTidy(mode, results) {
   results.map((participantData) => {
     let id = participantData.data.participantId;
 
+
     Object.keys(participantData.data.tasks).filter(taskId=>participantData.data.tasks[taskId].training !== 'yes').map((taskId) => {
       let taskInfo = participantData.data.tasks[taskId];
+
+      // console.log(taskInfo.group)
+      if (taskInfo.group.includes('medium_manual_outlier_cluster')){
+        console.log(taskInfo.group)
+        // console.log(taskInfo)
+        console.log('accuracy is ', taskInfo.accuracy)
+      }
      
       let createTidyRow = function (measure, value) {
         return {
