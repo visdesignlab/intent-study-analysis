@@ -346,7 +346,7 @@ function makePlots(provData) {
   })
     .on("mouseout", hideTooltip)
     .on("click", d => {
-      let url = 'localhost:3000/?graphPath='+d.task.result.graph;
+      let url = 'localhost:3000/?graphPath='+d.task.result.graph + "&datasetName=" + d.task.result.dataset;
       console.log('clicked',url)
       window.open(
         url,
