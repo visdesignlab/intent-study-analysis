@@ -37,7 +37,8 @@ function makePlots(provData) {
   .range(['brown', 'blue'])
 
   var height = 180;
-  var width = (window.screen.availWidth - margin.left - margin.right) ;
+  console.log(document.body.clientWidth , window.screen.availWidth)
+  var width = (document.body.clientWidth  - margin.left - margin.right) ;
 
   width = width - margin.left - margin.right;
   height = height - margin.top - margin.bottom;
@@ -537,7 +538,7 @@ async function drawProvenance(sortOrder) {
   );
 
 
-  let sortedProvData = provData; //will sort on average accuracy later; 
+  // let sortedProvData = provData; //will sort on average accuracy later; 
 
   let sortedProvData = provData.sort((a, b) => {
     let aResults = participantResults.find(
