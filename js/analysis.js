@@ -539,25 +539,29 @@ async function drawProvenance(sortOrder) {
 
   let sortedProvData = provData; //will sort on average accuracy later; 
 
-  // let sortedProvData = provData.sort((a, b) => {
-  //   let aResults = participantResults.find(d => d.data.workerID == a.id);
-  //   let bResults = participantResults.find(d => d.data.workerID == b.id);
+  let sortedProvData = provData.sort((a, b) => {
+    let aResults = participantResults.find(
+      d => d.data.participantId == a.id
+    );
+    let bResults = participantResults.find(
+      d => d.data.participantId == b.id
+    );
 
-  //   if (!aResults || !bResults) {
-  //     return 0;
-  //   }
+    if (!aResults || !bResults) {
+      return 0;
+    }
 
-  //   if (sortOrder) {
+    if (sortOrder) {
 
-  //     return aResults.data.averageAccuracy > bResults.data.averageAccuracy
-  //       ? -1
-  //       : 1;
-  //   } else {
-  //     return aResults.data.averageAccuracy > bResults.data.averageAccuracy
-  //       ? -1
-  //       : 1;
-  //   }
-  // });
+      return aResults.data.avgAcc > bResults.data.avgAcc
+        ? -1
+        : 1;
+    } else {
+      return aResults.data.avgAcc > bResults.data.avgAcc
+        ? -1
+        : 1;
+    }
+  });
 
   sortedProvData.map((p, i) => {
     let participantResult = participantResults.find(

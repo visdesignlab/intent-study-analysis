@@ -1,151 +1,769 @@
-prolificId,type,measure,value
-5e98a75534f61a0ae874e519,feedback,How helpful is the “individual selection” of points feature?,4
-5e98a75534f61a0ae874e519,feedback,How helpful is the rectangle selection feature?,4
-5e98a75534f61a0ae874e519,feedback,How helpful is the paintbrush feature?,5
-5e98a75534f61a0ae874e519,feedback,How easy was the prediction interface to use?,4
-5e98a75534f61a0ae874e519,feedback,How accurate did you find the predictions?,4
-5e98a75534f61a0ae874e519,feedback,How helpful did you find the predictions?,5
-5e98a75534f61a0ae874e519,feedback,Do you prefer user-driven or computer supported selections?,4
-5e98a75534f61a0ae874e519,feedback,How experienced are you with scatterplots?,4
-5e98a75534f61a0ae874e519,feedback,How experienced are you with statistics?,4
-5e98a75534f61a0ae874e519,demographics,birthCountry,Korea
-5e98a75534f61a0ae874e519,demographics,employment,Full-Time
-5e98a75534f61a0ae874e519,demographics,nationality,Korea
-5e98a75534f61a0ae874e519,demographics,sex,Female
-5e98a75534f61a0ae874e519,demographics,student,No
-5e98a75534f61a0ae874e519,results,averageAccuracy,0.8800750713265905
-5e9893c51008ba0badac7bbc,feedback,How helpful is the “individual selection” of points feature?,4
-5e9893c51008ba0badac7bbc,feedback,How helpful is the rectangle selection feature?,2
-5e9893c51008ba0badac7bbc,feedback,How helpful is the paintbrush feature?,5
-5e9893c51008ba0badac7bbc,feedback,How easy was the prediction interface to use?,5
-5e9893c51008ba0badac7bbc,feedback,How accurate did you find the predictions?,4
-5e9893c51008ba0badac7bbc,feedback,How helpful did you find the predictions?,5
-5e9893c51008ba0badac7bbc,feedback,Do you prefer user-driven or computer supported selections?,4
-5e9893c51008ba0badac7bbc,feedback,How experienced are you with scatterplots?,3
-5e9893c51008ba0badac7bbc,feedback,How experienced are you with statistics?,2
-5e9893c51008ba0badac7bbc,demographics,birthCountry,Germany
-5e9893c51008ba0badac7bbc,demographics,employment,Part-Time
-5e9893c51008ba0badac7bbc,demographics,nationality,Germany
-5e9893c51008ba0badac7bbc,demographics,sex,Male
-5e9893c51008ba0badac7bbc,demographics,student,Yes
-5e9893c51008ba0badac7bbc,results,averageAccuracy,0.8404462236035755
-5d7fceecf52428001cc38b63,feedback,How helpful is the “individual selection” of points feature?,5
-5d7fceecf52428001cc38b63,feedback,How helpful is the rectangle selection feature?,1
-5d7fceecf52428001cc38b63,feedback,How helpful is the paintbrush feature?,5
-5d7fceecf52428001cc38b63,feedback,How easy was the prediction interface to use?,3
-5d7fceecf52428001cc38b63,feedback,How accurate did you find the predictions?,2
-5d7fceecf52428001cc38b63,feedback,How helpful did you find the predictions?,4
-5d7fceecf52428001cc38b63,feedback,Do you prefer user-driven or computer supported selections?,2
-5d7fceecf52428001cc38b63,feedback,How experienced are you with scatterplots?,1
-5d7fceecf52428001cc38b63,feedback,How experienced are you with statistics?,2
-5d7fceecf52428001cc38b63,demographics,birthCountry,Latvia
-5d7fceecf52428001cc38b63,demographics,employment,Unemployed (and job seeking)
-5d7fceecf52428001cc38b63,demographics,nationality,Latvia
-5d7fceecf52428001cc38b63,demographics,sex,Female
-5d7fceecf52428001cc38b63,demographics,student,Yes
-5d7fceecf52428001cc38b63,results,averageAccuracy,0.8475057765273991
-5e4e97b8c0bead2e2139926e,feedback,How helpful is the “individual selection” of points feature?,5
-5e4e97b8c0bead2e2139926e,feedback,How helpful is the rectangle selection feature?,1
-5e4e97b8c0bead2e2139926e,feedback,How helpful is the paintbrush feature?,5
-5e4e97b8c0bead2e2139926e,feedback,How easy was the prediction interface to use?,3
-5e4e97b8c0bead2e2139926e,feedback,How accurate did you find the predictions?,2
-5e4e97b8c0bead2e2139926e,feedback,How helpful did you find the predictions?,2
-5e4e97b8c0bead2e2139926e,feedback,Do you prefer user-driven or computer supported selections?,1
-5e4e97b8c0bead2e2139926e,feedback,How experienced are you with scatterplots?,1
-5e4e97b8c0bead2e2139926e,feedback,How experienced are you with statistics?,1
-5e4e97b8c0bead2e2139926e,demographics,birthCountry,Netherlands
-5e4e97b8c0bead2e2139926e,demographics,employment,Part-Time
-5e4e97b8c0bead2e2139926e,demographics,nationality,Netherlands
-5e4e97b8c0bead2e2139926e,demographics,sex,Female
-5e4e97b8c0bead2e2139926e,demographics,student,No
-5e4e97b8c0bead2e2139926e,results,averageAccuracy,0.83939490527921
-5e845d1fc0397801d6c57d0e,feedback,How helpful is the “individual selection” of points feature?,5
-5e845d1fc0397801d6c57d0e,feedback,How helpful is the rectangle selection feature?,3
-5e845d1fc0397801d6c57d0e,feedback,How helpful is the paintbrush feature?,5
-5e845d1fc0397801d6c57d0e,feedback,How easy was the prediction interface to use?,5
-5e845d1fc0397801d6c57d0e,feedback,How accurate did you find the predictions?,3
-5e845d1fc0397801d6c57d0e,feedback,How helpful did you find the predictions?,4
-5e845d1fc0397801d6c57d0e,feedback,Do you prefer user-driven or computer supported selections?,5
-5e845d1fc0397801d6c57d0e,feedback,How experienced are you with scatterplots?,5
-5e845d1fc0397801d6c57d0e,feedback,How experienced are you with statistics?,5
-5e845d1fc0397801d6c57d0e,demographics,birthCountry,Hungary
-5e845d1fc0397801d6c57d0e,demographics,employment,Other
-5e845d1fc0397801d6c57d0e,demographics,nationality,Hungary
-5e845d1fc0397801d6c57d0e,demographics,sex,Male
-5e845d1fc0397801d6c57d0e,demographics,student,Yes
-5e845d1fc0397801d6c57d0e,results,averageAccuracy,0.8770929733796028
-5c49c880f80d580001edf7d4,feedback,How helpful is the “individual selection” of points feature?,4
-5c49c880f80d580001edf7d4,feedback,How helpful is the rectangle selection feature?,4
-5c49c880f80d580001edf7d4,feedback,How helpful is the paintbrush feature?,4
-5c49c880f80d580001edf7d4,feedback,How easy was the prediction interface to use?,3
-5c49c880f80d580001edf7d4,feedback,How accurate did you find the predictions?,4
-5c49c880f80d580001edf7d4,feedback,How helpful did you find the predictions?,4
-5c49c880f80d580001edf7d4,feedback,Do you prefer user-driven or computer supported selections?,4
-5c49c880f80d580001edf7d4,feedback,How experienced are you with scatterplots?,3
-5c49c880f80d580001edf7d4,feedback,How experienced are you with statistics?,3
-5c49c880f80d580001edf7d4,demographics,birthCountry,Portugal
-5c49c880f80d580001edf7d4,demographics,employment,Full-Time
-5c49c880f80d580001edf7d4,demographics,nationality,Portugal
-5c49c880f80d580001edf7d4,demographics,sex,Female
-5c49c880f80d580001edf7d4,demographics,student,No
-5c49c880f80d580001edf7d4,results,averageAccuracy,0.8250238881453752
-56e85ee7ed2575000bef25db,feedback,How helpful is the “individual selection” of points feature?,4
-56e85ee7ed2575000bef25db,feedback,How helpful is the rectangle selection feature?,3
-56e85ee7ed2575000bef25db,feedback,How helpful is the paintbrush feature?,5
-56e85ee7ed2575000bef25db,feedback,How easy was the prediction interface to use?,4
-56e85ee7ed2575000bef25db,feedback,How accurate did you find the predictions?,4
-56e85ee7ed2575000bef25db,feedback,How helpful did you find the predictions?,3
-56e85ee7ed2575000bef25db,feedback,Do you prefer user-driven or computer supported selections?,2
-56e85ee7ed2575000bef25db,feedback,How experienced are you with scatterplots?,1
-56e85ee7ed2575000bef25db,feedback,How experienced are you with statistics?,3
-56e85ee7ed2575000bef25db,demographics,birthCountry,United Kingdom
-56e85ee7ed2575000bef25db,demographics,employment,Full-Time
-56e85ee7ed2575000bef25db,demographics,nationality,United Kingdom
-56e85ee7ed2575000bef25db,demographics,sex,Female
-56e85ee7ed2575000bef25db,demographics,student,No
-56e85ee7ed2575000bef25db,results,averageAccuracy,0.8288360514669348
-5da71ab67547d30017c1970d,feedback,How helpful is the “individual selection” of points feature?,5
-5da71ab67547d30017c1970d,feedback,How helpful is the rectangle selection feature?,1
-5da71ab67547d30017c1970d,feedback,How helpful is the paintbrush feature?,1
-5da71ab67547d30017c1970d,feedback,How easy was the prediction interface to use?,3
-5da71ab67547d30017c1970d,feedback,How accurate did you find the predictions?,2
-5da71ab67547d30017c1970d,feedback,How helpful did you find the predictions?,3
-5da71ab67547d30017c1970d,feedback,Do you prefer user-driven or computer supported selections?,2
-5da71ab67547d30017c1970d,feedback,How experienced are you with scatterplots?,3
-5da71ab67547d30017c1970d,feedback,How experienced are you with statistics?,3
-5da71ab67547d30017c1970d,demographics,birthCountry,Portugal
-5da71ab67547d30017c1970d,demographics,employment,Full-Time
-5da71ab67547d30017c1970d,demographics,nationality,Portugal
-5da71ab67547d30017c1970d,demographics,sex,Male
-5da71ab67547d30017c1970d,demographics,student,No
-5da71ab67547d30017c1970d,results,averageAccuracy,0.6808867403991328
-5e831701f6992a02f9c6c91d,feedback,How helpful is the “individual selection” of points feature?,5
-5e831701f6992a02f9c6c91d,feedback,How helpful is the rectangle selection feature?,1
-5e831701f6992a02f9c6c91d,feedback,How helpful is the paintbrush feature?,5
-5e831701f6992a02f9c6c91d,feedback,How easy was the prediction interface to use?,5
-5e831701f6992a02f9c6c91d,feedback,How accurate did you find the predictions?,4
-5e831701f6992a02f9c6c91d,feedback,How helpful did you find the predictions?,3
-5e831701f6992a02f9c6c91d,feedback,Do you prefer user-driven or computer supported selections?,5
-5e831701f6992a02f9c6c91d,feedback,How experienced are you with scatterplots?,4
-5e831701f6992a02f9c6c91d,feedback,How experienced are you with statistics?,4
-5e831701f6992a02f9c6c91d,demographics,birthCountry,Portugal
-5e831701f6992a02f9c6c91d,demographics,employment,Unemployed (and job seeking)
-5e831701f6992a02f9c6c91d,demographics,nationality,Portugal
-5e831701f6992a02f9c6c91d,demographics,sex,Male
-5e831701f6992a02f9c6c91d,demographics,student,No
-5e831701f6992a02f9c6c91d,results,averageAccuracy,0.8339793114442925
-5d800baaef325000014d64b1,feedback,How helpful is the “individual selection” of points feature?,3
-5d800baaef325000014d64b1,feedback,How helpful is the rectangle selection feature?,3
-5d800baaef325000014d64b1,feedback,How helpful is the paintbrush feature?,3
-5d800baaef325000014d64b1,feedback,How easy was the prediction interface to use?,3
-5d800baaef325000014d64b1,feedback,How accurate did you find the predictions?,3
-5d800baaef325000014d64b1,feedback,How helpful did you find the predictions?,3
-5d800baaef325000014d64b1,feedback,Do you prefer user-driven or computer supported selections?,3
-5d800baaef325000014d64b1,feedback,How experienced are you with scatterplots?,3
-5d800baaef325000014d64b1,feedback,How experienced are you with statistics?,3
-5d800baaef325000014d64b1,demographics,birthCountry,Bangladesh
-5d800baaef325000014d64b1,demographics,employment,Unemployed (and job seeking)
-5d800baaef325000014d64b1,demographics,nationality,Bangladesh
-5d800baaef325000014d64b1,demographics,sex,Female
-5d800baaef325000014d64b1,demographics,student,No
-5d800baaef325000014d64b1,results,averageAccuracy,0.722577670325809
+prolificId,measure,value
+5e9ce99a8035dd1cf6b23aa7,birthCountry,Poland
+5e9ce99a8035dd1cf6b23aa7,employment,Part-Time
+5e9ce99a8035dd1cf6b23aa7,nationality,Poland
+5e9ce99a8035dd1cf6b23aa7,sex,Male
+5e9ce99a8035dd1cf6b23aa7,student,Yes
+5e9ce99a8035dd1cf6b23aa7,averageAccuracy,0.9165453674444853
+5e9ce901a746bc21794c1cde,birthCountry,United States
+5e9ce901a746bc21794c1cde,employment,Full-Time
+5e9ce901a746bc21794c1cde,nationality,United States
+5e9ce901a746bc21794c1cde,sex,Female
+5e9ce901a746bc21794c1cde,student,No
+5e9ce901a746bc21794c1cde,averageAccuracy,0.8210457731477535
+5ba5a93f38803d000126567d,birthCountry,Chile
+5ba5a93f38803d000126567d,employment,Other
+5ba5a93f38803d000126567d,nationality,Chile
+5ba5a93f38803d000126567d,sex,Female
+5ba5a93f38803d000126567d,student,No
+5ba5a93f38803d000126567d,averageAccuracy,0.6441612183722976
+5c4271f51b4bf300018b0920,birthCountry,Portugal
+5c4271f51b4bf300018b0920,employment,"Not in paid work (e.g. homemaker', 'retired or disabled)"
+5c4271f51b4bf300018b0920,nationality,Portugal
+5c4271f51b4bf300018b0920,sex,Male
+5c4271f51b4bf300018b0920,student,Yes
+5c4271f51b4bf300018b0920,averageAccuracy,0.7556771372506444
+5e9be48c8bab2c0fb2fe4d39,birthCountry,United Kingdom
+5e9be48c8bab2c0fb2fe4d39,employment,Full-Time
+5e9be48c8bab2c0fb2fe4d39,nationality,Canada
+5e9be48c8bab2c0fb2fe4d39,sex,Male
+5e9be48c8bab2c0fb2fe4d39,student,Yes
+5e9be48c8bab2c0fb2fe4d39,averageAccuracy,0.9018471703567761
+5d82852ae7a57100011a6122,birthCountry,Portugal
+5d82852ae7a57100011a6122,employment,Unemployed (and job seeking)
+5d82852ae7a57100011a6122,nationality,Portugal
+5d82852ae7a57100011a6122,sex,Male
+5d82852ae7a57100011a6122,student,No
+5d82852ae7a57100011a6122,averageAccuracy,0.8694773542009887
+5e9c853dcb10b71afe4035f3,birthCountry,India
+5e9c853dcb10b71afe4035f3,employment,Part-Time
+5e9c853dcb10b71afe4035f3,nationality,Canada
+5e9c853dcb10b71afe4035f3,sex,Male
+5e9c853dcb10b71afe4035f3,student,Yes
+5e9c853dcb10b71afe4035f3,averageAccuracy,0.8568452684924646
+5e9d05aab46e261ebf6106c6,birthCountry,United States
+5e9d05aab46e261ebf6106c6,employment,Unemployed (and job seeking)
+5e9d05aab46e261ebf6106c6,nationality,United States
+5e9d05aab46e261ebf6106c6,sex,Female
+5e9d05aab46e261ebf6106c6,student,Yes
+5e9d05aab46e261ebf6106c6,averageAccuracy,0.8418059762079796
+5e9cf75b0e7d2121cd33e1fd,birthCountry,United States
+5e9cf75b0e7d2121cd33e1fd,employment,Full-Time
+5e9cf75b0e7d2121cd33e1fd,nationality,United States
+5e9cf75b0e7d2121cd33e1fd,sex,Female
+5e9cf75b0e7d2121cd33e1fd,student,Yes
+5e9cf75b0e7d2121cd33e1fd,averageAccuracy,0.9564921057213942
+5e9b0ea3c99dc20008ede88e,birthCountry,
+5e9b0ea3c99dc20008ede88e,employment,
+5e9b0ea3c99dc20008ede88e,nationality,
+5e9b0ea3c99dc20008ede88e,sex,
+5e9b0ea3c99dc20008ede88e,student,
+5e9b0ea3c99dc20008ede88e,averageAccuracy,0.700258945095654
+5e9bf01f1c2490104b3f60ff,birthCountry,
+5e9bf01f1c2490104b3f60ff,employment,
+5e9bf01f1c2490104b3f60ff,nationality,
+5e9bf01f1c2490104b3f60ff,sex,
+5e9bf01f1c2490104b3f60ff,student,
+5e9bf01f1c2490104b3f60ff,averageAccuracy,0.7148346032237092
+5e9d01036ee4bf228f10547a,birthCountry,United States
+5e9d01036ee4bf228f10547a,employment,Part-Time
+5e9d01036ee4bf228f10547a,nationality,United States
+5e9d01036ee4bf228f10547a,sex,Female
+5e9d01036ee4bf228f10547a,student,Yes
+5e9d01036ee4bf228f10547a,averageAccuracy,0.8852753395474138
+5e9c849fb7e3501af2c4e655,birthCountry,United States
+5e9c849fb7e3501af2c4e655,employment,Unemployed (and job seeking)
+5e9c849fb7e3501af2c4e655,nationality,United States
+5e9c849fb7e3501af2c4e655,sex,Male
+5e9c849fb7e3501af2c4e655,student,Yes
+5e9c849fb7e3501af2c4e655,averageAccuracy,0.8609344074374962
+5e9cfde977008723ec85506c,birthCountry,United States
+5e9cfde977008723ec85506c,employment,Full-Time
+5e9cfde977008723ec85506c,nationality,United States
+5e9cfde977008723ec85506c,sex,Male
+5e9cfde977008723ec85506c,student,No
+5e9cfde977008723ec85506c,averageAccuracy,0.841510707833702
+5e9d009318d39b2339c483a4,birthCountry,Lebanon
+5e9d009318d39b2339c483a4,employment,Part-Time
+5e9d009318d39b2339c483a4,nationality,Australia
+5e9d009318d39b2339c483a4,sex,Male
+5e9d009318d39b2339c483a4,student,Yes
+5e9d009318d39b2339c483a4,averageAccuracy,0.918618416600408
+5b3d32794915d00001827df7,birthCountry,Poland
+5b3d32794915d00001827df7,employment,Part-Time
+5b3d32794915d00001827df7,nationality,Poland
+5b3d32794915d00001827df7,sex,Male
+5b3d32794915d00001827df7,student,Yes
+5b3d32794915d00001827df7,averageAccuracy,0.8829530115069945
+5db508259ca75a000d583b9a,birthCountry,Canada
+5db508259ca75a000d583b9a,employment,Unemployed (and job seeking)
+5db508259ca75a000d583b9a,nationality,Canada
+5db508259ca75a000d583b9a,sex,Female
+5db508259ca75a000d583b9a,student,Yes
+5db508259ca75a000d583b9a,averageAccuracy,0.8410745795116558
+565955077d6957000adfe029,birthCountry,United States
+565955077d6957000adfe029,employment,Full-Time
+565955077d6957000adfe029,nationality,United States
+565955077d6957000adfe029,sex,Female
+565955077d6957000adfe029,student,Yes
+565955077d6957000adfe029,averageAccuracy,0.8201660048737103
+5c0ed000fd0c0a0001f881ea,birthCountry,Belarus
+5c0ed000fd0c0a0001f881ea,employment,Full-Time
+5c0ed000fd0c0a0001f881ea,nationality,Israel
+5c0ed000fd0c0a0001f881ea,sex,Female
+5c0ed000fd0c0a0001f881ea,student,No
+5c0ed000fd0c0a0001f881ea,averageAccuracy,0.9264660721277668
+5db207ca8bc3c5000bda4172,birthCountry,Poland
+5db207ca8bc3c5000bda4172,employment,Unemployed (and job seeking)
+5db207ca8bc3c5000bda4172,nationality,Poland
+5db207ca8bc3c5000bda4172,sex,Male
+5db207ca8bc3c5000bda4172,student,Yes
+5db207ca8bc3c5000bda4172,averageAccuracy,0.9351108222755519
+5c808557e07cd1001628cd77,birthCountry,Chile
+5c808557e07cd1001628cd77,employment,Unemployed (and job seeking)
+5c808557e07cd1001628cd77,nationality,Chile
+5c808557e07cd1001628cd77,sex,Female
+5c808557e07cd1001628cd77,student,No
+5c808557e07cd1001628cd77,averageAccuracy,0.7181463900308189
+5d159d0a8078020016aa60b9,birthCountry,Chile
+5d159d0a8078020016aa60b9,employment,Part-Time
+5d159d0a8078020016aa60b9,nationality,Chile
+5d159d0a8078020016aa60b9,sex,Male
+5d159d0a8078020016aa60b9,student,Yes
+5d159d0a8078020016aa60b9,averageAccuracy,0.8278520040602961
+5c039076c96fdb0001910ed1,birthCountry,Australia
+5c039076c96fdb0001910ed1,employment,Full-Time
+5c039076c96fdb0001910ed1,nationality,Lebanon
+5c039076c96fdb0001910ed1,sex,Male
+5c039076c96fdb0001910ed1,student,No
+5c039076c96fdb0001910ed1,averageAccuracy,0.913074513304266
+5e4463b147cc252f05f4f2f6,birthCountry,France
+5e4463b147cc252f05f4f2f6,employment,Full-Time
+5e4463b147cc252f05f4f2f6,nationality,France
+5e4463b147cc252f05f4f2f6,sex,Male
+5e4463b147cc252f05f4f2f6,student,No
+5e4463b147cc252f05f4f2f6,averageAccuracy,0.828021754186387
+5e7f9fd137169a6887857505,birthCountry,Chile
+5e7f9fd137169a6887857505,employment,Unemployed (and job seeking)
+5e7f9fd137169a6887857505,nationality,Chile
+5e7f9fd137169a6887857505,sex,Male
+5e7f9fd137169a6887857505,student,Yes
+5e7f9fd137169a6887857505,averageAccuracy,0.8151810982159543
+5e84b97d70750d0786c6a05a,birthCountry,Portugal
+5e84b97d70750d0786c6a05a,employment,Unemployed (and job seeking)
+5e84b97d70750d0786c6a05a,nationality,Portugal
+5e84b97d70750d0786c6a05a,sex,Male
+5e84b97d70750d0786c6a05a,student,Yes
+5e84b97d70750d0786c6a05a,averageAccuracy,0.8399641335776077
+58cd9587334d5b0001d64b02,birthCountry,Jordan
+58cd9587334d5b0001d64b02,employment,Part-Time
+58cd9587334d5b0001d64b02,nationality,Jordan
+58cd9587334d5b0001d64b02,sex,Male
+58cd9587334d5b0001d64b02,student,Yes
+58cd9587334d5b0001d64b02,averageAccuracy,0.8718642020523714
+5c3e9912a301700001b71a35,birthCountry,United Kingdom
+5c3e9912a301700001b71a35,employment,"Not in paid work (e.g. homemaker', 'retired or disabled)"
+5c3e9912a301700001b71a35,nationality,United Kingdom
+5c3e9912a301700001b71a35,sex,Male
+5c3e9912a301700001b71a35,student,No
+5c3e9912a301700001b71a35,averageAccuracy,0.7987508236838688
+5a216a08681a240001ff4071,birthCountry,Korea
+5a216a08681a240001ff4071,employment,Unemployed (and job seeking)
+5a216a08681a240001ff4071,nationality,Korea
+5a216a08681a240001ff4071,sex,Female
+5a216a08681a240001ff4071,student,No
+5a216a08681a240001ff4071,averageAccuracy,0.913159561549317
+5d8d03a1704e2300160ec8a6,birthCountry,Greece
+5d8d03a1704e2300160ec8a6,employment,Unemployed (and job seeking)
+5d8d03a1704e2300160ec8a6,nationality,Greece
+5d8d03a1704e2300160ec8a6,sex,Female
+5d8d03a1704e2300160ec8a6,student,Yes
+5d8d03a1704e2300160ec8a6,averageAccuracy,0.7560041914564978
+5c5d27d700b69200011bc192,birthCountry,United States
+5c5d27d700b69200011bc192,employment,Unemployed (and job seeking)
+5c5d27d700b69200011bc192,nationality,United States
+5c5d27d700b69200011bc192,sex,Male
+5c5d27d700b69200011bc192,student,Yes
+5c5d27d700b69200011bc192,averageAccuracy,0.9158356726008149
+5d89d199b97096000113dbd7,birthCountry,Mexico
+5d89d199b97096000113dbd7,employment,Full-Time
+5d89d199b97096000113dbd7,nationality,Mexico
+5d89d199b97096000113dbd7,sex,Female
+5d89d199b97096000113dbd7,student,Yes
+5d89d199b97096000113dbd7,averageAccuracy,0.8125114435730614
+5c4271f51b4bf300018b0920,birthCountry,Portugal
+5c4271f51b4bf300018b0920,employment,"Not in paid work (e.g. homemaker', 'retired or disabled)"
+5c4271f51b4bf300018b0920,nationality,Portugal
+5c4271f51b4bf300018b0920,sex,Male
+5c4271f51b4bf300018b0920,student,Yes
+5c4271f51b4bf300018b0920,averageAccuracy,0.7556771372506444
+5e84f93fef44ba0d50fdc8c7,birthCountry,Poland
+5e84f93fef44ba0d50fdc8c7,employment,Full-Time
+5e84f93fef44ba0d50fdc8c7,nationality,Poland
+5e84f93fef44ba0d50fdc8c7,sex,Male
+5e84f93fef44ba0d50fdc8c7,student,No
+5e84f93fef44ba0d50fdc8c7,averageAccuracy,0.9190388542833836
+5e687fc5651f7d1259eac113,birthCountry,Canada
+5e687fc5651f7d1259eac113,employment,Part-Time
+5e687fc5651f7d1259eac113,nationality,Canada
+5e687fc5651f7d1259eac113,sex,Male
+5e687fc5651f7d1259eac113,student,Yes
+5e687fc5651f7d1259eac113,averageAccuracy,0.7078927399560998
+5d718f211742e10017d5fc94,birthCountry,Chile
+5d718f211742e10017d5fc94,employment,Unemployed (and job seeking)
+5d718f211742e10017d5fc94,nationality,Chile
+5d718f211742e10017d5fc94,sex,Male
+5d718f211742e10017d5fc94,student,Yes
+5d718f211742e10017d5fc94,averageAccuracy,0.8507674009496039
+5e3e11a36a0b8a000c609d5e,birthCountry,Mexico
+5e3e11a36a0b8a000c609d5e,employment,Full-Time
+5e3e11a36a0b8a000c609d5e,nationality,Mexico
+5e3e11a36a0b8a000c609d5e,sex,Male
+5e3e11a36a0b8a000c609d5e,student,No
+5e3e11a36a0b8a000c609d5e,averageAccuracy,0.9370069050911807
+5c878fa0a3413000165878a9,birthCountry,Australia
+5c878fa0a3413000165878a9,employment,Full-Time
+5c878fa0a3413000165878a9,nationality,Australia
+5c878fa0a3413000165878a9,sex,Male
+5c878fa0a3413000165878a9,student,No
+5c878fa0a3413000165878a9,averageAccuracy,0.8242791809991562
+5e541f4f6567b5423b7808c5,birthCountry,Albania
+5e541f4f6567b5423b7808c5,employment,Other
+5e541f4f6567b5423b7808c5,nationality,Greece
+5e541f4f6567b5423b7808c5,sex,Male
+5e541f4f6567b5423b7808c5,student,Yes
+5e541f4f6567b5423b7808c5,averageAccuracy,0.884508580728965
+5e445abe3641532e49d34fc8,birthCountry,Poland
+5e445abe3641532e49d34fc8,employment,Part-Time
+5e445abe3641532e49d34fc8,nationality,Poland
+5e445abe3641532e49d34fc8,sex,Male
+5e445abe3641532e49d34fc8,student,Yes
+5e445abe3641532e49d34fc8,averageAccuracy,0.6519928513740781
+5e793ab51aff8103623757be,birthCountry,Philippines
+5e793ab51aff8103623757be,employment,Unemployed (and job seeking)
+5e793ab51aff8103623757be,nationality,Philippines
+5e793ab51aff8103623757be,sex,Female
+5e793ab51aff8103623757be,student,Yes
+5e793ab51aff8103623757be,averageAccuracy,0.8142500276540093
+5e68691662358c10f5adb901,birthCountry,Canada
+5e68691662358c10f5adb901,employment,Part-Time
+5e68691662358c10f5adb901,nationality,Canada
+5e68691662358c10f5adb901,sex,Male
+5e68691662358c10f5adb901,student,No
+5e68691662358c10f5adb901,averageAccuracy,0.8903257885505247
+5e6714b93b1ae14a8f4bce8e,birthCountry,Hong Kong
+5e6714b93b1ae14a8f4bce8e,employment,"Not in paid work (e.g. homemaker', 'retired or disabled)"
+5e6714b93b1ae14a8f4bce8e,nationality,Hong Kong
+5e6714b93b1ae14a8f4bce8e,sex,Male
+5e6714b93b1ae14a8f4bce8e,student,No
+5e6714b93b1ae14a8f4bce8e,averageAccuracy,0.8701375199823929
+5cd74735c78b7d0001f9b364,birthCountry,Italy
+5cd74735c78b7d0001f9b364,employment,Full-Time
+5cd74735c78b7d0001f9b364,nationality,Italy
+5cd74735c78b7d0001f9b364,sex,Male
+5cd74735c78b7d0001f9b364,student,No
+5cd74735c78b7d0001f9b364,averageAccuracy,0.8875832770660766
+5c955419bd4bd9001995fa47,birthCountry,Denmark
+5c955419bd4bd9001995fa47,employment,Full-Time
+5c955419bd4bd9001995fa47,nationality,Denmark
+5c955419bd4bd9001995fa47,sex,Male
+5c955419bd4bd9001995fa47,student,No
+5c955419bd4bd9001995fa47,averageAccuracy,0.7642112481787874
+5d6ff13f0fbfc50018f710fc,birthCountry,Italy
+5d6ff13f0fbfc50018f710fc,employment,Part-Time
+5d6ff13f0fbfc50018f710fc,nationality,Italy
+5d6ff13f0fbfc50018f710fc,sex,Male
+5d6ff13f0fbfc50018f710fc,student,Yes
+5d6ff13f0fbfc50018f710fc,averageAccuracy,0.8789446958882882
+5bd639e24b4f9e0001135cc6,birthCountry,India
+5bd639e24b4f9e0001135cc6,employment,Full-Time
+5bd639e24b4f9e0001135cc6,nationality,India
+5bd639e24b4f9e0001135cc6,sex,Male
+5bd639e24b4f9e0001135cc6,student,Yes
+5bd639e24b4f9e0001135cc6,averageAccuracy,0.906914543415658
+5e9bd991b7e3500ebc3028b8,birthCountry,United States
+5e9bd991b7e3500ebc3028b8,employment,Part-Time
+5e9bd991b7e3500ebc3028b8,nationality,United States
+5e9bd991b7e3500ebc3028b8,sex,Male
+5e9bd991b7e3500ebc3028b8,student,Yes
+5e9bd991b7e3500ebc3028b8,averageAccuracy,0.8973570747416995
+589b7f625e63bf00013b2e5a,birthCountry,Poland
+589b7f625e63bf00013b2e5a,employment,Part-Time
+589b7f625e63bf00013b2e5a,nationality,Poland
+589b7f625e63bf00013b2e5a,sex,Male
+589b7f625e63bf00013b2e5a,student,No
+589b7f625e63bf00013b2e5a,averageAccuracy,0.9029454136620475
+5e9bb7be6fe8620cd407d2a9,birthCountry,Chile
+5e9bb7be6fe8620cd407d2a9,employment,Other
+5e9bb7be6fe8620cd407d2a9,nationality,Chile
+5e9bb7be6fe8620cd407d2a9,sex,Male
+5e9bb7be6fe8620cd407d2a9,student,Yes
+5e9bb7be6fe8620cd407d2a9,averageAccuracy,0.9517889918641179
+5d7df958cb6cf00001399929,birthCountry,Hungary
+5d7df958cb6cf00001399929,employment,Full-Time
+5d7df958cb6cf00001399929,nationality,Hungary
+5d7df958cb6cf00001399929,sex,Male
+5d7df958cb6cf00001399929,student,No
+5d7df958cb6cf00001399929,averageAccuracy,0.872005564854444
+5dc18d07b98b120f0666da6f,birthCountry,Sweden
+5dc18d07b98b120f0666da6f,employment,Unemployed (and job seeking)
+5dc18d07b98b120f0666da6f,nationality,Sweden
+5dc18d07b98b120f0666da6f,sex,Male
+5dc18d07b98b120f0666da6f,student,No
+5dc18d07b98b120f0666da6f,averageAccuracy,0.6602948340020811
+5d99be023fdbbd00181f6548,birthCountry,Italy
+5d99be023fdbbd00181f6548,employment,Other
+5d99be023fdbbd00181f6548,nationality,Italy
+5d99be023fdbbd00181f6548,sex,Male
+5d99be023fdbbd00181f6548,student,Yes
+5d99be023fdbbd00181f6548,averageAccuracy,0.8355495566871851
+5c3f4df3c2d0b700017ce9a7,birthCountry,United Kingdom
+5c3f4df3c2d0b700017ce9a7,employment,Full-Time
+5c3f4df3c2d0b700017ce9a7,nationality,United Kingdom
+5c3f4df3c2d0b700017ce9a7,sex,Female
+5c3f4df3c2d0b700017ce9a7,student,Yes
+5c3f4df3c2d0b700017ce9a7,averageAccuracy,0.879850385236989
+5e30576c27c0aa02884d92d9,birthCountry,Italy
+5e30576c27c0aa02884d92d9,employment,Part-Time
+5e30576c27c0aa02884d92d9,nationality,Italy
+5e30576c27c0aa02884d92d9,sex,Male
+5e30576c27c0aa02884d92d9,student,Yes
+5e30576c27c0aa02884d92d9,averageAccuracy,0.8472686694519178
+5c57c0dad3cc6b0001d9f27a,birthCountry,Canada
+5c57c0dad3cc6b0001d9f27a,employment,Unemployed (and job seeking)
+5c57c0dad3cc6b0001d9f27a,nationality,Canada
+5c57c0dad3cc6b0001d9f27a,sex,Female
+5c57c0dad3cc6b0001d9f27a,student,No
+5c57c0dad3cc6b0001d9f27a,averageAccuracy,0.8536130679529398
+5dd19e633269922102035292,birthCountry,United Kingdom
+5dd19e633269922102035292,employment,Part-Time
+5dd19e633269922102035292,nationality,United Kingdom
+5dd19e633269922102035292,sex,Female
+5dd19e633269922102035292,student,Yes
+5dd19e633269922102035292,averageAccuracy,0.8721388967466757
+5d70d5b4e69f1f0017ff6813,birthCountry,Spain
+5d70d5b4e69f1f0017ff6813,employment,Part-Time
+5d70d5b4e69f1f0017ff6813,nationality,Spain
+5d70d5b4e69f1f0017ff6813,sex,Male
+5d70d5b4e69f1f0017ff6813,student,No
+5d70d5b4e69f1f0017ff6813,averageAccuracy,0.8801030502526898
+5dd3fd76b48da33ea5a00fb4,birthCountry,Spain
+5dd3fd76b48da33ea5a00fb4,employment,Full-Time
+5dd3fd76b48da33ea5a00fb4,nationality,Spain
+5dd3fd76b48da33ea5a00fb4,sex,Male
+5dd3fd76b48da33ea5a00fb4,student,No
+5dd3fd76b48da33ea5a00fb4,averageAccuracy,0.8962823029086137
+5c62fb7c0ee07c00012604f8,birthCountry,Poland
+5c62fb7c0ee07c00012604f8,employment,Full-Time
+5c62fb7c0ee07c00012604f8,nationality,Poland
+5c62fb7c0ee07c00012604f8,sex,Male
+5c62fb7c0ee07c00012604f8,student,Yes
+5c62fb7c0ee07c00012604f8,averageAccuracy,0.8495110045128009
+5dce6f1024a02c0e316511fb,birthCountry,Poland
+5dce6f1024a02c0e316511fb,employment,Full-Time
+5dce6f1024a02c0e316511fb,nationality,Poland
+5dce6f1024a02c0e316511fb,sex,Male
+5dce6f1024a02c0e316511fb,student,No
+5dce6f1024a02c0e316511fb,averageAccuracy,0.8686341589368007
+5e983c4c0b62cc025e52ab70,birthCountry,United Kingdom
+5e983c4c0b62cc025e52ab70,employment,Full-Time
+5e983c4c0b62cc025e52ab70,nationality,United Kingdom
+5e983c4c0b62cc025e52ab70,sex,Male
+5e983c4c0b62cc025e52ab70,student,No
+5e983c4c0b62cc025e52ab70,averageAccuracy,0.7429222671460005
+5e8b0faa3d71b07b69ef26f4,birthCountry,Poland
+5e8b0faa3d71b07b69ef26f4,employment,Full-Time
+5e8b0faa3d71b07b69ef26f4,nationality,Poland
+5e8b0faa3d71b07b69ef26f4,sex,Male
+5e8b0faa3d71b07b69ef26f4,student,No
+5e8b0faa3d71b07b69ef26f4,averageAccuracy,0.7940186985184559
+5e2ef6fc447122020596138c,birthCountry,Netherlands
+5e2ef6fc447122020596138c,employment,Part-Time
+5e2ef6fc447122020596138c,nationality,Netherlands
+5e2ef6fc447122020596138c,sex,Female
+5e2ef6fc447122020596138c,student,Yes
+5e2ef6fc447122020596138c,averageAccuracy,0.8603258436783412
+5e175ec08e55e10643ad375c,birthCountry,Greece
+5e175ec08e55e10643ad375c,employment,Part-Time
+5e175ec08e55e10643ad375c,nationality,Greece
+5e175ec08e55e10643ad375c,sex,Male
+5e175ec08e55e10643ad375c,student,Yes
+5e175ec08e55e10643ad375c,averageAccuracy,0.7447909834059923
+5e0bb9a44f849e3d5bb8ffe1,birthCountry,Italy
+5e0bb9a44f849e3d5bb8ffe1,employment,Unemployed (and job seeking)
+5e0bb9a44f849e3d5bb8ffe1,nationality,Italy
+5e0bb9a44f849e3d5bb8ffe1,sex,Male
+5e0bb9a44f849e3d5bb8ffe1,student,Yes
+5e0bb9a44f849e3d5bb8ffe1,averageAccuracy,0.7024335035491258
+5c04da7f29abc00001996351,birthCountry,Australia
+5c04da7f29abc00001996351,employment,Part-Time
+5c04da7f29abc00001996351,nationality,Australia
+5c04da7f29abc00001996351,sex,Male
+5c04da7f29abc00001996351,student,Yes
+5c04da7f29abc00001996351,averageAccuracy,0.7332426645656858
+5dea61dd63c57917e8e02197,birthCountry,Egypt
+5dea61dd63c57917e8e02197,employment,Other
+5dea61dd63c57917e8e02197,nationality,Egypt
+5dea61dd63c57917e8e02197,sex,Male
+5dea61dd63c57917e8e02197,student,Yes
+5dea61dd63c57917e8e02197,averageAccuracy,0.9231645851474546
+5e52ac8280cd092b57567f89,birthCountry,Spain
+5e52ac8280cd092b57567f89,employment,"Not in paid work (e.g. homemaker', 'retired or disabled)"
+5e52ac8280cd092b57567f89,nationality,Spain
+5e52ac8280cd092b57567f89,sex,Male
+5e52ac8280cd092b57567f89,student,Yes
+5e52ac8280cd092b57567f89,averageAccuracy,0.9145738833868733
+5e874ce2a6b352069eae0aa2,birthCountry,Spain
+5e874ce2a6b352069eae0aa2,employment,Unemployed (and job seeking)
+5e874ce2a6b352069eae0aa2,nationality,Spain
+5e874ce2a6b352069eae0aa2,sex,Male
+5e874ce2a6b352069eae0aa2,student,Yes
+5e874ce2a6b352069eae0aa2,averageAccuracy,0.8971322955305217
+5c671fb4d6c7500001a03501,birthCountry,Poland
+5c671fb4d6c7500001a03501,employment,Full-Time
+5c671fb4d6c7500001a03501,nationality,Poland
+5c671fb4d6c7500001a03501,sex,Male
+5c671fb4d6c7500001a03501,student,No
+5c671fb4d6c7500001a03501,averageAccuracy,0.9494508999785005
+5cfbb39480fed30019301b72,birthCountry,Poland
+5cfbb39480fed30019301b72,employment,Full-Time
+5cfbb39480fed30019301b72,nationality,Poland
+5cfbb39480fed30019301b72,sex,Male
+5cfbb39480fed30019301b72,student,Yes
+5cfbb39480fed30019301b72,averageAccuracy,0.7865625166912482
+57bf54d5a170cc000103ea70,birthCountry,Macao
+57bf54d5a170cc000103ea70,employment,Full-Time
+57bf54d5a170cc000103ea70,nationality,Portugal
+57bf54d5a170cc000103ea70,sex,Female
+57bf54d5a170cc000103ea70,student,Yes
+57bf54d5a170cc000103ea70,averageAccuracy,0.8947212335136192
+5c25315c2c45d4000148afec,birthCountry,United Kingdom
+5c25315c2c45d4000148afec,employment,Part-Time
+5c25315c2c45d4000148afec,nationality,United Kingdom
+5c25315c2c45d4000148afec,sex,Female
+5c25315c2c45d4000148afec,student,No
+5c25315c2c45d4000148afec,averageAccuracy,0.8965965745225245
+5dc082848531b10339bb55ac,birthCountry,Poland
+5dc082848531b10339bb55ac,employment,Part-Time
+5dc082848531b10339bb55ac,nationality,Poland
+5dc082848531b10339bb55ac,sex,Male
+5dc082848531b10339bb55ac,student,Yes
+5dc082848531b10339bb55ac,averageAccuracy,0.7021012095586103
+5dc9afa52b1e546c412adfba,birthCountry,United States
+5dc9afa52b1e546c412adfba,employment,Unemployed (and job seeking)
+5dc9afa52b1e546c412adfba,nationality,United States
+5dc9afa52b1e546c412adfba,sex,Male
+5dc9afa52b1e546c412adfba,student,No
+5dc9afa52b1e546c412adfba,averageAccuracy,0.8900355769179613
+5e78f6d6aa5afc4a32a50667,birthCountry,Brazil
+5e78f6d6aa5afc4a32a50667,employment,Part-Time
+5e78f6d6aa5afc4a32a50667,nationality,Brazil
+5e78f6d6aa5afc4a32a50667,sex,Female
+5e78f6d6aa5afc4a32a50667,student,Yes
+5e78f6d6aa5afc4a32a50667,averageAccuracy,0.8499901145268215
+5aeacdc026e9c60001fbcfef,birthCountry,United Kingdom
+5aeacdc026e9c60001fbcfef,employment,Full-Time
+5aeacdc026e9c60001fbcfef,nationality,United Kingdom
+5aeacdc026e9c60001fbcfef,sex,Female
+5aeacdc026e9c60001fbcfef,student,Yes
+5aeacdc026e9c60001fbcfef,averageAccuracy,0.8925464107900318
+5db1bba0e20f58000b8717f6,birthCountry,Greece
+5db1bba0e20f58000b8717f6,employment,Part-Time
+5db1bba0e20f58000b8717f6,nationality,Greece
+5db1bba0e20f58000b8717f6,sex,Male
+5db1bba0e20f58000b8717f6,student,Yes
+5db1bba0e20f58000b8717f6,averageAccuracy,0.829139084339281
+5c86c14fa5b23d0001046192,birthCountry,Sweden
+5c86c14fa5b23d0001046192,employment,Part-Time
+5c86c14fa5b23d0001046192,nationality,Sweden
+5c86c14fa5b23d0001046192,sex,Male
+5c86c14fa5b23d0001046192,student,No
+5c86c14fa5b23d0001046192,averageAccuracy,0.6450381152611007
+5d3a286034acef001ceb73ac,birthCountry,Portugal
+5d3a286034acef001ceb73ac,employment,Other
+5d3a286034acef001ceb73ac,nationality,Portugal
+5d3a286034acef001ceb73ac,sex,Female
+5d3a286034acef001ceb73ac,student,Yes
+5d3a286034acef001ceb73ac,averageAccuracy,0.8766557909089678
+5e7df5b7e28dab48b27cee4c,birthCountry,Poland
+5e7df5b7e28dab48b27cee4c,employment,Full-Time
+5e7df5b7e28dab48b27cee4c,nationality,Poland
+5e7df5b7e28dab48b27cee4c,sex,Male
+5e7df5b7e28dab48b27cee4c,student,No
+5e7df5b7e28dab48b27cee4c,averageAccuracy,0.8039820440923657
+5e209e63f814783b253a93ed,birthCountry,Italy
+5e209e63f814783b253a93ed,employment,Part-Time
+5e209e63f814783b253a93ed,nationality,Italy
+5e209e63f814783b253a93ed,sex,Female
+5e209e63f814783b253a93ed,student,Yes
+5e209e63f814783b253a93ed,averageAccuracy,0.9183861784555425
+5e23029c173db45c6e986f15,birthCountry,United Kingdom
+5e23029c173db45c6e986f15,employment,Full-Time
+5e23029c173db45c6e986f15,nationality,United Kingdom
+5e23029c173db45c6e986f15,sex,Female
+5e23029c173db45c6e986f15,student,No
+5e23029c173db45c6e986f15,averageAccuracy,0.7485918546427159
+5dd2c07123f9f12cd4bc9431,birthCountry,United Kingdom
+5dd2c07123f9f12cd4bc9431,employment,Full-Time
+5dd2c07123f9f12cd4bc9431,nationality,New Zealand
+5dd2c07123f9f12cd4bc9431,sex,Male
+5dd2c07123f9f12cd4bc9431,student,No
+5dd2c07123f9f12cd4bc9431,averageAccuracy,0.9271661074230747
+587905adc34844000174ee45,birthCountry,Finland
+587905adc34844000174ee45,employment,Full-Time
+587905adc34844000174ee45,nationality,Finland
+587905adc34844000174ee45,sex,Male
+587905adc34844000174ee45,student,Yes
+587905adc34844000174ee45,averageAccuracy,0.8467044179929892
+5e41d817cfafb807ef94486a,birthCountry,United States
+5e41d817cfafb807ef94486a,employment,Full-Time
+5e41d817cfafb807ef94486a,nationality,United States
+5e41d817cfafb807ef94486a,sex,Female
+5e41d817cfafb807ef94486a,student,Yes
+5e41d817cfafb807ef94486a,averageAccuracy,0.9043624648764647
+5e948aa20c949c2fff20eabf,birthCountry,Ireland
+5e948aa20c949c2fff20eabf,employment,Unemployed (and job seeking)
+5e948aa20c949c2fff20eabf,nationality,Ireland
+5e948aa20c949c2fff20eabf,sex,Male
+5e948aa20c949c2fff20eabf,student,Yes
+5e948aa20c949c2fff20eabf,averageAccuracy,0.859329866230423
+5cae09506d573900175d4727,birthCountry,Portugal
+5cae09506d573900175d4727,employment,Part-Time
+5cae09506d573900175d4727,nationality,Portugal
+5cae09506d573900175d4727,sex,Male
+5cae09506d573900175d4727,student,Yes
+5cae09506d573900175d4727,averageAccuracy,0.8093280796802595
+5d542c3a5af5900019bc80c4,birthCountry,United Kingdom
+5d542c3a5af5900019bc80c4,employment,Full-Time
+5d542c3a5af5900019bc80c4,nationality,United Kingdom
+5d542c3a5af5900019bc80c4,sex,Female
+5d542c3a5af5900019bc80c4,student,No
+5d542c3a5af5900019bc80c4,averageAccuracy,0.8700383860621004
+5da8d37a56cd5d0015041924,birthCountry,United Kingdom
+5da8d37a56cd5d0015041924,employment,Full-Time
+5da8d37a56cd5d0015041924,nationality,United Kingdom
+5da8d37a56cd5d0015041924,sex,Female
+5da8d37a56cd5d0015041924,student,No
+5da8d37a56cd5d0015041924,averageAccuracy,0.8629635734822353
+5e3628fe1cdf265e0d75cdf2,birthCountry,Greece
+5e3628fe1cdf265e0d75cdf2,employment,Other
+5e3628fe1cdf265e0d75cdf2,nationality,Greece
+5e3628fe1cdf265e0d75cdf2,sex,Female
+5e3628fe1cdf265e0d75cdf2,student,Yes
+5e3628fe1cdf265e0d75cdf2,averageAccuracy,0.83403260164404
+5e3efe99b8a613000a60df84,birthCountry,United States
+5e3efe99b8a613000a60df84,employment,Full-Time
+5e3efe99b8a613000a60df84,nationality,Poland
+5e3efe99b8a613000a60df84,sex,Male
+5e3efe99b8a613000a60df84,student,No
+5e3efe99b8a613000a60df84,averageAccuracy,0.7539599300459378
+5d585a117d795e001588be0d,birthCountry,Poland
+5d585a117d795e001588be0d,employment,Full-Time
+5d585a117d795e001588be0d,nationality,Poland
+5d585a117d795e001588be0d,sex,Male
+5d585a117d795e001588be0d,student,No
+5d585a117d795e001588be0d,averageAccuracy,0.8340821253778882
+5699cf0625d9e9000db0c789,birthCountry,United States
+5699cf0625d9e9000db0c789,employment,"Not in paid work (e.g. homemaker', 'retired or disabled)"
+5699cf0625d9e9000db0c789,nationality,United States
+5699cf0625d9e9000db0c789,sex,Female
+5699cf0625d9e9000db0c789,student,No
+5699cf0625d9e9000db0c789,averageAccuracy,0.860008686299522
+5bd4944a72eb1f0001efb198,birthCountry,Israel
+5bd4944a72eb1f0001efb198,employment,Other
+5bd4944a72eb1f0001efb198,nationality,Israel
+5bd4944a72eb1f0001efb198,sex,Male
+5bd4944a72eb1f0001efb198,student,Yes
+5bd4944a72eb1f0001efb198,averageAccuracy,0.8630867555416359
+5e72bed5f23ae1224a3879de,birthCountry,Poland
+5e72bed5f23ae1224a3879de,employment,Full-Time
+5e72bed5f23ae1224a3879de,nationality,Poland
+5e72bed5f23ae1224a3879de,sex,Male
+5e72bed5f23ae1224a3879de,student,No
+5e72bed5f23ae1224a3879de,averageAccuracy,0.9119377831489045
+5d49517db30ae500195794cd,birthCountry,Pakistan
+5d49517db30ae500195794cd,employment,Full-Time
+5d49517db30ae500195794cd,nationality,Pakistan
+5d49517db30ae500195794cd,sex,Male
+5d49517db30ae500195794cd,student,Yes
+5d49517db30ae500195794cd,averageAccuracy,0.8096792282736983
+5de8f79a41944102202bba86,birthCountry,Italy
+5de8f79a41944102202bba86,employment,Other
+5de8f79a41944102202bba86,nationality,Italy
+5de8f79a41944102202bba86,sex,Female
+5de8f79a41944102202bba86,student,Yes
+5de8f79a41944102202bba86,averageAccuracy,0.6372181971712825
+5a64a97663394a0001556331,birthCountry,Italy
+5a64a97663394a0001556331,employment,Unemployed (and job seeking)
+5a64a97663394a0001556331,nationality,Italy
+5a64a97663394a0001556331,sex,Male
+5a64a97663394a0001556331,student,No
+5a64a97663394a0001556331,averageAccuracy,0.8470550966352257
+5e46c5c94d1b6b000b905b2c,birthCountry,Spain
+5e46c5c94d1b6b000b905b2c,employment,Unemployed (and job seeking)
+5e46c5c94d1b6b000b905b2c,nationality,Spain
+5e46c5c94d1b6b000b905b2c,sex,Female
+5e46c5c94d1b6b000b905b2c,student,Yes
+5e46c5c94d1b6b000b905b2c,averageAccuracy,0.8985852194158016
+5e28912b5fc38506bbd1666c,birthCountry,United Kingdom
+5e28912b5fc38506bbd1666c,employment,"Not in paid work (e.g. homemaker', 'retired or disabled)"
+5e28912b5fc38506bbd1666c,nationality,United Kingdom
+5e28912b5fc38506bbd1666c,sex,Female
+5e28912b5fc38506bbd1666c,student,No
+5e28912b5fc38506bbd1666c,averageAccuracy,0.9080451280368906
+5bf44a04d7e7a70001d7a672,birthCountry,United Kingdom
+5bf44a04d7e7a70001d7a672,employment,Full-Time
+5bf44a04d7e7a70001d7a672,nationality,United Kingdom
+5bf44a04d7e7a70001d7a672,sex,Female
+5bf44a04d7e7a70001d7a672,student,No
+5bf44a04d7e7a70001d7a672,averageAccuracy,0.94346688210474
+5e84c861c9e96307b7129b3f,birthCountry,Poland
+5e84c861c9e96307b7129b3f,employment,Due to start a new job within the next month
+5e84c861c9e96307b7129b3f,nationality,Poland
+5e84c861c9e96307b7129b3f,sex,Male
+5e84c861c9e96307b7129b3f,student,Yes
+5e84c861c9e96307b7129b3f,averageAccuracy,0.8194458115215542
+5b6f0cfd5035e100019cc46e,birthCountry,Australia
+5b6f0cfd5035e100019cc46e,employment,"Not in paid work (e.g. homemaker, retired or disabled)"
+5b6f0cfd5035e100019cc46e,nationality,Australia
+5b6f0cfd5035e100019cc46e,sex,Female
+5b6f0cfd5035e100019cc46e,student,No
+5b6f0cfd5035e100019cc46e,averageAccuracy,0.8857750143931469
+5e0006657adf4bc35427b051,birthCountry,Poland
+5e0006657adf4bc35427b051,employment,Full-Time
+5e0006657adf4bc35427b051,nationality,Poland
+5e0006657adf4bc35427b051,sex,Female
+5e0006657adf4bc35427b051,student,No
+5e0006657adf4bc35427b051,averageAccuracy,0.8277677807348282
+5dce3d1403c2bf070671c87d,birthCountry,Italy
+5dce3d1403c2bf070671c87d,employment,Full-Time
+5dce3d1403c2bf070671c87d,nationality,Italy
+5dce3d1403c2bf070671c87d,sex,Female
+5dce3d1403c2bf070671c87d,student,No
+5dce3d1403c2bf070671c87d,averageAccuracy,0.692687099735264
+5db974ac2f6766000d3fd03e,birthCountry,Hungary
+5db974ac2f6766000d3fd03e,employment,Full-Time
+5db974ac2f6766000d3fd03e,nationality,Hungary
+5db974ac2f6766000d3fd03e,sex,Male
+5db974ac2f6766000d3fd03e,student,No
+5db974ac2f6766000d3fd03e,averageAccuracy,0.7290749411307774
+5e94baec22f87e0890a8b4bc,birthCountry,United States
+5e94baec22f87e0890a8b4bc,employment,Unemployed (and job seeking)
+5e94baec22f87e0890a8b4bc,nationality,United States
+5e94baec22f87e0890a8b4bc,sex,Female
+5e94baec22f87e0890a8b4bc,student,Yes
+5e94baec22f87e0890a8b4bc,averageAccuracy,0.884985999286021
+5a86357bae9a0b0001a9f14e,birthCountry,United States
+5a86357bae9a0b0001a9f14e,employment,Full-Time
+5a86357bae9a0b0001a9f14e,nationality,United States
+5a86357bae9a0b0001a9f14e,sex,Male
+5a86357bae9a0b0001a9f14e,student,No
+5a86357bae9a0b0001a9f14e,averageAccuracy,0.552414032765979
+5c7fc056efcd55001405a74d,birthCountry,Italy
+5c7fc056efcd55001405a74d,employment,Part-Time
+5c7fc056efcd55001405a74d,nationality,Italy
+5c7fc056efcd55001405a74d,sex,Male
+5c7fc056efcd55001405a74d,student,Yes
+5c7fc056efcd55001405a74d,averageAccuracy,0.7726277208932905
+5e81b038c8977f000964e5b2,birthCountry,United Kingdom
+5e81b038c8977f000964e5b2,employment,Full-Time
+5e81b038c8977f000964e5b2,nationality,United Kingdom
+5e81b038c8977f000964e5b2,sex,Male
+5e81b038c8977f000964e5b2,student,No
+5e81b038c8977f000964e5b2,averageAccuracy,0.8358663317864193
+5dfd2bc3e297d5a1e28a4d62,birthCountry,United Kingdom
+5dfd2bc3e297d5a1e28a4d62,employment,Full-Time
+5dfd2bc3e297d5a1e28a4d62,nationality,United Kingdom
+5dfd2bc3e297d5a1e28a4d62,sex,Male
+5dfd2bc3e297d5a1e28a4d62,student,No
+5dfd2bc3e297d5a1e28a4d62,averageAccuracy,0.8817359691320891
+5e167aa29195c6c5bd83b031,birthCountry,United States
+5e167aa29195c6c5bd83b031,employment,Part-Time
+5e167aa29195c6c5bd83b031,nationality,United States
+5e167aa29195c6c5bd83b031,sex,Male
+5e167aa29195c6c5bd83b031,student,Yes
+5e167aa29195c6c5bd83b031,averageAccuracy,0.9146427624733895
+5b222aff59f9620001c109cb,birthCountry,Finland
+5b222aff59f9620001c109cb,employment,Unemployed (and job seeking)
+5b222aff59f9620001c109cb,nationality,Finland
+5b222aff59f9620001c109cb,sex,Male
+5b222aff59f9620001c109cb,student,No
+5b222aff59f9620001c109cb,averageAccuracy,0.9518373308617747
+5d920df12b679a00182bbc73,birthCountry,United Kingdom
+5d920df12b679a00182bbc73,employment,Full-Time
+5d920df12b679a00182bbc73,nationality,United Kingdom
+5d920df12b679a00182bbc73,sex,Female
+5d920df12b679a00182bbc73,student,No
+5d920df12b679a00182bbc73,averageAccuracy,0.8481241972261325
+5c87b4fc7e3a9f0016245fde,birthCountry,United Kingdom
+5c87b4fc7e3a9f0016245fde,employment,Part-Time
+5c87b4fc7e3a9f0016245fde,nationality,United Kingdom
+5c87b4fc7e3a9f0016245fde,sex,Female
+5c87b4fc7e3a9f0016245fde,student,No
+5c87b4fc7e3a9f0016245fde,averageAccuracy,0.8180021259298607
+5da71ab67547d30017c1970d,birthCountry,Portugal
+5da71ab67547d30017c1970d,employment,Full-Time
+5da71ab67547d30017c1970d,nationality,Portugal
+5da71ab67547d30017c1970d,sex,Male
+5da71ab67547d30017c1970d,student,No
+5da71ab67547d30017c1970d,averageAccuracy,0.6808867403991328
+5cd30b2041a6b8001874c41f,birthCountry,Greece
+5cd30b2041a6b8001874c41f,employment,Unemployed (and job seeking)
+5cd30b2041a6b8001874c41f,nationality,Greece
+5cd30b2041a6b8001874c41f,sex,Female
+5cd30b2041a6b8001874c41f,student,No
+5cd30b2041a6b8001874c41f,averageAccuracy,0.9293996555210711
+5c388f181ede2b00011571f4,birthCountry,United Kingdom
+5c388f181ede2b00011571f4,employment,Full-Time
+5c388f181ede2b00011571f4,nationality,United Kingdom
+5c388f181ede2b00011571f4,sex,Female
+5c388f181ede2b00011571f4,student,No
+5c388f181ede2b00011571f4,averageAccuracy,0.7536393042852161
+5e050c985cc380f86dbd26a7,birthCountry,Poland
+5e050c985cc380f86dbd26a7,employment,Other
+5e050c985cc380f86dbd26a7,nationality,Poland
+5e050c985cc380f86dbd26a7,sex,Female
+5e050c985cc380f86dbd26a7,student,Yes
+5e050c985cc380f86dbd26a7,averageAccuracy,0.8230179615786047
+5e0fe41c15ef406fb0b04101,birthCountry,United Kingdom
+5e0fe41c15ef406fb0b04101,employment,Full-Time
+5e0fe41c15ef406fb0b04101,nationality,United Kingdom
+5e0fe41c15ef406fb0b04101,sex,Female
+5e0fe41c15ef406fb0b04101,student,No
+5e0fe41c15ef406fb0b04101,averageAccuracy,0.8864406009064221
+5e9378c1facc7d6c21fa8310,birthCountry,Italy
+5e9378c1facc7d6c21fa8310,employment,Part-Time
+5e9378c1facc7d6c21fa8310,nationality,Italy
+5e9378c1facc7d6c21fa8310,sex,Female
+5e9378c1facc7d6c21fa8310,student,Yes
+5e9378c1facc7d6c21fa8310,averageAccuracy,0.8949393845420056
+5be7087a72aa7b00015545de,birthCountry,Lithuania
+5be7087a72aa7b00015545de,employment,Full-Time
+5be7087a72aa7b00015545de,nationality,Lithuania
+5be7087a72aa7b00015545de,sex,Female
+5be7087a72aa7b00015545de,student,No
+5be7087a72aa7b00015545de,averageAccuracy,0.7863543448280317
+5be1c4f8397d120001a01d76,birthCountry,Spain
+5be1c4f8397d120001a01d76,employment,Unemployed (and job seeking)
+5be1c4f8397d120001a01d76,nationality,Spain
+5be1c4f8397d120001a01d76,sex,Male
+5be1c4f8397d120001a01d76,student,Yes
+5be1c4f8397d120001a01d76,averageAccuracy,0.8577784997653511
+5d0902aabcfaa80001c207a6,birthCountry,United Kingdom
+5d0902aabcfaa80001c207a6,employment,Full-Time
+5d0902aabcfaa80001c207a6,nationality,United Kingdom
+5d0902aabcfaa80001c207a6,sex,Female
+5d0902aabcfaa80001c207a6,student,Yes
+5d0902aabcfaa80001c207a6,averageAccuracy,0.8459742944333807
+580241d0279ffd000124e3e3,birthCountry,Portugal
+580241d0279ffd000124e3e3,employment,Other
+580241d0279ffd000124e3e3,nationality,Portugal
+580241d0279ffd000124e3e3,sex,Female
+580241d0279ffd000124e3e3,student,No
+580241d0279ffd000124e3e3,averageAccuracy,0.8950860889478743
+5d6927928a415c00194dfb6f,birthCountry,United States
+5d6927928a415c00194dfb6f,employment,Full-Time
+5d6927928a415c00194dfb6f,nationality,United States
+5d6927928a415c00194dfb6f,sex,Female
+5d6927928a415c00194dfb6f,student,Yes
+5d6927928a415c00194dfb6f,averageAccuracy,0.731123275289253
