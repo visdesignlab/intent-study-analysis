@@ -442,6 +442,7 @@ function makePlots(provData) {
   participantGroups
    .select('.id')
     .text(d => d.id)
+    .style('fill',d => d.keep ? '':'red')
   
   // participantGroups
   // .select('.visType')

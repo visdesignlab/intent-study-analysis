@@ -17,7 +17,7 @@ const fs = require("fs");
   // }
 
   processProvenance(mode);
-  exportResults(mode);
+  // exportResults(mode);
 })();
 
 //function to create events on a per participant basis;
@@ -34,6 +34,27 @@ function processProvenance(mode) {
 
   //create events objects per participant;
   let events = [];
+
+  results.map((participantData) => {
+    let id = participantData.data.participantId;
+    let pCount = 0;
+    
+    Object.keys(participantData.data.tasks).filter(taskId=>participantData.data.tasks[taskId].training !== 'yes').map((taskId)=>{
+      let taskInfo = participantData.data.tasks[taskId];
+  
+      if (taskInfo['user-driven'] =="supported"){
+        if (taskInfo.interactionDetails.autoCompleteUsed){
+          pCount = pCount +1
+        }  
+      } 
+  
+    })
+  
+    //add flag for participants with at least 4 tasks using autoComplete
+    participantData.data.keep = pCount >4;
+  })
+
+
 
   provenance.map((participant) => {
     // console.log(participant)
@@ -135,12 +156,14 @@ function processProvenance(mode) {
     //update total on participant_info
     let timeOnTask = totalStudyTime - browsedAwayTime;
 
-    console.log("browsed away", browsedAwayTime);
+    // console.log("browsed away", browsedAwayTime);
+
 
     events.push({
       id: participant.id,
       totalStudyTime,
       timeOnTask,
+      keep:r.data.keep,
       provEvents: participantEventArray,
     });
     // console.log(participantEventArray.filter(e=>e.type === 'longAction' && e.endTime === undefined))
@@ -159,11 +182,12 @@ function processProvenance(mode) {
     JSON.stringify(results)
   );
   console.log("exported provenance_processed_results.json");
+  exportResults(mode,results);
 }
 
-function exportResults(mode) {
-  let rawdata = fs.readFileSync("results/" + mode + "/JSON/study_results.json");
-  let results = JSON.parse(rawdata);
+function exportResults(mode,results) {
+  // let rawdata = fs.readFileSync("results/" + mode + "/JSON/study_results.json");
+  // let results = JSON.parse(rawdata);
   // exportCSV(results);
   exportTidy(mode, results);
 }
@@ -277,7 +301,6 @@ async function exportTidy(mode, results) {
   results.map((participant) => {
     let id = participant.data.participantId;
 
-
     let createTidyRow = function (type,measure, value) {
       return {
         prolificId: id,
@@ -288,14 +311,37 @@ async function exportTidy(mode, results) {
     };
 
 
-    participant.data.finalFeedback.scores.map(q=>{
-      feedback[q.question].values.push(q.score);
+    if ( participant.data.finalFeedback.scores){
 
-      rRows.push(
-        createTidyRow('feedback',q.question, q.score)
-      );
+      //check to see if all scores are the same; 
+      let scoreCheck = participant.data.finalFeedback.scores.reduce((acc,cValue)=>{
+        if (!acc.includes(cValue.score)){
+          acc.push(cValue.score)
+        } 
+        return acc;     
+      },[])
 
-    })
+      // console.log(scoreCheck)
+      if (scoreCheck.length>1){
+        participant.data.finalFeedback.scores.map(q=>{
+          feedback[q.question].values.push(q.score);
+    
+          rRows.push(
+            createTidyRow('feedback',q.question, q.score)
+          );
+    
+        })
+
+      }else{
+        console.log('participant ', participant.data.participantId, ' used all same scores',scoreCheck)
+      }
+  
+
+    } else {
+
+      console.log('no feedback scores for ', participant.data.participantId)
+    }
+   
     
 
 
@@ -324,7 +370,7 @@ async function exportTidy(mode, results) {
     let values = feedback[key].values;
      feedback[key].mean = values.reduce((a,b) => a + b, 0)/values.length
   })
-  console.log(feedback)
+  // console.log(feedback)
 
   csvWriter
     .writeRecords(rRows)
@@ -354,46 +400,72 @@ async function exportTidy(mode, results) {
 
   rRows = [];
 
+  let count = 0;
+  // let excludeParticipants = 0;
   results.map((participantData) => {
     let id = participantData.data.participantId;
+ if (participantData.data.keep){
+  Object.keys(participantData.data.tasks).filter(taskId=>participantData.data.tasks[taskId].training !== 'yes').map((taskId) => {
+    
+    
+    let taskInfo = participantData.data.tasks[taskId];
 
+    if (taskInfo.group.includes('outlier_curve')){
+      console.log('participant ', id , 'did a ', taskInfo.group , ' task')
+    }
 
-    Object.keys(participantData.data.tasks).filter(taskId=>participantData.data.tasks[taskId].training !== 'yes').map((taskId) => {
-      let taskInfo = participantData.data.tasks[taskId];
-
+    // console.log(taskInfo.group)
+    if (taskInfo.group.includes('medium_manual_outlier_cluster')){
       // console.log(taskInfo.group)
-      if (taskInfo.group.includes('medium_manual_outlier_cluster')){
-        console.log(taskInfo.group)
-        // console.log(taskInfo)
-        console.log('accuracy is ', taskInfo.accuracy)
-      }
-     
-      let createTidyRow = function (measure, value) {
-        return {
-          prolificId: id,
-          taskId,
-          dataset: taskInfo.dataset,
-          taskPrompt: taskInfo.task,
-          taskDifficulty: taskInfo.difficulty,
-          taskType: taskInfo.type,
-          userDriven: taskInfo["user-driven"],
-          group: taskInfo.group.replace('_manual_','_').replace('_supported_','_'),
-          measure,
-          value,
-        };
-      };
-
+      // console.log(taskInfo)
+      // console.log('accuracy is ', taskInfo.accuracy)
+    }
    
-      let timeOnTask = Date.parse(taskInfo.completedAt) - Date.parse(taskInfo.startedAt);
+    let createTidyRow = function (measure, value) {
+      return {
+        prolificId: id,
+        taskId,
+        dataset: taskInfo.dataset,
+        taskPrompt: taskInfo.task,
+        taskDifficulty: taskInfo.difficulty,
+        taskType: taskInfo.type,
+        userDriven: taskInfo["user-driven"],
+        group: taskInfo.group.replace('_manual_','_').replace('_supported_','_'),
+        measure,
+        value,
+      };
+    };
+
+ 
+    let timeOnTask = Date.parse(taskInfo.completedAt) - Date.parse(taskInfo.startedAt);
+    //If mode is supported, only add data if they actually picked a selection; 
+    let addRow = true;
+    
+    if (taskInfo['user-driven'] =="supported"){
+      if (!taskInfo.interactionDetails.autoCompleteUsed){
+        addRow = false;
+        count = count +1;
+      }  
+    } 
+
+    
+
+    if (addRow){
       rRows.push(createTidyRow("accuracy", taskInfo.accuracy));
       rRows.push(createTidyRow("difficulty", taskInfo.user_difficulty));
       rRows.push(createTidyRow("confidence", taskInfo.user_confidence));
-    
-
       rRows.push(createTidyRow("secondsOnTask", timeOnTask/1000));
+    }
+   
 
-    });
   });
+
+
+ }
+
+  });
+
+  console.log('removed ' , results.reduce((acc,cValue)=>!cValue.data.keep ? acc + 1 : acc,0), ' participants')
 
   csvWriter
     .writeRecords(rRows)

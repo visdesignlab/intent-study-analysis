@@ -44,7 +44,7 @@ filteredData <- dfp %>%
   print(filteredData)
   g<- filteredData %>% 
   ggplot( aes(x=measure, y=value) ) +
-    geom_jitter( shape=1 , position = position_jitter(w = 0.1, h = 0)) +
+    geom_jitter( shape=1 , colour = "grey", position = position_jitter(w = 0.3, h = 0)) +
     stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
   # ylim(0,100) +
    # xlim(-.25,.25) +
@@ -61,8 +61,8 @@ print (stg)
 
 # stg$userDriven <- ifelse(stg$PANEL==1, "manual", "supported")
 g + geom_text(data = stg,
-              aes(x = x, y = 0.5, label = round(y,3)),
-              color = "blue", size=5,
+              aes(x = x, y = 0.85, label = round(y,1)),
+              color = "blue", size=3,
               vjust = 1)  +
   # facet_grid(. ~ userDriven)+
    labs(y="Score", x = 'Feedback Question')
@@ -89,17 +89,18 @@ df_time$value = as.numeric( as.character(df_time$value ))
 
 95% CIs + jitter (don't trust those point positions)
 
-```{r fig.width=5, fig.height=4 }
+```{r fig.width=5, fig.height=8 }
 
-
-g<- df_acc %>% 
-  ggplot( aes(x=group, y=value) ) +
-    geom_jitter( shape=1 , aes(color=taskDifficulty, fill=taskDifficulty), position = position_jitter(w = 0.1, h = 0)) +
+df_acc$custom_group <- ifelse(df_acc$taskDifficulty=='easy', "easy", "medium_hard")
+df_acc %>% 
+  ggplot( aes(x=userDriven, y=value) ) +
+    geom_jitter( shape=1 , color="grey", position = position_jitter(w = 0.1, h = 0)) +
     stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
   # ylim(0,100) +
    # xlim(-.25,.25) +
   coord_flip() +
-    facet_grid(. ~ userDriven)
+    facet_grid(group ~ .)+
+  theme(strip.text.y = element_text(angle=0))
 
 # testData <- ggplot_build(g)$data
 stg <- ggplot_build(g)$data[[2]]
@@ -107,67 +108,219 @@ print (stg)
 
 # //add userDriven column
 
-stg$userDriven <- ifelse(stg$PANEL==1, "manual", "supported")
-g + geom_text(data = stg,
-              aes(x = x, y = 0.1, label = round(y,3)),
-              color = "blue", size=3,
-              vjust = 1)  +
-  facet_grid(. ~ userDriven)+
-   labs(y="Accuracy", x = 'Task Group')
+# stg$userDriven <- ifelse(stg$PANEL==1, "manual", "supported")
+# g + geom_text(data = stg,
+#               aes(x = x, y = 0.1, label = round(y,3)),
+#               color = "blue", size=3,
+#               vjust = 1)  +
+#   facet_grid(. ~ userDriven)+
+#    labs(y="Accuracy", x = 'Task Group')
+```
+
+
+```{r fig.width=16, fig.height=4 }
+df_acc$custom_group <- ifelse(df_acc$taskDifficulty=='easy', "easy", "medium_hard")
+df_time$custom_group <- ifelse(df_acc$taskDifficulty=='easy', "easy", "medium_hard")
+
+df_medium_hard = df_acc %>% 
+  filter(custom_group=="medium_hard") 
+
+df_medium_hard %>% 
+  ggplot( aes(x=userDriven, y=value) ) +
+    geom_jitter( shape=1 , color='grey', position = position_jitter(w = 0.3, h = 0)) +
+    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
+  # ylim(0,100) +
+   # ylim(0,100) +
+  coord_flip() +
+    facet_grid(taskType ~ custom_group)+
+    theme(strip.text.y = element_text(angle=0))
+
+
+filename <- paste("results.pdf")
+ ggsave(filename, width = 12, height = 4, units = "in")
 
 
 
-g<- df_acc %>% 
-  ggplot( aes(x=taskType, y=value) ) +
-    geom_jitter( shape=1 , aes(color=taskDifficulty, fill=taskDifficulty), position = position_jitter(w = 0.1, h = 0)) +
+
+# # testData <- ggplot_build(g)$data
+# stt <- ggplot_build(g)$data[[2]]
+# print (stt)
+# 
+# # //add userDriven column
+# 
+# stt$userDriven <- ifelse(stt$PANEL==1, "manual", "supported")
+# g + geom_text(data = stt,
+#               aes(x = x, y = 0.1, label = round(y,3)),
+#               color = "blue", size=3,
+#               vjust = 1)  +
+#   facet_grid(. ~ userDriven)+
+#    labs(y="Accuracy", x = 'Task Type')
+```
+```{r}
+wtest <- function(type) {
+t_manual = df_medium_hard %>% 
+  filter(taskType == type & userDriven == "manual")
+
+t_supported = df_medium_hard %>% 
+  filter(taskType == type & userDriven == "supported")
+
+
+
+# p = 0.06-- promising at the pilot level
+print(type)
+wilcox.test(t_manual$value, t_supported$value)
+}
+
+wtest("cluster")
+wtest("linear regression")
+wtest("outlier")
+wtest("quadratic regression")
+wtest("skyline")
+
+
+
+```
+```{r warning=FALSE}
+
+# Bootstrap 95% CI for mean
+# function to obtain mean from the data (with indexing)
+mean.fun <- function(D, d) {
+  return( mean(D[d]) )
+}
+reportCI <- function(data, attr) {
+  # bootstrapping with 1000 replications
+  ci <- boot.ci(
+    boot(data=data[[attr]], statistic=mean.fun, R=1000, sim="ordinary")
+  )
+
+  cat( "M=",     round( mean( data[[attr]] ), 2), "~",
+       "[", round( ci$bca[,4]          , 2), ",",
+       round( ci$bca[,5]          , 2), "]",
+       sep="")
+}
+
+citext <- function(type, measure_) {
+  
+df_tmp <- df %>% 
+  filter(measure==measure_) 
+
+df_tmp$value = as.numeric( as.character(df_tmp$value ))
+
+manual = df_tmp %>% 
+  filter(taskType == type & userDriven == "manual")
+
+supported  = df_tmp %>% 
+  filter(taskType == type & userDriven == "supported")
+
+cat( paste(type," | manual\n") )
+reportCI(manual, "value")
+cat( "\n" )
+
+
+cat( paste(type," | supported\n") )
+reportCI(supported, "value")
+cat( "\n" )
+cat( "\n" )
+
+
+}
+
+
+
+citext('cluster', "accuracy")
+citext('linear regression', "accuracy")
+citext('outlier', "accuracy")
+citext('quadratic regression', "accuracy")
+citext('skyline', "accuracy")
+
+
+
+```
+
+```{r}
+
+
+reportES <- function(data, attr, group) {
+
+  lvs <- levels(data[[group]])
+
+  b <- bootES(data,
+              data.col=attr,
+              group.col=group,
+              contrast=lvs, # normal cases c(group1=1, group2=-1), but for 2 groups, it's simplified.
+              effect.type="cohens.d")
+
+  cat( "d=", round( b$t0, 2), "~",
+       "[", round( b$bounds[1], 2), ",",
+       round( b$bounds[2], 2), "]",
+       sep="")
+}
+
+estext <- function(type, measure_) {
+  
+df_tmp <- df %>% 
+  filter(measure==measure_) 
+
+df_tmp$value = as.numeric( as.character(df_tmp$value ))
+
+esd = df_tmp %>% 
+  filter(taskType == type)
+
+cat( paste(type, "\n") )
+reportES(esd, "value", "userDriven")
+cat( "\n" )
+cat( "\n" )
+
+
+}
+
+
+estext("cluster", "accuracy")
+estext("linear regression", "accuracy")
+estext("outlier", "accuracy")
+estext("quadratic regression", "accuracy")
+estext("skyline", "accuracy")
+```
+
+
+
+
+
+```{r fig.width=5, fig.height=4 }
+ df_acc %>% 
+  ggplot( aes(x=userDriven, y=value) ) +
+    geom_jitter( shape=1 , color='grey', position = position_jitter(w = 0.3, h = 0)) +
     stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
   # ylim(0,100) +
    # xlim(-.25,.25) +
   coord_flip() +
-    facet_grid(. ~ userDriven)
+    facet_grid(taskDifficulty ~ .)+
+    theme(strip.text.y = element_text(angle=0))
 
-# testData <- ggplot_build(g)$data
-stt <- ggplot_build(g)$data[[2]]
-print (stt)
-
-# //add userDriven column
-
-stt$userDriven <- ifelse(stt$PANEL==1, "manual", "supported")
-g + geom_text(data = stt,
-              aes(x = x, y = 0.1, label = round(y,3)),
-              color = "blue", size=3,
-              vjust = 1)  +
-  facet_grid(. ~ userDriven)+
-   labs(y="Accuracy", x = 'Task Type')
-
-
-g<- df_acc %>% 
-  ggplot( aes(x=taskDifficulty, y=value) ) +
-    geom_jitter( shape=1 , aes(color=taskDifficulty, fill=taskDifficulty), position = position_jitter(w = 0.1, h = 0)) +
-    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
-  # ylim(0,100) +
-   # xlim(-.25,.25) +
-  coord_flip() +
-    facet_grid(. ~ userDriven)
-
-# testData <- ggplot_build(g)$data
-std <- ggplot_build(g)$data[[2]]
-print (std)
-
-# //add userDriven column
-
-std$userDriven <- ifelse(std$PANEL==1, "manual", "supported")
-g + geom_text(data = std,
-              aes(x = x, y = 0.1, label = round(y,3)),
-              color = "blue", size=3,
-              vjust = 1)  +
-  facet_grid(. ~ userDriven)+
-   labs(y="Accuracy", x = 'Task Difficulty')
+#   
+# 
+# # testData <- ggplot_build(g)$data
+# std <- ggplot_build(g)$data[[2]]
+# print (std)
+# 
+# # //add userDriven column
+# 
+# std$userDriven <- ifelse(std$PANEL==1, "manual", "supported")
+# g + geom_text(data = std,
+#               aes(x = x, y = 0.1, label = round(y,3)),
+#               color = "blue", size=3,
+#               vjust = 1)  +
+#   facet_grid(. ~ userDriven)+
+#    labs(y="Accuracy", x = 'Task Difficulty')
 
 
+```
+
+
+```{r fig.width=5, fig.height=8}
 g<- df_acc %>% 
   ggplot( aes(x=0, y=value) ) +
-    geom_jitter( shape=1 , aes(color=taskDifficulty, fill=taskDifficulty), position = position_jitter(w = 0.1, h = 0)) +
+    geom_jitter( shape=1 , color='grey', position = position_jitter(w = 0.3, h = 0)) +
     stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
   # ylim(0,100) +
    xlim(-.25,.25) +
@@ -494,33 +647,20 @@ wilcox.test(t13_nl$value, t13_adj$value)
 
 ```{r}
 wtest <- function(task) {
-t13_nl = df_acc %>% 
-  filter(taskId == task & visType == "nodeLink")
+t_manual = df_acc %>% 
+  filter(taskId == task & userDriven == "manual")
 
-t13_adj = df_acc %>% 
-  filter(taskId == task & visType == "adjMatrix")
+t_supported = df_acc %>% 
+  filter(taskId == task & userDriven == "supported")
 
 # p = 0.06-- promising at the pilot level
 print(task)
-wilcox.test(t13_nl$value, t13_adj$value)
+wilcox.test(t_manual$value, t_supported$value)
 }
 
-wtest("S-task01")
-wtest("S-task02")
-wtest("S-task03")
-wtest("S-task04")
-wtest("S-task05")
-wtest("S-task06")
-wtest("S-task07")
-wtest("S-task08")
-wtest("S-task09")
-wtest("S-task10")
-wtest("S-task11")
-wtest("S-task12")
-wtest("S-task13")
-wtest("S-task14")
-wtest("S-task15")
-wtest("S-task16")
+wtest("0")
+      
+wtest("0")
 ```
 
 
