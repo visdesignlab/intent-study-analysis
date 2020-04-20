@@ -32,6 +32,43 @@ dfp <- read.csv("../results/pilot/CSV/participantInfoTidyR.csv")
 ```
 
 
+```{r fig.width=5, fig.height=4 }
+
+
+filteredData <- dfp %>% 
+  filter(type=="feedback")
+
+
+  filteredData$value = as.numeric( as.character(filteredData$value ))
+  
+  print(filteredData)
+  g<- filteredData %>% 
+  ggplot( aes(x=measure, y=value) ) +
+    geom_jitter( shape=1 , position = position_jitter(w = 0.1, h = 0)) +
+    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
+  # ylim(0,100) +
+   # xlim(-.25,.25) +
+  coord_flip() +
+  labs(y="Score", x = 'Feedback Question')
+
+    # facet_grid(. ~ userDriven)
+
+# testData <- ggplot_build(g)$data
+stg <- ggplot_build(g)$data[[2]]
+print (stg)
+
+# //add userDriven column
+
+# stg$userDriven <- ifelse(stg$PANEL==1, "manual", "supported")
+g + geom_text(data = stg,
+              aes(x = x, y = 0.5, label = round(y,3)),
+              color = "blue", size=5,
+              vjust = 1)  +
+  # facet_grid(. ~ userDriven)+
+   labs(y="Score", x = 'Feedback Question')
+```
+
+
 ## Data Cleaning / Types
 
 ```{r}
@@ -52,8 +89,56 @@ df_time$value = as.numeric( as.character(df_time$value ))
 
 95% CIs + jitter (don't trust those point positions)
 
-```{r fig.width=5, fig.height=3 }
+```{r fig.width=5, fig.height=4 }
 
+
+g<- df_acc %>% 
+  ggplot( aes(x=group, y=value) ) +
+    geom_jitter( shape=1 , aes(color=taskDifficulty, fill=taskDifficulty), position = position_jitter(w = 0.1, h = 0)) +
+    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
+  # ylim(0,100) +
+   # xlim(-.25,.25) +
+  coord_flip() +
+    facet_grid(. ~ userDriven)
+
+# testData <- ggplot_build(g)$data
+stg <- ggplot_build(g)$data[[2]]
+print (stg)
+
+# //add userDriven column
+
+stg$userDriven <- ifelse(stg$PANEL==1, "manual", "supported")
+g + geom_text(data = stg,
+              aes(x = x, y = 0.1, label = round(y,3)),
+              color = "blue", size=3,
+              vjust = 1)  +
+  facet_grid(. ~ userDriven)+
+   labs(y="Accuracy", x = 'Task Group')
+
+
+
+g<- df_acc %>% 
+  ggplot( aes(x=taskType, y=value) ) +
+    geom_jitter( shape=1 , aes(color=taskDifficulty, fill=taskDifficulty), position = position_jitter(w = 0.1, h = 0)) +
+    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
+  # ylim(0,100) +
+   # xlim(-.25,.25) +
+  coord_flip() +
+    facet_grid(. ~ userDriven)
+
+# testData <- ggplot_build(g)$data
+stt <- ggplot_build(g)$data[[2]]
+print (stt)
+
+# //add userDriven column
+
+stt$userDriven <- ifelse(stt$PANEL==1, "manual", "supported")
+g + geom_text(data = stt,
+              aes(x = x, y = 0.1, label = round(y,3)),
+              color = "blue", size=3,
+              vjust = 1)  +
+  facet_grid(. ~ userDriven)+
+   labs(y="Accuracy", x = 'Task Type')
 
 
 g<- df_acc %>% 
@@ -61,52 +146,50 @@ g<- df_acc %>%
     geom_jitter( shape=1 , aes(color=taskDifficulty, fill=taskDifficulty), position = position_jitter(w = 0.1, h = 0)) +
     stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
   # ylim(0,100) +
+   # xlim(-.25,.25) +
   coord_flip() +
     facet_grid(. ~ userDriven)
 
 # testData <- ggplot_build(g)$data
-mcb <- ggplot_build(g)$data[[2]]
-print (mcb)
+std <- ggplot_build(g)$data[[2]]
+print (std)
 
 # //add userDriven column
 
-mcb$userDriven <- ifelse(mcb$PANEL==1, "manual", "supported")
-g + geom_text(data = mcb,
+std$userDriven <- ifelse(std$PANEL==1, "manual", "supported")
+g + geom_text(data = std,
               aes(x = x, y = 0.1, label = round(y,3)),
               color = "blue", size=3,
               vjust = 1)  +
-  facet_grid(. ~ userDriven)
-  # coord_flip() +
-  #   facet_grid(. ~ userDriven)
-
-# df %>% 
-#   filter(measure=="difficulty") %>% 
-#   mutate( value = as.numeric( as.character(value)) ) %>% 
-#   ggplot( aes(x=taskId, y=value) ) +
-#     geom_point( shape=1 , aes(colour=taskDifficulty)) +
-#     stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
-#   coord_flip() +
-#     facet_grid(. ~ userDriven)
-# 
-# df %>% 
-#   filter(measure=="confidence") %>% 
-#   mutate( value = as.numeric( as.character(value)) ) %>% 
-#   ggplot( aes(x=taskId, y=value) ) +
-#     geom_point( shape=1 , colour="#A9A9A9") +
-#     stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
-#   coord_flip() +
-#     facet_grid(. ~ userDriven)
+  facet_grid(. ~ userDriven)+
+   labs(y="Accuracy", x = 'Task Difficulty')
 
 
-## beeswarm big chart
-## ci plots with titles and new tidyr
-## hypothesis column
-## task centric and hypothesis centric charts
-## time and difficulty and correctness and confidence
-## confidence ellipse
-## age education and gender
-## compare to prior and pilot
+g<- df_acc %>% 
+  ggplot( aes(x=0, y=value) ) +
+    geom_jitter( shape=1 , aes(color=taskDifficulty, fill=taskDifficulty), position = position_jitter(w = 0.1, h = 0)) +
+    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
+  # ylim(0,100) +
+   xlim(-.25,.25) +
+  coord_flip() +
+    facet_grid(. ~ userDriven)
 
+# testData <- ggplot_build(g)$data
+sat <- ggplot_build(g)$data[[2]]
+print (sat)
+
+# //add userDriven column
+
+sat$userDriven <- ifelse(sat$PANEL==1, "manual", "supported")
+g + geom_text(data = sat,
+              aes(x = x, y = 0.1, label = round(y,3)),
+              color = "blue", size=3,
+              vjust = 1)  +
+  facet_grid(. ~ userDriven)+
+   labs(y="Accuracy", x = '')
+
+
+ 
 ```
 
 we can do the same with distributions, ridges
@@ -161,7 +244,8 @@ powerAnalysisGraph <- function(m1, m2, stdev, iterNum=15){
       d=effectSize[step], 
       sig.level=.05, 
       power=0.8, 
-      type="two.sample", 
+      # type="two.sample", 
+      type="paired",
       alternative="greater" 
     )$n * 1.15 * 2
   }
@@ -195,8 +279,12 @@ powerAnalysisGraph <- function(m1, m2, stdev, iterNum=15){
   g <- gtable_add_cols(g, g2$widths[g2$layout[ia, ]$l], length(g$widths) - 1)
   g <- gtable_add_grob(g, ax, pp$t, length(g$widths) - 1, pp$b)
   
+
   # draw it
   grid.draw(g)
+  
+  return (g)
+  
 }
 
 ```
@@ -205,11 +293,128 @@ powerAnalysisGraph <- function(m1, m2, stdev, iterNum=15){
 then, we test it out with some parameters estimated by eye from our charts so far
 
 ```{r}
-# task 8 (reading values from graph, could do exact later)
-powerAnalysisGraph(0.5, 0.6, 0.25)
+# allTasks (reading values from graph, could do exact later)
+# powerAnalysisGraph(0.8329050	, 0.8625925, 0.25)
 
-# task 13 (reading values from graph, could do exact later)
-powerAnalysisGraph(0.2, 0.4, 0.10)
+
+# Find all unique taskTypes
+taskGroups <- (df_acc$taskType)
+
+for (group in unique(taskGroups)){
+  
+  gr<-group
+   print (gr)
+  
+  
+  data <- df_acc %>% 
+  filter(taskType == gr) %>% 
+  filter(taskDifficulty != 'easy')
+  
+  
+  # print (data)
+
+  sd_bothConditions =
+    data %>%
+  summarise(
+    stdev = sd(value)
+  )
+
+mean_manual = data %>%
+  filter(userDriven == "manual") %>% 
+  summarise(
+    mean = mean(value)
+  )
+
+mean_supported = data %>%
+  filter(userDriven == "supported") %>% 
+  summarise(
+    mean = mean(value)
+  )
+
+# print(mean_manual,mean_supported,sd_bothConditions)
+powerAnalysisGraph(mean_manual[,1],mean_supported[,1],sd_bothConditions[,1])
+
+  
+}
+```
+
+
+```{r}
+# Find all  unique task Difficulties;
+taskDifficulties <- df_acc$taskDifficulty
+
+for (difficulty in unique(taskDifficulties)){
+
+  print (difficulty)
+  data <- df_acc %>% 
+  filter(taskDifficulty == difficulty) 
+  
+  
+  # print (data)
+
+  sd_bothConditions =
+    data %>%
+  summarise(
+    stdev = sd(value)
+  )
+
+mean_manual = data %>%
+  filter(userDriven == "manual") %>% 
+  summarise(
+    mean = mean(value)
+  )
+
+mean_supported = data %>%
+  filter(userDriven == "supported") %>% 
+  summarise(
+    mean = mean(value)
+  )
+
+print(mean_manual,mean_supported,sd_bothConditions)
+powerAnalysisGraph(mean_manual[,1],mean_supported[,1],sd_bothConditions[,1])
+
+  
+}
+
+```
+
+
+
+
+```{r}
+
+
+# allTasks
+sd_allTasks = df_acc %>% 
+  # filter(taskId == "S-task08") %>% 
+  summarise(
+    stdev = sd(value)
+  )
+
+mean_manual = df_acc %>% 
+  filter(userDriven == "manual") %>% 
+  summarise(
+    mean = mean(value)
+  )
+
+mean_supported = df_acc %>% 
+  filter(userDriven == "supported") %>% 
+  summarise(
+    mean = mean(value)
+  )
+
+g<-powerAnalysisGraph(mean_manual[,1],mean_supported[,1],sd_allTasks[,1])
+
+# print (g)
+
+# title <- textGrob("Title",gp=gpar(fontsize=50))
+#  gtable_add_grob(
+#     g, 
+#     title, 
+#     1, 1, 1, ncol(g))
+
+# gtable_add_rows(g, heights = grobHeight(title) + padding,
+# +                          pos = 0)
 ```
 
 Now we want to get better estimates for parameters.

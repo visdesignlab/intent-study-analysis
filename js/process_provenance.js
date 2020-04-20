@@ -259,7 +259,7 @@ async function exportTidy(mode, results) {
 
   let rHeaders, rRows;
 
-  rHeaders = ["prolificId", "measure", "value"];
+  rHeaders = ["prolificId","type", "measure", "value"];
 
   csvWriter = createCsvWriter({
     path: "results/" + mode + "/CSV/participantInfoTidyR.csv",
@@ -270,40 +270,61 @@ async function exportTidy(mode, results) {
 
   rRows = [];
 
+  let  feedback = {};
+  //create dict entry for every question;
+  results[0].data.finalFeedback.scores.map(q=>feedback[q.question]={'values':[],'mean':0});
+
   results.map((participant) => {
     let id = participant.data.participantId;
 
-    let createTidyRow = function (measure, value) {
+
+    let createTidyRow = function (type,measure, value) {
       return {
         prolificId: id,
+        type,
         measure,
         value,
       };
     };
 
-    // "country_birth": "Korea",
-    //     "country_residence": "Korea",
-    //     "employment": "Full-Time",
-    //     "nationality": "Korea",
-    //     "sex": "Female",
-    //     "student_status": "No",
+
+    participant.data.finalFeedback.scores.map(q=>{
+      feedback[q.question].values.push(q.score);
+
+      rRows.push(
+        createTidyRow('feedback',q.question, q.score)
+      );
+
+    })
+    
+
+
     rRows.push(
-      createTidyRow("birthCountry", participant.data.demographics.country_birth)
+      createTidyRow('demographics',"birthCountry", participant.data.demographics.country_birth)
     );
     rRows.push(
-      createTidyRow("employment", participant.data.demographics.employment)
+      createTidyRow('demographics',"employment", participant.data.demographics.employment)
     );
     rRows.push(
-      createTidyRow("nationality", participant.data.demographics.nationality)
+      createTidyRow('demographics',"nationality", participant.data.demographics.nationality)
     );
-    rRows.push(createTidyRow("sex", participant.data.demographics.sex));
+    rRows.push(createTidyRow('demographics',"sex", participant.data.demographics.sex));
     rRows.push(
-      createTidyRow("student", participant.data.demographics.student_status)
+      createTidyRow('demographics',"student", participant.data.demographics.student_status)
     );
+
+
+
     // rRows.push(createTidyRow("studyTime", participant.data.minutesOnTask)); //need to compute and add to file or compute here on the fly;
 
-    rRows.push(createTidyRow("averageAccuracy", participant.data.avgAcc));
+    rRows.push(createTidyRow('results',"averageAccuracy", participant.data.avgAcc));
   });
+
+  Object.keys(feedback).map(key=>{    
+    let values = feedback[key].values;
+     feedback[key].mean = values.reduce((a,b) => a + b, 0)/values.length
+  })
+  console.log(feedback)
 
   csvWriter
     .writeRecords(rRows)
