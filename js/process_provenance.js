@@ -61,6 +61,13 @@ function processProvenance(mode) {
     participantEventArray = [];
 
     let r = results.find((r) => r.data.participantId === participant.id);
+    //create a field for each tasks that indicates the time browsed away during that task. Set to 0. 
+
+    let allTasks = Object.keys(r.data.tasks);
+
+    allTasks.map(key=>{
+      r.data.tasks[key].browsedAway = 0;
+    })
 
     //remove all events prior to the 'Start phase: Video' task ;
     let startVideoEvent = participant.data.indexOf(
@@ -124,7 +131,7 @@ function processProvenance(mode) {
                 e.type === "longAction" &&
                 Array.isArray(e.end) &&
                 e.end.includes(action.label) &&
-                (e.label === "task" ? e.task.id === action.task.id : true);
+                (e.label === "Task" ? e.task.id === action.task.id : true);
               return value;
             })
             .pop();
@@ -139,9 +146,17 @@ function processProvenance(mode) {
             }
 
             if (startObj.label === "Browse Away") {
-              browsedAwayTime =
-                browsedAwayTime +
-                (Date.parse(startObj.endTime) - Date.parse(startObj.startTime));
+              let currentBrowseAway = (Date.parse(startObj.endTime) - Date.parse(startObj.startTime));
+              browsedAwayTime = browsedAwayTime + currentBrowseAway; //cumulative browsed away time
+              //find task during which user browsed away; 
+
+              //find the last 'startTask event' in participantEventArray
+              let startTaskEvents = participantEventArray.filter(event=>event.label == 'Task')
+              if (startTaskEvents.length>0){ //user browsed away during a task;
+                let taskEvent = startTaskEvents[startTaskEvents.length-1]; //grab last startTask event;
+                r.data.tasks[taskEvent.task.id].browsedAway = r.data.tasks[taskEvent.task.id].browsedAway + currentBrowseAway;
+              }
+            
             }
           }
         }
@@ -414,12 +429,6 @@ async function exportTidy(mode, results) {
       console.log('participant ', id , 'did a ', taskInfo.group , ' task')
     }
 
-    // console.log(taskInfo.group)
-    if (taskInfo.group.includes('medium_manual_outlier_cluster')){
-      // console.log(taskInfo.group)
-      // console.log(taskInfo)
-      // console.log('accuracy is ', taskInfo.accuracy)
-    }
    
     let createTidyRow = function (measure, value) {
       return {
@@ -436,8 +445,10 @@ async function exportTidy(mode, results) {
       };
     };
 
- 
-    let timeOnTask = Date.parse(taskInfo.completedAt) - Date.parse(taskInfo.startedAt);
+    // if (taskInfo.browsedAway>0){
+    //   console.log('participant ' , participantData.data.participantId, '  browsed away for ', taskInfo.browsedAway/1000/60 , ' during task ',taskInfo.id)
+    // }
+    let timeOnTask = Date.parse(taskInfo.completedAt) - Date.parse(taskInfo.startedAt) - taskInfo.browsedAway;
     //If mode is supported, only add data if they actually picked a selection; 
     let addRow = true;
     
