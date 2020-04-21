@@ -153,7 +153,8 @@ g<-df_medium_hard %>%
    # ylim(0,100) +
   coord_flip() +
       scale_color_manual(values=userDriven.colors)+
-  scale_fill_manual(values=userDriven.colors)
+  scale_fill_manual(values=userDriven.colors)+
+  theme(strip.text.y = element_text(angle = 0))
 
 
 
@@ -185,13 +186,13 @@ stt$userDriven <- ifelse(stt$group=="1", 'manual', 'supported')
 
 print (stt)
 g + geom_text(data = stt,
-              aes(x =userDriven, y = 0.05, label = paste(round(y,3) , '[' , round(ymin,3) ,  ',' , round(ymax,3) , ']',sep=" ")),
-             color = "black",size=3,
+              aes(x =userDriven, y = 0.1, label = paste(round(y,3) , '[' , round(ymin,3) ,  ',' , round(ymax,3) , ']',sep=" ")),
+             color = "#5c5c5c",size=3,
               vjust = 1)  +
    facet_grid(taskType ~ .)+
    labs(y="Accuracy", x = 'Mode')
 
-filename <- paste("results_violin_scatter.pdf")
+filename <- paste("results_violin_color.pdf")
  ggsave(filename, width = 8, height = 6, units = "in")
 
 
