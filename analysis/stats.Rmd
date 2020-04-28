@@ -193,7 +193,9 @@ axisRange <- function(x) {
 # df_medium_hard = df_time
 
 df_data =  df %>%
-  filter(custom_group=="easy")
+  filter(custom_group=="medium_hard")
+
+
   
 g<- df_data %>% 
   ggplot( aes(x=userLabel, y=value, fill = userLabel, color = userLabel) ) +
@@ -240,13 +242,80 @@ g + geom_text(data = stt,
 
    # labs(y="Accuracy", x = '')
 # 
-filename <- paste("results_easy.pdf")
+filename <- paste("results_medium_hard.pdf")
  ggsave(filename, width = 10, height = 5, units = "in")
 
 
  
 ```
 
+
+```{r fig.width=8, fig.height=12}
+
+gridLines <- function(x) { 
+ if (max(as.numeric(x))<2) c(0,1)
+  else if (max(as.numeric(x))<10) seq(1, 5, 1) 
+  else (c(0,100))
+}
+
+axisRange <- function(x) { 
+  if (max(as.numeric(x))<2) c(0,1)
+   else  if (max(as.numeric(x))<10) c(0,5)
+  else (c(0,100))
+}
+
+df_data = df
+  
+df_data %>% 
+  ggplot( aes(x=userLabel, y=value, fill = userLabel, color = userLabel) ) +
+    facet_grid(taskId ~ measure_f, scales="free")+
+
+    # geom_jitter( shape=16 , colour='grey', alpha=0.7, size=2, position = position_jitter(w = 0.3, h = 0)) +
+    geom_violin(show.legend=FALSE) +
+
+    stat_summary(fun.data = "mean_cl_boot", geom="linerange", size=1,alpha=1, colour = "#5c5c5c", show.legend=FALSE) +
+    stat_summary(fun.data = "mean_cl_boot", colour = "#5c5c5c", size = 1, alpha=0.5, show.legend=FALSE) +
+ 
+  # ylim(0,100) +
+   # ylim(0,100) +
+  coord_flip() +
+      scale_color_manual(values=userDriven.colors)+
+  scale_fill_manual(values=userDriven.colors)+
+  theme(strip.text.y = element_text(angle = 0))+
+  scale_y_continuous(breaks = gridLines, limits = axisRange) #,labels = gridLabels) 
+
+# stt <- ggplot_build(g)$data[[3]]
+# 
+# print (stt)
+# 
+# stt$PANEL <- as.numeric( as.character(stt$PANEL ))
+# stt$taskType <- ifelse((stt$PANEL <5), "Cluster", ifelse((stt$PANEL <9), "Linear Regression", ifelse((stt$PANEL <13), "Quadratic Regression", ifelse((stt$PANEL <17), "Multivariate Optimization", "Outlier"))))
+# 
+# stt$taskType_f = factor(stt$taskType, levels=c("Cluster","Linear Regression", "Quadratic Regression","Multivariate Optimization", "Outlier"));
+# 
+# stt$measure <- ifelse((stt$PANEL %% 4 == 1), "Accuracy", ifelse((stt$PANEL %% 4 == 2), "Time (seconds)", ifelse((stt$PANEL %% 4 == 3), "Confidence", "Difficulty")))
+# stt$measure_f = factor(stt$measure, levels=c("Accuracy","Time (seconds)", "Confidence", "Difficulty"));
+# 
+# stt$userLabel <- ifelse(stt$group=="2", 'User Driven', 'Supported')
+# 
+# 
+# print (stt)
+# 
+# 
+# g + geom_text(data = stt,
+#               aes(x =userLabel, y = 0, hjust = 0,label = paste(round(y,3) , '[' , round(ymin,3) ,  ',' , round(ymax,3) , ']',sep=" ")),
+#              color = "#5c5c5c",size=2,
+#               vjust = 1)  +
+#    facet_grid(taskType_f ~ measure_f,scales = "free")+
+#     scale_y_continuous(breaks = gridLines, limits = axisRange) #,labels = gridLabels) 
+
+ 
+filename <- paste("results_allTasks.pdf")
+ ggsave(filename, width = 10, height = 20, units = "in")
+
+
+ 
+```
 
 
 ```{r  fig.width=6, fig.height=4}
