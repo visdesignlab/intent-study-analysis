@@ -29,43 +29,216 @@ theme_set(theme_tidybayes() + panel_border() + background_grid())
 #df <- read.csv("../results/pilot/CSV/TidyR.csv")
 df <- read.csv("../results/pilot/CSV/TidyR.csv")
 dfp <- read.csv("../results/pilot/CSV/participantInfoTidyR.csv")
-```
 
-
-```{r fig.width=10, fig.height=4 }
-
-
-filteredData <- dfp %>% 
-  filter(type=="feedback")
+filteredData <- df %>% 
+  filter(measure=="difficulty" | measure == "confidence" | measure=="accuracy" | measure == "secondsOnTask")
 
 
   filteredData$value = as.numeric( as.character(filteredData$value ))
   
-  print(filteredData)
-  g<- filteredData %>% 
-  ggplot( aes(x=measure, y=value) ) +
-    geom_jitter( shape=1 , colour = "grey", position = position_jitter(w = 0.3, h = 0)) +
+  filteredData %>% 
+mutate( userDriven = as.character(userDriven) ) 
+  
+  
+labels.measure <- c(
+  "secondsOnTask"  = "Time (minutes)",
+  "accuracy"= "Accuracy",
+  "difficulty"= "Difficulty",
+  "confidence" = "Confidence"
+)
+
+```
+
+
+
+
+```{r fig.width=8, fig.height=4 }
+
+
+dfp_filtered = dfp %>% 
+  filter(type=="feedback");
+
+
+dfp_filtered$value = as.numeric( as.character(dfp_filtered$value ))
+ 
+ dfp_filtered%>% 
+  ggplot( aes(x=0, y=value) ) +
+    geom_jitter( shape=1 , color="grey", position = position_jitter(w = 0.1, h = 0)) +
+       geom_violin(show.legend=FALSE,alpha=0.5) +
+
     stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
   # ylim(0,100) +
    # xlim(-.25,.25) +
   coord_flip() +
-  labs(y="Score", x = 'Feedback Question')
-
-    # facet_grid(. ~ userDriven)
+    facet_grid(measure ~ .)+
+  theme(strip.text.y = element_text(angle=0))
 
 # testData <- ggplot_build(g)$data
 stg <- ggplot_build(g)$data[[2]]
 print (stg)
 
+
 # //add userDriven column
 
 # stg$userDriven <- ifelse(stg$PANEL==1, "manual", "supported")
-g + geom_text(data = stg,
-              aes(x = x, y = 0.85, label = round(y,2)),
-              color = "blue", size=3,
-              vjust = 1)  +
-  # facet_grid(. ~ userDriven)+
-   labs(y="Score", x = 'Feedback Question')
+# g + geom_text(data = stg,
+#               aes(x = x, y = 0.1, label = round(y,3)),
+#               color = "blue", size=3,
+#               vjust = 1)  +
+#   facet_grid(. ~ userDriven)+
+#    labs(y="Accuracy", x = 'Task Group')
+
+```
+
+```{r  fig.width=6, fig.height=4}
+# 
+# hist(dfp_filtered$value, main="Feedback Count",
+# xlab="1 - 5 Likert Scale",
+# xlim=c(0,5),
+# col="darkmagenta") +
+#   facet_grid(measure ~ .)
+
+
+ggplot(dfp_filtered, aes(x=value)) +
+  geom_histogram() +
+   # coord_flip() +
+      stat_summary(fun.data = "mean_cl_boot", aes(x = 0.1, y = value, xintercept = stat(y)),geom = "vline",  colour = "red", size = 0.5, alpha=0.5) +
+
+  facet_grid(measure ~ .)+
+    theme(strip.text.y = element_text(angle=0))
+
+
+
+```
+
+```{r  fig.width=6, fig.height=4}
+# 
+# hist(dfp_filtered$value, main="Feedback Count",
+# xlab="1 - 5 Likert Scale",
+# xlim=c(0,5),
+# col="darkmagenta") +
+#   facet_grid(measure ~ .)
+
+dfp %>% 
+  filter(type=="demographics" & measure == 'birthCountry') %>% 
+ggplot( aes(x=value)) +
+  geom_histogram(stat="count") +
+   coord_flip() +
+  xlab("Birth Country")
+
+ ggsave('demo_birthCountry.pdf', width = 6, height = 4, units = "in")
+
+ 
+ dfp %>% 
+  filter(type=="demographics" & measure == 'employment') %>% 
+ggplot( aes(x=value)) +
+  geom_histogram(stat="count") +
+   coord_flip() +
+  xlab("Employment")
+
+ ggsave('demo_employment', width = 6, height = 4, units = "in")
+
+ 
+ 
+ dfp %>% 
+  filter(type=="demographics" & measure == 'nationality') %>% 
+ggplot( aes(x=value)) +
+  geom_histogram(stat="count") +
+   coord_flip() +
+  xlab("Nationality")
+
+ ggsave('demo_birthCountry.pdf', width = 6, height = 4, units = "in")
+ 
+ dfp %>% 
+  filter(type=="demographics" & measure == 'Sex') %>% 
+ggplot( aes(x=value)) +
+  geom_histogram(stat="count") +
+   coord_flip() +
+  xlab("Birth Country")
+
+ ggsave('demo_birthCountry.pdf', width = 6, height = 4, units = "in")
+
+ 
+ 
+ dfp %>% 
+  filter(type=="demographics" & measure == 'Student') %>% 
+ggplot( aes(x=value)) +
+  geom_histogram(stat="count") +
+   coord_flip() +
+  xlab("Birth Country")
+
+ ggsave('demo_birthCountry.pdf', width = 6, height = 4, units = "in")
+
+
+ 
+ 
+ 
+      # stat_summary(fun.data = "count", aes(x = 0.1, y = value, xintercept = stat(y)),geom = "vline",  colour = "red", size = 0.5, alpha=0.5) +
+
+  # facet_grid(. ~ measure)+
+    # theme(strip.text.y = element_text(angle=0))
+
+
+
+```
+
+
+
+
+
+```{r fig.width=15, fig.height=4 }
+
+
+gridLines <- function(x) { 
+  if (max(x) < 2) seq(0, 1, .25) 
+  else if (max(x) == 7.3) seq (1,7,2)
+    else seq(0,6,2) 
+}
+
+axisRange <- function(x) { 
+  print ('x')
+  print (x)
+  if (max(as.numeric(x))> 5) c(0, 100) 
+  else if (max(as.numeric(x)) == 5) c(1,5)
+    else c(0,1) 
+}
+# 
+# gridLabels <- function(x) { 
+#   if (max(as.numeric(x)) < 1.1) seq(0, 1, .5) 
+#   else if (max(as.numeric(x)) == 7.3) seq (1,7,2)
+#     else seq(0, 5,1 )
+#     #else seq(0, round(max(x)), round(max(x)/3)) 
+# }
+
+
+
+  
+  # print(filteredData)
+  filteredData %>% 
+  ggplot( aes(x=userDriven, y=value) ) +
+    geom_jitter( shape=1 , colour = "grey", position = position_jitter(w = 0.3, h = 0)) +
+    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
+  # ylim(1,5) +
+   # xlim(-.25,.25) +
+  coord_flip() +
+  # labs(y="Score", x = 'Feedback Question') 
+
+    facet_grid(taskDifficulty ~ measure) +
+    scale_y_continuous(breaks = gridLines, limits = axisRange) #,labels = gridLabels) 
+# 
+# # testData <- ggplot_build(g)$data
+# stg <- ggplot_build(g)$data[[2]]
+# print (stg)
+# 
+# # //add userDriven column
+# 
+# # stg$userDriven <- ifelse(stg$PANEL==1, "manual", "supported")
+# g + geom_text(data = stg,
+#               aes(x = x, y = 0.85, label = round(y,2)),
+#               color = "blue", size=3,
+#               vjust = 1)  +
+#   # facet_grid(. ~ userDriven)+
+#    labs(y="Score", x = 'Feedback Question')
 ```
 
 
@@ -127,7 +300,31 @@ print (stg)
 
 ```{r fig.width=8, fig.height=6 }
 
-userDriven.colors <- c(manual ="#05b4dd", supported = "#f4aa4a")
+userDriven.colors <- c('User Driven' ="#05b4dd", Supported = "#f4aa4a")
+userDriven.labels <- c(manual ="User Driven", supported = "Supported")
+
+
+
+gridLines <- function(x) { 
+  if (max(x) < 2) seq(0, 1, .25) 
+  else if (max(x) == 7.3) seq (1,7,2)
+    else seq(0,6,2) 
+}
+
+axisRange <- function(x) { 
+  print ('x')
+  print (x)
+  if (max(as.numeric(x))> 5) c(0, 100) 
+  else if (max(as.numeric(x)) == 5) c(1,5)
+    else c(0,1) 
+}
+# 
+# gridLabels <- function(x) { 
+#   if (max(as.numeric(x)) < 1.1) seq(0, 1, .5) 
+#   else if (max(as.numeric(x)) == 7.3) seq (1,7,2)
+#     else seq(0, 5,1 )
+#     #else seq(0, round(max(x)), round(max(x)/3)) 
+# }
 
 
 
@@ -135,12 +332,13 @@ df_acc$custom_group <- ifelse(df_acc$taskDifficulty=='easy', "easy", "medium_har
 df_time$custom_group <- ifelse(df_time$taskDifficulty=='easy', "easy", "medium_hard")
 
 df_medium_hard = df_acc %>%
-  filter(custom_group=="medium_hard")
+  filter(custom_group=="medium_hard")  %>%
+   mutate( userLabel = userDriven.labels[as.character(userDriven)] )
 
 # df_medium_hard = df_time
 
 g<-df_medium_hard %>% 
-  ggplot( aes(x=userDriven, y=value, fill = userDriven, color = userDriven) ) +
+  ggplot( aes(x=userLabel, y=value, fill = userLabel, color = userLabel) ) +
     facet_grid(taskType ~ .)+
 
     # geom_jitter( shape=16 , colour='grey', alpha=0.7, size=2, position = position_jitter(w = 0.3, h = 0)) +
@@ -154,222 +352,124 @@ g<-df_medium_hard %>%
   coord_flip() +
       scale_color_manual(values=userDriven.colors)+
   scale_fill_manual(values=userDriven.colors)+
-  theme(strip.text.y = element_text(angle = 0))
+  theme(strip.text.y = element_text(angle = 0))+
+  scale_y_continuous(breaks = gridLines, limits = axisRange) #,labels = gridLabels) 
 
-
-
-
-# 
-# 
-# testData <- ggplot_build(g)$data
 stt <- ggplot_build(g)$data[[3]]
-print (stt)
 
-# //TIME
-# stt$PANEL <- as.numeric( as.character(stt$PANEL ))
-# stt$taskType <- ifelse((stt$PANEL <3), "cluster", ifelse((stt$PANEL <5), "linear regression", ifelse((stt$PANEL <7), "outlier", ifelse((stt$PANEL <9), "quadratic regression", "skyline"))))
-#
-# stt$custom_group <- ifelse(stt$PANEL%%2 == 0, "medium_hard", "easy")
-# stt$userDriven <- ifelse(stt$group=="1", 'manual', 'supported')
-
-
-# ACCURACY
 stt$PANEL <- as.numeric( as.character(stt$PANEL ))
 stt$taskType <- ifelse((stt$PANEL <2), "cluster", ifelse((stt$PANEL <3), "linear regression", ifelse((stt$PANEL <4), "outlier", ifelse((stt$PANEL <5), "quadratic regression", "skyline"))))
 
-stt$custom_group <- ifelse(stt$PANEL%%2 == 0, "medium_hard", "medium_hard")
-stt$userDriven <- ifelse(stt$group=="1", 'manual', 'supported')
+stt$userLabel <- ifelse(stt$group=="2", 'User Driven', 'Supported')
 
-
-
-
-
-print (stt)
 g + geom_text(data = stt,
-              aes(x =userDriven, y = 0.1, label = paste(round(y,3) , '[' , round(ymin,3) ,  ',' , round(ymax,3) , ']',sep=" ")),
-             color = "#5c5c5c",size=3,
+              aes(x =userLabel, y = 0.1,label = paste(round(y,3) , '[' , round(ymin,3) ,  ',' , round(ymax,3) , ']',sep=" ")),
+             color = "#5c5c5c",size=4,
               vjust = 1)  +
    facet_grid(taskType ~ .)+
-   labs(y="Accuracy", x = 'Mode')
+   labs(y="Accuracy", x = '')
 
 filename <- paste("results_violin_color.pdf")
- ggsave(filename, width = 8, height = 6, units = "in")
+ ggsave(filename, width = 8, height = 4, units = "in")
 
 
  
  
 ```
 
-```{r}
+```{r fig.width=10, fig.height=6 }
 
-vplot <- function(task) {
-  
-  print(task)
-
-sdf = df %>% filter( taskId == task )
-tt = as.character(sdf[1,]$taskTitle)
-prompt = as.character(sdf[1,]$taskPrompt)
-number = as.character(sdf[1,]$taskNumber)
-
-acc_stats = wilcox %>% filter( taskNumber == number & measure == "accuracy" )
-time_stats = wilcox %>% filter( taskNumber == number & measure == "time" )
-
-ci_acc_NL = ci_values %>% filter( taskNumber == number & measure == "accuracy" & vis== 'nodeLink' )
-ci_acc_AM = ci_values %>% filter( taskNumber == number & measure == "accuracy"  & vis== 'adjMatrix' )
-
-ci_time_NL = ci_values %>% filter( taskNumber == number & measure == "time" & vis== 'nodeLink' )
-ci_time_AM = ci_values %>% filter( taskNumber == number & measure == "time"  & vis== 'adjMatrix' )
-
+userDriven.colors <- c('User Driven' ="#05b4dd", Supported = "#f4aa4a")
+userDriven.labels <- c(manual ="User Driven", supported = "Supported")
 
 gridLines <- function(x) { 
-  if (max(x) < 2) seq(0, 1, .25) 
-  else if (max(x) == 7.3) seq (1,7,2)
-    else seq(0,6,2) 
+ if (max(as.numeric(x))<2) c(0,1)
+  else if (max(as.numeric(x))<10) c(0,5)
+  else (c(0,100))
 }
 
 axisRange <- function(x) { 
-  if (max(x) < 2) c(0, 1) 
-  else if (max(x) == 7) c(1,7)
-    else c(0,6) 
+  if (max(as.numeric(x))<2) c(0,1)
+   else  if (max(as.numeric(x))<10) c(0,5)
+  else (c(0,100))
+  # if (max(as.numeric(x))> 5) c(0, 100) 
+  # else if (max(as.numeric(x)) == 5) c(1,5)
+  #   else c(0,1) 
 }
-
-gridLabels <- function(x) { 
-  if (max(as.numeric(x)) < 1.1) seq(0, 1, .5) 
-  else if (max(as.numeric(x)) == 7.3) seq (1,7,2)
-    else seq(0, 5,1 )
-    #else seq(0, round(max(x)), round(max(x)/3)) 
-}
-
-ymin <- function(values, args) {
-  # yValues <- ci_values %>% 
-  # filter(taskId == task & measure==measure_) 
-  # 
-  # print(strsplit(yValues$M, 'M='))
-# df_tmp$value = as.numeric( as.character(df_tmp$value ))
 # 
-# nl = df_tmp %>% 
-#   filter(taskId == task & visType == "nodeLink")
-# 
-# adj = df_tmp %>% 
-#   filter(taskId == task & visType == "adjMatrix")
-# 
-  
-  
-  print(args)
-  return(0.75)
-}
-
-
-ciboot <- function(values) {
-#  values = as.numeric( as.character(values ))
-
-  ci <- boot.ci(
-    boot(data=values, statistic=mean.fun, R=1000, sim="ordinary")
-  )
-  
-  dfci = data.frame(
-    ymin = round( ci$bca[,4], 2),
-    ymax = round( ci$bca[,5], 2),
-    y = round( mean( values ), 2)
-    )
-  
-# S-task12  | node link
-# M=3.46~[3.02,4.75]
-# S-task12  | adj matrix
-# M=3.43~[3.05,3.94]
-
-  print(length(values))
-  print (dfci)
-  return(dfci)
-}
-
-plotData <-df %>% 
-  filter( measure == "accuracy" | measure == "minutesOnTask"  )  %>% 
-             # | measure == "difficulty" | measure == "confidence") %>% 
-    filter( taskId == task ) %>% 
-   mutate( value = as.numeric( as.character(value)) ) %>% 
-   mutate( label = labels.measure[as.character(measure)] ) %>% 
-     mutate( visLabel = labels.visType[as.character(visType)] ) %>% 
-
-  mutate( label = factor(label, levels=c("Accuracy","Time (minutes)", "Confidence","Difficulty")));
-
-
-
-# df %>% 
-#   filter( measure == "accuracy" | measure == "minutesToComplete" | 
-#             measure == "difficulty" | measure == "confidence") %>% 
-#     filter( taskId == task ) %>% 
-#   mutate( value = as.numeric( as.character(value)) ) %>% 
-#   ggplot(aes(x=visType, y=value, fill=visType, color=visType)) +
-#     facet_wrap(. ~ measure, scales="free", nrow=1) +
-#     geom_violin() +
-#     stat_summary(fun.data = "mean_cl_boot", colour = "green", size = 0.5, alpha=0.5) +
-#   coord_flip() + 
-#     labs(
-#       title = tt,
-#       subtitle = task
-#     )
-# 
-
-#d=data.frame(drink=c("coffee","tea","water"), mean=c(3,6,2), lower=c(2.6,5.6,1.8), upper=c(3.5,6.3,2.8))
-# ggplot() + 
-# geom_pointrange(data=d, mapping=aes(x=drink, y=mean, ymin=upper, ymax=lower)) 
-#
-#print(d);
-
-print(nrow(plotData))
-
-  ggplot(data=plotData, aes(x=visLabel, y=value, fill=visType, color=visType)) +
-    facet_wrap(. ~ label, scales="free", nrow=1) +
-    geom_violin(show.legend=FALSE) +
-  # fun.data = "mean_cl_boot"
-    stat_summary(fun.data=ciboot, colour = "black", size = 0.5, alpha=.5, show.legend=FALSE) +
-  coord_flip() + 
-    labs(
-      # title = paste(number, '-', tt),
-      # subtitle = paste(number, '-', tt) , #prompt,
-       # caption = paste('W=',acc_stats$W,' p=',acc_stats$'p.value', acc_stats$d, '    ', 'W=',time_stats$W,'p=',time_stats$'p.value', time_stats$d, '\n' ,ci_acc_NL$M,  ci_acc_AM$M, ci_time_NL$M, ci_time_AM$M )
-      #      caption = paste(' W=',acc_stats$W,' p=',acc_stats$'p.value', acc_stats$d, '    ', '         W=',time_stats$W,'p=',time_stats$'p.value', time_stats$d, '\n' ,'NL:', ci_acc_NL$M,  'AM:', ci_acc_AM$M, '         NL:', ci_time_NL$M,'AM:', ci_time_AM$M )
-
-    )+
-    theme ( plot.margin=grid::unit(c(0,0,0,0), "mm"), plot.caption = element_text(hjust = 0, vjust =10,  face = "italic")) + 
-    xlab ("") + 
-    ylab("")+
-    scale_fill_manual(values=visType.colors)+
-    scale_color_manual(values=visType.colors)      
-    # scale_y_continuous(breaks = gridLines, limits = axisRange) #,labels = gridLabels) 
-
-
-
-# filename <- paste("violins/",gsub(" ", "", paste(number,tt), fixed = TRUE),".pdf", sep="")
-#  ggsave(filename, width = 7, height = 1.5, units = "in")
-}
-
- ggplot(data=plotData, aes(x=visLabel, y=value, fill=visType, color=visType)) +
-    facet_wrap(. ~ label, scales="free", nrow=1) +
-    geom_violin(show.legend=FALSE,  fill=userDriven, color=userDriven) +
-  # fun.data = "mean_cl_boot"
-    stat_summary(fun.data=ciboot, colour = "black", size = 0.5, alpha=.5, show.legend=FALSE) +
-  coord_flip() + 
-    labs(
-      # title = paste(number, '-', tt),
-      # subtitle = paste(number, '-', tt) , #prompt,
-       # caption = paste('W=',acc_stats$W,' p=',acc_stats$'p.value', acc_stats$d, '    ', 'W=',time_stats$W,'p=',time_stats$'p.value', time_stats$d, '\n' ,ci_acc_NL$M,  ci_acc_AM$M, ci_time_NL$M, ci_time_AM$M )
-      #      caption = paste(' W=',acc_stats$W,' p=',acc_stats$'p.value', acc_stats$d, '    ', '         W=',time_stats$W,'p=',time_stats$'p.value', time_stats$d, '\n' ,'NL:', ci_acc_NL$M,  'AM:', ci_acc_AM$M, '         NL:', ci_time_NL$M,'AM:', ci_time_AM$M )
-
-    )+
-    theme ( plot.margin=grid::unit(c(0,0,0,0), "mm"), plot.caption = element_text(hjust = 0, vjust =10,  face = "italic")) + 
-    xlab ("") + 
-    ylab("")+
-    scale_fill_manual(values=visType.colors)+
-    scale_color_manual(values=visType.colors)      
-
- # vplot('S-task03')
-# 
-# for (task in seq(12,12,1)){
-#  vplot(paste("S-task", sprintf("%.2d",task),sep=""))
+# gridLabels <- function(x) { 
+#   if (max(as.numeric(x)) < 1.1) seq(0, 1, .5) 
+#   else if (max(as.numeric(x)) == 7.3) seq (1,7,2)
+#     else seq(0, 5,1 )
+#     #else seq(0, round(max(x)), round(max(x)/3)) 
 # }
+
+
+
+filteredData$custom_group <- ifelse(filteredData$taskDifficulty=='easy', "easy", "medium_hard")
+
+df_medium_hard = filteredData %>%
+  filter(custom_group=="medium_hard")  %>%
+   mutate( userLabel = userDriven.labels[as.character(userDriven)] )%>% 
+
+   mutate( label = labels.measure[as.character(measure)] ) %>% 
+  mutate( label = factor(label, levels=c("Accuracy","Time (seconds)", "Confidence","Difficulty")));
+
+   
+   
+# 
+# df$value = as.numeric( as.character(df$value )) 
+
+print (df_medium_hard)
+
+# df_medium_hard = df_time
+
+df_medium_hard %>% 
+  ggplot( aes(x=userLabel, y=value, fill = userLabel, color = userLabel) ) +
+    facet_grid(taskType ~ label, scales="free")+
+
+    geom_jitter( shape=16 , colour='grey', alpha=0.7, size=2, position = position_jitter(w = 0.3, h = 0)) +
+    geom_violin(show.legend=FALSE, alpha=0.5) +
+
+    stat_summary(fun.data = "mean_cl_boot", geom="linerange", size=1,alpha=1, colour = "#5c5c5c", show.legend=FALSE) +
+    stat_summary(fun.data = "mean_cl_boot", colour = "#5c5c5c", size = 1, alpha=0.5, show.legend=FALSE) +
+ 
+  # ylim(0,100) +
+   # ylim(0,100) +
+  coord_flip() +
+      scale_color_manual(values=userDriven.colors)+
+  scale_fill_manual(values=userDriven.colors)+
+  theme(strip.text.y = element_text(angle = 0))+
+  scale_y_continuous(breaks = gridLines, limits = axisRange) #,labels = gridLabels)
+
+stt <- ggplot_build(g)$data[[3]]
+
+
+stt$PANEL <- as.numeric( as.character(stt$PANEL ))
+stt$taskType <- ifelse((stt$PANEL <2), "cluster", ifelse((stt$PANEL <3), "linear regression", ifelse((stt$PANEL <4), "outlier", ifelse((stt$PANEL <5), "quadratic regression", "skyline"))))
+
+
+stt$userLabel <- ifelse(stt$group=="2", 'User Driven', 'Supported')
+
+print (stt)
+
+# g + geom_text(data = stt,
+#               aes(x =userLabel, y = 0.1,label = paste(round(y,3) , '[' , round(ymin,3) ,  ',' , round(ymax,3) , ']',sep=" ")),
+#              color = "#5c5c5c",size=4,
+#               vjust = 1)  +
+#   facet_grid(taskType ~ label, scales="free")
+# scale_y_continuous(breaks = gridLines, limits = axisRange) #,labels = gridLabels)
+
+# filename <- paste("results_violin.pdf")
+#  ggsave(filename, width = 8, height = 4, units = "in")
+
+
+
+
+
 ```
+
+
 
 ```{r}
 wtest <- function(type) {
@@ -1101,15 +1201,17 @@ m_acc %>%
 fct_unique(dfp$measure)
 
 dfp %>% 
-  filter(measure == "age") %>% 
-  mutate( value = as.numeric( as.character(value)) ) %>% 
+   filter(type == "demographics") %>% 
+  # mutate( value = as.numeric( as.character(value)) ) %>% 
   ggplot() +
+  coord_flip()+
+  facet_grid(. ~measure)+
     geom_density( aes(x=value), fill="blue", alpha=0.75 ) 
 
 dfp %>% 
-  filter(measure == "age") %>% 
-  mutate( value = as.numeric( as.character(value)) ) %>% 
-  ggplot(aes(x="age", y=value)) +
+  filter(type == "demographics") %>% 
+  # mutate( value = as.numeric( as.character(value)) ) %>% 
+  ggplot(aes(x="measure", y=value)) +
     geom_beeswarm(priority='random',cex=2, alpha=0.6) +
   coord_flip() +
   xlab("") + ylab("")
