@@ -31,6 +31,7 @@ df <- read.csv("../results/pilot/CSV/TidyR.csv")
 dfp <- read.csv("../results/pilot/CSV/participantInfoTidyR.csv")
 
 df$value = as.numeric( as.character(df$value ))
+df$userDriven = as.character(df$userDriven) 
 
 taskType.labels <- c(cluster ="Cluster", "linear regression" = "Linear Regression", 'quadratic regression' = "Quadratic Regression", skyline = "Multivariate Optimization", outlier = "Outlier")
 
@@ -60,14 +61,15 @@ df$userLabel = userDriven.labels[as.character(df$userDriven)]
 df$custom_group <- ifelse(df$taskDifficulty=='easy', "easy", "medium_hard")
 
 df_medium_hard = df %>%
-  filter(custom_group=="medium_hard")
+  filter(custom_group=="medium_hard")%>%
+filter(measure=="Accuracy")
 
 df_easy = df %>%
-  filter(custom_group=="easy")
+  filter(custom_group=="easy")%>%
+filter(measure=="Accuracy")
 
 df_acc <- df %>% 
-  filter(measure=="accuracy") %>% 
-  mutate( userDriven = as.character(userDriven) ) 
+  filter(measure=="Accuracy")
 
 df_acc$value = as.numeric( as.character(df_acc$value )) 
 
@@ -94,18 +96,19 @@ print(type)
 wilcox.test(t_manual$value, t_supported$value)
 }
 
-wtest(df_medium_hard,"cluster")
-wtest(df_medium_hard,"linear regression")
-wtest(df_medium_hard,"outlier")
-wtest(df_medium_hard,"quadratic regression")
-wtest(df_medium_hard,"skyline")
+
+wtest(df_medium_hard,"Cluster")
+wtest(df_medium_hard,"Linear Regression")
+wtest(df_medium_hard,"Outlier")
+wtest(df_medium_hard,"Quadratic Regression")
+wtest(df_medium_hard,"Multivariate Optimization")
 
 
-wtest(df_easy,"cluster")
-wtest(df_easy,"linear regression")
-wtest(df_easy,"outlier")
-wtest(df_easy,"quadratic regression")
-wtest(df_easy,"skyline")
+# wtest(df_medium_hard,"Cluster")
+# wtest(df_medium_hard,"Linear Regression")
+# wtest(df_medium_hard,"Outlier")
+# wtest(df_medium_hard,"Quadratic Regression")
+# wtest(df_medium_hard,"Multivariate Optimization")
 ```
 
 
@@ -147,11 +150,11 @@ cat( "\n" )
 }
 
 
-estext("cluster", "accuracy")
-estext("linear regression", "accuracy")
-estext("outlier", "accuracy")
-estext("quadratic regression", "accuracy")
-estext("skyline", "accuracy")
+# estext("Cluster", "Accuracy")
+# estext("Linear Regression", "Accuracy")
+# estext("Outlier", "Accuracy")
+# estext("Quadratic Regression", "Accuracy")
+# estext("Multivariate Optimization", "Accuracy")
 ```
 
 
@@ -188,7 +191,10 @@ axisRange <- function(x) {
 
 # df_medium_hard = df_time
 
-g<- df_easy %>% 
+df_data =  df %>%
+  filter(custom_group=="medium_hard")
+  
+g<- df_data %>% 
   ggplot( aes(x=userLabel, y=value, fill = userLabel, color = userLabel) ) +
     facet_grid(taskType_f ~ measure, scales="free")+
 
