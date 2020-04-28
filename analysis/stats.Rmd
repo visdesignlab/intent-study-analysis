@@ -57,7 +57,7 @@ userDriven.labels <- c(manual ="User Driven", supported = "Supported")
 
 df$userLabel = userDriven.labels[as.character(df$userDriven)]
 
-df$custom_group <- ifelse(df_acc$taskDifficulty=='easy', "easy", "medium_hard")
+df$custom_group <- ifelse(df$taskDifficulty=='easy', "easy", "medium_hard")
 
 df_medium_hard = df %>%
   filter(custom_group=="medium_hard")
