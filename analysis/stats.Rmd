@@ -217,7 +217,7 @@ stt <- ggplot_build(g)$data[[3]]
 print (stt)
 
 stt$PANEL <- as.numeric( as.character(stt$PANEL ))
-stt$taskType <- ifelse((stt$PANEL <5), "Cluster", ifelse((stt$PANEL <9), "Linear Regression", ifelse((stt$PANEL <12), "Quadratic Regression", ifelse((stt$PANEL <17), "Multivariate Optimization", "Outlier"))))
+stt$taskType <- ifelse((stt$PANEL <5), "Cluster", ifelse((stt$PANEL <9), "Linear Regression", ifelse((stt$PANEL <13), "Quadratic Regression", ifelse((stt$PANEL <17), "Multivariate Optimization", "Outlier"))))
 
 stt$taskType_f = factor(stt$taskType, levels=c("Cluster","Linear Regression", "Quadratic Regression","Multivariate Optimization", "Outlier"));
 
@@ -231,7 +231,7 @@ print (stt)
 
 
 g + geom_text(data = stt,
-              aes(x =userLabel, y = 0.5,label = paste(round(y,3) , '[' , round(ymin,3) ,  ',' , round(ymax,3) , ']',sep=" ")),
+              aes(x =userLabel, y = y,label = paste(round(y,3) , '[' , round(ymin,3) ,  ',' , round(ymax,3) , ']',sep=" ")),
              color = "#5c5c5c",size=2,
               vjust = 1)  +
    facet_grid(taskType_f ~ measure,scales = "free")+
