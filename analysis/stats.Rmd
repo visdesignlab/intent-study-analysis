@@ -150,7 +150,7 @@ cat( "\n" )
 }
 
 
-# estext("Cluster", "Accuracy")
+estext("Cluster", "Accuracy")
 # estext("Linear Regression", "Accuracy")
 # estext("Outlier", "Accuracy")
 # estext("Quadratic Regression", "Accuracy")
@@ -169,7 +169,7 @@ gridLines <- function(x) {
 
 axisRange <- function(x) { 
   if (max(as.numeric(x))<2) c(0,1)
-   else  if (max(as.numeric(x))<10) c(1,5)
+   else  if (max(as.numeric(x))<10) c(0,5)
   else (c(0,100))
 }
 # 
@@ -196,7 +196,7 @@ df_data =  df %>%
   
 g<- df_data %>% 
   ggplot( aes(x=userLabel, y=value, fill = userLabel, color = userLabel) ) +
-    facet_grid(taskType_f ~ measure, scales="free")+
+    facet_grid(taskType_f ~ measure_f, scales="free")+
 
     # geom_jitter( shape=16 , colour='grey', alpha=0.7, size=2, position = position_jitter(w = 0.3, h = 0)) +
     geom_violin(show.legend=FALSE) +
@@ -221,7 +221,7 @@ stt$taskType <- ifelse((stt$PANEL <5), "Cluster", ifelse((stt$PANEL <9), "Linear
 
 stt$taskType_f = factor(stt$taskType, levels=c("Cluster","Linear Regression", "Quadratic Regression","Multivariate Optimization", "Outlier"));
 
-stt$measure <- ifelse((stt$PANEL %% 4 == 0), "Accuracy", ifelse((stt$PANEL %% 4 == 1), "Time (seconds)", ifelse((stt$PANEL %% 4 == 2), "Confidence", "Difficulty")))
+stt$measure <- ifelse((stt$PANEL %% 4 == 1), "Accuracy", ifelse((stt$PANEL %% 4 == 2), "Time (seconds)", ifelse((stt$PANEL %% 4 == 3), "Confidence", "Difficulty")))
 stt$measure_f = factor(stt$measure, levels=c("Accuracy","Time (seconds)", "Confidence", "Difficulty"));
 
 stt$userLabel <- ifelse(stt$group=="2", 'User Driven', 'Supported')
@@ -234,13 +234,13 @@ g + geom_text(data = stt,
               aes(x =userLabel, y = y,label = paste(round(y,3) , '[' , round(ymin,3) ,  ',' , round(ymax,3) , ']',sep=" ")),
              color = "#5c5c5c",size=2,
               vjust = 1)  +
-   facet_grid(taskType_f ~ measure,scales = "free")+
+   facet_grid(taskType_f ~ measure_f,scales = "free")+
     scale_y_continuous(breaks = gridLines, limits = axisRange) #,labels = gridLabels) 
 
    # labs(y="Accuracy", x = '')
 # 
-# filename <- paste("results_violin_color_easy.pdf")
-#  ggsave(filename, width = 6, height = 5, units = "in")
+filename <- paste("results_all_panels.pdf")
+ ggsave(filename, width = 10, height = 5, units = "in")
 
 
  
