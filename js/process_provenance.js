@@ -419,7 +419,8 @@ async function exportTidy(mode, results) {
   // let excludeParticipants = 0;
   results.map((participantData) => {
     let id = participantData.data.participantId;
- if (participantData.data.keep){
+//  if (participantData.data.keep){
+  if (participantData.data.keep){
   Object.keys(participantData.data.tasks).filter(taskId=>participantData.data.tasks[taskId].training !== 'yes').map((taskId) => {
     
     

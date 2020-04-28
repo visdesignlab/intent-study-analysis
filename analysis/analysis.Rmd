@@ -31,7 +31,7 @@ df <- read.csv("../results/pilot/CSV/TidyR.csv")
 dfp <- read.csv("../results/pilot/CSV/participantInfoTidyR.csv")
 
 filteredData <- df %>% 
-  filter(measure=="difficulty" | measure == "confidence" | measure=="accuracy" | measure == "secondsOnTask")
+  filter( measure=="accuracy" | measure == "secondsOnTask")
 
 
   filteredData$value = as.numeric( as.character(filteredData$value ))
@@ -99,10 +99,12 @@ print (stg)
 #   facet_grid(measure ~ .)
 
 
-ggplot(dfp_filtered, aes(x=value)) +
-  geom_histogram() +
+ggplot(dfp_filtered) +
+  geom_histogram(aes(x=value)) +
    # coord_flip() +
-      stat_summary(fun.data = "mean_cl_boot", aes(x = 0.1, y = value, xintercept = stat(y)),geom = "vline",  colour = "red", size = 0.5, alpha=0.5) +
+  geom_jitter(aes(x=value, y = 0), shape=1 , color="grey", position = position_jitter(w = 0.1, h = 0)) +
+     coord_flip() +
+      stat_summary(fun.data = "mean_cl_boot", aes(x = 0, y = value),geom = "pointrange",  colour = "red", size = 0.5, alpha=0.5) +
 
   facet_grid(measure ~ .)+
     theme(strip.text.y = element_text(angle=0))
@@ -136,7 +138,7 @@ ggplot( aes(x=value)) +
    coord_flip() +
   xlab("Employment")
 
- ggsave('demo_employment', width = 6, height = 4, units = "in")
+ ggsave('demo_employment.pdf', width = 6, height = 4, units = "in")
 
  
  
@@ -147,27 +149,27 @@ ggplot( aes(x=value)) +
    coord_flip() +
   xlab("Nationality")
 
- ggsave('demo_birthCountry.pdf', width = 6, height = 4, units = "in")
+ ggsave('demo_nationality.pdf', width = 6, height = 4, units = "in")
  
  dfp %>% 
-  filter(type=="demographics" & measure == 'Sex') %>% 
+  filter(type=="demographics" & measure == 'sex') %>% 
 ggplot( aes(x=value)) +
   geom_histogram(stat="count") +
    coord_flip() +
-  xlab("Birth Country")
+  xlab("Sex")
 
- ggsave('demo_birthCountry.pdf', width = 6, height = 4, units = "in")
+ ggsave('demo_sex.pdf', width = 6, height = 4, units = "in")
 
  
  
  dfp %>% 
-  filter(type=="demographics" & measure == 'Student') %>% 
+  filter(type=="demographics" & measure == 'student') %>% 
 ggplot( aes(x=value)) +
   geom_histogram(stat="count") +
    coord_flip() +
-  xlab("Birth Country")
+  xlab("Student")
 
- ggsave('demo_birthCountry.pdf', width = 6, height = 4, units = "in")
+ ggsave('demo_student.pdf', width = 6, height = 4, units = "in")
 
 
  
@@ -442,16 +444,16 @@ df_medium_hard %>%
   theme(strip.text.y = element_text(angle = 0))+
   scale_y_continuous(breaks = gridLines, limits = axisRange) #,labels = gridLabels)
 
-stt <- ggplot_build(g)$data[[3]]
-
-
-stt$PANEL <- as.numeric( as.character(stt$PANEL ))
-stt$taskType <- ifelse((stt$PANEL <2), "cluster", ifelse((stt$PANEL <3), "linear regression", ifelse((stt$PANEL <4), "outlier", ifelse((stt$PANEL <5), "quadratic regression", "skyline"))))
-
-
-stt$userLabel <- ifelse(stt$group=="2", 'User Driven', 'Supported')
-
-print (stt)
+# stt <- ggplot_build(g)$data[[3]]
+# 
+# 
+# stt$PANEL <- as.numeric( as.character(stt$PANEL ))
+# stt$taskType <- ifelse((stt$PANEL <2), "cluster", ifelse((stt$PANEL <3), "linear regression", ifelse((stt$PANEL <4), "outlier", ifelse((stt$PANEL <5), "quadratic regression", "skyline"))))
+# 
+# 
+# stt$userLabel <- ifelse(stt$group=="2", 'User Driven', 'Supported')
+# 
+# print (stt)
 
 # g + geom_text(data = stt,
 #               aes(x =userLabel, y = 0.1,label = paste(round(y,3) , '[' , round(ymin,3) ,  ',' , round(ymax,3) , ']',sep=" ")),
