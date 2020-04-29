@@ -417,16 +417,19 @@ ggplot(dfp_filtered) +
   geom_point(
     data = mean_cl_boot_data,
     aes(x = Mean, y = -50),
-    colour = "#5c5c5c"
+      colour = "red",
+    alpha=0.5
   ) +
   geom_line(
     data = reshape2::melt(mean_cl_boot_data),
-    aes(x = value, y = -50)
+    aes(x = value, y = -50),
+    colour = "red",
+    alpha=1
   ) + 
   facet_grid(measure ~ .)+
   theme(strip.text.y = element_text(angle=0)) +
   scale_y_continuous(limits = c(-100, 100))+
-    scale_y_continuous(limits = c(-100,100))+
+    scale_y_continuous(limits = c(-100,100), breaks = c(0,100))+
     theme(
     panel.background = element_rect(fill = NA),
     panel.border = element_blank(),
@@ -459,16 +462,18 @@ ggplot(df_data_conf_diff, aes(x=value) ) +
   geom_point(
     data = mean_cl_boot_conf_diff,
     aes(x = Mean, y = -50),
-    colour = "#5c5c5c"
+     colour = "red",
+    alpha=.5
   ) +
   geom_line(
     data = reshape2::melt(mean_cl_boot_conf_diff),
     aes(x = value, y = -50),
-    color = "blue"
+     colour = "red",
+    alpha=1
   ) +
   facet_grid(taskType_f + userDriven ~ measure_f, scales="free") +
   theme(strip.text.y = element_text(angle = 0)) +
-  scale_y_continuous(limits = c(-100,100))+
+  scale_y_continuous(limits = c(-100,100), breaks = c(0,100))+
     theme(
     panel.background = element_rect(fill = NA),
     panel.border = element_blank(),
