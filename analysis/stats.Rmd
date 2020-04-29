@@ -416,6 +416,11 @@ ggplot(dfp_filtered) +
     data = reshape2::melt(mean_cl_boot_data),
     aes(x = value, y = -50)
   ) + 
+  geom_text(
+    data = mean_cl_boot_data,
+    aes(label = paste(round(Mean,3) , '[' , round(Lower,3) ,  ',' , round(Upper,3) , ']', sep=" "), y = -50, x = 1),
+    colour = "#5c5c5c"
+  ) +
   facet_grid(measure ~ .)+
   theme(strip.text.y = element_text(angle=0)) +
   scale_y_continuous(limits = c(-100, 100))+
@@ -463,7 +468,7 @@ ggplot(df_data_conf_diff, aes(x=value) ) +
   ) +
   geom_text(
     data = mean_cl_boot_conf_diff,
-    aes(label = , y = -0.25),
+    aes(label = paste(round(Mean,3) , '[' , round(Lower,3) ,  ',' , round(Upper,3) , ']', sep=" "), y = -0.25, x = 1),
     colour = "#5c5c5c"
   ) +
   facet_grid(taskType_f + userDriven ~ measure_f, scales="free") +
