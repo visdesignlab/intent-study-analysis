@@ -88,10 +88,12 @@ df_time$value = as.numeric( as.character(df_time$value ))
 ```{r}
 wtest <- function(data,type) {
 t_manual = data %>% 
-  filter(taskType == type & userDriven == "manual")
+  filter(taskType == type & userDriven == "manual") %>%
+  arrange(prolificId, taskId, dataset)
 
 t_supported = data %>% 
-  filter(taskType == type & userDriven == "supported")
+  filter(taskType == type & userDriven == "supported")%>%
+  arrange(prolificId, taskId, dataset)
 
 # p = 0.06-- promising at the pilot level
 print(type)
@@ -408,13 +410,54 @@ dfp_filtered$value = as.numeric( as.character(dfp_filtered$value ))
     facet_grid(measure ~ .)+
   theme(strip.text.y = element_text(angle=0))
 
-
+# Feedback histogram point and line data
+mean_cl_boot_data <- dfp_filtered %>%
+  group_by(measure) %>%
+  do(data.frame(rbind(Hmisc::smean.cl.boot(.$value))))
+ 
+# Feedback histogram
 ggplot(dfp_filtered) +
-  geom_histogram(aes(x=value)) +
-      stat_summary(fun.data = "mean_cl_boot", aes(x = 0, y = value),geom = "pointrange",  colour = "red", size = 0.5, alpha=0.5) +
-
+  geom_histogram(aes(x = value), binwidth = 1, boundary = 0.5) +
+  geom_point(
+    data = mean_cl_boot_data,
+    aes(x = Mean, y = -50),
+    colour = "#5c5c5c"
+  ) +
+  geom_line(
+    data = reshape2::melt(mean_cl_boot_data),
+    aes(x = value, y = -50)
+  ) + 
   facet_grid(measure ~ .)+
-    theme(strip.text.y = element_text(angle=0))
+  theme(strip.text.y = element_text(angle=0)) +
+  scale_y_continuous(limits = c(-100, 100))
+
+
+# Confidence and difficulty histogram point and line data
+mean_cl_boot_conf_diff <- df %>%
+  filter(measure=="Confidence" | measure=="Difficulty") %>%
+  group_by(measure_f, userDriven, taskType_f) %>%
+  do(data.frame(rbind(Hmisc::smean.cl.boot(.$value))))
+
+df_data_conf_diff<- df %>%
+  filter(measure=="Confidence" | measure=="Difficulty")
+
+# Confidence and difficulty histograms
+ggplot(df_data_conf_diff, aes(x=value) ) +
+  geom_histogram() + 
+  # geom_point(
+  #   data = mean_cl_boot_conf_diff,
+  #   aes(x = Mean, y = -50),
+  #   colour = "#5c5c5c"
+  # ) +
+  geom_line(
+    data = reshape2::melt(mean_cl_boot_conf_diff),
+    aes(x = value, y = -50),
+    color = "blue"
+  ) +
+  facet_grid(taskType_f + userDriven ~ measure_f, scales="free") +
+  theme(strip.text.y = element_text(angle = 0)) +
+  scale_y_continuous(limits = c(-100,100))
+
 
 
 
