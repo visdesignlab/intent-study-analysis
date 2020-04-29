@@ -38,20 +38,31 @@ function processProvenance(mode) {
   results.map((participantData) => {
     let id = participantData.data.participantId;
     let pCount = 0;
+    let taskKeys =     Object.keys(participantData.data.tasks).filter(taskId=>participantData.data.tasks[taskId].training !== 'yes');
     
-    Object.keys(participantData.data.tasks).filter(taskId=>participantData.data.tasks[taskId].training !== 'yes').map((taskId)=>{
+    taskKeys.map((taskId)=>{
       let taskInfo = participantData.data.tasks[taskId];
-  
       if (taskInfo['user-driven'] =="supported"){
         if (taskInfo.interactionDetails.autoCompleteUsed){
-          pCount = pCount +1
-        }  
+          taskInfo.keep = true;
+        } else {
+          taskInfo.keep = false;
+          //participant did not use autoComplete
+        }
+          // find equivalent manual task 
+          taskKeys.map((taskId)=>{
+            let taskInfo_f = participantData.data.tasks[taskId];
+            if (taskInfo_f.type == taskInfo.type && taskInfo_f.difficulty == taskInfo.difficulty && taskInfo['user-driven'] == 'manual'){
+              taskInfo_f.keep = taskInfo.keep;
+            }
+          })
+         
       } 
   
     })
   
     //add flag for participants with at least 4 tasks using autoComplete
-    participantData.data.keep = pCount >4;
+    // participantData.data.keep = pCount >4;
   })
 
 
@@ -178,7 +189,7 @@ function processProvenance(mode) {
       id: participant.id,
       totalStudyTime,
       timeOnTask,
-      keep:r.data.keep,
+      // keep:r.data.keep,
       provEvents: participantEventArray,
     });
     // console.log(participantEventArray.filter(e=>e.type === 'longAction' && e.endTime === undefined))
@@ -422,7 +433,7 @@ async function exportTidy(mode, results) {
   results.map((participantData) => {
     let id = participantData.data.participantId;
 //  if (participantData.data.keep){
-  if (participantData.data.keep){
+  
   Object.keys(participantData.data.tasks).filter(taskId=>participantData.data.tasks[taskId].training !== 'yes').map((taskId) => {
     
     
@@ -461,7 +472,7 @@ async function exportTidy(mode, results) {
     // }
     let timeOnTask = Date.parse(taskInfo.completedAt) - Date.parse(taskInfo.startedAt) - taskInfo.browsedAway;
     //If mode is supported, only add data if they actually picked a selection; 
-    let addRow = true;
+    let addRow = taskInfo.keep;
     
     // if (taskInfo['user-driven'] =="supported"){
     //   if (!taskInfo.interactionDetails.autoCompleteUsed){
@@ -483,11 +494,11 @@ async function exportTidy(mode, results) {
   });
 
 
- }
+
 
   });
 
-  console.log('removed ' , results.reduce((acc,cValue)=>!cValue.data.keep ? acc + 1 : acc,0), ' participants')
+  // console.log('removed ' , results.reduce((acc,cValue)=>!cValue.data.keep ? acc + 1 : acc,0), ' participants')
   console.log('manual ' , manual)
   console.log('supported', supported)
 

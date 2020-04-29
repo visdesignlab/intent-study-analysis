@@ -214,15 +214,15 @@ print (stt)
 
 g + geom_text(data = stt,
               aes(x =userLabel, y = 0, hjust = 0,label = paste(round(y,3) , '[' , round(ymin,3) ,  ',' , round(ymax,3) , ']',sep=" ")),
-             color = "#5c5c5c",size=2,
+             color = "#5c5c5c",size=4,
               vjust = 1)  +
-   facet_grid(taskType_f ~ measure_f,scales = "free")+
+   facet_grid(taskType_f ~ .)+
     scale_y_continuous(breaks = gridLines, limits = axisRange) #,labels = gridLabels) 
 
    # labs(y="Accuracy", x = '')
 # 
 filename <- paste("accuracy_medium_hard.pdf")
- ggsave(filename, width = 4, height = 5, units = "in")
+ ggsave(filename, width = 6, height = 3, units = "in")
  
 
 ```
@@ -263,7 +263,7 @@ axisRange <- function(x) {
 # df_medium_hard = df_time
 
 df_data =  df %>%
-  filter(custom_group=="medium_hard")
+  filter(custom_group=="easy")
 
 
   
@@ -312,7 +312,7 @@ g + geom_text(data = stt,
 
    # labs(y="Accuracy", x = '')
 # 
-filename <- paste("results_medium_hard.pdf")
+filename <- paste("results_easy.pdf")
  ggsave(filename, width = 10, height = 5, units = "in")
 
 
