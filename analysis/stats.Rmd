@@ -331,6 +331,7 @@ g + geom_text(
     panel.grid.major.x = element_line(color = "white"),
     panel.spacing.y = unit(1, "lines"),
     axis.line.y = element_blank(),
+    axis.line.x = element_blank(),
     axis.ticks.y = element_blank()
   ) 
 # 
@@ -359,59 +360,33 @@ axisRange <- function(x) {
 
 df_data = df
   
-df_data %>% 
-  ggplot( aes(x=userLabel, y=value, fill = userLabel, color = userLabel) ) +
-    facet_grid(taskId ~ measure_f, scales="free")+
-
-    # geom_jitter( shape=16 , colour='grey', alpha=0.7, size=2, position = position_jitter(w = 0.3, h = 0)) +
-    geom_violin(show.legend=FALSE) +
-
-    stat_summary(fun.data = "mean_cl_boot", geom="linerange", size=1,alpha=1, colour = "#5c5c5c", show.legend=FALSE) +
-    stat_summary(fun.data = "mean_cl_boot", colour = "#5c5c5c", size = 1, alpha=0.5, show.legend=FALSE) +
- 
-  # ylim(0,100) +
-   # ylim(0,100) +
-  coord_flip() +
-      scale_color_manual(values=userDriven.colors)+
-  scale_fill_manual(values=userDriven.colors)+
-  theme(strip.text.y = element_text(angle = 0))+
-  scale_y_continuous(breaks = gridLines, limits = axisRange) #,labels = gridLabels) 
-
-# stt <- ggplot_build(g)$data[[3]]
+# df_data %>% 
+#   ggplot( aes(x=userLabel, y=value, fill = userLabel, color = userLabel) ) +
+#     facet_grid(taskId ~ measure_f, scales="free")+
 # 
-# print (stt)
+#     # geom_jitter( shape=16 , colour='grey', alpha=0.7, size=2, position = position_jitter(w = 0.3, h = 0)) +
+#     geom_violin(show.legend=FALSE) +
 # 
-# stt$PANEL <- as.numeric( as.character(stt$PANEL ))
-# stt$taskType <- ifelse((stt$PANEL <5), "Cluster", ifelse((stt$PANEL <9), "Linear Regression", ifelse((stt$PANEL <13), "Quadratic Regression", ifelse((stt$PANEL <17), "Multivariate Optimization", "Outlier"))))
-# 
-# stt$taskType_f = factor(stt$taskType, levels=c("Cluster","Linear Regression", "Quadratic Regression","Multivariate Optimization", "Outlier"));
-# 
-# stt$measure <- ifelse((stt$PANEL %% 4 == 1), "Accuracy", ifelse((stt$PANEL %% 4 == 2), "Time (seconds)", ifelse((stt$PANEL %% 4 == 3), "Confidence", "Difficulty")))
-# stt$measure_f = factor(stt$measure, levels=c("Accuracy","Time (seconds)", "Confidence", "Difficulty"));
-# 
-# stt$userLabel <- ifelse(stt$group=="2", 'User Driven', 'Supported')
-# 
-# 
-# print (stt)
-# 
-# 
-# g + geom_text(data = stt,
-#               aes(x =userLabel, y = 0, hjust = 0,label = paste(round(y,3) , '[' , round(ymin,3) ,  ',' , round(ymax,3) , ']',sep=" ")),
-#              color = "#5c5c5c",size=2,
-#               vjust = 1)  +
-#    facet_grid(taskType_f ~ measure_f,scales = "free")+
-#     scale_y_continuous(breaks = gridLines, limits = axisRange) #,labels = gridLabels) 
-
- 
-filename <- paste("results_allTasks.pdf")
- ggsave(filename, width = 10, height = 20, units = "in")
+#     stat_summary(fun.data = "mean_cl_boot", geom="linerange", size=1,alpha=1, colour = "#5c5c5c", show.legend=FALSE) +
+#     stat_summary(fun.data = "mean_cl_boot", colour = "#5c5c5c", size = 1, alpha=0.5, show.legend=FALSE) +
+#  
+#   # ylim(0,100) +
+#    # ylim(0,100) +
+#   coord_flip() +
+#       scale_color_manual(values=userDriven.colors)+
+#   scale_fill_manual(values=userDriven.colors)+
+#   theme(strip.text.y = element_text(angle = 0))+
+#   scale_y_continuous(breaks = gridLines, limits = axisRange) #,labels = gridLabels) 
+#  
+# filename <- paste("results_allTasks.pdf")
+#  ggsave(filename, width = 10, height = 20, units = "in")
 
 
  
 ```
 
 
-```{r  fig.width=6, fig.height=4}
+```{r  fig.width=7, fig.height=8}
 
 dfp_filtered = dfp %>% 
   filter(type=="feedback");
@@ -419,17 +394,17 @@ dfp_filtered = dfp %>%
 
 dfp_filtered$value = as.numeric( as.character(dfp_filtered$value ))
  
- dfp_filtered%>% 
-  ggplot( aes(x=0, y=value) ) +
-    geom_jitter( shape=1 , color="grey", position = position_jitter(w = 0.1, h = 0)) +
-       geom_violin(show.legend=FALSE,alpha=0.5) +
-
-    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
-  # ylim(0,100) +
-   # xlim(-.25,.25) +
-  coord_flip() +
-    facet_grid(measure ~ .)+
-  theme(strip.text.y = element_text(angle=0))
+ # dfp_filtered%>% 
+ #  ggplot( aes(x=0, y=value) ) +
+ #    geom_jitter( shape=1 , color="grey", position = position_jitter(w = 0.1, h = 0)) +
+ #       geom_violin(show.legend=FALSE,alpha=0.5) +
+ # 
+ #    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
+ #  # ylim(0,100) +
+ #   # xlim(-.25,.25) +
+ #  coord_flip() +
+ #    facet_grid(measure ~ .)+
+ #  theme(strip.text.y = element_text(angle=0))
 
 # Feedback histogram point and line data
 mean_cl_boot_data <- dfp_filtered %>%
@@ -450,8 +425,24 @@ ggplot(dfp_filtered) +
   ) + 
   facet_grid(measure ~ .)+
   theme(strip.text.y = element_text(angle=0)) +
-  scale_y_continuous(limits = c(-100, 100))
+  scale_y_continuous(limits = c(-100, 100))+
+    scale_y_continuous(limits = c(-100,100))+
+    theme(
+    panel.background = element_rect(fill = NA),
+    panel.border = element_blank(),
+    panel.ontop = TRUE,
+    panel.grid.major.y = element_blank(),
+    panel.grid.major.x = element_line(color = "white"),
+    panel.spacing.y = unit(1, "lines"),
+    axis.line.y = element_blank(),
+    axis.ticks.y = element_blank()
+  ) 
 
+
+
+```
+
+```{r fig.width=10, fig.height=8}
 
 # Confidence and difficulty histogram point and line data
 mean_cl_boot_conf_diff <- df %>%
@@ -464,12 +455,12 @@ df_data_conf_diff<- df %>%
 
 # Confidence and difficulty histograms
 ggplot(df_data_conf_diff, aes(x=value) ) +
-  geom_histogram() + 
-  # geom_point(
-  #   data = mean_cl_boot_conf_diff,
-  #   aes(x = Mean, y = -50),
-  #   colour = "#5c5c5c"
-  # ) +
+  geom_histogram( binwidth = 1, boundary = 0.5) + 
+  geom_point(
+    data = mean_cl_boot_conf_diff,
+    aes(x = Mean, y = -50),
+    colour = "#5c5c5c"
+  ) +
   geom_line(
     data = reshape2::melt(mean_cl_boot_conf_diff),
     aes(x = value, y = -50),
@@ -477,9 +468,19 @@ ggplot(df_data_conf_diff, aes(x=value) ) +
   ) +
   facet_grid(taskType_f + userDriven ~ measure_f, scales="free") +
   theme(strip.text.y = element_text(angle = 0)) +
-  scale_y_continuous(limits = c(-100,100))
-
-
-
-
+  scale_y_continuous(limits = c(-100,100))+
+    theme(
+    panel.background = element_rect(fill = NA),
+    panel.border = element_blank(),
+    panel.ontop = TRUE,
+    panel.grid.major.y = element_blank(),
+    panel.grid.major.x = element_line(color = "white"),
+    panel.spacing.y = unit(1, "lines"),
+    axis.line.y = element_blank(),
+    axis.ticks.y = element_blank()
+  ) 
 ```
+
+
+
+
