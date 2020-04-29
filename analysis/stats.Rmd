@@ -7,31 +7,27 @@ output: html_document
   ## Setup
   
 ```{r setup}
+# Import libraries
 library(tidyverse)
 library(ggridges)
 library(pwr) 
 library(grid)
 library(gtable)
-
 library(boot)
 library(bootES)
-
-
 library(ggbeeswarm)
-
 library(tidybayes)
 library(cowplot)
 library(broom)
 
+# Set the plot themes
 theme_set(theme_tidybayes() + panel_border() + background_grid())
 
-
-
-#df <- read.csv("../results/pilot/CSV/TidyR.csv")
+# Import data
 df <- read.csv("../results/pilot/CSV/TidyR.csv")
 dfp <- read.csv("../results/pilot/CSV/participantInfoTidyR.csv")
 
-
+# Clean the data for processing
 df$value = as.numeric( as.character(df$value ))
 df$userDriven = as.character(df$userDriven) 
 
@@ -39,13 +35,9 @@ taskType.labels <- c(cluster ="Cluster", "linear regression" = "Linear Regressio
 
 measure.labels <- c(accuracy ="Accuracy", "secondsOnTask" = "Time (seconds)", 'confidence' = "Confidence", difficulty = "Difficulty")
 
-# 
  df$taskType = taskType.labels[as.character(df$taskType)]
   df$measure = measure.labels[as.character(df$measure)]
-
-# 
-# 
-# # cluster, linear regression, quadratic regression, skyline, outlier
+  
  df$taskType_f = factor(df$taskType, levels=c("Cluster","Linear Regression", "Quadratic Regression","Multivariate Optimization", "Outlier"));
   df$measure_f = factor(df$measure, levels=c("Accuracy","Time (seconds)", "Confidence", "Difficulty"));
 
@@ -450,25 +442,30 @@ mean_cl_boot_conf_diff <- df %>%
   group_by(measure_f, userDriven, taskType_f) %>%
   do(data.frame(rbind(Hmisc::smean.cl.boot(.$value))))
 
+df %>%
+  filter(measure_f=="Confidence" & userDriven=="supported" & taskType_f=="Outlier")
+
 df_data_conf_diff<- df %>%
   filter(measure=="Confidence" | measure=="Difficulty")
 
+reshape2::melt(mean_cl_boot_conf_diff)
+
 # Confidence and difficulty histograms
 ggplot(df_data_conf_diff, aes(x=value) ) +
-  geom_histogram( binwidth = 1, boundary = 0.5) + 
+  geom_histogram(aes(y=..density..), binwidth = 1, boundary = 0.5) + 
   geom_point(
     data = mean_cl_boot_conf_diff,
-    aes(x = Mean, y = -50),
+    aes(x = Mean, y = -0.25),
     colour = "#5c5c5c"
   ) +
   geom_line(
     data = reshape2::melt(mean_cl_boot_conf_diff),
-    aes(x = value, y = -50),
+    aes(x = value, y = -0.25),
     color = "blue"
   ) +
   facet_grid(taskType_f + userDriven ~ measure_f, scales="free") +
   theme(strip.text.y = element_text(angle = 0)) +
-  scale_y_continuous(limits = c(-100,100))+
+  scale_y_continuous(limits = c(-0.5,1))+
     theme(
     panel.background = element_rect(fill = NA),
     panel.border = element_blank(),
