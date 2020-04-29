@@ -32,6 +32,16 @@ function processProvenance(mode) {
   rawdata = fs.readFileSync("results/" + mode + "/JSON/study_provenance.json");
   let provenance = JSON.parse(rawdata);
 
+  //filter out bad participants: 
+  results = results.filter((participantData) => {
+    let id = participantData.data.participantId;
+    return id !== '5d49517db30ae500195794cd' && id != '5da71ab67547d30017c1970d'
+  })
+
+  provenance = provenance.filter(p=>p.id !== '5d49517db30ae500195794cd' && p.id != '5da71ab67547d30017c1970d')
+  
+  console.log(results.length)
+  
   //create events objects per participant;
   let events = [];
 
@@ -42,24 +52,38 @@ function processProvenance(mode) {
     
     taskKeys.map((taskId)=>{
       let taskInfo = participantData.data.tasks[taskId];
-      if (taskInfo['user-driven'] =="supported"){
+      // taskInfo.keep = true;
+      if (taskInfo['user-driven'] == "supported"){
         if (taskInfo.interactionDetails.autoCompleteUsed){
           taskInfo.keep = true;
-        } else {
+        } else { //participant did not use autoComplete
           taskInfo.keep = false;
-          //participant did not use autoComplete
         }
           // find equivalent manual task 
-          taskKeys.map((taskId)=>{
+          let manualTask = taskKeys.filter((taskId)=>{
             let taskInfo_f = participantData.data.tasks[taskId];
-            if (taskInfo_f.type == taskInfo.type && taskInfo_f.difficulty == taskInfo.difficulty && taskInfo['user-driven'] == 'manual'){
-              taskInfo_f.keep = taskInfo.keep;
-            }
+            return (taskInfo_f.group == taskInfo.group.replace('_supported_','_manual_'))
           })
-         
+          // console.log(manualTask.length)
+          if (manualTask[0]){
+            'found one'
+            participantData.data.tasks[manualTask[0]].keep = taskInfo.keep;
+          } else {
+            console.log('no manual task for ', taskInfo.group)
+          }         
       } 
+
+
   
     })
+
+    //see if any manual tasks did not get assigned a 'keep' flag. 
+    // taskKeys.filter((taskId)=>{
+    //   let taskInfo = participantData.data.tasks[taskId];
+    //   if (taskInfo.keep == undefined){
+    //     console.log('missing automated  task for ', taskInfo.group)
+    //   }
+    // })
   
     //add flag for participants with at least 4 tasks using autoComplete
     // participantData.data.keep = pCount >4;
@@ -502,8 +526,8 @@ async function exportTidy(mode, results) {
   console.log('manual ' , manual)
   console.log('supported', supported)
 
-  console.log(rRows.filter(r=>r.userDriven == 'manual').length)
-  console.log(rRows.filter(r=>r.userDriven == 'supported').length)
+  console.log(rRows.filter(r=>r.userDriven == 'manual').length  ,' manual rows')
+  console.log(rRows.filter(r=>r.userDriven == 'supported').length,' supported rows')
 
 
   csvWriter

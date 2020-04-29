@@ -1445,12 +1445,6 @@ prolificId,type,measure,value
 5e72bed5f23ae1224a3879de,demographics,sex,Male
 5e72bed5f23ae1224a3879de,demographics,student,No
 5e72bed5f23ae1224a3879de,results,averageAccuracy,0.9119377831489045
-5d49517db30ae500195794cd,demographics,birthCountry,Pakistan
-5d49517db30ae500195794cd,demographics,employment,Full-Time
-5d49517db30ae500195794cd,demographics,nationality,Pakistan
-5d49517db30ae500195794cd,demographics,sex,Male
-5d49517db30ae500195794cd,demographics,student,Yes
-5d49517db30ae500195794cd,results,averageAccuracy,0.8096792282736983
 5de8f79a41944102202bba86,feedback,How helpful is the “individual selection” of points feature?,3
 5de8f79a41944102202bba86,feedback,How helpful is the rectangle selection feature?,3
 5de8f79a41944102202bba86,feedback,How helpful is the paintbrush feature?,1
@@ -1736,21 +1730,6 @@ prolificId,type,measure,value
 5c87b4fc7e3a9f0016245fde,demographics,sex,Female
 5c87b4fc7e3a9f0016245fde,demographics,student,No
 5c87b4fc7e3a9f0016245fde,results,averageAccuracy,0.8180021259298607
-5da71ab67547d30017c1970d,feedback,How helpful is the “individual selection” of points feature?,5
-5da71ab67547d30017c1970d,feedback,How helpful is the rectangle selection feature?,1
-5da71ab67547d30017c1970d,feedback,How helpful is the paintbrush feature?,1
-5da71ab67547d30017c1970d,feedback,How easy was the prediction interface to use?,3
-5da71ab67547d30017c1970d,feedback,How accurate did you find the predictions?,2
-5da71ab67547d30017c1970d,feedback,How helpful did you find the predictions?,3
-5da71ab67547d30017c1970d,feedback,Do you prefer user-driven or computer supported selections?,2
-5da71ab67547d30017c1970d,feedback,How experienced are you with scatterplots?,3
-5da71ab67547d30017c1970d,feedback,How experienced are you with statistics?,3
-5da71ab67547d30017c1970d,demographics,birthCountry,Portugal
-5da71ab67547d30017c1970d,demographics,employment,Full-Time
-5da71ab67547d30017c1970d,demographics,nationality,Portugal
-5da71ab67547d30017c1970d,demographics,sex,Male
-5da71ab67547d30017c1970d,demographics,student,No
-5da71ab67547d30017c1970d,results,averageAccuracy,0.6808867403991328
 5cd30b2041a6b8001874c41f,feedback,How helpful is the “individual selection” of points feature?,5
 5cd30b2041a6b8001874c41f,feedback,How helpful is the rectangle selection feature?,2
 5cd30b2041a6b8001874c41f,feedback,How helpful is the paintbrush feature?,5
