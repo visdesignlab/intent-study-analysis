@@ -212,7 +212,8 @@ print (stt)
 
 
 g + geom_text(data = stt,
-              aes(x =userLabel, y = 0, hjust = 0,label = paste(round(y,3) , '[' , round(ymin,3) ,  ',' , round(ymax,3) , ']',sep=" ")),
+              aes(x =userLabel, y = 0, hjust = 0,label = paste(round(y,3) , '[' , round(ymin,3) ,  ',' , round(ymax,3) , ']',
+                                                                sep=" ")),
              color = "#5c5c5c",size=4,
               vjust = 1)  +
    facet_grid(taskType_f ~ .)+
@@ -442,9 +443,6 @@ mean_cl_boot_conf_diff <- df %>%
   group_by(measure_f, userDriven, taskType_f) %>%
   do(data.frame(rbind(Hmisc::smean.cl.boot(.$value))))
 
-df %>%
-  filter(measure_f=="Confidence" & userDriven=="supported" & taskType_f=="Outlier")
-
 df_data_conf_diff<- df %>%
   filter(measure=="Confidence" | measure=="Difficulty")
 
@@ -463,9 +461,14 @@ ggplot(df_data_conf_diff, aes(x=value) ) +
     aes(x = value, y = -0.25),
     color = "blue"
   ) +
+  geom_text(
+    data = mean_cl_boot_conf_diff,
+    aes(label = , y = -0.25),
+    colour = "#5c5c5c"
+  ) +
   facet_grid(taskType_f + userDriven ~ measure_f, scales="free") +
   theme(strip.text.y = element_text(angle = 0)) +
-  scale_y_continuous(limits = c(-0.5,1))+
+  scale_y_continuous(limits = c(-0.5,0.75))+
     theme(
     panel.background = element_rect(fill = NA),
     panel.border = element_blank(),
