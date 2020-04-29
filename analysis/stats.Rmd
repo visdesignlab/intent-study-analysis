@@ -305,17 +305,26 @@ stt$userLabel <- ifelse(stt$group=="2", 'User Driven', 'Supported')
 print (stt)
 
 
-g + geom_text(data = stt,
-              aes(x =userLabel, y = 0, hjust = 0,label = paste(round(y,3) , '[' , round(ymin,3) ,  ',' , round(ymax,3) , ']',sep=" ")),
-             color = "#5c5c5c",size=2,
-              vjust = 1)  +
-   facet_grid(taskType_f ~ measure_f,scales = "free")+
-    scale_y_continuous(breaks = gridLines, limits = axisRange) #,labels = gridLabels) 
-
-   # labs(y="Accuracy", x = '')
+g + geom_text(
+  data = stt,
+  aes(x =userLabel, y = 0, hjust = 0,label = paste(round(y,3) , '[' , round(ymin,3) ,  ',' , round(ymax,3) , ']',sep=" ")),
+  color = "#5c5c5c",size=2,
+  vjust = 1
+  ) +
+  facet_grid(taskType_f ~ measure_f,scales = "free") +
+  theme(
+    panel.background = element_rect(fill = NA),
+    panel.border = element_blank(),
+    panel.ontop = TRUE,
+    panel.grid.major.y = element_blank(),
+    panel.grid.major.x = element_line(color = "white"),
+    panel.spacing.y = unit(1, "lines"),
+    axis.line.y = element_blank(),
+    axis.ticks.y = element_blank()
+  ) 
 # 
-filename <- paste("results_medium_hard.pdf")
- ggsave(filename, width = 10, height = 5, units = "in")
+# filename <- paste("results_medium_hard.pdf")
+#  ggsave(filename, width = 10, height = 5, units = "in")
 
 
  
