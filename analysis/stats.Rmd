@@ -26,9 +26,11 @@ library(broom)
 theme_set(theme_tidybayes() + panel_border() + background_grid())
 
 
+
 #df <- read.csv("../results/pilot/CSV/TidyR.csv")
 df <- read.csv("../results/pilot/CSV/TidyR.csv")
 dfp <- read.csv("../results/pilot/CSV/participantInfoTidyR.csv")
+
 
 df$value = as.numeric( as.character(df$value ))
 df$userDriven = as.character(df$userDriven) 
@@ -93,7 +95,7 @@ t_supported = data %>%
 
 # p = 0.06-- promising at the pilot level
 print(type)
-wilcox.test(t_manual$value, t_supported$value)
+wilcox.test(t_manual$value, t_supported$value, paired=T)
 }
 
 
@@ -157,6 +159,74 @@ estext("Outlier", "Accuracy")
 estext("Quadratic Regression", "Accuracy")
 estext("Multivariate Optimization", "Accuracy")
 ```
+
+
+
+```{r fig.width=4, fig.height=4 }
+
+gridLines <- function(x) { 
+ if (max(as.numeric(x))<2) seq(0,1, .25) 
+  else if (max(as.numeric(x))<10) seq(1, 5, 1) 
+  else (c(0,100))
+}
+
+
+
+ filteredData = df %>%
+  filter(custom_group=="medium_hard")  %>%
+filter(measure=="Accuracy")
+  
+
+  
+g<- filteredData %>% 
+  ggplot( aes(x=userLabel, y=value, fill = userLabel, color = userLabel) ) +
+    facet_grid(taskType_f ~ .)+
+
+    # geom_jitter( shape=16 , colour='grey', alpha=0.7, size=2, position = position_jitter(w = 0.3, h = 0)) +
+    geom_violin(show.legend=FALSE) +
+
+    stat_summary(fun.data = "mean_cl_boot", geom="linerange", size=1,alpha=1, colour = "#5c5c5c", show.legend=FALSE) +
+    stat_summary(fun.data = "mean_cl_boot", colour = "#5c5c5c", size = 1, alpha=0.5, show.legend=FALSE) +
+ 
+  # ylim(0,100) +
+   # ylim(0,100) +
+  coord_flip() +
+      scale_color_manual(values=userDriven.colors)+
+  scale_fill_manual(values=userDriven.colors)+
+  theme(strip.text.y = element_text(angle = 0))+
+    scale_y_continuous(breaks = gridLines, limits = axisRange) #,labels = gridLabels) 
+
+
+stt <- ggplot_build(g)$data[[3]]
+
+print (stt)
+
+stt$PANEL <- as.numeric( as.character(stt$PANEL ))
+stt$taskType <- ifelse((stt$PANEL <2), "Cluster", ifelse((stt$PANEL <3), "Linear Regression", ifelse((stt$PANEL <4), "Quadratic Regression", ifelse((stt$PANEL <5), "Multivariate Optimization", "Outlier"))))
+
+stt$taskType_f = factor(stt$taskType, levels=c("Cluster","Linear Regression", "Quadratic Regression","Multivariate Optimization", "Outlier"));
+
+stt$userLabel <- ifelse(stt$group=="2", 'User Driven', 'Supported')
+
+
+print (stt)
+
+
+g + geom_text(data = stt,
+              aes(x =userLabel, y = 0, hjust = 0,label = paste(round(y,3) , '[' , round(ymin,3) ,  ',' , round(ymax,3) , ']',sep=" ")),
+             color = "#5c5c5c",size=2,
+              vjust = 1)  +
+   facet_grid(taskType_f ~ measure_f,scales = "free")+
+    scale_y_continuous(breaks = gridLines, limits = axisRange) #,labels = gridLabels) 
+
+   # labs(y="Accuracy", x = '')
+# 
+filename <- paste("accuracy_medium_hard.pdf")
+ ggsave(filename, width = 4, height = 5, units = "in")
+ 
+
+```
+
 
 
 

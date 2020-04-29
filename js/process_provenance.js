@@ -416,6 +416,8 @@ async function exportTidy(mode, results) {
   rRows = [];
 
   let count = 0;
+  let manual = 0;
+  let supported = 0;
   // let excludeParticipants = 0;
   results.map((participantData) => {
     let id = participantData.data.participantId;
@@ -446,6 +448,14 @@ async function exportTidy(mode, results) {
       };
     };
 
+    if (taskInfo["user-driven"] == 'manual'){
+      manual = manual + 1;
+    }
+
+    if (taskInfo["user-driven"] == 'supported'){
+      supported = supported + 1;
+    }
+
     // if (taskInfo.browsedAway>0){
     //   console.log('participant ' , participantData.data.participantId, '  browsed away for ', taskInfo.browsedAway/1000/60 , ' during task ',taskInfo.id)
     // }
@@ -453,12 +463,12 @@ async function exportTidy(mode, results) {
     //If mode is supported, only add data if they actually picked a selection; 
     let addRow = true;
     
-    if (taskInfo['user-driven'] =="supported"){
-      if (!taskInfo.interactionDetails.autoCompleteUsed){
-        addRow = false;
-        count = count +1;
-      }  
-    } 
+    // if (taskInfo['user-driven'] =="supported"){
+    //   if (!taskInfo.interactionDetails.autoCompleteUsed){
+    //     addRow = false;
+    //     count = count +1;
+    //   }  
+    // } 
 
     
 
@@ -478,6 +488,12 @@ async function exportTidy(mode, results) {
   });
 
   console.log('removed ' , results.reduce((acc,cValue)=>!cValue.data.keep ? acc + 1 : acc,0), ' participants')
+  console.log('manual ' , manual)
+  console.log('supported', supported)
+
+  console.log(rRows.filter(r=>r.userDriven == 'manual').length)
+  console.log(rRows.filter(r=>r.userDriven == 'supported').length)
+
 
   csvWriter
     .writeRecords(rRows)
