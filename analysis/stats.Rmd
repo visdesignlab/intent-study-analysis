@@ -372,14 +372,13 @@ ggplot(dfp_filtered) +
   ) + 
   geom_text(
     data = mean_cl_boot_data,
-    aes(label = paste(round(Mean,3) , '[' , round(Lower,3) ,  ',' , round(Upper,3) , ']', sep=" "), y = -50, x = 0,  hjust = 0),
+    aes(label = paste(round(Mean,3) , '[' , round(Lower,3) ,  ',' , round(Upper,3) , ']', sep=" "), y = -50, x = 1,  hjust = 0),
     colour = "#5c5c5c"
   ) +
   facet_grid(measure ~ .)+
-  theme(strip.text.y = element_text(angle=0)) +
-  scale_y_continuous(limits = c(-100, 100))+
-    scale_y_continuous(limits = c(-100,100), breaks = c(0,100))+
-    theme(
+  # scale_x_discrete(limits = c(1,2,3,4,5)) + 
+  scale_y_continuous(limits = c(-100,100), breaks = c(0,100))+
+  theme(
     panel.background = element_rect(fill = NA),
     panel.border = element_blank(),
     panel.grid.major.y = element_blank(),
@@ -388,7 +387,7 @@ ggplot(dfp_filtered) +
     axis.line.y = element_blank(),
     axis.ticks.y = element_blank(),
     strip.background = element_blank(),
-    strip.text = element_text(hjust = 0)
+    strip.text = element_text(hjust = 0, angle = 0)
   ) 
 
 filename <- paste("survey_responses.pdf")
