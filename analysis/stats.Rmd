@@ -19,222 +19,238 @@ library(ggbeeswarm)
 library(tidybayes)
 library(cowplot)
 library(broom)
+library(scales)
 
 # Set the plot themes
 theme_set(theme_tidybayes() + panel_border() + background_grid())
 
 # Import data
-df <- read.csv("../results/pilot/CSV/TidyR.csv")
-dfp <- read.csv("../results/pilot/CSV/participantInfoTidyR.csv")
+df = read.csv("../results/pilot/CSV/TidyR.csv")
+dfp = read.csv("../results/pilot/CSV/participantInfoTidyR.csv")
 
-# Clean the data for processing
+# Update numeric and character variable types
 df$value = as.numeric( as.character(df$value ))
 df$userDriven = as.character(df$userDriven) 
-
-taskType.labels <- c(cluster ="Cluster", "linear regression" = "Linear Regression", 'quadratic regression' = "Quadratic Regression", skyline = "Multivariate Optimization", outlier = "Outlier")
-
-measure.labels <- c(accuracy ="Accuracy", "secondsOnTask" = "Time (seconds)", 'confidence' = "Confidence", difficulty = "Difficulty")
-
- df$taskType = taskType.labels[as.character(df$taskType)]
-  df$measure = measure.labels[as.character(df$measure)]
   
- df$taskType_f = factor(df$taskType, levels=c("Cluster","Linear Regression", "Quadratic Regression","Multivariate Optimization", "Outlier"));
-  df$measure_f = factor(df$measure, levels=c("Accuracy","Time (seconds)", "Confidence", "Difficulty"));
+# Refactor the factor variables into the right order
+df$taskType_f = factor(
+  df$taskType, 
+  levels=c("cluster","linear regression", "quadratic regression","skyline", "outlier"),
+  labels=c("Cluster","Linear\nRegression", "Quadratic\nRegression","Multivariate\nOptimization", "Outlier")
+)
 
+df$measure_f = factor(
+  df$measure, 
+  levels = c("accuracy","secondsOnTask", "confidence", "difficulty"),
+  labels = c("Accuracy","Time (seconds)", "Confidence", "Difficulty")
+)
 
+df$userLabel = factor(
+  df$userDriven, 
+  levels = c("supported","manual"),
+  labels = c("CD","UD")
+)
 
-```
+# Create new variables
+df$custom_group = ifelse(df$taskDifficulty == 'easy', "easy", "medium_hard")
 
-```{r}
-
-userDriven.colors <- c('User Driven' ="#05b4dd", Supported = "#f4aa4a")
-userDriven.labels <- c(manual ="User Driven", supported = "Supported")
-
-df$userLabel = userDriven.labels[as.character(df$userDriven)]
-
-df$custom_group <- ifelse(df$taskDifficulty=='easy', "easy", "medium_hard")
-
+# Filter the dataframe into some commonly used smaller sets
 df_medium_hard = df %>%
-  filter(custom_group=="medium_hard")%>%
-filter(measure=="Accuracy")
+  filter(custom_group == "medium_hard" & measure_f == "Accuracy")
 
 df_easy = df %>%
-  filter(custom_group=="easy")%>%
-filter(measure=="Accuracy")
+  filter(custom_group == "easy" & measure_f == "Accuracy")
 
-df_acc <- df %>% 
-  filter(measure=="Accuracy")
+df_acc = df %>% 
+  filter(measure_f=="Accuracy")
 
-df_acc$value = as.numeric( as.character(df_acc$value )) 
+df_time = df %>% 
+  filter(measure_f=="Time (seconds)")
 
-df_time <- df %>% 
-  filter(measure=="secondsOnTask") 
-
-df_time$value = as.numeric( as.character(df_time$value ))
-
-
-
+# Set plotting colors
+userDriven.colors = c("UD" ="#05b4dd", "CD" = "#f4aa4a")
 ```
 
 
+
 ```{r}
-wtest <- function(data,type) {
-t_manual = data %>% 
-  filter(taskType == type & userDriven == "manual") %>%
-  arrange(prolificId, taskId, dataset)
-
-t_supported = data %>% 
-  filter(taskType == type & userDriven == "supported")%>%
-  arrange(prolificId, taskId, dataset)
-
-# p = 0.06-- promising at the pilot level
-print(type)
-wilcox.test(t_manual$value, t_supported$value, paired=T)
+# Generates the paired wilcox test for a taskType with a given dataset
+wtest = function(data, type) {
+  t_manual = data %>% 
+    filter(taskType_f == type & userDriven == "manual") %>%
+    arrange(prolificId, taskId, dataset)
+  
+  t_supported = data %>% 
+    filter(taskType_f == type & userDriven == "supported")%>%
+    arrange(prolificId, taskId, dataset)
+  
+  print(type)
+  test = wilcox.test(t_manual$value, t_supported$value, paired = TRUE)
+  print(test)
+  
+  return(
+    list(
+      statistic = test$statistic,
+      p.value = test$p.value,
+      sample.size1 = t_manual %>% nrow(),
+      sample.size2 = t_supported %>% nrow()
+    )
+  )
 }
 
-
-wtest(df_medium_hard,"Cluster")
-wtest(df_medium_hard,"Linear Regression")
-wtest(df_medium_hard,"Outlier")
-wtest(df_medium_hard,"Quadratic Regression")
-wtest(df_medium_hard,"Multivariate Optimization")
-
-
-# wtest(df_medium_hard,"Cluster")
-# wtest(df_medium_hard,"Linear Regression")
-# wtest(df_medium_hard,"Outlier")
-# wtest(df_medium_hard,"Quadratic Regression")
-# wtest(df_medium_hard,"Multivariate Optimization")
+med_hard_cluster_wilcox = wtest(df_medium_hard, "Cluster")
+med_hard_LR_wilcox = wtest(df_medium_hard, "Linear\nRegression")
+med_hard_outlier_wilcox = wtest(df_medium_hard, "Outlier")
+med_hard_QR_wilcox = wtest(df_medium_hard, "Quadratic\nRegression")
+med_hard_MO_wilcox = wtest(df_medium_hard, "Multivariate\nOptimization")
 ```
 
 
 ```{r}
+# Generates the bootstrapped effect size for a given type and measure
+estext = function(measure_, type) {
+  # Filter the dataset based on measure and type
+  filtered_data = df %>% 
+    filter(measure_f == measure_ & taskType_f == type)
+  
+  # Get the levels
+  lvs = levels(as.factor(filtered_data[["userDriven"]]))
 
-
-reportES <- function(data, attr, group) {
-
-  lvs <- levels(as.factor(data[[group]]))
-
-  b <- bootES(data,
-              data.col=attr,
-              group.col=group,
-              contrast=lvs, # normal cases c(group1=1, group2=-1), but for 2 groups, it's simplified.
-              effect.type="cohens.d")
-
+  # Do the bootstrap
+  b = bootES(
+    filtered_data,
+    data.col="value",
+    group.col="userDriven",
+    contrast=lvs, # normal cases c(group1=1, group2=-1), but for 2 groups, it's simplified.
+    effect.type="cohens.d"
+  )
+  
+  # Return the data
+  cat(paste0(type, "\n"))
   cat( "d=", round( b$t0, 2), "~",
        "[", round( b$bounds[1], 2), ",",
-       round( b$bounds[2], 2), "]",
+       round( b$bounds[2], 2), "]",  "\n",  "\n",
        sep="")
-}
-
-estext <- function(type, measure_) {
   
-df_tmp <- df %>% 
-  filter(measure==measure_) 
-
-# df_tmp$value = as.numeric( as.character(df_tmp$value ))
-
-esd = df_tmp %>% 
-  filter(taskType == type)
-
-cat( paste(type, "\n") )
-reportES(esd, "value", "userDriven")
-cat( "\n" )
-cat( "\n" )
-
-
+  return(
+    list(
+      lower = b$bounds[1], 
+      mean = b$t0, 
+      upper = b$bounds[2]
+    )
+  )
 }
 
-
-
-estext("Cluster", "Accuracy")
-estext("Linear Regression", "Accuracy")
-estext("Outlier", "Accuracy")
-estext("Quadratic Regression", "Accuracy")
-estext("Multivariate Optimization", "Accuracy")
+d_acc_cluster = estext("Accuracy", "Cluster")
+d_acc_LR = estext("Accuracy", "Linear\nRegression")
+d_acc_outlier = estext("Accuracy", "Outlier")
+d_acc_QR = estext("Accuracy", "Quadratic\nRegression")
+d_acc_MO = estext("Accuracy", "Multivariate\nOptimization")
 ```
 
 
 
 ```{r fig.width=4, fig.height=4 }
-
-gridLines <- function(x) { 
+gridLines = function(x) { 
  if (max(as.numeric(x))<2) seq(0,1, .25) 
   else if (max(as.numeric(x))<10) seq(1, 5, 1) 
   else (c(0,100))
 }
-axisRange <- function(x) { 
+axisRange = function(x) { 
   if (max(as.numeric(x))<2) c(0,1)
    else  if (max(as.numeric(x))<10) c(0,5)
   else (c(0,100))
 }
 
+# Get the main chart data
+filteredData = df %>%
+  filter(custom_group=="medium_hard" & measure_f=="Accuracy")
 
+# Get the data for the statistics
+d_values = bind_rows(d_acc_cluster, d_acc_LR, d_acc_outlier, d_acc_QR, d_acc_MO)
+statistics = bind_rows(med_hard_cluster_wilcox, med_hard_LR_wilcox, med_hard_outlier_wilcox, med_hard_QR_wilcox, med_hard_MO_wilcox)
+joined_stats = rownames_to_column(statistics) %>% 
+  inner_join(rownames_to_column(d_values)) %>% 
+  mutate(taskType_f = c("Cluster", "Linear\nRegression", "Outlier", "Quadratic\nRegression", "Multivariate\nOptimization"))
+joined_stats$taskType_f = factor(
+  joined_stats$taskType_f,
+  levels = c("Cluster","Linear\nRegression", "Quadratic\nRegression","Multivariate\nOptimization", "Outlier")
+)
 
- filteredData = df %>%
-  filter(custom_group=="medium_hard")  %>%
-filter(measure=="Accuracy")
-  
-
-  
-g<- filteredData %>% 
-  ggplot( aes(x=userLabel, y=value, fill = userLabel, color = userLabel) ) +
-    facet_grid(taskType_f ~ .)+
-
-    # geom_jitter( shape=16 , colour='grey', alpha=0.7, size=2, position = position_jitter(w = 0.3, h = 0)) +
-    geom_violin(show.legend=FALSE) +
-
-    stat_summary(fun.data = "mean_cl_boot", geom="linerange", size=1,alpha=1, colour = "#5c5c5c", show.legend=FALSE) +
-    stat_summary(fun.data = "mean_cl_boot", colour = "#5c5c5c", size = 1, alpha=0.5, show.legend=FALSE) +
- 
-  # ylim(0,100) +
-   # ylim(0,100) +
+# Make the full chart minus the CI labels
+g = ggplot(filteredData, aes(x = userLabel, y = value, fill = userLabel, color = userLabel)) +
+  geom_violin(show.legend = FALSE) +
+  geom_hline(yintercept = seq(0,1,0.25), color = "white") + 
   coord_flip() +
-      scale_color_manual(values=userDriven.colors)+
-  scale_fill_manual(values=userDriven.colors)+
-  theme(strip.text.y = element_text(angle = 0))+
-    scale_y_continuous(breaks = gridLines, limits = axisRange) #,labels = gridLabels) 
-
-
-stt <- ggplot_build(g)$data[[3]]
-
-print (stt)
-
-stt$PANEL <- as.numeric( as.character(stt$PANEL ))
-stt$taskType <- ifelse((stt$PANEL <2), "Cluster", ifelse((stt$PANEL <3), "Linear Regression", ifelse((stt$PANEL <4), "Quadratic Regression", ifelse((stt$PANEL <5), "Multivariate Optimization", "Outlier"))))
-
-stt$taskType_f = factor(stt$taskType, levels=c("Cluster","Linear Regression", "Quadratic Regression","Multivariate Optimization", "Outlier"));
-
-stt$userLabel <- ifelse(stt$group=="2", 'User Driven', 'Supported')
-
-
-print (stt)
-
-
-g + geom_text(data = stt,
-              aes(x =userLabel, y = 0, hjust = 0,label = paste(round(y,3) , '[' , round(ymin,3) ,  ',' , round(ymax,3) , ']',
-                                                                sep=" ")),
-             color = "#5c5c5c",size=4,
-              vjust = 1)  +
-   facet_grid(taskType_f ~ .)+
-    scale_y_continuous(breaks = gridLines, limits = axisRange)+
+  stat_summary(fun.data = "mean_cl_boot", geom="linerange", size=1,alpha=1, color = "#5c5c5c", show.legend = FALSE) +
+  facet_grid(taskType_f ~ .) +
+  scale_color_manual(values=userDriven.colors) +
+  scale_fill_manual(values=userDriven.colors) +
+  scale_y_continuous(breaks = gridLines, limits = axisRange, expand = c(0, 0.01)) + 
   theme(
-    panel.background = element_rect(fill = NA),
+    panel.spacing.x = unit(0, "pt"),
     panel.border = element_blank(),
-    panel.ontop = TRUE,
     panel.grid.major.y = element_blank(),
     panel.grid.major.x = element_line(color = "white"),
     panel.spacing.y = unit(1, "lines"),
+    axis.title.x = element_blank(),
+    axis.line.x = element_blank(),
+    axis.text.x = element_text(size = 6),
+    axis.title.y = element_blank(),
     axis.line.y = element_blank(),
-    axis.ticks.y = element_blank()
+    axis.ticks.y = element_blank(),
+    axis.text.y = element_text(size = 5, hjust = 1, margin = margin(0, unit = "pt")),
+    strip.text.y = element_text(angle = 0, hjust = 0, face = "bold", margin = margin(0, unit = "pt")),
+    strip.background = element_blank(),
+    legend.position = "none"
+  )
+
+
+stt = ggplot_build(g)$data[[3]]
+
+stt$PANEL = as.numeric( as.character(stt$PANEL ))
+stt$taskType = ifelse((stt$PANEL <2), "Cluster", ifelse((stt$PANEL <3), "Linear\nRegression", ifelse((stt$PANEL <4), "Quadratic\nRegression", ifelse((stt$PANEL <5), "Multivariate\nOptimization", "Outlier"))))
+
+stt$taskType_f = factor(stt$taskType, levels=c("Cluster","Linear\nRegression", "Quadratic\nRegression","Multivariate\nOptimization", "Outlier"));
+
+stt$userLabel = ifelse(stt$group=="2", 'UD', 'CD')
+
+# Add the geom_text with the calculated information
+g + geom_point(data = stt, aes(x = userLabel, y = y), color = "#5c5c5c", size = 4, alpha=0.5, show.legend = FALSE) +
+  geom_text(
+    data = stt,
+    aes(
+      x = userLabel, 
+      label = paste(
+        round(ymin,3), ' - ',
+        round(y,3), ' - ',
+        round(ymax,3),
+        sep=" "
+      ),
+      vjust = ifelse(userLabel == "UD", -0.7, 2)
+    ),
+    color = "#5c5c5c",
+    y = 0, 
+    size = 2,
+    hjust = 0
   ) +
+  geom_text(
+    data = joined_stats, 
+    aes(
+      label = paste0("n=", sample.size1, ", W=", statistic, ", p=", scientific(p.value, 3), ", d=", round(mean, 3)),
+      fill = NULL, 
+      color = NULL,
+      x = "", 
+      y = 1
+    ),
+    color = "#5c5c5c",
+    size = 2,
+    hjust = 1
+  ) +
+  scale_x_discrete(limits = c("", "CD", "UD"))
 
-   labs(y="Accuracy", x = '')
-# 
-filename <- paste("accuracy_medium_hard.pdf")
- ggsave(filename, width = 6, height = 4, units = "in")
- 
-
+# Save the plot to pdf
+ggsave("accuracy_medium_hard.pdf", width = 4, height = 4, units = "in")
 ```
 
 
@@ -242,68 +258,59 @@ filename <- paste("accuracy_medium_hard.pdf")
 
 ```{r fig.width=8, fig.height=4}
 
-gridLines <- function(x) { 
+gridLines = function(x) { 
  if (max(as.numeric(x))<2) c(0,1)
   else if (max(as.numeric(x))<10) seq(1, 5, 1) 
   else (c(0,100))
 }
 
 
-# 
-# gridLabels <- function(x) { 
-#   if (max(as.numeric(x)) < 1.1) seq(0, 1, .5) 
-#   else if (max(as.numeric(x)) == 7.3) seq (1,7,2)
-#     else seq(0, 5,1 )
-#     #else seq(0, round(max(x)), round(max(x)/3)) 
-# }
-
-
-
-# df_acc$custom_group <- ifelse(df_acc$taskDifficulty=='easy', "easy", "medium_hard")
-# df_time$custom_group <- ifelse(df_time$taskDifficulty=='easy', "easy", "medium_hard")
-# 
-# df_medium_hard = df_acc %>%
-#   filter(custom_group=="medium_hard")  %>%
-#    mutate( userLabel = userDriven.labels[as.character(userDriven)] )
-
-# df_medium_hard = df_time
-
 df_data =  df %>%
-  filter(custom_group=="medium_hard")
-
+  filter(custom_group=="easy" & (measure == "accuracy" | measure == "secondsOnTask"))
 
   
-g<- df_data %>% 
+g= df_data %>% 
   ggplot( aes(x=userLabel, y=value, fill = userLabel, color = userLabel) ) +
     facet_grid(taskType_f ~ measure_f, scales="free")+
-
-    # geom_jitter( shape=16 , colour='grey', alpha=0.7, size=2, position = position_jitter(w = 0.3, h = 0)) +
     geom_violin(show.legend=FALSE) +
-
     stat_summary(fun.data = "mean_cl_boot", geom="linerange", size=1,alpha=1, colour = "#5c5c5c", show.legend=FALSE) +
     stat_summary(fun.data = "mean_cl_boot", colour = "#5c5c5c", size = 1, alpha=0.5, show.legend=FALSE) +
- 
-  # ylim(0,100) +
-   # ylim(0,100) +
-  coord_flip() +
-      scale_color_manual(values=userDriven.colors)+
-  scale_fill_manual(values=userDriven.colors)+
-  theme(strip.text.y = element_text(angle = 0))+
-  scale_y_continuous(breaks = gridLines, limits = axisRange) #,labels = gridLabels) 
+    coord_flip() +
+    scale_color_manual(values=userDriven.colors)+
+    scale_fill_manual(values=userDriven.colors)+
+    theme(strip.text.y = element_text(angle = 0))+
+    scale_y_continuous(breaks = gridLines, limits = axisRange)+
+  theme(
+    panel.spacing.x = unit(0, "pt"),
+    panel.border = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.major.x = element_line(color = "white"),
+    panel.spacing.y = unit(1, "lines"),
+    axis.title.x = element_blank(),
+    axis.line.x = element_blank(),
+    axis.text.x = element_text(size = 6),
+    axis.title.y = element_blank(),
+    axis.line.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.text.y = element_text(size = 5, hjust = 1, margin = margin(0, unit = "pt")),
+    strip.text.y = element_text(angle = 0, hjust = 0, face = "bold", margin = margin(0, unit = "pt")),
+    strip.background = element_blank(),
+    legend.position = "none"
+  )
 
-stt <- ggplot_build(g)$data[[3]]
+stt = ggplot_build(g)$data[[3]]
 
 print (stt)
 
-stt$PANEL <- as.numeric( as.character(stt$PANEL ))
-stt$taskType <- ifelse((stt$PANEL <5), "Cluster", ifelse((stt$PANEL <9), "Linear Regression", ifelse((stt$PANEL <13), "Quadratic Regression", ifelse((stt$PANEL <17), "Multivariate Optimization", "Outlier"))))
+stt$PANEL = as.numeric( as.character(stt$PANEL ))
+stt$taskType = ifelse((stt$PANEL <3), "Cluster", ifelse((stt$PANEL <5), "Linear\nRegression", ifelse((stt$PANEL <7), "Quadratic\nRegression", ifelse((stt$PANEL <9), "Multivariate\nOptimization", "Outlier"))))
 
-stt$taskType_f = factor(stt$taskType, levels=c("Cluster","Linear Regression", "Quadratic Regression","Multivariate Optimization", "Outlier"));
+stt$taskType_f = factor(stt$taskType, levels=c("Cluster","Linear\nRegression", "Quadratic\nRegression","Multivariate\nOptimization", "Outlier"));
 
-stt$measure <- ifelse((stt$PANEL %% 4 == 1), "Accuracy", ifelse((stt$PANEL %% 4 == 2), "Time (seconds)", ifelse((stt$PANEL %% 4 == 3), "Confidence", "Difficulty")))
-stt$measure_f = factor(stt$measure, levels=c("Accuracy","Time (seconds)", "Confidence", "Difficulty"));
+stt$measure = ifelse((stt$PANEL %% 2 == 1), "Accuracy", "Time (seconds)")
+stt$measure_f = factor(stt$measure, levels=c("Accuracy","Time (seconds)"));
 
-stt$userLabel <- ifelse(stt$group=="2", 'User Driven', 'Supported')
+stt$userLabel = ifelse(stt$group=="2", 'UD', 'CD')
 
 
 print (stt)
@@ -328,55 +335,14 @@ g + geom_text(
     axis.ticks.y = element_blank()
   ) 
 # 
-
-filename <- paste("results_medium_hard.pdf")
+# 
+filename = paste("results_easy.pdf")
  ggsave(filename, width = 10, height = 5, units = "in")
 
 
  
 ```
 
-
-```{r fig.width=8, fig.height=12}
-
-gridLines <- function(x) { 
- if (max(as.numeric(x))<2) c(0,1)
-  else if (max(as.numeric(x))<10) seq(1, 5, 1) 
-  else (c(0,100))
-}
-
-axisRange <- function(x) { 
-  if (max(as.numeric(x))<2) c(0,1)
-   else  if (max(as.numeric(x))<10) c(0,5)
-  else (c(0,100))
-}
-
-df_data = df
-  
-# df_data %>% 
-#   ggplot( aes(x=userLabel, y=value, fill = userLabel, color = userLabel) ) +
-#     facet_grid(taskId ~ measure_f, scales="free")+
-# 
-#     # geom_jitter( shape=16 , colour='grey', alpha=0.7, size=2, position = position_jitter(w = 0.3, h = 0)) +
-#     geom_violin(show.legend=FALSE) +
-# 
-#     stat_summary(fun.data = "mean_cl_boot", geom="linerange", size=1,alpha=1, colour = "#5c5c5c", show.legend=FALSE) +
-#     stat_summary(fun.data = "mean_cl_boot", colour = "#5c5c5c", size = 1, alpha=0.5, show.legend=FALSE) +
-#  
-#   # ylim(0,100) +
-#    # ylim(0,100) +
-#   coord_flip() +
-#       scale_color_manual(values=userDriven.colors)+
-#   scale_fill_manual(values=userDriven.colors)+
-#   theme(strip.text.y = element_text(angle = 0))+
-#   scale_y_continuous(breaks = gridLines, limits = axisRange) #,labels = gridLabels) 
-#  
-# filename <- paste("results_allTasks.pdf")
-#  ggsave(filename, width = 10, height = 20, units = "in")
-
-
- 
-```
 
 
 ```{r  fig.width=7, fig.height=8}
@@ -386,21 +352,9 @@ dfp_filtered = dfp %>%
 
 
 dfp_filtered$value = as.numeric( as.character(dfp_filtered$value ))
- 
- # dfp_filtered%>% 
- #  ggplot( aes(x=0, y=value) ) +
- #    geom_jitter( shape=1 , color="grey", position = position_jitter(w = 0.1, h = 0)) +
- #       geom_violin(show.legend=FALSE,alpha=0.5) +
- # 
- #    stat_summary(fun.data = "mean_cl_boot", colour = "red", size = 0.5, alpha=0.5) +
- #  # ylim(0,100) +
- #   # xlim(-.25,.25) +
- #  coord_flip() +
- #    facet_grid(measure ~ .)+
- #  theme(strip.text.y = element_text(angle=0))
 
 # Feedback histogram point and line data
-mean_cl_boot_data <- dfp_filtered %>%
+mean_cl_boot_data = dfp_filtered %>%
   group_by(measure) %>%
   do(data.frame(rbind(Hmisc::smean.cl.boot(.$value))))
  
@@ -450,13 +404,15 @@ filename <- paste("survey_responses.pdf")
 ```{r fig.width=10, fig.height=8}
 
 # Confidence and difficulty histogram point and line data
-mean_cl_boot_conf_diff <- df %>%
-  filter(measure=="Confidence" | measure=="Difficulty") %>%
+mean_cl_boot_conf_diff = df %>%
+   filter(custom_group == "easy") %>%
+  filter(measure_f=="Confidence" | measure_f=="Difficulty") %>%
   group_by(measure_f, userDriven, taskType_f) %>%
   do(data.frame(rbind(Hmisc::smean.cl.boot(.$value))))
 
-df_data_conf_diff<- df %>%
-  filter(measure=="Confidence" | measure=="Difficulty")
+df_data_conf_diff= df %>%
+   filter(custom_group == "easy") %>%
+  filter(measure_f=="Confidence" | measure_f=="Difficulty")
 
 reshape2::melt(mean_cl_boot_conf_diff)
 
@@ -494,8 +450,59 @@ ggplot(df_data_conf_diff, aes(x=value) ) +
     axis.line.y = element_blank(),
     axis.ticks.y = element_blank()
   ) 
+
+filename <- paste("confidence_difficulty_easy.pdf")
+ ggsave(filename, width = 10, height = 8, units = "in")
+ 
 ```
 
 
+```{r fig.width=8, fig.height=12}
+gridLines = function(x) { 
+ if (max(as.numeric(x))<2) c(0,1)
+  else if (max(as.numeric(x))<10) seq(1, 5, 1) 
+  else (c(0,100))
+}
+axisRange = function(x) { 
+  if (max(as.numeric(x))<2) c(0,1)
+   else  if (max(as.numeric(x))<10) c(0,5)
+  else (c(0,100))
+}
+df_data =  df %>%
+  filter (measure == "accuracy" | measure == "secondsOnTask")
+  
+df_data %>%
+  ggplot( aes(x=userLabel, y=value, fill = userLabel, color = userLabel) ) +
+    facet_grid(orig_group ~ measure_f, scales="free")+
+    geom_violin(show.legend=FALSE) +
+
+    stat_summary(fun.data = "mean_cl_boot", geom="linerange", size=1,alpha=1, colour = "#5c5c5c", show.legend=FALSE) +
+    stat_summary(fun.data = "mean_cl_boot", colour = "#5c5c5c", size = 1, alpha=0.5, show.legend=FALSE) +
+  coord_flip() +
+      scale_color_manual(values=userDriven.colors)+
+  scale_fill_manual(values=userDriven.colors)+
+  scale_y_continuous(breaks = gridLines, limits = axisRange)+  #,labels = gridLabels)+
+   theme(
+    panel.spacing.x = unit(0, "pt"),
+    panel.border = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.major.x = element_line(color = "white"),
+    panel.spacing.y = unit(1, "lines"),
+    axis.title.x = element_blank(),
+    axis.line.x = element_blank(),
+    axis.text.x = element_text(size = 6),
+    axis.title.y = element_blank(),
+    axis.line.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.text.y = element_text(size = 5, hjust = 1, margin = margin(0, unit = "pt")),
+    strip.text.y = element_text(angle = 0, hjust = 0, face = "bold", margin = margin(0, unit = "pt")),
+    strip.background = element_blank(),
+    legend.position = "none"
+  )
+
+filename = paste("results_allTasks.pdf")
+ ggsave(filename, width = 10, height = 20, units = "in")
+ 
+```
 
 
