@@ -48,7 +48,7 @@ df$measure_f = factor(
 df$userLabel = factor(
   df$userDriven, 
   levels = c("supported","manual"),
-  labels = c("CD","UD")
+  labels = c("CS","UD")
 )
 
 # Create new variables
@@ -68,7 +68,7 @@ df_time = df %>%
   filter(measure_f=="Time (seconds)")
 
 # Set plotting colors
-userDriven.colors = c("UD" ="#05b4dd", "CD" = "#f4aa4a")
+userDriven.colors = c("UD" ="#05b4dd", "CS" = "#f4aa4a")
 ```
 
 
@@ -213,7 +213,7 @@ stt$taskType = ifelse((stt$PANEL <2), "Cluster", ifelse((stt$PANEL <3), "Linear\
 
 stt$taskType_f = factor(stt$taskType, levels=c("Cluster","Linear\nRegression", "Quadratic\nRegression","Multivariate\nOptimization", "Outlier"));
 
-stt$userLabel = ifelse(stt$group=="2", 'UD', 'CD')
+stt$userLabel = ifelse(stt$group=="2", 'UD', 'CS')
 
 # Add the geom_text with the calculated information
 g + geom_point(data = stt, aes(x = userLabel, y = y), color = "#5c5c5c", size = 4, alpha=0.5, show.legend = FALSE) +
@@ -247,7 +247,7 @@ g + geom_point(data = stt, aes(x = userLabel, y = y), color = "#5c5c5c", size = 
     size = 2,
     hjust = 1
   ) +
-  scale_x_discrete(limits = c("", "CD", "UD"))
+  scale_x_discrete(limits = c("", "CS", "UD"))
 
 # Save the plot to pdf
 ggsave("accuracy_medium_hard.pdf", width = 4, height = 4, units = "in")
@@ -310,7 +310,7 @@ stt$taskType_f = factor(stt$taskType, levels=c("Cluster","Linear\nRegression", "
 stt$measure = ifelse((stt$PANEL %% 2 == 1), "Accuracy", "Time (seconds)")
 stt$measure_f = factor(stt$measure, levels=c("Accuracy","Time (seconds)"));
 
-stt$userLabel = ifelse(stt$group=="2", 'UD', 'CD')
+stt$userLabel = ifelse(stt$group=="2", 'UD', 'CS')
 
 
 print (stt)
