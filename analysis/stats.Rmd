@@ -372,8 +372,9 @@ ggplot(dfp_filtered) +
   ) + 
   geom_text(
     data = mean_cl_boot_data,
-    aes(label = paste(round(Mean,3) , '[' , round(Lower,3) ,  ',' , round(Upper,3) , ']', sep=" "), y = -25, x = 1,  hjust = 0),
-    colour = "#5c5c5c"
+    aes(label = paste(round(Mean,3) , '[' , round(Lower,3) ,  ',' , round(Upper,3) , ']', sep=" "), y = -25, x = 0.5,  hjust = 0),
+    colour = "#5c5c5c",
+    size = 2
   ) +
   facet_grid(measure ~ .)+
   # scale_x_discrete(limits = c(1,2,3,4,5)) + 
@@ -402,7 +403,7 @@ for (diff_level in c("easy", "medium_hard")) {
   mean_cl_boot_conf_diff = df %>%
     filter(custom_group == diff_level) %>%
     filter(measure_f=="Confidence" | measure_f=="Difficulty") %>%
-    group_by(measure_f, userDriven, taskType_f) %>%
+    group_by(measure_f, userLabel, taskType_f) %>%
     do(data.frame(rbind(Hmisc::smean.cl.boot(.$value))))
   
   df_data_conf_diff= df %>%
@@ -413,38 +414,42 @@ for (diff_level in c("easy", "medium_hard")) {
   
   # Confidence and difficulty histograms
   ggplot(df_data_conf_diff, aes(x=value) ) +
-    geom_histogram(aes(y=..density..), binwidth = 1, boundary = 0.5) + 
+    geom_histogram(aes(y=..density.., fill = userLabel, color = userLabel), binwidth = 1, boundary = 0.5, show.legend = FALSE) + 
     geom_point(
       data = mean_cl_boot_conf_diff,
   
-      aes(x = Mean, y = -0.25),
+      aes(x = Mean, y = -0.1),
       colour = "#5c5c5c"
     ) +
     geom_line(
       data = reshape2::melt(mean_cl_boot_conf_diff),
-      aes(x = value, y = -0.25),
-       colour = "red",
+      aes(x = value, y = -0.1),
+       colour = "#5c5c5c",
       alpha=1
     ) +
     geom_text(
       data = mean_cl_boot_conf_diff,
-      aes(label = paste(round(Mean,3) , '[' , round(Lower,3) ,  ',' , round(Upper,3) , ']', sep=" "), y = -0.25, x = 1,hjust=0),
-      colour = "#5c5c5c"
+      aes(label = paste(round(Mean,3) , '[' , round(Lower,3) ,  ',' , round(Upper,3) , ']', sep=" "), y = -0.1, x = 5.5, hjust=1),
+      colour = "#5c5c5c",
+      size = 2
     ) +
-    facet_grid(taskType_f + userDriven ~ measure_f, scales="free") +
+    facet_grid(taskType_f + userLabel ~ measure_f, scales="free") +
     theme(strip.text.y = element_text(angle = 0)) +
-  #   scale_y_continuous(limits = c(-100,100), breaks = c(0,100))+
-    scale_y_continuous(limits = c(-0.5,1), breaks=c(0,.75))+
+    scale_y_continuous(expand = c(0, 0.1)) +
+    scale_color_manual(values=userDriven.colors) +
+    scale_fill_manual(values=userDriven.colors) +
     theme(
       panel.background = element_rect(fill = NA),
       panel.border = element_blank(),
       panel.grid.major.y = element_blank(),
       panel.grid.major.x = element_line(color = "white"),
       panel.spacing.y = unit(1, "lines"),
+      axis.title.y.left = element_blank(),
+      axis.text.y.left = element_blank(),
       axis.line.y = element_blank(),
       axis.ticks.y = element_blank(),
       strip.background = element_blank(),
-      strip.text = element_text(hjust = 0)
+      strip.text.y = element_text(hjust = 0)
     ) 
   
   filename <- paste0("confidence_difficulty_", diff_level, ".pdf")
