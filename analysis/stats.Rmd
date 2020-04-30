@@ -361,13 +361,13 @@ ggplot(dfp_filtered) +
   geom_point(
     data = mean_cl_boot_data,
     aes(x = Mean, y = -25),
-      colour = "red",
+      colour = "#5c5c5c",
     alpha=0.5
   ) +
   geom_line(
     data = reshape2::melt(mean_cl_boot_data),
     aes(x = value, y = -25),
-    colour = "red",
+    colour = "#5c5c5c",
     alpha=1
   ) + 
   geom_text(
@@ -385,6 +385,8 @@ ggplot(dfp_filtered) +
     panel.grid.major.y = element_blank(),
     panel.grid.major.x = element_line(color = "white"),
     panel.spacing.y = unit(1, "lines"),
+    axis.title.y.left = element_blank(),
+    axis.text.y.left = element_blank(),
     axis.line.y = element_blank(),
     axis.ticks.y = element_blank(),
     strip.background = element_blank(),
