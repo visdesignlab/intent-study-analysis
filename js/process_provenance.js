@@ -469,6 +469,15 @@ async function exportTidy(mode, results) {
 
    
     let createTidyRow = function (measure, value) {
+      // //create a custom type for outliers: 
+      // if (taskInfo.type == 'outlier'){
+      //   if (taskInfo.group.includes('outlier_cluster')){
+      //     taskInfo.type = 'outlier_cluster';
+      //   }
+      //   if (taskInfo.group.includes('outlier_linear')){
+      //     taskInfo.type = 'outlier_linear';
+      //   }
+      // }
       return {
         prolificId: id,
         taskId,

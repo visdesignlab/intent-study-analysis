@@ -439,6 +439,10 @@ ggplot(dfp_filtered) +
     axis.ticks.y = element_blank()
   ) 
 
+filename <- paste("survey_responses.pdf")
+ ggsave(filename, width = 7, height = 8, units = "in")
+ 
+
 
 
 ```
