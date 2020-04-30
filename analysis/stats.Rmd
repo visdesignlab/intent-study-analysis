@@ -466,21 +466,40 @@ axisRange = function(x) {
    else  if (max(as.numeric(x))<10) c(0,5)
   else (c(0,100))
 }
+
 df_data =  df %>%
   filter (measure == "accuracy" | measure == "secondsOnTask")
-  
-df_data %>%
-  ggplot( aes(x=userLabel, y=value, fill = userLabel, color = userLabel) ) +
-    facet_grid(orig_group ~ measure_f, scales="free")+
-    geom_violin(show.legend=FALSE) +
 
-    stat_summary(fun.data = "mean_cl_boot", geom="linerange", size=1,alpha=1, colour = "#5c5c5c", show.legend=FALSE) +
-    stat_summary(fun.data = "mean_cl_boot", colour = "#5c5c5c", size = 1, alpha=0.5, show.legend=FALSE) +
+mean_cl_boot = df_data %>%
+  group_by(measure_f, taskType_f, orig_group) %>%
+  do(data.frame(rbind(Hmisc::smean.cl.boot(.$value))))
+  
+ggplot(df_data, aes(x = 1, y=value, fill = userLabel, color = userLabel) ) +
+  facet_grid(orig_group ~ measure_f, scales="free")+
+  geom_violin(show.legend=FALSE) +
   coord_flip() +
-      scale_color_manual(values=userDriven.colors)+
+  scale_y_continuous(breaks = gridLines, limits = axisRange) + 
+  scale_x_continuous(limits = c(-0.5,2)) + 
+  geom_point(
+    data = mean_cl_boot,
+    aes(y = Mean, x = 1, fill = NULL, color = NULL),
+    colour = "#5c5c5c"
+  ) +
+  geom_line(
+    data = reshape2::melt(mean_cl_boot),
+    aes(y = value, x = 1, fill = NULL, color = NULL),
+    colour = "#5c5c5c",
+    alpha=0.5
+  ) +
+  geom_text(
+    data = mean_cl_boot,
+    aes(label = paste(round(Mean,3) , '[' , round(Lower,3) ,  ',' , round(Upper,3) , ']', sep=" "), y = 0, x = 0, fill = NULL, color = NULL),
+    colour = "#5c5c5c",
+    hjust=0
+  ) +
+  scale_color_manual(values=userDriven.colors)+
   scale_fill_manual(values=userDriven.colors)+
-  scale_y_continuous(breaks = gridLines, limits = axisRange)+  #,labels = gridLabels)+
-   theme(
+  theme(
     panel.spacing.x = unit(0, "pt"),
     panel.border = element_blank(),
     panel.grid.major.y = element_blank(),
@@ -492,15 +511,30 @@ df_data %>%
     axis.title.y = element_blank(),
     axis.line.y = element_blank(),
     axis.ticks.y = element_blank(),
-    axis.text.y = element_text(size = 5, hjust = 1, margin = margin(0, unit = "pt")),
+    axis.text.y = element_blank(),
     strip.text.y = element_text(angle = 0, hjust = 0, face = "bold", margin = margin(0, unit = "pt")),
     strip.background = element_blank(),
     legend.position = "none"
   )
 
 filename = paste("results_allTasks.pdf")
- ggsave(filename, width = 10, height = 20, units = "in")
+ggsave(filename, width = 10, height = 20, units = "in")
  
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
