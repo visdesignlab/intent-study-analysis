@@ -265,80 +265,78 @@ gridLines = function(x) {
 }
 
 
-df_data =  df %>%
-  filter(custom_group=="easy" & (measure == "accuracy" | measure == "secondsOnTask"))
-
+for (diff_level in c("easy", "medium_hard")) {
+  df_data =  df %>%
+    filter(custom_group==diff_level & (measure == "accuracy" | measure == "secondsOnTask"))
+  g = df_data %>% 
+    ggplot( aes(x=userLabel, y=value, fill = userLabel, color = userLabel) ) +
+      facet_grid(taskType_f ~ measure_f, scales="free")+
+      geom_violin(show.legend=FALSE) +
+      stat_summary(fun.data = "mean_cl_boot", geom="linerange", size=1,alpha=1, colour = "#5c5c5c", show.legend=FALSE) +
+      stat_summary(fun.data = "mean_cl_boot", colour = "#5c5c5c", size = 1, alpha=0.5, show.legend=FALSE) +
+      coord_flip() +
+      scale_color_manual(values=userDriven.colors)+
+      scale_fill_manual(values=userDriven.colors)+
+      theme(strip.text.y = element_text(angle = 0))+
+      scale_y_continuous(breaks = gridLines, limits = axisRange)+
+    theme(
+      panel.spacing.x = unit(0, "pt"),
+      panel.border = element_blank(),
+      panel.grid.major.y = element_blank(),
+      panel.grid.major.x = element_line(color = "white"),
+      panel.spacing.y = unit(1, "lines"),
+      axis.title.x = element_blank(),
+      axis.line.x = element_blank(),
+      axis.text.x = element_text(size = 6),
+      axis.title.y = element_blank(),
+      axis.line.y = element_blank(),
+      axis.ticks.y = element_blank(),
+      axis.text.y = element_text(size = 5, hjust = 1, margin = margin(0, unit = "pt")),
+      strip.text.y = element_text(angle = 0, hjust = 0, face = "bold", margin = margin(0, unit = "pt")),
+      strip.background = element_blank(),
+      legend.position = "none"
+    )
   
-g= df_data %>% 
-  ggplot( aes(x=userLabel, y=value, fill = userLabel, color = userLabel) ) +
-    facet_grid(taskType_f ~ measure_f, scales="free")+
-    geom_violin(show.legend=FALSE) +
-    stat_summary(fun.data = "mean_cl_boot", geom="linerange", size=1,alpha=1, colour = "#5c5c5c", show.legend=FALSE) +
-    stat_summary(fun.data = "mean_cl_boot", colour = "#5c5c5c", size = 1, alpha=0.5, show.legend=FALSE) +
-    coord_flip() +
-    scale_color_manual(values=userDriven.colors)+
-    scale_fill_manual(values=userDriven.colors)+
-    theme(strip.text.y = element_text(angle = 0))+
-    scale_y_continuous(breaks = gridLines, limits = axisRange)+
-  theme(
-    panel.spacing.x = unit(0, "pt"),
-    panel.border = element_blank(),
-    panel.grid.major.y = element_blank(),
-    panel.grid.major.x = element_line(color = "white"),
-    panel.spacing.y = unit(1, "lines"),
-    axis.title.x = element_blank(),
-    axis.line.x = element_blank(),
-    axis.text.x = element_text(size = 6),
-    axis.title.y = element_blank(),
-    axis.line.y = element_blank(),
-    axis.ticks.y = element_blank(),
-    axis.text.y = element_text(size = 5, hjust = 1, margin = margin(0, unit = "pt")),
-    strip.text.y = element_text(angle = 0, hjust = 0, face = "bold", margin = margin(0, unit = "pt")),
-    strip.background = element_blank(),
-    legend.position = "none"
-  )
+  stt = ggplot_build(g)$data[[3]]
+  
+  print (stt)
+  
+  stt$PANEL = as.numeric( as.character(stt$PANEL ))
+  stt$taskType = ifelse((stt$PANEL <3), "Cluster", ifelse((stt$PANEL <5), "Linear\nRegression", ifelse((stt$PANEL <7), "Quadratic\nRegression", ifelse((stt$PANEL <9), "Multivariate\nOptimization", "Outlier"))))
+  
+  stt$taskType_f = factor(stt$taskType, levels=c("Cluster","Linear\nRegression", "Quadratic\nRegression","Multivariate\nOptimization", "Outlier"));
+  
+  stt$measure = ifelse((stt$PANEL %% 2 == 1), "Accuracy", "Time (seconds)")
+  stt$measure_f = factor(stt$measure, levels=c("Accuracy","Time (seconds)"));
+  
+  stt$userLabel = ifelse(stt$group=="2", 'UD', 'CS')
+  
+  
+  print (stt)
+  
+  
+  g + geom_text(
+    data = stt,
+    aes(x =userLabel, y = 0, hjust = 0,label = paste(round(y,3) , '[' , round(ymin,3) ,  ',' , round(ymax,3) , ']',sep=" ")),
+    color = "#5c5c5c",size=2,
+    vjust = 1
+    ) +
+    facet_grid(taskType_f ~ measure_f,scales = "free") +
+    theme(
+      panel.background = element_rect(fill = NA),
+      panel.border = element_blank(),
+      panel.ontop = TRUE,
+      panel.grid.major.y = element_blank(),
+      panel.grid.major.x = element_line(color = "white"),
+      panel.spacing.y = unit(1, "lines"),
+      axis.line.y = element_blank(),
+      axis.line.x = element_blank(),
+      axis.ticks.y = element_blank()
+    ) 
 
-stt = ggplot_build(g)$data[[3]]
-
-print (stt)
-
-stt$PANEL = as.numeric( as.character(stt$PANEL ))
-stt$taskType = ifelse((stt$PANEL <3), "Cluster", ifelse((stt$PANEL <5), "Linear\nRegression", ifelse((stt$PANEL <7), "Quadratic\nRegression", ifelse((stt$PANEL <9), "Multivariate\nOptimization", "Outlier"))))
-
-stt$taskType_f = factor(stt$taskType, levels=c("Cluster","Linear\nRegression", "Quadratic\nRegression","Multivariate\nOptimization", "Outlier"));
-
-stt$measure = ifelse((stt$PANEL %% 2 == 1), "Accuracy", "Time (seconds)")
-stt$measure_f = factor(stt$measure, levels=c("Accuracy","Time (seconds)"));
-
-stt$userLabel = ifelse(stt$group=="2", 'UD', 'CS')
-
-
-print (stt)
-
-
-g + geom_text(
-  data = stt,
-  aes(x =userLabel, y = 0, hjust = 0,label = paste(round(y,3) , '[' , round(ymin,3) ,  ',' , round(ymax,3) , ']',sep=" ")),
-  color = "#5c5c5c",size=2,
-  vjust = 1
-  ) +
-  facet_grid(taskType_f ~ measure_f,scales = "free") +
-  theme(
-    panel.background = element_rect(fill = NA),
-    panel.border = element_blank(),
-    panel.ontop = TRUE,
-    panel.grid.major.y = element_blank(),
-    panel.grid.major.x = element_line(color = "white"),
-    panel.spacing.y = unit(1, "lines"),
-    axis.line.y = element_blank(),
-    axis.line.x = element_blank(),
-    axis.ticks.y = element_blank()
-  ) 
-# 
-# 
-filename = paste("results_easy.pdf")
- ggsave(filename, width = 10, height = 5, units = "in")
-
+  filename = paste0("results_", diff_level, ".pdf")
+  ggsave(filename, width = 10, height = 5, units = "in")
+}
 
  
 ```
@@ -402,58 +400,58 @@ filename <- paste("survey_responses.pdf")
 ```
 
 ```{r fig.width=10, fig.height=8}
-
-# Confidence and difficulty histogram point and line data
-mean_cl_boot_conf_diff = df %>%
-   filter(custom_group == "easy") %>%
-  filter(measure_f=="Confidence" | measure_f=="Difficulty") %>%
-  group_by(measure_f, userDriven, taskType_f) %>%
-  do(data.frame(rbind(Hmisc::smean.cl.boot(.$value))))
-
-df_data_conf_diff= df %>%
-   filter(custom_group == "easy") %>%
-  filter(measure_f=="Confidence" | measure_f=="Difficulty")
-
-reshape2::melt(mean_cl_boot_conf_diff)
-
-# Confidence and difficulty histograms
-ggplot(df_data_conf_diff, aes(x=value) ) +
-  geom_histogram(aes(y=..density..), binwidth = 1, boundary = 0.5) + 
-  geom_point(
-    data = mean_cl_boot_conf_diff,
-
-    aes(x = Mean, y = -0.25),
-    colour = "#5c5c5c"
-  ) +
-  geom_line(
-    data = reshape2::melt(mean_cl_boot_conf_diff),
-    aes(x = value, y = -0.25),
-     colour = "red",
-    alpha=1
-  ) +
-  geom_text(
-    data = mean_cl_boot_conf_diff,
-    aes(label = paste(round(Mean,3) , '[' , round(Lower,3) ,  ',' , round(Upper,3) , ']', sep=" "), y = -0.25, x = 1,hjust=0),
-    colour = "#5c5c5c"
-  ) +
-  facet_grid(taskType_f + userDriven ~ measure_f, scales="free") +
-  theme(strip.text.y = element_text(angle = 0)) +
-#   scale_y_continuous(limits = c(-100,100), breaks = c(0,100))+
-  scale_y_continuous(limits = c(-0.5,0.75), breaks=c(0,.75))+
-    theme(
-    panel.background = element_rect(fill = NA),
-    panel.border = element_blank(),
-    panel.ontop = TRUE,
-    panel.grid.major.y = element_blank(),
-    panel.grid.major.x = element_line(color = "white"),
-    panel.spacing.y = unit(1, "lines"),
-    axis.line.y = element_blank(),
-    axis.ticks.y = element_blank()
-  ) 
-
-filename <- paste("confidence_difficulty_easy.pdf")
- ggsave(filename, width = 10, height = 8, units = "in")
- 
+for (diff_level in c("easy", "medium_hard")) {
+  # Confidence and difficulty histogram point and line data
+  mean_cl_boot_conf_diff = df %>%
+    filter(custom_group == diff_level) %>%
+    filter(measure_f=="Confidence" | measure_f=="Difficulty") %>%
+    group_by(measure_f, userDriven, taskType_f) %>%
+    do(data.frame(rbind(Hmisc::smean.cl.boot(.$value))))
+  
+  df_data_conf_diff= df %>%
+    filter(custom_group == diff_level) %>%
+    filter(measure_f=="Confidence" | measure_f=="Difficulty")
+  
+  reshape2::melt(mean_cl_boot_conf_diff)
+  
+  # Confidence and difficulty histograms
+  ggplot(df_data_conf_diff, aes(x=value) ) +
+    geom_histogram(aes(y=..density..), binwidth = 1, boundary = 0.5) + 
+    geom_point(
+      data = mean_cl_boot_conf_diff,
+  
+      aes(x = Mean, y = -0.25),
+      colour = "#5c5c5c"
+    ) +
+    geom_line(
+      data = reshape2::melt(mean_cl_boot_conf_diff),
+      aes(x = value, y = -0.25),
+       colour = "red",
+      alpha=1
+    ) +
+    geom_text(
+      data = mean_cl_boot_conf_diff,
+      aes(label = paste(round(Mean,3) , '[' , round(Lower,3) ,  ',' , round(Upper,3) , ']', sep=" "), y = -0.25, x = 1,hjust=0),
+      colour = "#5c5c5c"
+    ) +
+    facet_grid(taskType_f + userDriven ~ measure_f, scales="free") +
+    theme(strip.text.y = element_text(angle = 0)) +
+  #   scale_y_continuous(limits = c(-100,100), breaks = c(0,100))+
+    scale_y_continuous(limits = c(-0.5,1), breaks=c(0,.75))+
+      theme(
+      panel.background = element_rect(fill = NA),
+      panel.border = element_blank(),
+      panel.ontop = TRUE,
+      panel.grid.major.y = element_blank(),
+      panel.grid.major.x = element_line(color = "white"),
+      panel.spacing.y = unit(1, "lines"),
+      axis.line.y = element_blank(),
+      axis.ticks.y = element_blank()
+    ) 
+  
+  filename <- paste0("confidence_difficulty_", diff_level, ".pdf")
+  ggsave(filename, width = 10, height = 8, units = "in")
+}
 ```
 
 
