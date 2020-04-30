@@ -318,16 +318,21 @@ for (diff_level in c("easy", "medium_hard")) {
   
   
   g + geom_text(
-    data = stt,
-    aes(x =userLabel, y = 0, hjust = 0,label = paste(round(y,3) , '[' , round(ymin,3) ,  ',' , round(ymax,3) , ']',sep=" ")),
-    color = "#5c5c5c",size=2,
-    vjust = 1
+      data = stt,
+      aes(
+        x = userLabel, 
+        label = paste(round(y,3) , '[' , round(ymin,3) ,  ',' , round(ymax,3) , ']', sep=" "),
+        y = ifelse(measure_f == "Accuracy", 0, 100),
+        hjust = ifelse(measure_f == "Accuracy", 0.02, 0.98),
+        vjust = ifelse(userLabel == "UD", -0.7, 2)
+      ),
+      color = "#5c5c5c",
+      size=2
     ) +
     facet_grid(taskType_f ~ measure_f,scales = "free") +
     theme(
       panel.background = element_rect(fill = NA),
       panel.border = element_blank(),
-      panel.ontop = TRUE,
       panel.grid.major.y = element_blank(),
       panel.grid.major.x = element_line(color = "white"),
       panel.spacing.y = unit(1, "lines"),
@@ -377,7 +382,6 @@ ggplot(dfp_filtered) +
     size = 2
   ) +
   facet_grid(measure ~ .)+
-  # scale_x_discrete(limits = c(1,2,3,4,5)) + 
   scale_y_continuous(limits = c(-50,100), breaks = c(0,100))+
   theme(
     panel.background = element_rect(fill = NA),
@@ -475,6 +479,48 @@ axisRange = function(x) {
 df_data =  df %>%
   filter (measure == "accuracy" | measure == "secondsOnTask")
 
+df_data$orig_group = factor(
+  df_data$orig_group,
+  levels = c(
+    "easy_manual_cluster",
+    "easy_supported_cluster",
+    "easy_manual_linear regression",
+    "easy_supported_linear regression",
+    "easy_manual_outlier_cluster",
+    "easy_supported_outlier_cluster",
+    "easy_manual_outlier_linear",
+    "easy_supported_outlier_linear",
+    "easy_manual_quadratic regression",
+    "easy_supported_quadratic regression",
+    "easy_manual_skyline",
+    "easy_supported_skyline",
+    "hard_manual_cluster",
+    "hard_supported_cluster",
+    "hard_manual_linear regression",
+    "hard_supported_linear regression",
+    "hard_manual_outlier_cluster",
+    "hard_supported_outlier_cluster",
+    "hard_manual_outlier_linear",
+    "hard_supported_outlier_linear",
+    "hard_manual_quadratic regression",
+    "hard_supported_quadratic regression",
+    "hard_manual_skyline",
+    "hard_supported_skyline",
+    "medium_manual_cluster",
+    "medium_supported_cluster",
+    "medium_manual_linear regression",
+    "medium_supported_linear regression",
+    "medium_manual_outlier_cluster",
+    "medium_supported_outlier_cluster",
+    "medium_manual_outlier_linear",
+    "medium_supported_outlier_linear",
+    "medium_manual_quadratic regression",
+    "medium_supported_quadratic regression",
+    "medium_manual_skyline",
+    "medium_supported_skyline"
+  )
+)
+
 mean_cl_boot = df_data %>%
   group_by(measure_f, taskType_f, orig_group) %>%
   do(data.frame(rbind(Hmisc::smean.cl.boot(.$value))))
@@ -498,9 +544,14 @@ ggplot(df_data, aes(x = 1, y=value, fill = userLabel, color = userLabel) ) +
   ) +
   geom_text(
     data = mean_cl_boot,
-    aes(label = paste(round(Mean,3) , '[' , round(Lower,3) ,  ',' , round(Upper,3) , ']', sep=" "), y = 0, x = 0, fill = NULL, color = NULL),
+    aes(
+      label = paste(round(Mean,3) , '[' , round(Lower,3) ,  ',' , round(Upper,3) , ']', sep=" "),
+      x = 0, fill = NULL, color = NULL,
+      y = ifelse(measure_f == "Accuracy", 0, 100),
+      hjust = ifelse(measure_f == "Accuracy", 0, 1)
+    ),
     colour = "#5c5c5c",
-    hjust=0
+    size = 2
   ) +
   scale_color_manual(values=userDriven.colors)+
   scale_fill_manual(values=userDriven.colors)+
