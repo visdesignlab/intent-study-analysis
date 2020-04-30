@@ -292,20 +292,14 @@ df_data =  df %>%
 g= df_data %>% 
   ggplot( aes(x=userLabel, y=value, fill = userLabel, color = userLabel) ) +
     facet_grid(taskType_f ~ measure_f, scales="free")+
-
-    # geom_jitter( shape=16 , colour='grey', alpha=0.7, size=2, position = position_jitter(w = 0.3, h = 0)) +
     geom_violin(show.legend=FALSE) +
-
     stat_summary(fun.data = "mean_cl_boot", geom="linerange", size=1,alpha=1, colour = "#5c5c5c", show.legend=FALSE) +
     stat_summary(fun.data = "mean_cl_boot", colour = "#5c5c5c", size = 1, alpha=0.5, show.legend=FALSE) +
- 
-  # ylim(0,100) +
-   # ylim(0,100) +
-  coord_flip() +
-      scale_color_manual(values=userDriven.colors)+
-  scale_fill_manual(values=userDriven.colors)+
-  theme(strip.text.y = element_text(angle = 0))+
-  scale_y_continuous(breaks = gridLines, limits = axisRange) #,labels = gridLabels) 
+    coord_flip() +
+    scale_color_manual(values=userDriven.colors)+
+    scale_fill_manual(values=userDriven.colors)+
+    theme(strip.text.y = element_text(angle = 0))+
+    scale_y_continuous(breaks = gridLines, limits = axisRange)
 
 stt = ggplot_build(g)$data[[3]]
 
@@ -319,7 +313,7 @@ stt$taskType_f = factor(stt$taskType, levels=c("Cluster","Linear\nRegression", "
 stt$measure = ifelse((stt$PANEL %% 4 == 1), "Accuracy", ifelse((stt$PANEL %% 4 == 2), "Time (seconds)", ifelse((stt$PANEL %% 4 == 3), "Confidence", "Difficulty")))
 stt$measure_f = factor(stt$measure, levels=c("Accuracy","Time (seconds)", "Confidence", "Difficulty"));
 
-stt$userLabel = ifelse(stt$group=="2", 'User Driven', 'Supported')
+stt$userLabel = ifelse(stt$group=="2", 'UD', 'CD')
 
 
 print (stt)
@@ -463,12 +457,12 @@ ggplot(dfp_filtered) +
 
 # Confidence and difficulty histogram point and line data
 mean_cl_boot_conf_diff = df %>%
-  filter(measure=="Confidence" | measure=="Difficulty") %>%
+  filter(measure_f=="Confidence" | measure_f=="Difficulty") %>%
   group_by(measure_f, userDriven, taskType_f) %>%
   do(data.frame(rbind(Hmisc::smean.cl.boot(.$value))))
 
 df_data_conf_diff= df %>%
-  filter(measure=="Confidence" | measure=="Difficulty")
+  filter(measure_f=="Confidence" | measure_f=="Difficulty")
 
 reshape2::melt(mean_cl_boot_conf_diff)
 
