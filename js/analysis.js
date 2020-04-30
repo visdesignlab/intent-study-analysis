@@ -76,7 +76,7 @@ function makePlots(provData) {
     // .attr('preserveAspectRatio','none')
     // .attr('width','100%')
     // .attr('height',svgHeight)
-    
+
 
   // svg.exit().remove();
 
@@ -122,8 +122,8 @@ function makePlots(provData) {
     .attr("transform", "translate(0," + height + ")")
     .call(xAxis);
 
-    
-      
+
+
     participantGroupsEnter
     .append("text")
     .attr("class", "time")
@@ -153,7 +153,7 @@ function makePlots(provData) {
     // .attr("y", y(0))
     // .style("text-anchor", "end");
 
-  
+
 
   participantGroups.exit().remove();
 
@@ -177,7 +177,7 @@ function makePlots(provData) {
     .select(".typeRect")
     .attr("class", d =>  'typeRect ' + d.visType );
 
-    
+
   let rectGroups = participantGroups
     .selectAll(".event")
     .data((d, i) => d.provEvents.filter(e => e.type === "longAction").map(p=>{
@@ -231,7 +231,7 @@ function makePlots(provData) {
     // d => {
     //   let ac = d.task && d.task.result && d.task.result.interactionDetails.autoCompleteUsed;
     //   let diff = x(Date.parse(d.endTime)) - x(Date.parse(d.startTime));
-      
+
 
     //    if (ac){
     //      let rankScale = d3.scaleLinear().domain([1,4]).range([10,2])
@@ -239,7 +239,7 @@ function makePlots(provData) {
     //    } else {
     //      return 0
     //    }
-    
+
     // })
     .attr("x", d => {
       let time = Date.parse(d.startTime) || x(Date.parse(d.time));
@@ -253,8 +253,8 @@ function makePlots(provData) {
 
         // let ac = d.task && d.task.result && d.task.result.interactionDetails.autoCompleteUsed;
         // let diff = x(Date.parse(d.endTime)) - x(Date.parse(d.startTime));
-        
-  
+
+
         //  if (ac){
         //   let rankScale = d3.scaleLinear().domain([1,4]).range([10,2])
         //    return initialY - rankScale(d.task.result.interactionDetails.rankOfPredictionUsed);
@@ -301,10 +301,10 @@ function makePlots(provData) {
       let rank = d.task && d.task.result && d.task.result.interactionDetails.rankOfPredictionUsed;
       return rank ? (rank>3 ? 'rankLabel wrong' : rank >2 ? 'rankLabel medium' : 'rankLabel') : false;
     })
-    
 
 
-  
+
+
     // .attr('fill',d=>(d.task && d.task.result) ? color(d.task.result.accuracy) : '')
   // .classed('sortedOn', d=>sortOrder && d.task && d.task.id == sortOrder)
 
@@ -320,15 +320,15 @@ function makePlots(provData) {
             "</strong>" +
             "[" +
             d.task.result.accuracy +
-            "]" 
+            "]"
             +
             "<br/>" +
-            d.task.type + "/" + d.task.difficulty 
-          
+            d.task.type + "/" + d.task.difficulty
+
           : "";
 
           if (d.task.result.interactionDetails.autoCompleteUsed){
-            tooltipContent = tooltipContent 
+            tooltipContent = tooltipContent
             +
             "<br/>" +
             'Rank: ' + d.task.result.interactionDetails.rankOfPredictionUsed + " [" + d.task.result.interactionDetails.selectedPrediction +"]"
@@ -347,7 +347,7 @@ function makePlots(provData) {
   })
     .on("mouseout", hideTooltip)
     .on("click", d => {
-      let url = 'localhost:3000/?graphPath='+d.task.result.graph + "&datasetName=" + d.task.result.dataset;
+      let url = 'http://3.136.64.162:5000/index.html/?graphPath='+d.task.result.graph + "&datasetName=" + d.task.result.dataset +'#/';
       console.log('clicked',url)
       window.open(
         url,
@@ -429,21 +429,21 @@ function makePlots(provData) {
   participantGroups
     .select('.rank')
     .text(d=>"Avg Accuracy:" +
-      Math.round(d.averageAccuracy * 100) / 100     
+      Math.round(d.averageAccuracy * 100) / 100
     )
 
     participantGroups
     .select('.time')
     .text(d=>"Time: " +
-      millisToMinutesAndSeconds(d.timeOnTask) + " [" + millisToMinutesAndSeconds(d.totalStudyTime) + "]"   
+      millisToMinutesAndSeconds(d.timeOnTask) + " [" + millisToMinutesAndSeconds(d.totalStudyTime) + "]"
     )
-   
+
 
   participantGroups
    .select('.id')
     .text(d => d.id)
     .style('fill',d => d.keep ? '':'red')
-  
+
   // participantGroups
   // .select('.visType')
   //   .text(d=>
@@ -472,14 +472,14 @@ function makePlots(provData) {
     // .attr("y", (d, i) => y(d.level)) //y(d.participantOrder))
     .attr("transform", (d,ii) => {
 
-      let yTranslate = d.level -1.5 
+      let yTranslate = d.level -1.5
       let time = Date.parse(d.startTime) || x(Date.parse(d.time));
       return ("translate(" +
         x(time - d.participantStartTime) +
         "," +
         y(yTranslate) +
         ") rotate(0)"
-      ) 
+      )
     })
     // .attr("dy", 5)
     .style("text-anchor", "start")
@@ -539,7 +539,7 @@ async function drawProvenance(sortOrder) {
   );
 
 
-  // let sortedProvData = provData; //will sort on average accuracy later; 
+  // let sortedProvData = provData; //will sort on average accuracy later;
 
   let sortedProvData = provData.sort((a, b) => {
     let aResults = participantResults.find(
@@ -570,8 +570,8 @@ async function drawProvenance(sortOrder) {
       d => d.data.participantId == p.id
     );
 
- 
-    //compute average accuracy; 
+
+    //compute average accuracy;
     p.averageAccuracy = participantResult.data.avgAcc;
 
 
