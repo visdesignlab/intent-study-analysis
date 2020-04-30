@@ -31,6 +31,8 @@ dfp = read.csv("../results/pilot/CSV/participantInfoTidyR.csv")
 # Update numeric and character variable types
 df$value = as.numeric( as.character(df$value ))
 df$userDriven = as.character(df$userDriven) 
+
+dfp$value = as.numeric( as.character(dfp$value ))
   
 # Refactor the factor variables into the right order
 df$taskType_f = factor(
@@ -346,10 +348,7 @@ for (diff_level in c("easy", "medium_hard")) {
 ```{r  fig.width=7, fig.height=8}
 
 dfp_filtered = dfp %>% 
-  filter(type=="feedback");
-
-
-dfp_filtered$value = as.numeric( as.character(dfp_filtered$value ))
+  filter(type=="feedback")
 
 # Feedback histogram point and line data
 mean_cl_boot_data = dfp_filtered %>%
@@ -383,12 +382,13 @@ ggplot(dfp_filtered) +
     theme(
     panel.background = element_rect(fill = NA),
     panel.border = element_blank(),
-    panel.ontop = TRUE,
     panel.grid.major.y = element_blank(),
     panel.grid.major.x = element_line(color = "white"),
     panel.spacing.y = unit(1, "lines"),
     axis.line.y = element_blank(),
-    axis.ticks.y = element_blank()
+    axis.ticks.y = element_blank(),
+    strip.background = element_blank(),
+    strip.text = element_text(hjust = 0)
   ) 
 
 filename <- paste("survey_responses.pdf")
@@ -438,15 +438,16 @@ for (diff_level in c("easy", "medium_hard")) {
     theme(strip.text.y = element_text(angle = 0)) +
   #   scale_y_continuous(limits = c(-100,100), breaks = c(0,100))+
     scale_y_continuous(limits = c(-0.5,1), breaks=c(0,.75))+
-      theme(
+    theme(
       panel.background = element_rect(fill = NA),
       panel.border = element_blank(),
-      panel.ontop = TRUE,
       panel.grid.major.y = element_blank(),
       panel.grid.major.x = element_line(color = "white"),
       panel.spacing.y = unit(1, "lines"),
       axis.line.y = element_blank(),
-      axis.ticks.y = element_blank()
+      axis.ticks.y = element_blank(),
+      strip.background = element_blank(),
+      strip.text = element_text(hjust = 0)
     ) 
   
   filename <- paste0("confidence_difficulty_", diff_level, ".pdf")
