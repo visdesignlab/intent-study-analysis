@@ -1,0 +1,1951 @@
+prolificId,type,measure,value
+5f5bc70414f72236d0612d7a,feedback,How helpful is the “individual selection” of points feature?,4
+5f5bc70414f72236d0612d7a,feedback,How helpful is the rectangle selection feature?,4
+5f5bc70414f72236d0612d7a,feedback,How helpful is the paintbrush feature?,5
+5f5bc70414f72236d0612d7a,feedback,How easy was the prediction interface to use?,2
+5f5bc70414f72236d0612d7a,feedback,How accurate did you find the predictions?,1
+5f5bc70414f72236d0612d7a,feedback,How helpful did you find the predictions?,1
+5f5bc70414f72236d0612d7a,feedback,Do you prefer user-driven or computer supported selections?,4
+5f5bc70414f72236d0612d7a,feedback,How experienced are you with scatterplots?,2
+5f5bc70414f72236d0612d7a,feedback,How experienced are you with statistics?,3
+5f5bc70414f72236d0612d7a,demographics,birthCountry,Mexico
+5f5bc70414f72236d0612d7a,demographics,employment,Unemployed (and job seeking)
+5f5bc70414f72236d0612d7a,demographics,nationality,Mexico
+5f5bc70414f72236d0612d7a,demographics,sex,Male
+5f5bc70414f72236d0612d7a,demographics,student,No
+5f5bc70414f72236d0612d7a,results,averageAccuracy,0.4688213618780846
+5ecc4a93243b34435985b392,feedback,How helpful is the “individual selection” of points feature?,2
+5ecc4a93243b34435985b392,feedback,How helpful is the rectangle selection feature?,1
+5ecc4a93243b34435985b392,feedback,How helpful is the paintbrush feature?,5
+5ecc4a93243b34435985b392,feedback,How easy was the prediction interface to use?,5
+5ecc4a93243b34435985b392,feedback,How accurate did you find the predictions?,3
+5ecc4a93243b34435985b392,feedback,How helpful did you find the predictions?,1
+5ecc4a93243b34435985b392,feedback,Do you prefer user-driven or computer supported selections?,3
+5ecc4a93243b34435985b392,feedback,How experienced are you with scatterplots?,3
+5ecc4a93243b34435985b392,feedback,How experienced are you with statistics?,4
+5ecc4a93243b34435985b392,demographics,birthCountry,Mexico
+5ecc4a93243b34435985b392,demographics,employment,Full-Time
+5ecc4a93243b34435985b392,demographics,nationality,Mexico
+5ecc4a93243b34435985b392,demographics,sex,Male
+5ecc4a93243b34435985b392,demographics,student,No
+5ecc4a93243b34435985b392,results,averageAccuracy,0.8543237294917968
+5f256074297aac1d8ef7382d,feedback,How helpful is the “individual selection” of points feature?,2
+5f256074297aac1d8ef7382d,feedback,How helpful is the rectangle selection feature?,2
+5f256074297aac1d8ef7382d,feedback,How helpful is the paintbrush feature?,5
+5f256074297aac1d8ef7382d,feedback,How easy was the prediction interface to use?,5
+5f256074297aac1d8ef7382d,feedback,How accurate did you find the predictions?,5
+5f256074297aac1d8ef7382d,feedback,How helpful did you find the predictions?,5
+5f256074297aac1d8ef7382d,feedback,Do you prefer user-driven or computer supported selections?,5
+5f256074297aac1d8ef7382d,feedback,How experienced are you with scatterplots?,2
+5f256074297aac1d8ef7382d,feedback,How experienced are you with statistics?,4
+5f256074297aac1d8ef7382d,demographics,birthCountry,Hungary
+5f256074297aac1d8ef7382d,demographics,employment,Unemployed (and job seeking)
+5f256074297aac1d8ef7382d,demographics,nationality,Hungary
+5f256074297aac1d8ef7382d,demographics,sex,Male
+5f256074297aac1d8ef7382d,demographics,student,No
+5f256074297aac1d8ef7382d,results,averageAccuracy,0.8448276233570351
+5dd6f1d7c5faa268624c5037,feedback,How helpful is the “individual selection” of points feature?,3
+5dd6f1d7c5faa268624c5037,feedback,How helpful is the rectangle selection feature?,4
+5dd6f1d7c5faa268624c5037,feedback,How helpful is the paintbrush feature?,5
+5dd6f1d7c5faa268624c5037,feedback,How easy was the prediction interface to use?,5
+5dd6f1d7c5faa268624c5037,feedback,How accurate did you find the predictions?,4
+5dd6f1d7c5faa268624c5037,feedback,How helpful did you find the predictions?,4
+5dd6f1d7c5faa268624c5037,feedback,Do you prefer user-driven or computer supported selections?,4
+5dd6f1d7c5faa268624c5037,feedback,How experienced are you with scatterplots?,1
+5dd6f1d7c5faa268624c5037,feedback,How experienced are you with statistics?,1
+5dd6f1d7c5faa268624c5037,demographics,birthCountry,Portugal
+5dd6f1d7c5faa268624c5037,demographics,employment,Other
+5dd6f1d7c5faa268624c5037,demographics,nationality,Portugal
+5dd6f1d7c5faa268624c5037,demographics,sex,Male
+5dd6f1d7c5faa268624c5037,demographics,student,Yes
+5dd6f1d7c5faa268624c5037,results,averageAccuracy,0.8690356270713414
+5a4a8802817d1800018d2549,feedback,How helpful is the “individual selection” of points feature?,5
+5a4a8802817d1800018d2549,feedback,How helpful is the rectangle selection feature?,3
+5a4a8802817d1800018d2549,feedback,How helpful is the paintbrush feature?,5
+5a4a8802817d1800018d2549,feedback,How easy was the prediction interface to use?,4
+5a4a8802817d1800018d2549,feedback,How accurate did you find the predictions?,5
+5a4a8802817d1800018d2549,feedback,How helpful did you find the predictions?,4
+5a4a8802817d1800018d2549,feedback,Do you prefer user-driven or computer supported selections?,1
+5a4a8802817d1800018d2549,feedback,How experienced are you with scatterplots?,2
+5a4a8802817d1800018d2549,feedback,How experienced are you with statistics?,2
+5a4a8802817d1800018d2549,demographics,birthCountry,United Kingdom
+5a4a8802817d1800018d2549,demographics,employment,Unemployed (and job seeking)
+5a4a8802817d1800018d2549,demographics,nationality,United Kingdom
+5a4a8802817d1800018d2549,demographics,sex,Female
+5a4a8802817d1800018d2549,demographics,student,No
+5a4a8802817d1800018d2549,results,averageAccuracy,0.592168979924082
+5f567ed454a3b50b805354db,feedback,How helpful is the “individual selection” of points feature?,2
+5f567ed454a3b50b805354db,feedback,How helpful is the rectangle selection feature?,4
+5f567ed454a3b50b805354db,feedback,How helpful is the paintbrush feature?,3
+5f567ed454a3b50b805354db,feedback,How easy was the prediction interface to use?,4
+5f567ed454a3b50b805354db,feedback,How accurate did you find the predictions?,4
+5f567ed454a3b50b805354db,feedback,How helpful did you find the predictions?,3
+5f567ed454a3b50b805354db,feedback,Do you prefer user-driven or computer supported selections?,3
+5f567ed454a3b50b805354db,feedback,How experienced are you with scatterplots?,2
+5f567ed454a3b50b805354db,feedback,How experienced are you with statistics?,2
+5f567ed454a3b50b805354db,demographics,birthCountry,Portugal
+5f567ed454a3b50b805354db,demographics,employment,Other
+5f567ed454a3b50b805354db,demographics,nationality,Portugal
+5f567ed454a3b50b805354db,demographics,sex,Male
+5f567ed454a3b50b805354db,demographics,student,Yes
+5f567ed454a3b50b805354db,results,averageAccuracy,0.807072521316219
+5d1a69d8f97a18001977e0d7,feedback,How helpful is the “individual selection” of points feature?,5
+5d1a69d8f97a18001977e0d7,feedback,How helpful is the rectangle selection feature?,4
+5d1a69d8f97a18001977e0d7,feedback,How helpful is the paintbrush feature?,4
+5d1a69d8f97a18001977e0d7,feedback,How easy was the prediction interface to use?,3
+5d1a69d8f97a18001977e0d7,feedback,How accurate did you find the predictions?,4
+5d1a69d8f97a18001977e0d7,feedback,How helpful did you find the predictions?,3
+5d1a69d8f97a18001977e0d7,feedback,Do you prefer user-driven or computer supported selections?,2
+5d1a69d8f97a18001977e0d7,feedback,How experienced are you with scatterplots?,4
+5d1a69d8f97a18001977e0d7,feedback,How experienced are you with statistics?,4
+5d1a69d8f97a18001977e0d7,demographics,birthCountry,United Kingdom
+5d1a69d8f97a18001977e0d7,demographics,employment,Full-Time
+5d1a69d8f97a18001977e0d7,demographics,nationality,United Kingdom
+5d1a69d8f97a18001977e0d7,demographics,sex,Male
+5d1a69d8f97a18001977e0d7,demographics,student,No
+5d1a69d8f97a18001977e0d7,results,averageAccuracy,0.7950213675213675
+5f26aaed7bb0bd4121461b6d,feedback,How helpful is the “individual selection” of points feature?,2
+5f26aaed7bb0bd4121461b6d,feedback,How helpful is the rectangle selection feature?,3
+5f26aaed7bb0bd4121461b6d,feedback,How helpful is the paintbrush feature?,3
+5f26aaed7bb0bd4121461b6d,feedback,How easy was the prediction interface to use?,5
+5f26aaed7bb0bd4121461b6d,feedback,How accurate did you find the predictions?,5
+5f26aaed7bb0bd4121461b6d,feedback,How helpful did you find the predictions?,5
+5f26aaed7bb0bd4121461b6d,feedback,Do you prefer user-driven or computer supported selections?,5
+5f26aaed7bb0bd4121461b6d,feedback,How experienced are you with scatterplots?,1
+5f26aaed7bb0bd4121461b6d,feedback,How experienced are you with statistics?,1
+5f26aaed7bb0bd4121461b6d,demographics,birthCountry,Poland
+5f26aaed7bb0bd4121461b6d,demographics,employment,Unemployed (and job seeking)
+5f26aaed7bb0bd4121461b6d,demographics,nationality,Poland
+5f26aaed7bb0bd4121461b6d,demographics,sex,Male
+5f26aaed7bb0bd4121461b6d,demographics,student,Yes
+5f26aaed7bb0bd4121461b6d,results,averageAccuracy,0.511629192619976
+5e58fa19fc38d6104f798878,feedback,How helpful is the “individual selection” of points feature?,3
+5e58fa19fc38d6104f798878,feedback,How helpful is the rectangle selection feature?,1
+5e58fa19fc38d6104f798878,feedback,How helpful is the paintbrush feature?,5
+5e58fa19fc38d6104f798878,feedback,How easy was the prediction interface to use?,5
+5e58fa19fc38d6104f798878,feedback,How accurate did you find the predictions?,4
+5e58fa19fc38d6104f798878,feedback,How helpful did you find the predictions?,5
+5e58fa19fc38d6104f798878,feedback,Do you prefer user-driven or computer supported selections?,5
+5e58fa19fc38d6104f798878,feedback,How experienced are you with scatterplots?,1
+5e58fa19fc38d6104f798878,feedback,How experienced are you with statistics?,1
+5e58fa19fc38d6104f798878,demographics,birthCountry,Poland
+5e58fa19fc38d6104f798878,demographics,employment,Unemployed (and job seeking)
+5e58fa19fc38d6104f798878,demographics,nationality,Poland
+5e58fa19fc38d6104f798878,demographics,sex,Male
+5e58fa19fc38d6104f798878,demographics,student,Yes
+5e58fa19fc38d6104f798878,results,averageAccuracy,0.8289955982392959
+5c66bbd0d0fb37000172fdfe,feedback,How helpful is the “individual selection” of points feature?,1
+5c66bbd0d0fb37000172fdfe,feedback,How helpful is the rectangle selection feature?,2
+5c66bbd0d0fb37000172fdfe,feedback,How helpful is the paintbrush feature?,5
+5c66bbd0d0fb37000172fdfe,feedback,How easy was the prediction interface to use?,3
+5c66bbd0d0fb37000172fdfe,feedback,How accurate did you find the predictions?,4
+5c66bbd0d0fb37000172fdfe,feedback,How helpful did you find the predictions?,5
+5c66bbd0d0fb37000172fdfe,feedback,Do you prefer user-driven or computer supported selections?,5
+5c66bbd0d0fb37000172fdfe,feedback,How experienced are you with scatterplots?,3
+5c66bbd0d0fb37000172fdfe,feedback,How experienced are you with statistics?,3
+5c66bbd0d0fb37000172fdfe,demographics,birthCountry,United Kingdom
+5c66bbd0d0fb37000172fdfe,demographics,employment,Unemployed (and job seeking)
+5c66bbd0d0fb37000172fdfe,demographics,nationality,United Kingdom
+5c66bbd0d0fb37000172fdfe,demographics,sex,Male
+5c66bbd0d0fb37000172fdfe,demographics,student,Yes
+5c66bbd0d0fb37000172fdfe,results,averageAccuracy,0.7657194392908678
+5b1efc25bdf4e1000163af46,feedback,How helpful is the “individual selection” of points feature?,5
+5b1efc25bdf4e1000163af46,feedback,How helpful is the rectangle selection feature?,1
+5b1efc25bdf4e1000163af46,feedback,How helpful is the paintbrush feature?,5
+5b1efc25bdf4e1000163af46,feedback,How easy was the prediction interface to use?,3
+5b1efc25bdf4e1000163af46,feedback,How accurate did you find the predictions?,3
+5b1efc25bdf4e1000163af46,feedback,How helpful did you find the predictions?,4
+5b1efc25bdf4e1000163af46,feedback,Do you prefer user-driven or computer supported selections?,2
+5b1efc25bdf4e1000163af46,feedback,How experienced are you with scatterplots?,3
+5b1efc25bdf4e1000163af46,feedback,How experienced are you with statistics?,3
+5b1efc25bdf4e1000163af46,demographics,birthCountry,United Kingdom
+5b1efc25bdf4e1000163af46,demographics,employment,Full-Time
+5b1efc25bdf4e1000163af46,demographics,nationality,United Kingdom
+5b1efc25bdf4e1000163af46,demographics,sex,Female
+5b1efc25bdf4e1000163af46,demographics,student,No
+5b1efc25bdf4e1000163af46,results,averageAccuracy,0.6087615559044129
+5dd58b43149f5354a6124a41,feedback,How helpful is the “individual selection” of points feature?,2
+5dd58b43149f5354a6124a41,feedback,How helpful is the rectangle selection feature?,1
+5dd58b43149f5354a6124a41,feedback,How helpful is the paintbrush feature?,5
+5dd58b43149f5354a6124a41,feedback,How easy was the prediction interface to use?,5
+5dd58b43149f5354a6124a41,feedback,How accurate did you find the predictions?,5
+5dd58b43149f5354a6124a41,feedback,How helpful did you find the predictions?,4
+5dd58b43149f5354a6124a41,feedback,Do you prefer user-driven or computer supported selections?,4
+5dd58b43149f5354a6124a41,feedback,How experienced are you with scatterplots?,3
+5dd58b43149f5354a6124a41,feedback,How experienced are you with statistics?,5
+5dd58b43149f5354a6124a41,demographics,birthCountry,Portugal
+5dd58b43149f5354a6124a41,demographics,employment,Full-Time
+5dd58b43149f5354a6124a41,demographics,nationality,Portugal
+5dd58b43149f5354a6124a41,demographics,sex,Male
+5dd58b43149f5354a6124a41,demographics,student,No
+5dd58b43149f5354a6124a41,results,averageAccuracy,0.8326360544217687
+5edc195a95d5090e1c3f91b2,feedback,How helpful is the “individual selection” of points feature?,2
+5edc195a95d5090e1c3f91b2,feedback,How helpful is the rectangle selection feature?,3
+5edc195a95d5090e1c3f91b2,feedback,How helpful is the paintbrush feature?,5
+5edc195a95d5090e1c3f91b2,feedback,How easy was the prediction interface to use?,5
+5edc195a95d5090e1c3f91b2,feedback,How accurate did you find the predictions?,4
+5edc195a95d5090e1c3f91b2,feedback,How helpful did you find the predictions?,4
+5edc195a95d5090e1c3f91b2,feedback,Do you prefer user-driven or computer supported selections?,4
+5edc195a95d5090e1c3f91b2,feedback,How experienced are you with scatterplots?,5
+5edc195a95d5090e1c3f91b2,feedback,How experienced are you with statistics?,4
+5edc195a95d5090e1c3f91b2,demographics,birthCountry,United States
+5edc195a95d5090e1c3f91b2,demographics,employment,Full-Time
+5edc195a95d5090e1c3f91b2,demographics,nationality,United States
+5edc195a95d5090e1c3f91b2,demographics,sex,Male
+5edc195a95d5090e1c3f91b2,demographics,student,No
+5edc195a95d5090e1c3f91b2,results,averageAccuracy,0.837216886754702
+5d02ed8f7a3c0f0015cd3230,feedback,How helpful is the “individual selection” of points feature?,5
+5d02ed8f7a3c0f0015cd3230,feedback,How helpful is the rectangle selection feature?,2
+5d02ed8f7a3c0f0015cd3230,feedback,How helpful is the paintbrush feature?,5
+5d02ed8f7a3c0f0015cd3230,feedback,How easy was the prediction interface to use?,5
+5d02ed8f7a3c0f0015cd3230,feedback,How accurate did you find the predictions?,4
+5d02ed8f7a3c0f0015cd3230,feedback,How helpful did you find the predictions?,5
+5d02ed8f7a3c0f0015cd3230,feedback,Do you prefer user-driven or computer supported selections?,4
+5d02ed8f7a3c0f0015cd3230,feedback,How experienced are you with scatterplots?,4
+5d02ed8f7a3c0f0015cd3230,feedback,How experienced are you with statistics?,4
+5d02ed8f7a3c0f0015cd3230,demographics,birthCountry,Portugal
+5d02ed8f7a3c0f0015cd3230,demographics,employment,"Not in paid work (e.g. homemaker', 'retired or disabled)"
+5d02ed8f7a3c0f0015cd3230,demographics,nationality,Portugal
+5d02ed8f7a3c0f0015cd3230,demographics,sex,Male
+5d02ed8f7a3c0f0015cd3230,demographics,student,Yes
+5d02ed8f7a3c0f0015cd3230,results,averageAccuracy,0.8709353741496598
+5e9627e6434ee20a82a7d296,feedback,How helpful is the “individual selection” of points feature?,1
+5e9627e6434ee20a82a7d296,feedback,How helpful is the rectangle selection feature?,4
+5e9627e6434ee20a82a7d296,feedback,How helpful is the paintbrush feature?,5
+5e9627e6434ee20a82a7d296,feedback,How easy was the prediction interface to use?,5
+5e9627e6434ee20a82a7d296,feedback,How accurate did you find the predictions?,4
+5e9627e6434ee20a82a7d296,feedback,How helpful did you find the predictions?,1
+5e9627e6434ee20a82a7d296,feedback,Do you prefer user-driven or computer supported selections?,1
+5e9627e6434ee20a82a7d296,feedback,How experienced are you with scatterplots?,4
+5e9627e6434ee20a82a7d296,feedback,How experienced are you with statistics?,2
+5e9627e6434ee20a82a7d296,demographics,birthCountry,United Kingdom
+5e9627e6434ee20a82a7d296,demographics,employment,"Not in paid work (e.g. homemaker', 'retired or disabled)"
+5e9627e6434ee20a82a7d296,demographics,nationality,United Kingdom
+5e9627e6434ee20a82a7d296,demographics,sex,Female
+5e9627e6434ee20a82a7d296,demographics,student,Yes
+5e9627e6434ee20a82a7d296,results,averageAccuracy,0.5756361604470849
+5d169044530c4b001a528043,feedback,How helpful is the “individual selection” of points feature?,1
+5d169044530c4b001a528043,feedback,How helpful is the rectangle selection feature?,3
+5d169044530c4b001a528043,feedback,How helpful is the paintbrush feature?,5
+5d169044530c4b001a528043,feedback,How easy was the prediction interface to use?,5
+5d169044530c4b001a528043,feedback,How accurate did you find the predictions?,4
+5d169044530c4b001a528043,feedback,How helpful did you find the predictions?,5
+5d169044530c4b001a528043,feedback,Do you prefer user-driven or computer supported selections?,5
+5d169044530c4b001a528043,feedback,How experienced are you with scatterplots?,1
+5d169044530c4b001a528043,feedback,How experienced are you with statistics?,2
+5d169044530c4b001a528043,demographics,birthCountry,Greece
+5d169044530c4b001a528043,demographics,employment,Part-Time
+5d169044530c4b001a528043,demographics,nationality,United Kingdom
+5d169044530c4b001a528043,demographics,sex,Female
+5d169044530c4b001a528043,demographics,student,Yes
+5d169044530c4b001a528043,results,averageAccuracy,0.6425408753244888
+5d470786da637a00014ba26f,feedback,How helpful is the “individual selection” of points feature?,3
+5d470786da637a00014ba26f,feedback,How helpful is the rectangle selection feature?,2
+5d470786da637a00014ba26f,feedback,How helpful is the paintbrush feature?,5
+5d470786da637a00014ba26f,feedback,How easy was the prediction interface to use?,4
+5d470786da637a00014ba26f,feedback,How accurate did you find the predictions?,2
+5d470786da637a00014ba26f,feedback,How helpful did you find the predictions?,2
+5d470786da637a00014ba26f,feedback,Do you prefer user-driven or computer supported selections?,1
+5d470786da637a00014ba26f,feedback,How experienced are you with scatterplots?,1
+5d470786da637a00014ba26f,feedback,How experienced are you with statistics?,1
+5d470786da637a00014ba26f,demographics,birthCountry,United Kingdom
+5d470786da637a00014ba26f,demographics,employment,Full-Time
+5d470786da637a00014ba26f,demographics,nationality,United Kingdom
+5d470786da637a00014ba26f,demographics,sex,Male
+5d470786da637a00014ba26f,demographics,student,No
+5d470786da637a00014ba26f,results,averageAccuracy,0.7372367982894298
+5f479154dc1bde17b64d7eb5,feedback,How helpful is the “individual selection” of points feature?,1
+5f479154dc1bde17b64d7eb5,feedback,How helpful is the rectangle selection feature?,4
+5f479154dc1bde17b64d7eb5,feedback,How helpful is the paintbrush feature?,5
+5f479154dc1bde17b64d7eb5,feedback,How easy was the prediction interface to use?,5
+5f479154dc1bde17b64d7eb5,feedback,How accurate did you find the predictions?,5
+5f479154dc1bde17b64d7eb5,feedback,How helpful did you find the predictions?,5
+5f479154dc1bde17b64d7eb5,feedback,Do you prefer user-driven or computer supported selections?,4
+5f479154dc1bde17b64d7eb5,feedback,How experienced are you with scatterplots?,4
+5f479154dc1bde17b64d7eb5,feedback,How experienced are you with statistics?,4
+5f479154dc1bde17b64d7eb5,demographics,birthCountry,United States
+5f479154dc1bde17b64d7eb5,demographics,employment,Full-Time
+5f479154dc1bde17b64d7eb5,demographics,nationality,United States
+5f479154dc1bde17b64d7eb5,demographics,sex,Female
+5f479154dc1bde17b64d7eb5,demographics,student,No
+5f479154dc1bde17b64d7eb5,results,averageAccuracy,0.82349909194447
+5f1ea02746999b87b4489f36,feedback,How helpful is the “individual selection” of points feature?,4
+5f1ea02746999b87b4489f36,feedback,How helpful is the rectangle selection feature?,1
+5f1ea02746999b87b4489f36,feedback,How helpful is the paintbrush feature?,3
+5f1ea02746999b87b4489f36,feedback,How easy was the prediction interface to use?,4
+5f1ea02746999b87b4489f36,feedback,How accurate did you find the predictions?,5
+5f1ea02746999b87b4489f36,feedback,How helpful did you find the predictions?,5
+5f1ea02746999b87b4489f36,feedback,Do you prefer user-driven or computer supported selections?,3
+5f1ea02746999b87b4489f36,feedback,How experienced are you with scatterplots?,2
+5f1ea02746999b87b4489f36,feedback,How experienced are you with statistics?,3
+5f1ea02746999b87b4489f36,demographics,birthCountry,Poland
+5f1ea02746999b87b4489f36,demographics,employment,Unemployed (and job seeking)
+5f1ea02746999b87b4489f36,demographics,nationality,Poland
+5f1ea02746999b87b4489f36,demographics,sex,Male
+5f1ea02746999b87b4489f36,demographics,student,Yes
+5f1ea02746999b87b4489f36,results,averageAccuracy,0.5650741920699904
+5c77e56ad5dd7600016c00d3,feedback,How helpful is the “individual selection” of points feature?,3
+5c77e56ad5dd7600016c00d3,feedback,How helpful is the rectangle selection feature?,2
+5c77e56ad5dd7600016c00d3,feedback,How helpful is the paintbrush feature?,5
+5c77e56ad5dd7600016c00d3,feedback,How easy was the prediction interface to use?,4
+5c77e56ad5dd7600016c00d3,feedback,How accurate did you find the predictions?,2
+5c77e56ad5dd7600016c00d3,feedback,How helpful did you find the predictions?,4
+5c77e56ad5dd7600016c00d3,feedback,Do you prefer user-driven or computer supported selections?,4
+5c77e56ad5dd7600016c00d3,feedback,How experienced are you with scatterplots?,1
+5c77e56ad5dd7600016c00d3,feedback,How experienced are you with statistics?,3
+5c77e56ad5dd7600016c00d3,demographics,birthCountry,Estonia
+5c77e56ad5dd7600016c00d3,demographics,employment,Full-Time
+5c77e56ad5dd7600016c00d3,demographics,nationality,Estonia
+5c77e56ad5dd7600016c00d3,demographics,sex,Female
+5c77e56ad5dd7600016c00d3,demographics,student,No
+5c77e56ad5dd7600016c00d3,results,averageAccuracy,0.8416208791208792
+5bbc3d95f1f9ba000141d855,feedback,How helpful is the “individual selection” of points feature?,5
+5bbc3d95f1f9ba000141d855,feedback,How helpful is the rectangle selection feature?,1
+5bbc3d95f1f9ba000141d855,feedback,How helpful is the paintbrush feature?,5
+5bbc3d95f1f9ba000141d855,feedback,How easy was the prediction interface to use?,5
+5bbc3d95f1f9ba000141d855,feedback,How accurate did you find the predictions?,3
+5bbc3d95f1f9ba000141d855,feedback,How helpful did you find the predictions?,4
+5bbc3d95f1f9ba000141d855,feedback,Do you prefer user-driven or computer supported selections?,1
+5bbc3d95f1f9ba000141d855,feedback,How experienced are you with scatterplots?,2
+5bbc3d95f1f9ba000141d855,feedback,How experienced are you with statistics?,3
+5bbc3d95f1f9ba000141d855,demographics,birthCountry,United Kingdom
+5bbc3d95f1f9ba000141d855,demographics,employment,Full-Time
+5bbc3d95f1f9ba000141d855,demographics,nationality,United Kingdom
+5bbc3d95f1f9ba000141d855,demographics,sex,Female
+5bbc3d95f1f9ba000141d855,demographics,student,No
+5bbc3d95f1f9ba000141d855,results,averageAccuracy,0.5833929183531843
+5c5f33a97ba8710001f5e24d,feedback,How helpful is the “individual selection” of points feature?,1
+5c5f33a97ba8710001f5e24d,feedback,How helpful is the rectangle selection feature?,1
+5c5f33a97ba8710001f5e24d,feedback,How helpful is the paintbrush feature?,5
+5c5f33a97ba8710001f5e24d,feedback,How easy was the prediction interface to use?,5
+5c5f33a97ba8710001f5e24d,feedback,How accurate did you find the predictions?,3
+5c5f33a97ba8710001f5e24d,feedback,How helpful did you find the predictions?,4
+5c5f33a97ba8710001f5e24d,feedback,Do you prefer user-driven or computer supported selections?,2
+5c5f33a97ba8710001f5e24d,feedback,How experienced are you with scatterplots?,1
+5c5f33a97ba8710001f5e24d,feedback,How experienced are you with statistics?,2
+5c5f33a97ba8710001f5e24d,demographics,birthCountry,Poland
+5c5f33a97ba8710001f5e24d,demographics,employment,Part-Time
+5c5f33a97ba8710001f5e24d,demographics,nationality,Poland
+5c5f33a97ba8710001f5e24d,demographics,sex,Male
+5c5f33a97ba8710001f5e24d,demographics,student,No
+5c5f33a97ba8710001f5e24d,results,averageAccuracy,0.7561170784103115
+5e84b9cd3c01b3072fac9470,feedback,How helpful is the “individual selection” of points feature?,3
+5e84b9cd3c01b3072fac9470,feedback,How helpful is the rectangle selection feature?,2
+5e84b9cd3c01b3072fac9470,feedback,How helpful is the paintbrush feature?,5
+5e84b9cd3c01b3072fac9470,feedback,How easy was the prediction interface to use?,3
+5e84b9cd3c01b3072fac9470,feedback,How accurate did you find the predictions?,4
+5e84b9cd3c01b3072fac9470,feedback,How helpful did you find the predictions?,4
+5e84b9cd3c01b3072fac9470,feedback,Do you prefer user-driven or computer supported selections?,4
+5e84b9cd3c01b3072fac9470,feedback,How experienced are you with scatterplots?,1
+5e84b9cd3c01b3072fac9470,feedback,How experienced are you with statistics?,2
+5e84b9cd3c01b3072fac9470,demographics,birthCountry,Poland
+5e84b9cd3c01b3072fac9470,demographics,employment,Other
+5e84b9cd3c01b3072fac9470,demographics,nationality,Poland
+5e84b9cd3c01b3072fac9470,demographics,sex,Female
+5e84b9cd3c01b3072fac9470,demographics,student,Yes
+5e84b9cd3c01b3072fac9470,results,averageAccuracy,0.7201242804814234
+5eff4206a352be49f1aef4cc,feedback,How helpful is the “individual selection” of points feature?,4
+5eff4206a352be49f1aef4cc,feedback,How helpful is the rectangle selection feature?,2
+5eff4206a352be49f1aef4cc,feedback,How helpful is the paintbrush feature?,5
+5eff4206a352be49f1aef4cc,feedback,How easy was the prediction interface to use?,5
+5eff4206a352be49f1aef4cc,feedback,How accurate did you find the predictions?,4
+5eff4206a352be49f1aef4cc,feedback,How helpful did you find the predictions?,4
+5eff4206a352be49f1aef4cc,feedback,Do you prefer user-driven or computer supported selections?,5
+5eff4206a352be49f1aef4cc,feedback,How experienced are you with scatterplots?,1
+5eff4206a352be49f1aef4cc,feedback,How experienced are you with statistics?,2
+5eff4206a352be49f1aef4cc,demographics,birthCountry,Poland
+5eff4206a352be49f1aef4cc,demographics,employment,"Not in paid work (e.g. homemaker', 'retired or disabled)"
+5eff4206a352be49f1aef4cc,demographics,nationality,Poland
+5eff4206a352be49f1aef4cc,demographics,sex,Male
+5eff4206a352be49f1aef4cc,demographics,student,Yes
+5eff4206a352be49f1aef4cc,results,averageAccuracy,0.8294557823129252
+558996f2fdf99b7ae47f5ed2,feedback,How helpful is the “individual selection” of points feature?,3
+558996f2fdf99b7ae47f5ed2,feedback,How helpful is the rectangle selection feature?,3
+558996f2fdf99b7ae47f5ed2,feedback,How helpful is the paintbrush feature?,5
+558996f2fdf99b7ae47f5ed2,feedback,How easy was the prediction interface to use?,5
+558996f2fdf99b7ae47f5ed2,feedback,How accurate did you find the predictions?,3
+558996f2fdf99b7ae47f5ed2,feedback,How helpful did you find the predictions?,3
+558996f2fdf99b7ae47f5ed2,feedback,Do you prefer user-driven or computer supported selections?,4
+558996f2fdf99b7ae47f5ed2,feedback,How experienced are you with scatterplots?,2
+558996f2fdf99b7ae47f5ed2,feedback,How experienced are you with statistics?,2
+558996f2fdf99b7ae47f5ed2,demographics,birthCountry,United Kingdom
+558996f2fdf99b7ae47f5ed2,demographics,employment,Part-Time
+558996f2fdf99b7ae47f5ed2,demographics,nationality,United Kingdom
+558996f2fdf99b7ae47f5ed2,demographics,sex,Male
+558996f2fdf99b7ae47f5ed2,demographics,student,No
+558996f2fdf99b7ae47f5ed2,results,averageAccuracy,0.8391176470588235
+5f5a81a437f71115c1346b6c,feedback,How helpful is the “individual selection” of points feature?,1
+5f5a81a437f71115c1346b6c,feedback,How helpful is the rectangle selection feature?,2
+5f5a81a437f71115c1346b6c,feedback,How helpful is the paintbrush feature?,5
+5f5a81a437f71115c1346b6c,feedback,How easy was the prediction interface to use?,5
+5f5a81a437f71115c1346b6c,feedback,How accurate did you find the predictions?,4
+5f5a81a437f71115c1346b6c,feedback,How helpful did you find the predictions?,5
+5f5a81a437f71115c1346b6c,feedback,Do you prefer user-driven or computer supported selections?,1
+5f5a81a437f71115c1346b6c,feedback,How experienced are you with scatterplots?,1
+5f5a81a437f71115c1346b6c,feedback,How experienced are you with statistics?,2
+5f5a81a437f71115c1346b6c,demographics,birthCountry,United Kingdom
+5f5a81a437f71115c1346b6c,demographics,employment,Part-Time
+5f5a81a437f71115c1346b6c,demographics,nationality,United Kingdom
+5f5a81a437f71115c1346b6c,demographics,sex,Female
+5f5a81a437f71115c1346b6c,demographics,student,Yes
+5f5a81a437f71115c1346b6c,results,averageAccuracy,0.8318908076050935
+5ebbf07bf4722202325ceec1,feedback,How helpful is the “individual selection” of points feature?,2
+5ebbf07bf4722202325ceec1,feedback,How helpful is the rectangle selection feature?,2
+5ebbf07bf4722202325ceec1,feedback,How helpful is the paintbrush feature?,5
+5ebbf07bf4722202325ceec1,feedback,How easy was the prediction interface to use?,5
+5ebbf07bf4722202325ceec1,feedback,How accurate did you find the predictions?,4
+5ebbf07bf4722202325ceec1,feedback,How helpful did you find the predictions?,4
+5ebbf07bf4722202325ceec1,feedback,Do you prefer user-driven or computer supported selections?,2
+5ebbf07bf4722202325ceec1,feedback,How experienced are you with scatterplots?,5
+5ebbf07bf4722202325ceec1,feedback,How experienced are you with statistics?,5
+5ebbf07bf4722202325ceec1,demographics,birthCountry,Italy
+5ebbf07bf4722202325ceec1,demographics,employment,Unemployed (and job seeking)
+5ebbf07bf4722202325ceec1,demographics,nationality,Italy
+5ebbf07bf4722202325ceec1,demographics,sex,Male
+5ebbf07bf4722202325ceec1,demographics,student,Yes
+5ebbf07bf4722202325ceec1,results,averageAccuracy,0.7311698222412508
+5f3b0d8f9744cb806d6b8dd6,feedback,How helpful is the “individual selection” of points feature?,2
+5f3b0d8f9744cb806d6b8dd6,feedback,How helpful is the rectangle selection feature?,4
+5f3b0d8f9744cb806d6b8dd6,feedback,How helpful is the paintbrush feature?,5
+5f3b0d8f9744cb806d6b8dd6,feedback,How easy was the prediction interface to use?,4
+5f3b0d8f9744cb806d6b8dd6,feedback,How accurate did you find the predictions?,4
+5f3b0d8f9744cb806d6b8dd6,feedback,How helpful did you find the predictions?,4
+5f3b0d8f9744cb806d6b8dd6,feedback,Do you prefer user-driven or computer supported selections?,4
+5f3b0d8f9744cb806d6b8dd6,feedback,How experienced are you with scatterplots?,1
+5f3b0d8f9744cb806d6b8dd6,feedback,How experienced are you with statistics?,3
+5f3b0d8f9744cb806d6b8dd6,demographics,birthCountry,Germany
+5f3b0d8f9744cb806d6b8dd6,demographics,employment,"Not in paid work (e.g. homemaker', 'retired or disabled)"
+5f3b0d8f9744cb806d6b8dd6,demographics,nationality,Germany
+5f3b0d8f9744cb806d6b8dd6,demographics,sex,Male
+5f3b0d8f9744cb806d6b8dd6,demographics,student,Yes
+5f3b0d8f9744cb806d6b8dd6,results,averageAccuracy,0.8765901360544216
+5f390fdcaf40ed43f3161b40,feedback,How helpful is the “individual selection” of points feature?,5
+5f390fdcaf40ed43f3161b40,feedback,How helpful is the rectangle selection feature?,5
+5f390fdcaf40ed43f3161b40,feedback,How helpful is the paintbrush feature?,4
+5f390fdcaf40ed43f3161b40,feedback,How easy was the prediction interface to use?,2
+5f390fdcaf40ed43f3161b40,feedback,How accurate did you find the predictions?,4
+5f390fdcaf40ed43f3161b40,feedback,How helpful did you find the predictions?,4
+5f390fdcaf40ed43f3161b40,feedback,Do you prefer user-driven or computer supported selections?,4
+5f390fdcaf40ed43f3161b40,feedback,How experienced are you with scatterplots?,5
+5f390fdcaf40ed43f3161b40,feedback,How experienced are you with statistics?,4
+5f390fdcaf40ed43f3161b40,demographics,birthCountry,United States
+5f390fdcaf40ed43f3161b40,demographics,employment,
+5f390fdcaf40ed43f3161b40,demographics,nationality,United States
+5f390fdcaf40ed43f3161b40,demographics,sex,Male
+5f390fdcaf40ed43f3161b40,demographics,student,No
+5f390fdcaf40ed43f3161b40,results,averageAccuracy,0.1439979876447346
+5a1cddb4087f2e0001eafb99,feedback,How helpful is the “individual selection” of points feature?,5
+5a1cddb4087f2e0001eafb99,feedback,How helpful is the rectangle selection feature?,1
+5a1cddb4087f2e0001eafb99,feedback,How helpful is the paintbrush feature?,5
+5a1cddb4087f2e0001eafb99,feedback,How easy was the prediction interface to use?,3
+5a1cddb4087f2e0001eafb99,feedback,How accurate did you find the predictions?,3
+5a1cddb4087f2e0001eafb99,feedback,How helpful did you find the predictions?,2
+5a1cddb4087f2e0001eafb99,feedback,Do you prefer user-driven or computer supported selections?,1
+5a1cddb4087f2e0001eafb99,feedback,How experienced are you with scatterplots?,1
+5a1cddb4087f2e0001eafb99,feedback,How experienced are you with statistics?,3
+5a1cddb4087f2e0001eafb99,demographics,birthCountry,United States
+5a1cddb4087f2e0001eafb99,demographics,employment,Unemployed (and job seeking)
+5a1cddb4087f2e0001eafb99,demographics,nationality,United States
+5a1cddb4087f2e0001eafb99,demographics,sex,Female
+5a1cddb4087f2e0001eafb99,demographics,student,Yes
+5a1cddb4087f2e0001eafb99,results,averageAccuracy,0.5037334933973591
+5efd2964d36f63162f263795,feedback,How helpful is the “individual selection” of points feature?,2
+5efd2964d36f63162f263795,feedback,How helpful is the rectangle selection feature?,3
+5efd2964d36f63162f263795,feedback,How helpful is the paintbrush feature?,5
+5efd2964d36f63162f263795,feedback,How easy was the prediction interface to use?,3
+5efd2964d36f63162f263795,feedback,How accurate did you find the predictions?,4
+5efd2964d36f63162f263795,feedback,How helpful did you find the predictions?,5
+5efd2964d36f63162f263795,feedback,Do you prefer user-driven or computer supported selections?,4
+5efd2964d36f63162f263795,feedback,How experienced are you with scatterplots?,3
+5efd2964d36f63162f263795,feedback,How experienced are you with statistics?,3
+5efd2964d36f63162f263795,demographics,birthCountry,Portugal
+5efd2964d36f63162f263795,demographics,employment,Other
+5efd2964d36f63162f263795,demographics,nationality,Portugal
+5efd2964d36f63162f263795,demographics,sex,Male
+5efd2964d36f63162f263795,demographics,student,Yes
+5efd2964d36f63162f263795,results,averageAccuracy,0.5199789209021849
+5d47d84a4555540001a4ae83,feedback,How helpful is the “individual selection” of points feature?,4
+5d47d84a4555540001a4ae83,feedback,How helpful is the rectangle selection feature?,4
+5d47d84a4555540001a4ae83,feedback,How helpful is the paintbrush feature?,4
+5d47d84a4555540001a4ae83,feedback,How easy was the prediction interface to use?,4
+5d47d84a4555540001a4ae83,feedback,How accurate did you find the predictions?,4
+5d47d84a4555540001a4ae83,feedback,How helpful did you find the predictions?,5
+5d47d84a4555540001a4ae83,feedback,Do you prefer user-driven or computer supported selections?,4
+5d47d84a4555540001a4ae83,feedback,How experienced are you with scatterplots?,4
+5d47d84a4555540001a4ae83,feedback,How experienced are you with statistics?,4
+5d47d84a4555540001a4ae83,demographics,birthCountry,Poland
+5d47d84a4555540001a4ae83,demographics,employment,Part-Time
+5d47d84a4555540001a4ae83,demographics,nationality,Poland
+5d47d84a4555540001a4ae83,demographics,sex,Male
+5d47d84a4555540001a4ae83,demographics,student,Yes
+5d47d84a4555540001a4ae83,results,averageAccuracy,0.7195028780743066
+5f4d2135061bf00dc540271b,feedback,How helpful is the “individual selection” of points feature?,5
+5f4d2135061bf00dc540271b,feedback,How helpful is the rectangle selection feature?,1
+5f4d2135061bf00dc540271b,feedback,How helpful is the paintbrush feature?,4
+5f4d2135061bf00dc540271b,feedback,How easy was the prediction interface to use?,5
+5f4d2135061bf00dc540271b,feedback,How accurate did you find the predictions?,4
+5f4d2135061bf00dc540271b,feedback,How helpful did you find the predictions?,4
+5f4d2135061bf00dc540271b,feedback,Do you prefer user-driven or computer supported selections?,5
+5f4d2135061bf00dc540271b,feedback,How experienced are you with scatterplots?,2
+5f4d2135061bf00dc540271b,feedback,How experienced are you with statistics?,4
+5f4d2135061bf00dc540271b,demographics,birthCountry,Greece
+5f4d2135061bf00dc540271b,demographics,employment,
+5f4d2135061bf00dc540271b,demographics,nationality,Greece
+5f4d2135061bf00dc540271b,demographics,sex,Male
+5f4d2135061bf00dc540271b,demographics,student,Yes
+5f4d2135061bf00dc540271b,results,averageAccuracy,0.7987755102040816
+5f3d575ca6057b0d08003f17,feedback,How helpful is the “individual selection” of points feature?,3
+5f3d575ca6057b0d08003f17,feedback,How helpful is the rectangle selection feature?,3
+5f3d575ca6057b0d08003f17,feedback,How helpful is the paintbrush feature?,3
+5f3d575ca6057b0d08003f17,feedback,How easy was the prediction interface to use?,5
+5f3d575ca6057b0d08003f17,feedback,How accurate did you find the predictions?,3
+5f3d575ca6057b0d08003f17,feedback,How helpful did you find the predictions?,4
+5f3d575ca6057b0d08003f17,feedback,Do you prefer user-driven or computer supported selections?,3
+5f3d575ca6057b0d08003f17,feedback,How experienced are you with scatterplots?,3
+5f3d575ca6057b0d08003f17,feedback,How experienced are you with statistics?,4
+5f3d575ca6057b0d08003f17,demographics,birthCountry,Poland
+5f3d575ca6057b0d08003f17,demographics,employment,Part-Time
+5f3d575ca6057b0d08003f17,demographics,nationality,Poland
+5f3d575ca6057b0d08003f17,demographics,sex,Male
+5f3d575ca6057b0d08003f17,demographics,student,Yes
+5f3d575ca6057b0d08003f17,results,averageAccuracy,0.3944735458285878
+5f4eec500a262b1437f6e797,feedback,How helpful is the “individual selection” of points feature?,3
+5f4eec500a262b1437f6e797,feedback,How helpful is the rectangle selection feature?,3
+5f4eec500a262b1437f6e797,feedback,How helpful is the paintbrush feature?,5
+5f4eec500a262b1437f6e797,feedback,How easy was the prediction interface to use?,5
+5f4eec500a262b1437f6e797,feedback,How accurate did you find the predictions?,2
+5f4eec500a262b1437f6e797,feedback,How helpful did you find the predictions?,1
+5f4eec500a262b1437f6e797,feedback,Do you prefer user-driven or computer supported selections?,1
+5f4eec500a262b1437f6e797,feedback,How experienced are you with scatterplots?,4
+5f4eec500a262b1437f6e797,feedback,How experienced are you with statistics?,3
+5f4eec500a262b1437f6e797,demographics,birthCountry,Singapore
+5f4eec500a262b1437f6e797,demographics,employment,Unemployed (and job seeking)
+5f4eec500a262b1437f6e797,demographics,nationality,United States
+5f4eec500a262b1437f6e797,demographics,sex,Male
+5f4eec500a262b1437f6e797,demographics,student,Yes
+5f4eec500a262b1437f6e797,results,averageAccuracy,0.5878290360433217
+5e047bd31e2e58f00f1dc80c,feedback,How helpful is the “individual selection” of points feature?,2
+5e047bd31e2e58f00f1dc80c,feedback,How helpful is the rectangle selection feature?,2
+5e047bd31e2e58f00f1dc80c,feedback,How helpful is the paintbrush feature?,5
+5e047bd31e2e58f00f1dc80c,feedback,How easy was the prediction interface to use?,4
+5e047bd31e2e58f00f1dc80c,feedback,How accurate did you find the predictions?,3
+5e047bd31e2e58f00f1dc80c,feedback,How helpful did you find the predictions?,4
+5e047bd31e2e58f00f1dc80c,feedback,Do you prefer user-driven or computer supported selections?,2
+5e047bd31e2e58f00f1dc80c,feedback,How experienced are you with scatterplots?,3
+5e047bd31e2e58f00f1dc80c,feedback,How experienced are you with statistics?,2
+5e047bd31e2e58f00f1dc80c,demographics,birthCountry,Greece
+5e047bd31e2e58f00f1dc80c,demographics,employment,Other
+5e047bd31e2e58f00f1dc80c,demographics,nationality,Greece
+5e047bd31e2e58f00f1dc80c,demographics,sex,Female
+5e047bd31e2e58f00f1dc80c,demographics,student,Yes
+5e047bd31e2e58f00f1dc80c,results,averageAccuracy,0.7647217861503576
+58b5d0cae86b840001b69e4d,feedback,How helpful is the “individual selection” of points feature?,3
+58b5d0cae86b840001b69e4d,feedback,How helpful is the rectangle selection feature?,4
+58b5d0cae86b840001b69e4d,feedback,How helpful is the paintbrush feature?,5
+58b5d0cae86b840001b69e4d,feedback,How easy was the prediction interface to use?,3
+58b5d0cae86b840001b69e4d,feedback,How accurate did you find the predictions?,3
+58b5d0cae86b840001b69e4d,feedback,How helpful did you find the predictions?,4
+58b5d0cae86b840001b69e4d,feedback,Do you prefer user-driven or computer supported selections?,4
+58b5d0cae86b840001b69e4d,feedback,How experienced are you with scatterplots?,3
+58b5d0cae86b840001b69e4d,feedback,How experienced are you with statistics?,3
+58b5d0cae86b840001b69e4d,demographics,birthCountry,Sweden
+58b5d0cae86b840001b69e4d,demographics,employment,Part-Time
+58b5d0cae86b840001b69e4d,demographics,nationality,Sweden
+58b5d0cae86b840001b69e4d,demographics,sex,Male
+58b5d0cae86b840001b69e4d,demographics,student,No
+58b5d0cae86b840001b69e4d,results,averageAccuracy,0.7904329797186939
+5efe85d36b4d873908aff881,feedback,How helpful is the “individual selection” of points feature?,3
+5efe85d36b4d873908aff881,feedback,How helpful is the rectangle selection feature?,1
+5efe85d36b4d873908aff881,feedback,How helpful is the paintbrush feature?,5
+5efe85d36b4d873908aff881,feedback,How easy was the prediction interface to use?,2
+5efe85d36b4d873908aff881,feedback,How accurate did you find the predictions?,4
+5efe85d36b4d873908aff881,feedback,How helpful did you find the predictions?,4
+5efe85d36b4d873908aff881,feedback,Do you prefer user-driven or computer supported selections?,4
+5efe85d36b4d873908aff881,feedback,How experienced are you with scatterplots?,1
+5efe85d36b4d873908aff881,feedback,How experienced are you with statistics?,1
+5efe85d36b4d873908aff881,demographics,birthCountry,United States
+5efe85d36b4d873908aff881,demographics,employment,Unemployed (and job seeking)
+5efe85d36b4d873908aff881,demographics,nationality,United States
+5efe85d36b4d873908aff881,demographics,sex,Female
+5efe85d36b4d873908aff881,demographics,student,No
+5efe85d36b4d873908aff881,results,averageAccuracy,0.7268327330932374
+5f32ee59a7b4fb0ae6a367cd,feedback,How helpful is the “individual selection” of points feature?,3
+5f32ee59a7b4fb0ae6a367cd,feedback,How helpful is the rectangle selection feature?,4
+5f32ee59a7b4fb0ae6a367cd,feedback,How helpful is the paintbrush feature?,5
+5f32ee59a7b4fb0ae6a367cd,feedback,How easy was the prediction interface to use?,5
+5f32ee59a7b4fb0ae6a367cd,feedback,How accurate did you find the predictions?,5
+5f32ee59a7b4fb0ae6a367cd,feedback,How helpful did you find the predictions?,5
+5f32ee59a7b4fb0ae6a367cd,feedback,Do you prefer user-driven or computer supported selections?,4
+5f32ee59a7b4fb0ae6a367cd,feedback,How experienced are you with scatterplots?,3
+5f32ee59a7b4fb0ae6a367cd,feedback,How experienced are you with statistics?,5
+5f32ee59a7b4fb0ae6a367cd,demographics,birthCountry,Mexico
+5f32ee59a7b4fb0ae6a367cd,demographics,employment,Unemployed (and job seeking)
+5f32ee59a7b4fb0ae6a367cd,demographics,nationality,Mexico
+5f32ee59a7b4fb0ae6a367cd,demographics,sex,Female
+5f32ee59a7b4fb0ae6a367cd,demographics,student,Yes
+5f32ee59a7b4fb0ae6a367cd,results,averageAccuracy,0.5637759744096149
+5e9c29a39c157d14227afac8,feedback,How helpful is the “individual selection” of points feature?,2
+5e9c29a39c157d14227afac8,feedback,How helpful is the rectangle selection feature?,2
+5e9c29a39c157d14227afac8,feedback,How helpful is the paintbrush feature?,5
+5e9c29a39c157d14227afac8,feedback,How easy was the prediction interface to use?,5
+5e9c29a39c157d14227afac8,feedback,How accurate did you find the predictions?,4
+5e9c29a39c157d14227afac8,feedback,How helpful did you find the predictions?,3
+5e9c29a39c157d14227afac8,feedback,Do you prefer user-driven or computer supported selections?,4
+5e9c29a39c157d14227afac8,feedback,How experienced are you with scatterplots?,4
+5e9c29a39c157d14227afac8,feedback,How experienced are you with statistics?,5
+5e9c29a39c157d14227afac8,demographics,birthCountry,Portugal
+5e9c29a39c157d14227afac8,demographics,employment,Part-Time
+5e9c29a39c157d14227afac8,demographics,nationality,Portugal
+5e9c29a39c157d14227afac8,demographics,sex,Male
+5e9c29a39c157d14227afac8,demographics,student,Yes
+5e9c29a39c157d14227afac8,results,averageAccuracy,0.8460441869055314
+5f458dc5dbc7ce1ba02333c7,feedback,How helpful is the “individual selection” of points feature?,3
+5f458dc5dbc7ce1ba02333c7,feedback,How helpful is the rectangle selection feature?,3
+5f458dc5dbc7ce1ba02333c7,feedback,How helpful is the paintbrush feature?,5
+5f458dc5dbc7ce1ba02333c7,feedback,How easy was the prediction interface to use?,5
+5f458dc5dbc7ce1ba02333c7,feedback,How accurate did you find the predictions?,4
+5f458dc5dbc7ce1ba02333c7,feedback,How helpful did you find the predictions?,5
+5f458dc5dbc7ce1ba02333c7,feedback,Do you prefer user-driven or computer supported selections?,5
+5f458dc5dbc7ce1ba02333c7,feedback,How experienced are you with scatterplots?,2
+5f458dc5dbc7ce1ba02333c7,feedback,How experienced are you with statistics?,3
+5f458dc5dbc7ce1ba02333c7,demographics,birthCountry,Poland
+5f458dc5dbc7ce1ba02333c7,demographics,employment,Full-Time
+5f458dc5dbc7ce1ba02333c7,demographics,nationality,Poland
+5f458dc5dbc7ce1ba02333c7,demographics,sex,Male
+5f458dc5dbc7ce1ba02333c7,demographics,student,No
+5f458dc5dbc7ce1ba02333c7,results,averageAccuracy,0.7786433804290949
+5da35c30ce810e001750ce0f,feedback,How helpful is the “individual selection” of points feature?,5
+5da35c30ce810e001750ce0f,feedback,How helpful is the rectangle selection feature?,2
+5da35c30ce810e001750ce0f,feedback,How helpful is the paintbrush feature?,5
+5da35c30ce810e001750ce0f,feedback,How easy was the prediction interface to use?,4
+5da35c30ce810e001750ce0f,feedback,How accurate did you find the predictions?,4
+5da35c30ce810e001750ce0f,feedback,How helpful did you find the predictions?,4
+5da35c30ce810e001750ce0f,feedback,Do you prefer user-driven or computer supported selections?,5
+5da35c30ce810e001750ce0f,feedback,How experienced are you with scatterplots?,2
+5da35c30ce810e001750ce0f,feedback,How experienced are you with statistics?,3
+5da35c30ce810e001750ce0f,demographics,birthCountry,Portugal
+5da35c30ce810e001750ce0f,demographics,employment,Other
+5da35c30ce810e001750ce0f,demographics,nationality,Portugal
+5da35c30ce810e001750ce0f,demographics,sex,Female
+5da35c30ce810e001750ce0f,demographics,student,Yes
+5da35c30ce810e001750ce0f,results,averageAccuracy,0.8681759370414833
+5d79156e0c89aa0001026dc8,feedback,How helpful is the “individual selection” of points feature?,3
+5d79156e0c89aa0001026dc8,feedback,How helpful is the rectangle selection feature?,3
+5d79156e0c89aa0001026dc8,feedback,How helpful is the paintbrush feature?,3
+5d79156e0c89aa0001026dc8,feedback,How easy was the prediction interface to use?,3
+5d79156e0c89aa0001026dc8,feedback,How accurate did you find the predictions?,3
+5d79156e0c89aa0001026dc8,feedback,How helpful did you find the predictions?,3
+5d79156e0c89aa0001026dc8,feedback,Do you prefer user-driven or computer supported selections?,4
+5d79156e0c89aa0001026dc8,feedback,How experienced are you with scatterplots?,1
+5d79156e0c89aa0001026dc8,feedback,How experienced are you with statistics?,2
+5d79156e0c89aa0001026dc8,demographics,birthCountry,United States
+5d79156e0c89aa0001026dc8,demographics,employment,"Not in paid work (e.g. homemaker', 'retired or disabled)"
+5d79156e0c89aa0001026dc8,demographics,nationality,United States
+5d79156e0c89aa0001026dc8,demographics,sex,Male
+5d79156e0c89aa0001026dc8,demographics,student,No
+5d79156e0c89aa0001026dc8,results,averageAccuracy,0.8712703671212074
+5b47e287bc06c90001f8b67d,feedback,How helpful is the “individual selection” of points feature?,3
+5b47e287bc06c90001f8b67d,feedback,How helpful is the rectangle selection feature?,3
+5b47e287bc06c90001f8b67d,feedback,How helpful is the paintbrush feature?,4
+5b47e287bc06c90001f8b67d,feedback,How easy was the prediction interface to use?,3
+5b47e287bc06c90001f8b67d,feedback,How accurate did you find the predictions?,2
+5b47e287bc06c90001f8b67d,feedback,How helpful did you find the predictions?,3
+5b47e287bc06c90001f8b67d,feedback,Do you prefer user-driven or computer supported selections?,1
+5b47e287bc06c90001f8b67d,feedback,How experienced are you with scatterplots?,3
+5b47e287bc06c90001f8b67d,feedback,How experienced are you with statistics?,4
+5b47e287bc06c90001f8b67d,demographics,birthCountry,United Kingdom
+5b47e287bc06c90001f8b67d,demographics,employment,Full-Time
+5b47e287bc06c90001f8b67d,demographics,nationality,United Kingdom
+5b47e287bc06c90001f8b67d,demographics,sex,Male
+5b47e287bc06c90001f8b67d,demographics,student,No
+5b47e287bc06c90001f8b67d,results,averageAccuracy,0.5674374435088722
+5ee379c2c1832e050bac5c14,feedback,How helpful is the “individual selection” of points feature?,1
+5ee379c2c1832e050bac5c14,feedback,How helpful is the rectangle selection feature?,1
+5ee379c2c1832e050bac5c14,feedback,How helpful is the paintbrush feature?,5
+5ee379c2c1832e050bac5c14,feedback,How easy was the prediction interface to use?,4
+5ee379c2c1832e050bac5c14,feedback,How accurate did you find the predictions?,4
+5ee379c2c1832e050bac5c14,feedback,How helpful did you find the predictions?,4
+5ee379c2c1832e050bac5c14,feedback,Do you prefer user-driven or computer supported selections?,2
+5ee379c2c1832e050bac5c14,feedback,How experienced are you with scatterplots?,4
+5ee379c2c1832e050bac5c14,feedback,How experienced are you with statistics?,4
+5ee379c2c1832e050bac5c14,demographics,birthCountry,United Kingdom
+5ee379c2c1832e050bac5c14,demographics,employment,Full-Time
+5ee379c2c1832e050bac5c14,demographics,nationality,United Kingdom
+5ee379c2c1832e050bac5c14,demographics,sex,Male
+5ee379c2c1832e050bac5c14,demographics,student,No
+5ee379c2c1832e050bac5c14,results,averageAccuracy,0.7996969300540729
+5f56418db9b4f4033d6cdede,feedback,How helpful is the “individual selection” of points feature?,2
+5f56418db9b4f4033d6cdede,feedback,How helpful is the rectangle selection feature?,3
+5f56418db9b4f4033d6cdede,feedback,How helpful is the paintbrush feature?,4
+5f56418db9b4f4033d6cdede,feedback,How easy was the prediction interface to use?,5
+5f56418db9b4f4033d6cdede,feedback,How accurate did you find the predictions?,5
+5f56418db9b4f4033d6cdede,feedback,How helpful did you find the predictions?,5
+5f56418db9b4f4033d6cdede,feedback,Do you prefer user-driven or computer supported selections?,5
+5f56418db9b4f4033d6cdede,feedback,How experienced are you with scatterplots?,4
+5f56418db9b4f4033d6cdede,feedback,How experienced are you with statistics?,5
+5f56418db9b4f4033d6cdede,demographics,birthCountry,United States
+5f56418db9b4f4033d6cdede,demographics,employment,Full-Time
+5f56418db9b4f4033d6cdede,demographics,nationality,United States
+5f56418db9b4f4033d6cdede,demographics,sex,Female
+5f56418db9b4f4033d6cdede,demographics,student,No
+5f56418db9b4f4033d6cdede,results,averageAccuracy,0.46453027208010017
+5e80bbf895c1fb67bcf183bc,feedback,How helpful is the “individual selection” of points feature?,2
+5e80bbf895c1fb67bcf183bc,feedback,How helpful is the rectangle selection feature?,2
+5e80bbf895c1fb67bcf183bc,feedback,How helpful is the paintbrush feature?,5
+5e80bbf895c1fb67bcf183bc,feedback,How easy was the prediction interface to use?,4
+5e80bbf895c1fb67bcf183bc,feedback,How accurate did you find the predictions?,3
+5e80bbf895c1fb67bcf183bc,feedback,How helpful did you find the predictions?,3
+5e80bbf895c1fb67bcf183bc,feedback,Do you prefer user-driven or computer supported selections?,1
+5e80bbf895c1fb67bcf183bc,feedback,How experienced are you with scatterplots?,2
+5e80bbf895c1fb67bcf183bc,feedback,How experienced are you with statistics?,4
+5e80bbf895c1fb67bcf183bc,demographics,birthCountry,Portugal
+5e80bbf895c1fb67bcf183bc,demographics,employment,Part-Time
+5e80bbf895c1fb67bcf183bc,demographics,nationality,Portugal
+5e80bbf895c1fb67bcf183bc,demographics,sex,Male
+5e80bbf895c1fb67bcf183bc,demographics,student,Yes
+5e80bbf895c1fb67bcf183bc,results,averageAccuracy,0.6649409122623409
+5eb2d579ed24d507082b07a2,feedback,How helpful is the “individual selection” of points feature?,2
+5eb2d579ed24d507082b07a2,feedback,How helpful is the rectangle selection feature?,3
+5eb2d579ed24d507082b07a2,feedback,How helpful is the paintbrush feature?,1
+5eb2d579ed24d507082b07a2,feedback,How easy was the prediction interface to use?,5
+5eb2d579ed24d507082b07a2,feedback,How accurate did you find the predictions?,5
+5eb2d579ed24d507082b07a2,feedback,How helpful did you find the predictions?,4
+5eb2d579ed24d507082b07a2,feedback,Do you prefer user-driven or computer supported selections?,5
+5eb2d579ed24d507082b07a2,feedback,How experienced are you with scatterplots?,5
+5eb2d579ed24d507082b07a2,feedback,How experienced are you with statistics?,4
+5eb2d579ed24d507082b07a2,demographics,birthCountry,United States
+5eb2d579ed24d507082b07a2,demographics,employment,Full-Time
+5eb2d579ed24d507082b07a2,demographics,nationality,United States
+5eb2d579ed24d507082b07a2,demographics,sex,Male
+5eb2d579ed24d507082b07a2,demographics,student,No
+5eb2d579ed24d507082b07a2,results,averageAccuracy,0.40616981275268726
+5bcdaa50bdb0060001d4a4a8,feedback,How helpful is the “individual selection” of points feature?,5
+5bcdaa50bdb0060001d4a4a8,feedback,How helpful is the rectangle selection feature?,5
+5bcdaa50bdb0060001d4a4a8,feedback,How helpful is the paintbrush feature?,5
+5bcdaa50bdb0060001d4a4a8,feedback,How easy was the prediction interface to use?,3
+5bcdaa50bdb0060001d4a4a8,feedback,How accurate did you find the predictions?,3
+5bcdaa50bdb0060001d4a4a8,feedback,How helpful did you find the predictions?,3
+5bcdaa50bdb0060001d4a4a8,feedback,Do you prefer user-driven or computer supported selections?,1
+5bcdaa50bdb0060001d4a4a8,feedback,How experienced are you with scatterplots?,3
+5bcdaa50bdb0060001d4a4a8,feedback,How experienced are you with statistics?,3
+5bcdaa50bdb0060001d4a4a8,demographics,birthCountry,United Kingdom
+5bcdaa50bdb0060001d4a4a8,demographics,employment,Full-Time
+5bcdaa50bdb0060001d4a4a8,demographics,nationality,United Kingdom
+5bcdaa50bdb0060001d4a4a8,demographics,sex,Female
+5bcdaa50bdb0060001d4a4a8,demographics,student,No
+5bcdaa50bdb0060001d4a4a8,results,averageAccuracy,0.6896548619447779
+5eef81920b5311220415b1a1,feedback,How helpful is the “individual selection” of points feature?,3
+5eef81920b5311220415b1a1,feedback,How helpful is the rectangle selection feature?,1
+5eef81920b5311220415b1a1,feedback,How helpful is the paintbrush feature?,5
+5eef81920b5311220415b1a1,feedback,How easy was the prediction interface to use?,5
+5eef81920b5311220415b1a1,feedback,How accurate did you find the predictions?,3
+5eef81920b5311220415b1a1,feedback,How helpful did you find the predictions?,3
+5eef81920b5311220415b1a1,feedback,Do you prefer user-driven or computer supported selections?,3
+5eef81920b5311220415b1a1,feedback,How experienced are you with scatterplots?,1
+5eef81920b5311220415b1a1,feedback,How experienced are you with statistics?,2
+5eef81920b5311220415b1a1,demographics,birthCountry,Italy
+5eef81920b5311220415b1a1,demographics,employment,Unemployed (and job seeking)
+5eef81920b5311220415b1a1,demographics,nationality,Italy
+5eef81920b5311220415b1a1,demographics,sex,Female
+5eef81920b5311220415b1a1,demographics,student,No
+5eef81920b5311220415b1a1,results,averageAccuracy,0.7687188465129642
+5e1fa005a6a7402cc73cf4d2,feedback,How helpful is the “individual selection” of points feature?,5
+5e1fa005a6a7402cc73cf4d2,feedback,How helpful is the rectangle selection feature?,1
+5e1fa005a6a7402cc73cf4d2,feedback,How helpful is the paintbrush feature?,5
+5e1fa005a6a7402cc73cf4d2,feedback,How easy was the prediction interface to use?,3
+5e1fa005a6a7402cc73cf4d2,feedback,How accurate did you find the predictions?,3
+5e1fa005a6a7402cc73cf4d2,feedback,How helpful did you find the predictions?,2
+5e1fa005a6a7402cc73cf4d2,feedback,Do you prefer user-driven or computer supported selections?,1
+5e1fa005a6a7402cc73cf4d2,feedback,How experienced are you with scatterplots?,1
+5e1fa005a6a7402cc73cf4d2,feedback,How experienced are you with statistics?,1
+5e1fa005a6a7402cc73cf4d2,demographics,birthCountry,United States
+5e1fa005a6a7402cc73cf4d2,demographics,employment,Other
+5e1fa005a6a7402cc73cf4d2,demographics,nationality,United States
+5e1fa005a6a7402cc73cf4d2,demographics,sex,Female
+5e1fa005a6a7402cc73cf4d2,demographics,student,No
+5e1fa005a6a7402cc73cf4d2,results,averageAccuracy,0.5728710715055253
+5f35431d01a1964bbbbe41cf,feedback,How helpful is the “individual selection” of points feature?,5
+5f35431d01a1964bbbbe41cf,feedback,How helpful is the rectangle selection feature?,2
+5f35431d01a1964bbbbe41cf,feedback,How helpful is the paintbrush feature?,3
+5f35431d01a1964bbbbe41cf,feedback,How easy was the prediction interface to use?,3
+5f35431d01a1964bbbbe41cf,feedback,How accurate did you find the predictions?,2
+5f35431d01a1964bbbbe41cf,feedback,How helpful did you find the predictions?,2
+5f35431d01a1964bbbbe41cf,feedback,Do you prefer user-driven or computer supported selections?,2
+5f35431d01a1964bbbbe41cf,feedback,How experienced are you with scatterplots?,2
+5f35431d01a1964bbbbe41cf,feedback,How experienced are you with statistics?,2
+5f35431d01a1964bbbbe41cf,demographics,birthCountry,United States
+5f35431d01a1964bbbbe41cf,demographics,employment,Other
+5f35431d01a1964bbbbe41cf,demographics,nationality,United Kingdom
+5f35431d01a1964bbbbe41cf,demographics,sex,Female
+5f35431d01a1964bbbbe41cf,demographics,student,Yes
+5f35431d01a1964bbbbe41cf,results,averageAccuracy,0.5325366581702987
+5e152c33814bbab3e0eb7371,feedback,How helpful is the “individual selection” of points feature?,4
+5e152c33814bbab3e0eb7371,feedback,How helpful is the rectangle selection feature?,3
+5e152c33814bbab3e0eb7371,feedback,How helpful is the paintbrush feature?,5
+5e152c33814bbab3e0eb7371,feedback,How easy was the prediction interface to use?,5
+5e152c33814bbab3e0eb7371,feedback,How accurate did you find the predictions?,4
+5e152c33814bbab3e0eb7371,feedback,How helpful did you find the predictions?,4
+5e152c33814bbab3e0eb7371,feedback,Do you prefer user-driven or computer supported selections?,4
+5e152c33814bbab3e0eb7371,feedback,How experienced are you with scatterplots?,3
+5e152c33814bbab3e0eb7371,feedback,How experienced are you with statistics?,3
+5e152c33814bbab3e0eb7371,demographics,birthCountry,United Kingdom
+5e152c33814bbab3e0eb7371,demographics,employment,Unemployed (and job seeking)
+5e152c33814bbab3e0eb7371,demographics,nationality,United Kingdom
+5e152c33814bbab3e0eb7371,demographics,sex,Male
+5e152c33814bbab3e0eb7371,demographics,student,No
+5e152c33814bbab3e0eb7371,results,averageAccuracy,0.653722150865008
+5efbce484cee781856fc95ef,feedback,How helpful is the “individual selection” of points feature?,2
+5efbce484cee781856fc95ef,feedback,How helpful is the rectangle selection feature?,1
+5efbce484cee781856fc95ef,feedback,How helpful is the paintbrush feature?,5
+5efbce484cee781856fc95ef,feedback,How easy was the prediction interface to use?,5
+5efbce484cee781856fc95ef,feedback,How accurate did you find the predictions?,5
+5efbce484cee781856fc95ef,feedback,How helpful did you find the predictions?,5
+5efbce484cee781856fc95ef,feedback,Do you prefer user-driven or computer supported selections?,5
+5efbce484cee781856fc95ef,feedback,How experienced are you with scatterplots?,3
+5efbce484cee781856fc95ef,feedback,How experienced are you with statistics?,3
+5efbce484cee781856fc95ef,demographics,birthCountry,United Kingdom
+5efbce484cee781856fc95ef,demographics,employment,Unemployed (and job seeking)
+5efbce484cee781856fc95ef,demographics,nationality,United Kingdom
+5efbce484cee781856fc95ef,demographics,sex,Male
+5efbce484cee781856fc95ef,demographics,student,Yes
+5efbce484cee781856fc95ef,results,averageAccuracy,0.8921995464852609
+5f3b08c306616c805cd82c15,feedback,How helpful is the “individual selection” of points feature?,4
+5f3b08c306616c805cd82c15,feedback,How helpful is the rectangle selection feature?,2
+5f3b08c306616c805cd82c15,feedback,How helpful is the paintbrush feature?,5
+5f3b08c306616c805cd82c15,feedback,How easy was the prediction interface to use?,5
+5f3b08c306616c805cd82c15,feedback,How accurate did you find the predictions?,4
+5f3b08c306616c805cd82c15,feedback,How helpful did you find the predictions?,5
+5f3b08c306616c805cd82c15,feedback,Do you prefer user-driven or computer supported selections?,4
+5f3b08c306616c805cd82c15,feedback,How experienced are you with scatterplots?,3
+5f3b08c306616c805cd82c15,feedback,How experienced are you with statistics?,4
+5f3b08c306616c805cd82c15,demographics,birthCountry,Canada
+5f3b08c306616c805cd82c15,demographics,employment,Full-Time
+5f3b08c306616c805cd82c15,demographics,nationality,Canada
+5f3b08c306616c805cd82c15,demographics,sex,Female
+5f3b08c306616c805cd82c15,demographics,student,No
+5f3b08c306616c805cd82c15,results,averageAccuracy,0.8228741496598638
+5ec16abbf5c56c58681d6ca4,feedback,How helpful is the “individual selection” of points feature?,4
+5ec16abbf5c56c58681d6ca4,feedback,How helpful is the rectangle selection feature?,4
+5ec16abbf5c56c58681d6ca4,feedback,How helpful is the paintbrush feature?,5
+5ec16abbf5c56c58681d6ca4,feedback,How easy was the prediction interface to use?,4
+5ec16abbf5c56c58681d6ca4,feedback,How accurate did you find the predictions?,3
+5ec16abbf5c56c58681d6ca4,feedback,How helpful did you find the predictions?,4
+5ec16abbf5c56c58681d6ca4,feedback,Do you prefer user-driven or computer supported selections?,4
+5ec16abbf5c56c58681d6ca4,feedback,How experienced are you with scatterplots?,2
+5ec16abbf5c56c58681d6ca4,feedback,How experienced are you with statistics?,3
+5ec16abbf5c56c58681d6ca4,demographics,birthCountry,Portugal
+5ec16abbf5c56c58681d6ca4,demographics,employment,Other
+5ec16abbf5c56c58681d6ca4,demographics,nationality,Portugal
+5ec16abbf5c56c58681d6ca4,demographics,sex,Male
+5ec16abbf5c56c58681d6ca4,demographics,student,Yes
+5ec16abbf5c56c58681d6ca4,results,averageAccuracy,0.4526967340544318
+5f1d9d1542e7b06dda09a881,feedback,How helpful is the “individual selection” of points feature?,3
+5f1d9d1542e7b06dda09a881,feedback,How helpful is the rectangle selection feature?,4
+5f1d9d1542e7b06dda09a881,feedback,How helpful is the paintbrush feature?,3
+5f1d9d1542e7b06dda09a881,feedback,How easy was the prediction interface to use?,5
+5f1d9d1542e7b06dda09a881,feedback,How accurate did you find the predictions?,5
+5f1d9d1542e7b06dda09a881,feedback,How helpful did you find the predictions?,5
+5f1d9d1542e7b06dda09a881,feedback,Do you prefer user-driven or computer supported selections?,3
+5f1d9d1542e7b06dda09a881,feedback,How experienced are you with scatterplots?,2
+5f1d9d1542e7b06dda09a881,feedback,How experienced are you with statistics?,3
+5f1d9d1542e7b06dda09a881,demographics,birthCountry,Poland
+5f1d9d1542e7b06dda09a881,demographics,employment,Unemployed (and job seeking)
+5f1d9d1542e7b06dda09a881,demographics,nationality,Poland
+5f1d9d1542e7b06dda09a881,demographics,sex,Male
+5f1d9d1542e7b06dda09a881,demographics,student,No
+5f1d9d1542e7b06dda09a881,results,averageAccuracy,0.6503148182349863
+5e68347e77dd010ea608ee57,feedback,How helpful is the “individual selection” of points feature?,3
+5e68347e77dd010ea608ee57,feedback,How helpful is the rectangle selection feature?,1
+5e68347e77dd010ea608ee57,feedback,How helpful is the paintbrush feature?,5
+5e68347e77dd010ea608ee57,feedback,How easy was the prediction interface to use?,5
+5e68347e77dd010ea608ee57,feedback,How accurate did you find the predictions?,4
+5e68347e77dd010ea608ee57,feedback,How helpful did you find the predictions?,3
+5e68347e77dd010ea608ee57,feedback,Do you prefer user-driven or computer supported selections?,4
+5e68347e77dd010ea608ee57,feedback,How experienced are you with scatterplots?,1
+5e68347e77dd010ea608ee57,feedback,How experienced are you with statistics?,3
+5e68347e77dd010ea608ee57,demographics,birthCountry,Portugal
+5e68347e77dd010ea608ee57,demographics,employment,Other
+5e68347e77dd010ea608ee57,demographics,nationality,Portugal
+5e68347e77dd010ea608ee57,demographics,sex,Male
+5e68347e77dd010ea608ee57,demographics,student,Yes
+5e68347e77dd010ea608ee57,results,averageAccuracy,0.7728628117913833
+5e83a70264ef720de1e5e694,feedback,How helpful is the “individual selection” of points feature?,5
+5e83a70264ef720de1e5e694,feedback,How helpful is the rectangle selection feature?,1
+5e83a70264ef720de1e5e694,feedback,How helpful is the paintbrush feature?,5
+5e83a70264ef720de1e5e694,feedback,How easy was the prediction interface to use?,3
+5e83a70264ef720de1e5e694,feedback,How accurate did you find the predictions?,4
+5e83a70264ef720de1e5e694,feedback,How helpful did you find the predictions?,4
+5e83a70264ef720de1e5e694,feedback,Do you prefer user-driven or computer supported selections?,2
+5e83a70264ef720de1e5e694,feedback,How experienced are you with scatterplots?,4
+5e83a70264ef720de1e5e694,feedback,How experienced are you with statistics?,4
+5e83a70264ef720de1e5e694,demographics,birthCountry,United States
+5e83a70264ef720de1e5e694,demographics,employment,Full-Time
+5e83a70264ef720de1e5e694,demographics,nationality,United States
+5e83a70264ef720de1e5e694,demographics,sex,Female
+5e83a70264ef720de1e5e694,demographics,student,No
+5e83a70264ef720de1e5e694,results,averageAccuracy,0.6174581114497082
+5ea93037fbc1bf0009ed3564,feedback,How helpful is the “individual selection” of points feature?,3
+5ea93037fbc1bf0009ed3564,feedback,How helpful is the rectangle selection feature?,5
+5ea93037fbc1bf0009ed3564,feedback,How helpful is the paintbrush feature?,2
+5ea93037fbc1bf0009ed3564,feedback,How easy was the prediction interface to use?,5
+5ea93037fbc1bf0009ed3564,feedback,How accurate did you find the predictions?,4
+5ea93037fbc1bf0009ed3564,feedback,How helpful did you find the predictions?,4
+5ea93037fbc1bf0009ed3564,feedback,Do you prefer user-driven or computer supported selections?,2
+5ea93037fbc1bf0009ed3564,feedback,How experienced are you with scatterplots?,4
+5ea93037fbc1bf0009ed3564,feedback,How experienced are you with statistics?,4
+5ea93037fbc1bf0009ed3564,demographics,birthCountry,Kenya
+5ea93037fbc1bf0009ed3564,demographics,employment,Part-Time
+5ea93037fbc1bf0009ed3564,demographics,nationality,Kenya
+5ea93037fbc1bf0009ed3564,demographics,sex,Male
+5ea93037fbc1bf0009ed3564,demographics,student,Yes
+5ea93037fbc1bf0009ed3564,results,averageAccuracy,0.8338355342136855
+59dbb88b0fb3a90001bd90b0,feedback,How helpful is the “individual selection” of points feature?,2
+59dbb88b0fb3a90001bd90b0,feedback,How helpful is the rectangle selection feature?,3
+59dbb88b0fb3a90001bd90b0,feedback,How helpful is the paintbrush feature?,5
+59dbb88b0fb3a90001bd90b0,feedback,How easy was the prediction interface to use?,5
+59dbb88b0fb3a90001bd90b0,feedback,How accurate did you find the predictions?,3
+59dbb88b0fb3a90001bd90b0,feedback,How helpful did you find the predictions?,3
+59dbb88b0fb3a90001bd90b0,feedback,Do you prefer user-driven or computer supported selections?,2
+59dbb88b0fb3a90001bd90b0,feedback,How experienced are you with scatterplots?,2
+59dbb88b0fb3a90001bd90b0,feedback,How experienced are you with statistics?,2
+59dbb88b0fb3a90001bd90b0,demographics,birthCountry,United Kingdom
+59dbb88b0fb3a90001bd90b0,demographics,employment,Part-Time
+59dbb88b0fb3a90001bd90b0,demographics,nationality,United Kingdom
+59dbb88b0fb3a90001bd90b0,demographics,sex,Female
+59dbb88b0fb3a90001bd90b0,demographics,student,No
+59dbb88b0fb3a90001bd90b0,results,averageAccuracy,0.903451072736787
+5eb5d959ab41e14c0af4bc5c,feedback,How helpful is the “individual selection” of points feature?,3
+5eb5d959ab41e14c0af4bc5c,feedback,How helpful is the rectangle selection feature?,4
+5eb5d959ab41e14c0af4bc5c,feedback,How helpful is the paintbrush feature?,5
+5eb5d959ab41e14c0af4bc5c,feedback,How easy was the prediction interface to use?,5
+5eb5d959ab41e14c0af4bc5c,feedback,How accurate did you find the predictions?,4
+5eb5d959ab41e14c0af4bc5c,feedback,How helpful did you find the predictions?,5
+5eb5d959ab41e14c0af4bc5c,feedback,Do you prefer user-driven or computer supported selections?,5
+5eb5d959ab41e14c0af4bc5c,feedback,How experienced are you with scatterplots?,4
+5eb5d959ab41e14c0af4bc5c,feedback,How experienced are you with statistics?,4
+5eb5d959ab41e14c0af4bc5c,demographics,birthCountry,United States
+5eb5d959ab41e14c0af4bc5c,demographics,employment,Unemployed (and job seeking)
+5eb5d959ab41e14c0af4bc5c,demographics,nationality,United States
+5eb5d959ab41e14c0af4bc5c,demographics,sex,Male
+5eb5d959ab41e14c0af4bc5c,demographics,student,No
+5eb5d959ab41e14c0af4bc5c,results,averageAccuracy,0.5072981756805286
+5f4faaa78d88ed0955209226,feedback,How helpful is the “individual selection” of points feature?,4
+5f4faaa78d88ed0955209226,feedback,How helpful is the rectangle selection feature?,3
+5f4faaa78d88ed0955209226,feedback,How helpful is the paintbrush feature?,5
+5f4faaa78d88ed0955209226,feedback,How easy was the prediction interface to use?,5
+5f4faaa78d88ed0955209226,feedback,How accurate did you find the predictions?,4
+5f4faaa78d88ed0955209226,feedback,How helpful did you find the predictions?,4
+5f4faaa78d88ed0955209226,feedback,Do you prefer user-driven or computer supported selections?,5
+5f4faaa78d88ed0955209226,feedback,How experienced are you with scatterplots?,4
+5f4faaa78d88ed0955209226,feedback,How experienced are you with statistics?,4
+5f4faaa78d88ed0955209226,demographics,birthCountry,United Kingdom
+5f4faaa78d88ed0955209226,demographics,employment,Due to start a new job within the next month
+5f4faaa78d88ed0955209226,demographics,nationality,United Kingdom
+5f4faaa78d88ed0955209226,demographics,sex,Male
+5f4faaa78d88ed0955209226,demographics,student,Yes
+5f4faaa78d88ed0955209226,results,averageAccuracy,0.8582810047095762
+5c5cad3e4ee81200018eafe2,feedback,How helpful is the “individual selection” of points feature?,3
+5c5cad3e4ee81200018eafe2,feedback,How helpful is the rectangle selection feature?,3
+5c5cad3e4ee81200018eafe2,feedback,How helpful is the paintbrush feature?,2
+5c5cad3e4ee81200018eafe2,feedback,How easy was the prediction interface to use?,4
+5c5cad3e4ee81200018eafe2,feedback,How accurate did you find the predictions?,3
+5c5cad3e4ee81200018eafe2,feedback,How helpful did you find the predictions?,4
+5c5cad3e4ee81200018eafe2,feedback,Do you prefer user-driven or computer supported selections?,1
+5c5cad3e4ee81200018eafe2,feedback,How experienced are you with scatterplots?,2
+5c5cad3e4ee81200018eafe2,feedback,How experienced are you with statistics?,2
+5c5cad3e4ee81200018eafe2,demographics,birthCountry,United Kingdom
+5c5cad3e4ee81200018eafe2,demographics,employment,Part-Time
+5c5cad3e4ee81200018eafe2,demographics,nationality,United Kingdom
+5c5cad3e4ee81200018eafe2,demographics,sex,Female
+5c5cad3e4ee81200018eafe2,demographics,student,No
+5c5cad3e4ee81200018eafe2,results,averageAccuracy,0.6004522065236352
+5dcaca406f3f1679d7a65c67,feedback,How helpful is the “individual selection” of points feature?,4
+5dcaca406f3f1679d7a65c67,feedback,How helpful is the rectangle selection feature?,4
+5dcaca406f3f1679d7a65c67,feedback,How helpful is the paintbrush feature?,5
+5dcaca406f3f1679d7a65c67,feedback,How easy was the prediction interface to use?,5
+5dcaca406f3f1679d7a65c67,feedback,How accurate did you find the predictions?,3
+5dcaca406f3f1679d7a65c67,feedback,How helpful did you find the predictions?,5
+5dcaca406f3f1679d7a65c67,feedback,Do you prefer user-driven or computer supported selections?,5
+5dcaca406f3f1679d7a65c67,feedback,How experienced are you with scatterplots?,4
+5dcaca406f3f1679d7a65c67,feedback,How experienced are you with statistics?,4
+5dcaca406f3f1679d7a65c67,demographics,birthCountry,United States
+5dcaca406f3f1679d7a65c67,demographics,employment,Full-Time
+5dcaca406f3f1679d7a65c67,demographics,nationality,United States
+5dcaca406f3f1679d7a65c67,demographics,sex,Female
+5dcaca406f3f1679d7a65c67,demographics,student,Yes
+5dcaca406f3f1679d7a65c67,results,averageAccuracy,0.8645800627943486
+5e81041375b8e47f1bdf2aa4,feedback,How helpful is the “individual selection” of points feature?,5
+5e81041375b8e47f1bdf2aa4,feedback,How helpful is the rectangle selection feature?,5
+5e81041375b8e47f1bdf2aa4,feedback,How helpful is the paintbrush feature?,5
+5e81041375b8e47f1bdf2aa4,feedback,How easy was the prediction interface to use?,5
+5e81041375b8e47f1bdf2aa4,feedback,How accurate did you find the predictions?,5
+5e81041375b8e47f1bdf2aa4,feedback,How helpful did you find the predictions?,5
+5e81041375b8e47f1bdf2aa4,feedback,Do you prefer user-driven or computer supported selections?,2
+5e81041375b8e47f1bdf2aa4,feedback,How experienced are you with scatterplots?,1
+5e81041375b8e47f1bdf2aa4,feedback,How experienced are you with statistics?,2
+5e81041375b8e47f1bdf2aa4,demographics,birthCountry,Latvia
+5e81041375b8e47f1bdf2aa4,demographics,employment,Full-Time
+5e81041375b8e47f1bdf2aa4,demographics,nationality,Latvia
+5e81041375b8e47f1bdf2aa4,demographics,sex,Female
+5e81041375b8e47f1bdf2aa4,demographics,student,No
+5e81041375b8e47f1bdf2aa4,results,averageAccuracy,0.401235160730959
+59b536d60516f6000197c3f9,feedback,How helpful is the “individual selection” of points feature?,1
+59b536d60516f6000197c3f9,feedback,How helpful is the rectangle selection feature?,2
+59b536d60516f6000197c3f9,feedback,How helpful is the paintbrush feature?,5
+59b536d60516f6000197c3f9,feedback,How easy was the prediction interface to use?,5
+59b536d60516f6000197c3f9,feedback,How accurate did you find the predictions?,4
+59b536d60516f6000197c3f9,feedback,How helpful did you find the predictions?,4
+59b536d60516f6000197c3f9,feedback,Do you prefer user-driven or computer supported selections?,2
+59b536d60516f6000197c3f9,feedback,How experienced are you with scatterplots?,2
+59b536d60516f6000197c3f9,feedback,How experienced are you with statistics?,3
+59b536d60516f6000197c3f9,demographics,birthCountry,Finland
+59b536d60516f6000197c3f9,demographics,employment,Unemployed (and job seeking)
+59b536d60516f6000197c3f9,demographics,nationality,Finland
+59b536d60516f6000197c3f9,demographics,sex,Male
+59b536d60516f6000197c3f9,demographics,student,Yes
+59b536d60516f6000197c3f9,results,averageAccuracy,0.8972535937451905
+5d4602322f66d0001a1208c7,feedback,How helpful is the “individual selection” of points feature?,2
+5d4602322f66d0001a1208c7,feedback,How helpful is the rectangle selection feature?,4
+5d4602322f66d0001a1208c7,feedback,How helpful is the paintbrush feature?,5
+5d4602322f66d0001a1208c7,feedback,How easy was the prediction interface to use?,5
+5d4602322f66d0001a1208c7,feedback,How accurate did you find the predictions?,4
+5d4602322f66d0001a1208c7,feedback,How helpful did you find the predictions?,4
+5d4602322f66d0001a1208c7,feedback,Do you prefer user-driven or computer supported selections?,2
+5d4602322f66d0001a1208c7,feedback,How experienced are you with scatterplots?,2
+5d4602322f66d0001a1208c7,feedback,How experienced are you with statistics?,1
+5d4602322f66d0001a1208c7,demographics,birthCountry,United States
+5d4602322f66d0001a1208c7,demographics,employment,Full-Time
+5d4602322f66d0001a1208c7,demographics,nationality,United States
+5d4602322f66d0001a1208c7,demographics,sex,Male
+5d4602322f66d0001a1208c7,demographics,student,No
+5d4602322f66d0001a1208c7,results,averageAccuracy,0.7759419152276295
+5dcc8459bfb31a920381996e,feedback,How helpful is the “individual selection” of points feature?,1
+5dcc8459bfb31a920381996e,feedback,How helpful is the rectangle selection feature?,3
+5dcc8459bfb31a920381996e,feedback,How helpful is the paintbrush feature?,5
+5dcc8459bfb31a920381996e,feedback,How easy was the prediction interface to use?,5
+5dcc8459bfb31a920381996e,feedback,How accurate did you find the predictions?,4
+5dcc8459bfb31a920381996e,feedback,How helpful did you find the predictions?,5
+5dcc8459bfb31a920381996e,feedback,Do you prefer user-driven or computer supported selections?,5
+5dcc8459bfb31a920381996e,feedback,How experienced are you with scatterplots?,4
+5dcc8459bfb31a920381996e,feedback,How experienced are you with statistics?,4
+5dcc8459bfb31a920381996e,demographics,birthCountry,Germany
+5dcc8459bfb31a920381996e,demographics,employment,Part-Time
+5dcc8459bfb31a920381996e,demographics,nationality,Germany
+5dcc8459bfb31a920381996e,demographics,sex,Male
+5dcc8459bfb31a920381996e,demographics,student,Yes
+5dcc8459bfb31a920381996e,results,averageAccuracy,0.894795918367347
+5eb30ae9bb223e0e176edecd,feedback,How helpful is the “individual selection” of points feature?,5
+5eb30ae9bb223e0e176edecd,feedback,How helpful is the rectangle selection feature?,3
+5eb30ae9bb223e0e176edecd,feedback,How helpful is the paintbrush feature?,5
+5eb30ae9bb223e0e176edecd,feedback,How easy was the prediction interface to use?,5
+5eb30ae9bb223e0e176edecd,feedback,How accurate did you find the predictions?,5
+5eb30ae9bb223e0e176edecd,feedback,How helpful did you find the predictions?,5
+5eb30ae9bb223e0e176edecd,feedback,Do you prefer user-driven or computer supported selections?,2
+5eb30ae9bb223e0e176edecd,feedback,How experienced are you with scatterplots?,3
+5eb30ae9bb223e0e176edecd,feedback,How experienced are you with statistics?,3
+5eb30ae9bb223e0e176edecd,demographics,birthCountry,Germany
+5eb30ae9bb223e0e176edecd,demographics,employment,Full-Time
+5eb30ae9bb223e0e176edecd,demographics,nationality,United Kingdom
+5eb30ae9bb223e0e176edecd,demographics,sex,Female
+5eb30ae9bb223e0e176edecd,demographics,student,No
+5eb30ae9bb223e0e176edecd,results,averageAccuracy,0.8158205589928279
+5f3e6467a097d9057137d439,feedback,How helpful is the “individual selection” of points feature?,4
+5f3e6467a097d9057137d439,feedback,How helpful is the rectangle selection feature?,3
+5f3e6467a097d9057137d439,feedback,How helpful is the paintbrush feature?,5
+5f3e6467a097d9057137d439,feedback,How easy was the prediction interface to use?,5
+5f3e6467a097d9057137d439,feedback,How accurate did you find the predictions?,3
+5f3e6467a097d9057137d439,feedback,How helpful did you find the predictions?,3
+5f3e6467a097d9057137d439,feedback,Do you prefer user-driven or computer supported selections?,1
+5f3e6467a097d9057137d439,feedback,How experienced are you with scatterplots?,1
+5f3e6467a097d9057137d439,feedback,How experienced are you with statistics?,1
+5f3e6467a097d9057137d439,demographics,birthCountry,United Kingdom
+5f3e6467a097d9057137d439,demographics,employment,
+5f3e6467a097d9057137d439,demographics,nationality,United Kingdom
+5f3e6467a097d9057137d439,demographics,sex,Male
+5f3e6467a097d9057137d439,demographics,student,No
+5f3e6467a097d9057137d439,results,averageAccuracy,0.350167177982304
+5d0e2a06facd7500197a46e3,feedback,How helpful is the “individual selection” of points feature?,4
+5d0e2a06facd7500197a46e3,feedback,How helpful is the rectangle selection feature?,2
+5d0e2a06facd7500197a46e3,feedback,How helpful is the paintbrush feature?,5
+5d0e2a06facd7500197a46e3,feedback,How easy was the prediction interface to use?,5
+5d0e2a06facd7500197a46e3,feedback,How accurate did you find the predictions?,5
+5d0e2a06facd7500197a46e3,feedback,How helpful did you find the predictions?,5
+5d0e2a06facd7500197a46e3,feedback,Do you prefer user-driven or computer supported selections?,4
+5d0e2a06facd7500197a46e3,feedback,How experienced are you with scatterplots?,2
+5d0e2a06facd7500197a46e3,feedback,How experienced are you with statistics?,2
+5d0e2a06facd7500197a46e3,demographics,birthCountry,United States
+5d0e2a06facd7500197a46e3,demographics,employment,Unemployed (and job seeking)
+5d0e2a06facd7500197a46e3,demographics,nationality,United States
+5d0e2a06facd7500197a46e3,demographics,sex,Male
+5d0e2a06facd7500197a46e3,demographics,student,No
+5d0e2a06facd7500197a46e3,results,averageAccuracy,0.7994884877027734
+5e2926d80beb030ede110e67,feedback,How helpful is the “individual selection” of points feature?,5
+5e2926d80beb030ede110e67,feedback,How helpful is the rectangle selection feature?,1
+5e2926d80beb030ede110e67,feedback,How helpful is the paintbrush feature?,1
+5e2926d80beb030ede110e67,feedback,How easy was the prediction interface to use?,1
+5e2926d80beb030ede110e67,feedback,How accurate did you find the predictions?,1
+5e2926d80beb030ede110e67,feedback,How helpful did you find the predictions?,1
+5e2926d80beb030ede110e67,feedback,Do you prefer user-driven or computer supported selections?,1
+5e2926d80beb030ede110e67,feedback,How experienced are you with scatterplots?,1
+5e2926d80beb030ede110e67,feedback,How experienced are you with statistics?,2
+5e2926d80beb030ede110e67,demographics,birthCountry,United States
+5e2926d80beb030ede110e67,demographics,employment,Part-Time
+5e2926d80beb030ede110e67,demographics,nationality,United States
+5e2926d80beb030ede110e67,demographics,sex,Female
+5e2926d80beb030ede110e67,demographics,student,No
+5e2926d80beb030ede110e67,results,averageAccuracy,0.7819629774986918
+5e5f992a9efbca000beac9df,feedback,How helpful is the “individual selection” of points feature?,3
+5e5f992a9efbca000beac9df,feedback,How helpful is the rectangle selection feature?,1
+5e5f992a9efbca000beac9df,feedback,How helpful is the paintbrush feature?,5
+5e5f992a9efbca000beac9df,feedback,How easy was the prediction interface to use?,4
+5e5f992a9efbca000beac9df,feedback,How accurate did you find the predictions?,3
+5e5f992a9efbca000beac9df,feedback,How helpful did you find the predictions?,4
+5e5f992a9efbca000beac9df,feedback,Do you prefer user-driven or computer supported selections?,2
+5e5f992a9efbca000beac9df,feedback,How experienced are you with scatterplots?,3
+5e5f992a9efbca000beac9df,feedback,How experienced are you with statistics?,4
+5e5f992a9efbca000beac9df,demographics,birthCountry,Romania
+5e5f992a9efbca000beac9df,demographics,employment,"Not in paid work (e.g. homemaker', 'retired or disabled)"
+5e5f992a9efbca000beac9df,demographics,nationality,Romania
+5e5f992a9efbca000beac9df,demographics,sex,Male
+5e5f992a9efbca000beac9df,demographics,student,Yes
+5e5f992a9efbca000beac9df,results,averageAccuracy,0.8309114508274172
+5f39c9babf015058a8ff7aa4,feedback,How helpful is the “individual selection” of points feature?,5
+5f39c9babf015058a8ff7aa4,feedback,How helpful is the rectangle selection feature?,1
+5f39c9babf015058a8ff7aa4,feedback,How helpful is the paintbrush feature?,4
+5f39c9babf015058a8ff7aa4,feedback,How easy was the prediction interface to use?,4
+5f39c9babf015058a8ff7aa4,feedback,How accurate did you find the predictions?,3
+5f39c9babf015058a8ff7aa4,feedback,How helpful did you find the predictions?,2
+5f39c9babf015058a8ff7aa4,feedback,Do you prefer user-driven or computer supported selections?,1
+5f39c9babf015058a8ff7aa4,feedback,How experienced are you with scatterplots?,5
+5f39c9babf015058a8ff7aa4,feedback,How experienced are you with statistics?,5
+5f39c9babf015058a8ff7aa4,demographics,birthCountry,United States
+5f39c9babf015058a8ff7aa4,demographics,employment,Full-Time
+5f39c9babf015058a8ff7aa4,demographics,nationality,United States
+5f39c9babf015058a8ff7aa4,demographics,sex,Female
+5f39c9babf015058a8ff7aa4,demographics,student,No
+5f39c9babf015058a8ff7aa4,results,averageAccuracy,0.7794557823129251
+5d45b2f832ed2d0001268079,feedback,How helpful is the “individual selection” of points feature?,1
+5d45b2f832ed2d0001268079,feedback,How helpful is the rectangle selection feature?,3
+5d45b2f832ed2d0001268079,feedback,How helpful is the paintbrush feature?,5
+5d45b2f832ed2d0001268079,feedback,How easy was the prediction interface to use?,5
+5d45b2f832ed2d0001268079,feedback,How accurate did you find the predictions?,4
+5d45b2f832ed2d0001268079,feedback,How helpful did you find the predictions?,5
+5d45b2f832ed2d0001268079,feedback,Do you prefer user-driven or computer supported selections?,4
+5d45b2f832ed2d0001268079,feedback,How experienced are you with scatterplots?,4
+5d45b2f832ed2d0001268079,feedback,How experienced are you with statistics?,4
+5d45b2f832ed2d0001268079,demographics,birthCountry,Portugal
+5d45b2f832ed2d0001268079,demographics,employment,Other
+5d45b2f832ed2d0001268079,demographics,nationality,Portugal
+5d45b2f832ed2d0001268079,demographics,sex,Male
+5d45b2f832ed2d0001268079,demographics,student,Yes
+5d45b2f832ed2d0001268079,results,averageAccuracy,0.7285810876074567
+5e8527c70312bf11154fb3db,feedback,How helpful is the “individual selection” of points feature?,1
+5e8527c70312bf11154fb3db,feedback,How helpful is the rectangle selection feature?,3
+5e8527c70312bf11154fb3db,feedback,How helpful is the paintbrush feature?,5
+5e8527c70312bf11154fb3db,feedback,How easy was the prediction interface to use?,3
+5e8527c70312bf11154fb3db,feedback,How accurate did you find the predictions?,3
+5e8527c70312bf11154fb3db,feedback,How helpful did you find the predictions?,4
+5e8527c70312bf11154fb3db,feedback,Do you prefer user-driven or computer supported selections?,3
+5e8527c70312bf11154fb3db,feedback,How experienced are you with scatterplots?,2
+5e8527c70312bf11154fb3db,feedback,How experienced are you with statistics?,3
+5e8527c70312bf11154fb3db,demographics,birthCountry,Poland
+5e8527c70312bf11154fb3db,demographics,employment,Other
+5e8527c70312bf11154fb3db,demographics,nationality,Poland
+5e8527c70312bf11154fb3db,demographics,sex,Male
+5e8527c70312bf11154fb3db,demographics,student,Yes
+5e8527c70312bf11154fb3db,results,averageAccuracy,0.6951257021027034
+5e8783c0890e930b54f7d348,feedback,How helpful is the “individual selection” of points feature?,1
+5e8783c0890e930b54f7d348,feedback,How helpful is the rectangle selection feature?,1
+5e8783c0890e930b54f7d348,feedback,How helpful is the paintbrush feature?,4
+5e8783c0890e930b54f7d348,feedback,How easy was the prediction interface to use?,5
+5e8783c0890e930b54f7d348,feedback,How accurate did you find the predictions?,5
+5e8783c0890e930b54f7d348,feedback,How helpful did you find the predictions?,5
+5e8783c0890e930b54f7d348,feedback,Do you prefer user-driven or computer supported selections?,4
+5e8783c0890e930b54f7d348,feedback,How experienced are you with scatterplots?,4
+5e8783c0890e930b54f7d348,feedback,How experienced are you with statistics?,4
+5e8783c0890e930b54f7d348,demographics,birthCountry,Italy
+5e8783c0890e930b54f7d348,demographics,employment,Unemployed (and job seeking)
+5e8783c0890e930b54f7d348,demographics,nationality,Italy
+5e8783c0890e930b54f7d348,demographics,sex,Female
+5e8783c0890e930b54f7d348,demographics,student,Yes
+5e8783c0890e930b54f7d348,results,averageAccuracy,0.7655570619856334
+5e8ecc2ccd40fa1876aa7c23,feedback,How helpful is the “individual selection” of points feature?,1
+5e8ecc2ccd40fa1876aa7c23,feedback,How helpful is the rectangle selection feature?,3
+5e8ecc2ccd40fa1876aa7c23,feedback,How helpful is the paintbrush feature?,5
+5e8ecc2ccd40fa1876aa7c23,feedback,How easy was the prediction interface to use?,5
+5e8ecc2ccd40fa1876aa7c23,feedback,How accurate did you find the predictions?,4
+5e8ecc2ccd40fa1876aa7c23,feedback,How helpful did you find the predictions?,5
+5e8ecc2ccd40fa1876aa7c23,feedback,Do you prefer user-driven or computer supported selections?,4
+5e8ecc2ccd40fa1876aa7c23,feedback,How experienced are you with scatterplots?,1
+5e8ecc2ccd40fa1876aa7c23,feedback,How experienced are you with statistics?,2
+5e8ecc2ccd40fa1876aa7c23,demographics,birthCountry,Estonia
+5e8ecc2ccd40fa1876aa7c23,demographics,employment,Full-Time
+5e8ecc2ccd40fa1876aa7c23,demographics,nationality,Estonia
+5e8ecc2ccd40fa1876aa7c23,demographics,sex,Male
+5e8ecc2ccd40fa1876aa7c23,demographics,student,No
+5e8ecc2ccd40fa1876aa7c23,results,averageAccuracy,0.764636239111029
+5f3d8f6c01b29417f5676e1a,feedback,How helpful is the “individual selection” of points feature?,4
+5f3d8f6c01b29417f5676e1a,feedback,How helpful is the rectangle selection feature?,2
+5f3d8f6c01b29417f5676e1a,feedback,How helpful is the paintbrush feature?,5
+5f3d8f6c01b29417f5676e1a,feedback,How easy was the prediction interface to use?,5
+5f3d8f6c01b29417f5676e1a,feedback,How accurate did you find the predictions?,4
+5f3d8f6c01b29417f5676e1a,feedback,How helpful did you find the predictions?,4
+5f3d8f6c01b29417f5676e1a,feedback,Do you prefer user-driven or computer supported selections?,4
+5f3d8f6c01b29417f5676e1a,feedback,How experienced are you with scatterplots?,4
+5f3d8f6c01b29417f5676e1a,feedback,How experienced are you with statistics?,4
+5f3d8f6c01b29417f5676e1a,demographics,birthCountry,Portugal
+5f3d8f6c01b29417f5676e1a,demographics,employment,Other
+5f3d8f6c01b29417f5676e1a,demographics,nationality,Portugal
+5f3d8f6c01b29417f5676e1a,demographics,sex,Male
+5f3d8f6c01b29417f5676e1a,demographics,student,Yes
+5f3d8f6c01b29417f5676e1a,results,averageAccuracy,0.842276602948872
+5f19393a8e64cb1984ee0121,feedback,How helpful is the “individual selection” of points feature?,3
+5f19393a8e64cb1984ee0121,feedback,How helpful is the rectangle selection feature?,1
+5f19393a8e64cb1984ee0121,feedback,How helpful is the paintbrush feature?,5
+5f19393a8e64cb1984ee0121,feedback,How easy was the prediction interface to use?,5
+5f19393a8e64cb1984ee0121,feedback,How accurate did you find the predictions?,5
+5f19393a8e64cb1984ee0121,feedback,How helpful did you find the predictions?,5
+5f19393a8e64cb1984ee0121,feedback,Do you prefer user-driven or computer supported selections?,5
+5f19393a8e64cb1984ee0121,feedback,How experienced are you with scatterplots?,2
+5f19393a8e64cb1984ee0121,feedback,How experienced are you with statistics?,4
+5f19393a8e64cb1984ee0121,demographics,birthCountry,Estonia
+5f19393a8e64cb1984ee0121,demographics,employment,Other
+5f19393a8e64cb1984ee0121,demographics,nationality,Estonia
+5f19393a8e64cb1984ee0121,demographics,sex,Male
+5f19393a8e64cb1984ee0121,demographics,student,Yes
+5f19393a8e64cb1984ee0121,results,averageAccuracy,0.6720025278015715
+5eb14b3c30bd5922f1fcc4f2,feedback,How helpful is the “individual selection” of points feature?,1
+5eb14b3c30bd5922f1fcc4f2,feedback,How helpful is the rectangle selection feature?,1
+5eb14b3c30bd5922f1fcc4f2,feedback,How helpful is the paintbrush feature?,5
+5eb14b3c30bd5922f1fcc4f2,feedback,How easy was the prediction interface to use?,5
+5eb14b3c30bd5922f1fcc4f2,feedback,How accurate did you find the predictions?,5
+5eb14b3c30bd5922f1fcc4f2,feedback,How helpful did you find the predictions?,5
+5eb14b3c30bd5922f1fcc4f2,feedback,Do you prefer user-driven or computer supported selections?,5
+5eb14b3c30bd5922f1fcc4f2,feedback,How experienced are you with scatterplots?,3
+5eb14b3c30bd5922f1fcc4f2,feedback,How experienced are you with statistics?,3
+5eb14b3c30bd5922f1fcc4f2,demographics,birthCountry,United Kingdom
+5eb14b3c30bd5922f1fcc4f2,demographics,employment,Part-Time
+5eb14b3c30bd5922f1fcc4f2,demographics,nationality,United Kingdom
+5eb14b3c30bd5922f1fcc4f2,demographics,sex,Female
+5eb14b3c30bd5922f1fcc4f2,demographics,student,No
+5eb14b3c30bd5922f1fcc4f2,results,averageAccuracy,0.6865616759524322
+5f480180b6c229273889a39f,feedback,How helpful is the “individual selection” of points feature?,2
+5f480180b6c229273889a39f,feedback,How helpful is the rectangle selection feature?,2
+5f480180b6c229273889a39f,feedback,How helpful is the paintbrush feature?,5
+5f480180b6c229273889a39f,feedback,How easy was the prediction interface to use?,4
+5f480180b6c229273889a39f,feedback,How accurate did you find the predictions?,3
+5f480180b6c229273889a39f,feedback,How helpful did you find the predictions?,4
+5f480180b6c229273889a39f,feedback,Do you prefer user-driven or computer supported selections?,4
+5f480180b6c229273889a39f,feedback,How experienced are you with scatterplots?,4
+5f480180b6c229273889a39f,feedback,How experienced are you with statistics?,4
+5f480180b6c229273889a39f,demographics,birthCountry,Poland
+5f480180b6c229273889a39f,demographics,employment,Full-Time
+5f480180b6c229273889a39f,demographics,nationality,Poland
+5f480180b6c229273889a39f,demographics,sex,Male
+5f480180b6c229273889a39f,demographics,student,Yes
+5f480180b6c229273889a39f,results,averageAccuracy,0.5518132149468554
+5ef80b7e38b9f0556fd6a5e6,feedback,How helpful is the “individual selection” of points feature?,2
+5ef80b7e38b9f0556fd6a5e6,feedback,How helpful is the rectangle selection feature?,1
+5ef80b7e38b9f0556fd6a5e6,feedback,How helpful is the paintbrush feature?,5
+5ef80b7e38b9f0556fd6a5e6,feedback,How easy was the prediction interface to use?,5
+5ef80b7e38b9f0556fd6a5e6,feedback,How accurate did you find the predictions?,4
+5ef80b7e38b9f0556fd6a5e6,feedback,How helpful did you find the predictions?,4
+5ef80b7e38b9f0556fd6a5e6,feedback,Do you prefer user-driven or computer supported selections?,2
+5ef80b7e38b9f0556fd6a5e6,feedback,How experienced are you with scatterplots?,1
+5ef80b7e38b9f0556fd6a5e6,feedback,How experienced are you with statistics?,2
+5ef80b7e38b9f0556fd6a5e6,demographics,birthCountry,Chile
+5ef80b7e38b9f0556fd6a5e6,demographics,employment,Other
+5ef80b7e38b9f0556fd6a5e6,demographics,nationality,Chile
+5ef80b7e38b9f0556fd6a5e6,demographics,sex,Male
+5ef80b7e38b9f0556fd6a5e6,demographics,student,Yes
+5ef80b7e38b9f0556fd6a5e6,results,averageAccuracy,0.7053567945396784
+5f3813c0e97de70a6ab4e9e2,feedback,How helpful is the “individual selection” of points feature?,4
+5f3813c0e97de70a6ab4e9e2,feedback,How helpful is the rectangle selection feature?,3
+5f3813c0e97de70a6ab4e9e2,feedback,How helpful is the paintbrush feature?,5
+5f3813c0e97de70a6ab4e9e2,feedback,How easy was the prediction interface to use?,4
+5f3813c0e97de70a6ab4e9e2,feedback,How accurate did you find the predictions?,3
+5f3813c0e97de70a6ab4e9e2,feedback,How helpful did you find the predictions?,4
+5f3813c0e97de70a6ab4e9e2,feedback,Do you prefer user-driven or computer supported selections?,4
+5f3813c0e97de70a6ab4e9e2,feedback,How experienced are you with scatterplots?,1
+5f3813c0e97de70a6ab4e9e2,feedback,How experienced are you with statistics?,3
+5f3813c0e97de70a6ab4e9e2,demographics,birthCountry,United Kingdom
+5f3813c0e97de70a6ab4e9e2,demographics,employment,Unemployed (and job seeking)
+5f3813c0e97de70a6ab4e9e2,demographics,nationality,United Kingdom
+5f3813c0e97de70a6ab4e9e2,demographics,sex,Male
+5f3813c0e97de70a6ab4e9e2,demographics,student,No
+5f3813c0e97de70a6ab4e9e2,results,averageAccuracy,0.8282160300017445
+5dfe7de0bf3d4eb1cc979a7a,feedback,How helpful is the “individual selection” of points feature?,1
+5dfe7de0bf3d4eb1cc979a7a,feedback,How helpful is the rectangle selection feature?,1
+5dfe7de0bf3d4eb1cc979a7a,feedback,How helpful is the paintbrush feature?,5
+5dfe7de0bf3d4eb1cc979a7a,feedback,How easy was the prediction interface to use?,5
+5dfe7de0bf3d4eb1cc979a7a,feedback,How accurate did you find the predictions?,5
+5dfe7de0bf3d4eb1cc979a7a,feedback,How helpful did you find the predictions?,5
+5dfe7de0bf3d4eb1cc979a7a,feedback,Do you prefer user-driven or computer supported selections?,4
+5dfe7de0bf3d4eb1cc979a7a,feedback,How experienced are you with scatterplots?,1
+5dfe7de0bf3d4eb1cc979a7a,feedback,How experienced are you with statistics?,2
+5dfe7de0bf3d4eb1cc979a7a,demographics,birthCountry,Slovenia
+5dfe7de0bf3d4eb1cc979a7a,demographics,employment,Other
+5dfe7de0bf3d4eb1cc979a7a,demographics,nationality,Slovenia
+5dfe7de0bf3d4eb1cc979a7a,demographics,sex,Male
+5dfe7de0bf3d4eb1cc979a7a,demographics,student,Yes
+5dfe7de0bf3d4eb1cc979a7a,results,averageAccuracy,0.7810544217687074
+5c665e1948985d0001f09675,feedback,How helpful is the “individual selection” of points feature?,3
+5c665e1948985d0001f09675,feedback,How helpful is the rectangle selection feature?,4
+5c665e1948985d0001f09675,feedback,How helpful is the paintbrush feature?,5
+5c665e1948985d0001f09675,feedback,How easy was the prediction interface to use?,5
+5c665e1948985d0001f09675,feedback,How accurate did you find the predictions?,4
+5c665e1948985d0001f09675,feedback,How helpful did you find the predictions?,5
+5c665e1948985d0001f09675,feedback,Do you prefer user-driven or computer supported selections?,4
+5c665e1948985d0001f09675,feedback,How experienced are you with scatterplots?,5
+5c665e1948985d0001f09675,feedback,How experienced are you with statistics?,3
+5c665e1948985d0001f09675,demographics,birthCountry,United Kingdom
+5c665e1948985d0001f09675,demographics,employment,Full-Time
+5c665e1948985d0001f09675,demographics,nationality,United Kingdom
+5c665e1948985d0001f09675,demographics,sex,Male
+5c665e1948985d0001f09675,demographics,student,No
+5c665e1948985d0001f09675,results,averageAccuracy,0.8863205282112844
+5c6c6d2a61fc7d0001459508,feedback,How helpful is the “individual selection” of points feature?,2
+5c6c6d2a61fc7d0001459508,feedback,How helpful is the rectangle selection feature?,3
+5c6c6d2a61fc7d0001459508,feedback,How helpful is the paintbrush feature?,5
+5c6c6d2a61fc7d0001459508,feedback,How easy was the prediction interface to use?,5
+5c6c6d2a61fc7d0001459508,feedback,How accurate did you find the predictions?,5
+5c6c6d2a61fc7d0001459508,feedback,How helpful did you find the predictions?,5
+5c6c6d2a61fc7d0001459508,feedback,Do you prefer user-driven or computer supported selections?,5
+5c6c6d2a61fc7d0001459508,feedback,How experienced are you with scatterplots?,1
+5c6c6d2a61fc7d0001459508,feedback,How experienced are you with statistics?,1
+5c6c6d2a61fc7d0001459508,demographics,birthCountry,United States
+5c6c6d2a61fc7d0001459508,demographics,employment,Part-Time
+5c6c6d2a61fc7d0001459508,demographics,nationality,United States
+5c6c6d2a61fc7d0001459508,demographics,sex,Male
+5c6c6d2a61fc7d0001459508,demographics,student,Yes
+5c6c6d2a61fc7d0001459508,results,averageAccuracy,0.8701980792316927
+5f56801ffc0d190b3750869d,feedback,How helpful is the “individual selection” of points feature?,5
+5f56801ffc0d190b3750869d,feedback,How helpful is the rectangle selection feature?,1
+5f56801ffc0d190b3750869d,feedback,How helpful is the paintbrush feature?,5
+5f56801ffc0d190b3750869d,feedback,How easy was the prediction interface to use?,5
+5f56801ffc0d190b3750869d,feedback,How accurate did you find the predictions?,5
+5f56801ffc0d190b3750869d,feedback,How helpful did you find the predictions?,5
+5f56801ffc0d190b3750869d,feedback,Do you prefer user-driven or computer supported selections?,3
+5f56801ffc0d190b3750869d,feedback,How experienced are you with scatterplots?,5
+5f56801ffc0d190b3750869d,feedback,How experienced are you with statistics?,5
+5f56801ffc0d190b3750869d,demographics,birthCountry,United States
+5f56801ffc0d190b3750869d,demographics,employment,Part-Time
+5f56801ffc0d190b3750869d,demographics,nationality,United States
+5f56801ffc0d190b3750869d,demographics,sex,Male
+5f56801ffc0d190b3750869d,demographics,student,No
+5f56801ffc0d190b3750869d,results,averageAccuracy,0.6325907029478458
+5c465bc735e0cd0001dddc5b,feedback,How helpful is the “individual selection” of points feature?,1
+5c465bc735e0cd0001dddc5b,feedback,How helpful is the rectangle selection feature?,1
+5c465bc735e0cd0001dddc5b,feedback,How helpful is the paintbrush feature?,5
+5c465bc735e0cd0001dddc5b,feedback,How easy was the prediction interface to use?,4
+5c465bc735e0cd0001dddc5b,feedback,How accurate did you find the predictions?,3
+5c465bc735e0cd0001dddc5b,feedback,How helpful did you find the predictions?,2
+5c465bc735e0cd0001dddc5b,feedback,Do you prefer user-driven or computer supported selections?,1
+5c465bc735e0cd0001dddc5b,feedback,How experienced are you with scatterplots?,4
+5c465bc735e0cd0001dddc5b,feedback,How experienced are you with statistics?,5
+5c465bc735e0cd0001dddc5b,demographics,birthCountry,Netherlands
+5c465bc735e0cd0001dddc5b,demographics,employment,Full-Time
+5c465bc735e0cd0001dddc5b,demographics,nationality,Netherlands
+5c465bc735e0cd0001dddc5b,demographics,sex,Male
+5c465bc735e0cd0001dddc5b,demographics,student,Yes
+5c465bc735e0cd0001dddc5b,results,averageAccuracy,0.6200112317654334
+5e94f3cb7e59400df2b915fa,feedback,How helpful is the “individual selection” of points feature?,4
+5e94f3cb7e59400df2b915fa,feedback,How helpful is the rectangle selection feature?,1
+5e94f3cb7e59400df2b915fa,feedback,How helpful is the paintbrush feature?,5
+5e94f3cb7e59400df2b915fa,feedback,How easy was the prediction interface to use?,5
+5e94f3cb7e59400df2b915fa,feedback,How accurate did you find the predictions?,4
+5e94f3cb7e59400df2b915fa,feedback,How helpful did you find the predictions?,5
+5e94f3cb7e59400df2b915fa,feedback,Do you prefer user-driven or computer supported selections?,4
+5e94f3cb7e59400df2b915fa,feedback,How experienced are you with scatterplots?,2
+5e94f3cb7e59400df2b915fa,feedback,How experienced are you with statistics?,2
+5e94f3cb7e59400df2b915fa,demographics,birthCountry,Spain
+5e94f3cb7e59400df2b915fa,demographics,employment,Unemployed (and job seeking)
+5e94f3cb7e59400df2b915fa,demographics,nationality,Spain
+5e94f3cb7e59400df2b915fa,demographics,sex,Male
+5e94f3cb7e59400df2b915fa,demographics,student,No
+5e94f3cb7e59400df2b915fa,results,averageAccuracy,0.8588932496075354
+5efcae1dc5fa31082a897f33,feedback,How helpful is the “individual selection” of points feature?,4
+5efcae1dc5fa31082a897f33,feedback,How helpful is the rectangle selection feature?,2
+5efcae1dc5fa31082a897f33,feedback,How helpful is the paintbrush feature?,5
+5efcae1dc5fa31082a897f33,feedback,How easy was the prediction interface to use?,5
+5efcae1dc5fa31082a897f33,feedback,How accurate did you find the predictions?,4
+5efcae1dc5fa31082a897f33,feedback,How helpful did you find the predictions?,5
+5efcae1dc5fa31082a897f33,feedback,Do you prefer user-driven or computer supported selections?,4
+5efcae1dc5fa31082a897f33,feedback,How experienced are you with scatterplots?,4
+5efcae1dc5fa31082a897f33,feedback,How experienced are you with statistics?,4
+5efcae1dc5fa31082a897f33,demographics,birthCountry,Poland
+5efcae1dc5fa31082a897f33,demographics,employment,Unemployed (and job seeking)
+5efcae1dc5fa31082a897f33,demographics,nationality,Poland
+5efcae1dc5fa31082a897f33,demographics,sex,Male
+5efcae1dc5fa31082a897f33,demographics,student,No
+5efcae1dc5fa31082a897f33,results,averageAccuracy,0.6975556889422435
+5f0f9a64d5d9560008936388,feedback,How helpful is the “individual selection” of points feature?,2
+5f0f9a64d5d9560008936388,feedback,How helpful is the rectangle selection feature?,4
+5f0f9a64d5d9560008936388,feedback,How helpful is the paintbrush feature?,5
+5f0f9a64d5d9560008936388,feedback,How easy was the prediction interface to use?,4
+5f0f9a64d5d9560008936388,feedback,How accurate did you find the predictions?,2
+5f0f9a64d5d9560008936388,feedback,How helpful did you find the predictions?,2
+5f0f9a64d5d9560008936388,feedback,Do you prefer user-driven or computer supported selections?,1
+5f0f9a64d5d9560008936388,feedback,How experienced are you with scatterplots?,4
+5f0f9a64d5d9560008936388,feedback,How experienced are you with statistics?,4
+5f0f9a64d5d9560008936388,demographics,birthCountry,Mexico
+5f0f9a64d5d9560008936388,demographics,employment,Unemployed (and job seeking)
+5f0f9a64d5d9560008936388,demographics,nationality,Mexico
+5f0f9a64d5d9560008936388,demographics,sex,Male
+5f0f9a64d5d9560008936388,demographics,student,Yes
+5f0f9a64d5d9560008936388,results,averageAccuracy,0.7860034013605441
+5f3ad10cb7b6dd75ec619575,feedback,How helpful is the “individual selection” of points feature?,3
+5f3ad10cb7b6dd75ec619575,feedback,How helpful is the rectangle selection feature?,3
+5f3ad10cb7b6dd75ec619575,feedback,How helpful is the paintbrush feature?,5
+5f3ad10cb7b6dd75ec619575,feedback,How easy was the prediction interface to use?,5
+5f3ad10cb7b6dd75ec619575,feedback,How accurate did you find the predictions?,5
+5f3ad10cb7b6dd75ec619575,feedback,How helpful did you find the predictions?,5
+5f3ad10cb7b6dd75ec619575,feedback,Do you prefer user-driven or computer supported selections?,5
+5f3ad10cb7b6dd75ec619575,feedback,How experienced are you with scatterplots?,1
+5f3ad10cb7b6dd75ec619575,feedback,How experienced are you with statistics?,3
+5f3ad10cb7b6dd75ec619575,demographics,birthCountry,Portugal
+5f3ad10cb7b6dd75ec619575,demographics,employment,Unemployed (and job seeking)
+5f3ad10cb7b6dd75ec619575,demographics,nationality,Portugal
+5f3ad10cb7b6dd75ec619575,demographics,sex,Male
+5f3ad10cb7b6dd75ec619575,demographics,student,Yes
+5f3ad10cb7b6dd75ec619575,results,averageAccuracy,0.7561338124993587
+5f2dcd951f2249107bbbeaeb,feedback,How helpful is the “individual selection” of points feature?,3
+5f2dcd951f2249107bbbeaeb,feedback,How helpful is the rectangle selection feature?,3
+5f2dcd951f2249107bbbeaeb,feedback,How helpful is the paintbrush feature?,5
+5f2dcd951f2249107bbbeaeb,feedback,How easy was the prediction interface to use?,5
+5f2dcd951f2249107bbbeaeb,feedback,How accurate did you find the predictions?,4
+5f2dcd951f2249107bbbeaeb,feedback,How helpful did you find the predictions?,3
+5f2dcd951f2249107bbbeaeb,feedback,Do you prefer user-driven or computer supported selections?,1
+5f2dcd951f2249107bbbeaeb,feedback,How experienced are you with scatterplots?,1
+5f2dcd951f2249107bbbeaeb,feedback,How experienced are you with statistics?,1
+5f2dcd951f2249107bbbeaeb,demographics,birthCountry,United States
+5f2dcd951f2249107bbbeaeb,demographics,employment,Full-Time
+5f2dcd951f2249107bbbeaeb,demographics,nationality,United States
+5f2dcd951f2249107bbbeaeb,demographics,sex,Male
+5f2dcd951f2249107bbbeaeb,demographics,student,No
+5f2dcd951f2249107bbbeaeb,results,averageAccuracy,0.7559273662845091
+5f500418133110165a1539a9,feedback,How helpful is the “individual selection” of points feature?,5
+5f500418133110165a1539a9,feedback,How helpful is the rectangle selection feature?,2
+5f500418133110165a1539a9,feedback,How helpful is the paintbrush feature?,5
+5f500418133110165a1539a9,feedback,How easy was the prediction interface to use?,5
+5f500418133110165a1539a9,feedback,How accurate did you find the predictions?,4
+5f500418133110165a1539a9,feedback,How helpful did you find the predictions?,4
+5f500418133110165a1539a9,feedback,Do you prefer user-driven or computer supported selections?,4
+5f500418133110165a1539a9,feedback,How experienced are you with scatterplots?,4
+5f500418133110165a1539a9,feedback,How experienced are you with statistics?,4
+5f500418133110165a1539a9,demographics,birthCountry,United States
+5f500418133110165a1539a9,demographics,employment,Unemployed (and job seeking)
+5f500418133110165a1539a9,demographics,nationality,United States
+5f500418133110165a1539a9,demographics,sex,Female
+5f500418133110165a1539a9,demographics,student,Yes
+5f500418133110165a1539a9,results,averageAccuracy,0.8100040016006403
+5f0235be5d417d0dfb3ebc29,feedback,How helpful is the “individual selection” of points feature?,2
+5f0235be5d417d0dfb3ebc29,feedback,How helpful is the rectangle selection feature?,1
+5f0235be5d417d0dfb3ebc29,feedback,How helpful is the paintbrush feature?,5
+5f0235be5d417d0dfb3ebc29,feedback,How easy was the prediction interface to use?,5
+5f0235be5d417d0dfb3ebc29,feedback,How accurate did you find the predictions?,4
+5f0235be5d417d0dfb3ebc29,feedback,How helpful did you find the predictions?,5
+5f0235be5d417d0dfb3ebc29,feedback,Do you prefer user-driven or computer supported selections?,5
+5f0235be5d417d0dfb3ebc29,feedback,How experienced are you with scatterplots?,1
+5f0235be5d417d0dfb3ebc29,feedback,How experienced are you with statistics?,2
+5f0235be5d417d0dfb3ebc29,demographics,birthCountry,Poland
+5f0235be5d417d0dfb3ebc29,demographics,employment,Unemployed (and job seeking)
+5f0235be5d417d0dfb3ebc29,demographics,nationality,Poland
+5f0235be5d417d0dfb3ebc29,demographics,sex,Male
+5f0235be5d417d0dfb3ebc29,demographics,student,Yes
+5f0235be5d417d0dfb3ebc29,results,averageAccuracy,0.6929757287530397
+5f37f709b66267082f6f3992,feedback,How helpful is the “individual selection” of points feature?,3
+5f37f709b66267082f6f3992,feedback,How helpful is the rectangle selection feature?,1
+5f37f709b66267082f6f3992,feedback,How helpful is the paintbrush feature?,5
+5f37f709b66267082f6f3992,feedback,How easy was the prediction interface to use?,4
+5f37f709b66267082f6f3992,feedback,How accurate did you find the predictions?,3
+5f37f709b66267082f6f3992,feedback,How helpful did you find the predictions?,3
+5f37f709b66267082f6f3992,feedback,Do you prefer user-driven or computer supported selections?,2
+5f37f709b66267082f6f3992,feedback,How experienced are you with scatterplots?,2
+5f37f709b66267082f6f3992,feedback,How experienced are you with statistics?,1
+5f37f709b66267082f6f3992,demographics,birthCountry,Portugal
+5f37f709b66267082f6f3992,demographics,employment,Other
+5f37f709b66267082f6f3992,demographics,nationality,Portugal
+5f37f709b66267082f6f3992,demographics,sex,Female
+5f37f709b66267082f6f3992,demographics,student,Yes
+5f37f709b66267082f6f3992,results,averageAccuracy,0.6420448179271708
+5d2b45b9f7ef930001c5fa2d,feedback,How helpful is the “individual selection” of points feature?,5
+5d2b45b9f7ef930001c5fa2d,feedback,How helpful is the rectangle selection feature?,1
+5d2b45b9f7ef930001c5fa2d,feedback,How helpful is the paintbrush feature?,5
+5d2b45b9f7ef930001c5fa2d,feedback,How easy was the prediction interface to use?,5
+5d2b45b9f7ef930001c5fa2d,feedback,How accurate did you find the predictions?,4
+5d2b45b9f7ef930001c5fa2d,feedback,How helpful did you find the predictions?,5
+5d2b45b9f7ef930001c5fa2d,feedback,Do you prefer user-driven or computer supported selections?,5
+5d2b45b9f7ef930001c5fa2d,feedback,How experienced are you with scatterplots?,5
+5d2b45b9f7ef930001c5fa2d,feedback,How experienced are you with statistics?,5
+5d2b45b9f7ef930001c5fa2d,demographics,birthCountry,United Kingdom
+5d2b45b9f7ef930001c5fa2d,demographics,employment,Full-Time
+5d2b45b9f7ef930001c5fa2d,demographics,nationality,United Kingdom
+5d2b45b9f7ef930001c5fa2d,demographics,sex,Female
+5d2b45b9f7ef930001c5fa2d,demographics,student,No
+5d2b45b9f7ef930001c5fa2d,results,averageAccuracy,0.6072196652553795
+5d77c0eb4a666c0019561a80,feedback,How helpful is the “individual selection” of points feature?,3
+5d77c0eb4a666c0019561a80,feedback,How helpful is the rectangle selection feature?,2
+5d77c0eb4a666c0019561a80,feedback,How helpful is the paintbrush feature?,5
+5d77c0eb4a666c0019561a80,feedback,How easy was the prediction interface to use?,5
+5d77c0eb4a666c0019561a80,feedback,How accurate did you find the predictions?,4
+5d77c0eb4a666c0019561a80,feedback,How helpful did you find the predictions?,3
+5d77c0eb4a666c0019561a80,feedback,Do you prefer user-driven or computer supported selections?,4
+5d77c0eb4a666c0019561a80,feedback,How experienced are you with scatterplots?,2
+5d77c0eb4a666c0019561a80,feedback,How experienced are you with statistics?,2
+5d77c0eb4a666c0019561a80,demographics,birthCountry,Portugal
+5d77c0eb4a666c0019561a80,demographics,employment,Due to start a new job within the next month
+5d77c0eb4a666c0019561a80,demographics,nationality,Portugal
+5d77c0eb4a666c0019561a80,demographics,sex,Male
+5d77c0eb4a666c0019561a80,demographics,student,Yes
+5d77c0eb4a666c0019561a80,results,averageAccuracy,0.8456859410430838
+5f14886922a7d20725a22cde,feedback,How helpful is the “individual selection” of points feature?,4
+5f14886922a7d20725a22cde,feedback,How helpful is the rectangle selection feature?,2
+5f14886922a7d20725a22cde,feedback,How helpful is the paintbrush feature?,5
+5f14886922a7d20725a22cde,feedback,How easy was the prediction interface to use?,4
+5f14886922a7d20725a22cde,feedback,How accurate did you find the predictions?,3
+5f14886922a7d20725a22cde,feedback,How helpful did you find the predictions?,4
+5f14886922a7d20725a22cde,feedback,Do you prefer user-driven or computer supported selections?,5
+5f14886922a7d20725a22cde,feedback,How experienced are you with scatterplots?,4
+5f14886922a7d20725a22cde,feedback,How experienced are you with statistics?,4
+5f14886922a7d20725a22cde,demographics,birthCountry,Portugal
+5f14886922a7d20725a22cde,demographics,employment,Due to start a new job within the next month
+5f14886922a7d20725a22cde,demographics,nationality,Portugal
+5f14886922a7d20725a22cde,demographics,sex,Male
+5f14886922a7d20725a22cde,demographics,student,Yes
+5f14886922a7d20725a22cde,results,averageAccuracy,0.4190514289758297
+5f2b6595224df75d78044098,feedback,How helpful is the “individual selection” of points feature?,5
+5f2b6595224df75d78044098,feedback,How helpful is the rectangle selection feature?,5
+5f2b6595224df75d78044098,feedback,How helpful is the paintbrush feature?,5
+5f2b6595224df75d78044098,feedback,How easy was the prediction interface to use?,5
+5f2b6595224df75d78044098,feedback,How accurate did you find the predictions?,1
+5f2b6595224df75d78044098,feedback,How helpful did you find the predictions?,1
+5f2b6595224df75d78044098,feedback,Do you prefer user-driven or computer supported selections?,3
+5f2b6595224df75d78044098,feedback,How experienced are you with scatterplots?,5
+5f2b6595224df75d78044098,feedback,How experienced are you with statistics?,1
+5f2b6595224df75d78044098,demographics,birthCountry,Portugal
+5f2b6595224df75d78044098,demographics,employment,DATA EXPIRED
+5f2b6595224df75d78044098,demographics,nationality,Portugal
+5f2b6595224df75d78044098,demographics,sex,Male
+5f2b6595224df75d78044098,demographics,student,DATA EXPIRED
+5f2b6595224df75d78044098,results,averageAccuracy,0.8117477760334905
+58b06921aaa44f000143a0aa,feedback,How helpful is the “individual selection” of points feature?,3
+58b06921aaa44f000143a0aa,feedback,How helpful is the rectangle selection feature?,1
+58b06921aaa44f000143a0aa,feedback,How helpful is the paintbrush feature?,5
+58b06921aaa44f000143a0aa,feedback,How easy was the prediction interface to use?,5
+58b06921aaa44f000143a0aa,feedback,How accurate did you find the predictions?,4
+58b06921aaa44f000143a0aa,feedback,How helpful did you find the predictions?,4
+58b06921aaa44f000143a0aa,feedback,Do you prefer user-driven or computer supported selections?,2
+58b06921aaa44f000143a0aa,feedback,How experienced are you with scatterplots?,3
+58b06921aaa44f000143a0aa,feedback,How experienced are you with statistics?,2
+58b06921aaa44f000143a0aa,demographics,birthCountry,Portugal
+58b06921aaa44f000143a0aa,demographics,employment,Unemployed (and job seeking)
+58b06921aaa44f000143a0aa,demographics,nationality,Portugal
+58b06921aaa44f000143a0aa,demographics,sex,Male
+58b06921aaa44f000143a0aa,demographics,student,Yes
+58b06921aaa44f000143a0aa,results,averageAccuracy,0.8587895158063227
+5ecc17baf40bde40e681a6c0,feedback,How helpful is the “individual selection” of points feature?,4
+5ecc17baf40bde40e681a6c0,feedback,How helpful is the rectangle selection feature?,1
+5ecc17baf40bde40e681a6c0,feedback,How helpful is the paintbrush feature?,5
+5ecc17baf40bde40e681a6c0,feedback,How easy was the prediction interface to use?,4
+5ecc17baf40bde40e681a6c0,feedback,How accurate did you find the predictions?,3
+5ecc17baf40bde40e681a6c0,feedback,How helpful did you find the predictions?,2
+5ecc17baf40bde40e681a6c0,feedback,Do you prefer user-driven or computer supported selections?,1
+5ecc17baf40bde40e681a6c0,feedback,How experienced are you with scatterplots?,3
+5ecc17baf40bde40e681a6c0,feedback,How experienced are you with statistics?,4
+5ecc17baf40bde40e681a6c0,demographics,birthCountry,Poland
+5ecc17baf40bde40e681a6c0,demographics,employment,Unemployed (and job seeking)
+5ecc17baf40bde40e681a6c0,demographics,nationality,Poland
+5ecc17baf40bde40e681a6c0,demographics,sex,Male
+5ecc17baf40bde40e681a6c0,demographics,student,Yes
+5ecc17baf40bde40e681a6c0,results,averageAccuracy,0.8102727757769775
+5e53a44ec71e87000a8a0685,feedback,How helpful is the “individual selection” of points feature?,5
+5e53a44ec71e87000a8a0685,feedback,How helpful is the rectangle selection feature?,2
+5e53a44ec71e87000a8a0685,feedback,How helpful is the paintbrush feature?,5
+5e53a44ec71e87000a8a0685,feedback,How easy was the prediction interface to use?,3
+5e53a44ec71e87000a8a0685,feedback,How accurate did you find the predictions?,2
+5e53a44ec71e87000a8a0685,feedback,How helpful did you find the predictions?,3
+5e53a44ec71e87000a8a0685,feedback,Do you prefer user-driven or computer supported selections?,3
+5e53a44ec71e87000a8a0685,feedback,How experienced are you with scatterplots?,1
+5e53a44ec71e87000a8a0685,feedback,How experienced are you with statistics?,2
+5e53a44ec71e87000a8a0685,demographics,birthCountry,Hungary
+5e53a44ec71e87000a8a0685,demographics,employment,Unemployed (and job seeking)
+5e53a44ec71e87000a8a0685,demographics,nationality,Hungary
+5e53a44ec71e87000a8a0685,demographics,sex,Male
+5e53a44ec71e87000a8a0685,demographics,student,No
+5e53a44ec71e87000a8a0685,results,averageAccuracy,0.7010702299567846
+5d87b9f7d049220018d8bfbf,feedback,How helpful is the “individual selection” of points feature?,5
+5d87b9f7d049220018d8bfbf,feedback,How helpful is the rectangle selection feature?,5
+5d87b9f7d049220018d8bfbf,feedback,How helpful is the paintbrush feature?,5
+5d87b9f7d049220018d8bfbf,feedback,How easy was the prediction interface to use?,4
+5d87b9f7d049220018d8bfbf,feedback,How accurate did you find the predictions?,5
+5d87b9f7d049220018d8bfbf,feedback,How helpful did you find the predictions?,5
+5d87b9f7d049220018d8bfbf,feedback,Do you prefer user-driven or computer supported selections?,5
+5d87b9f7d049220018d8bfbf,feedback,How experienced are you with scatterplots?,1
+5d87b9f7d049220018d8bfbf,feedback,How experienced are you with statistics?,1
+5d87b9f7d049220018d8bfbf,demographics,birthCountry,France
+5d87b9f7d049220018d8bfbf,demographics,employment,Part-Time
+5d87b9f7d049220018d8bfbf,demographics,nationality,France
+5d87b9f7d049220018d8bfbf,demographics,sex,Male
+5d87b9f7d049220018d8bfbf,demographics,student,Yes
+5d87b9f7d049220018d8bfbf,results,averageAccuracy,0.7821768707482991
+5ef49558d9a3d805bced552d,feedback,How helpful is the “individual selection” of points feature?,4
+5ef49558d9a3d805bced552d,feedback,How helpful is the rectangle selection feature?,4
+5ef49558d9a3d805bced552d,feedback,How helpful is the paintbrush feature?,5
+5ef49558d9a3d805bced552d,feedback,How easy was the prediction interface to use?,3
+5ef49558d9a3d805bced552d,feedback,How accurate did you find the predictions?,4
+5ef49558d9a3d805bced552d,feedback,How helpful did you find the predictions?,2
+5ef49558d9a3d805bced552d,feedback,Do you prefer user-driven or computer supported selections?,1
+5ef49558d9a3d805bced552d,feedback,How experienced are you with scatterplots?,4
+5ef49558d9a3d805bced552d,feedback,How experienced are you with statistics?,5
+5ef49558d9a3d805bced552d,demographics,birthCountry,United Kingdom
+5ef49558d9a3d805bced552d,demographics,employment,Unemployed (and job seeking)
+5ef49558d9a3d805bced552d,demographics,nationality,United Kingdom
+5ef49558d9a3d805bced552d,demographics,sex,Male
+5ef49558d9a3d805bced552d,demographics,student,Yes
+5ef49558d9a3d805bced552d,results,averageAccuracy,0.5962158734461527
+5eea3ef6bc9870075e1da2e0,feedback,How helpful is the “individual selection” of points feature?,4
+5eea3ef6bc9870075e1da2e0,feedback,How helpful is the rectangle selection feature?,3
+5eea3ef6bc9870075e1da2e0,feedback,How helpful is the paintbrush feature?,4
+5eea3ef6bc9870075e1da2e0,feedback,How easy was the prediction interface to use?,4
+5eea3ef6bc9870075e1da2e0,feedback,How accurate did you find the predictions?,2
+5eea3ef6bc9870075e1da2e0,feedback,How helpful did you find the predictions?,3
+5eea3ef6bc9870075e1da2e0,feedback,Do you prefer user-driven or computer supported selections?,2
+5eea3ef6bc9870075e1da2e0,feedback,How experienced are you with scatterplots?,5
+5eea3ef6bc9870075e1da2e0,feedback,How experienced are you with statistics?,3
+5eea3ef6bc9870075e1da2e0,demographics,birthCountry,United Kingdom
+5eea3ef6bc9870075e1da2e0,demographics,employment,Unemployed (and job seeking)
+5eea3ef6bc9870075e1da2e0,demographics,nationality,United Kingdom
+5eea3ef6bc9870075e1da2e0,demographics,sex,Male
+5eea3ef6bc9870075e1da2e0,demographics,student,Yes
+5eea3ef6bc9870075e1da2e0,results,averageAccuracy,0.6684943977591037
+5f4c09077f5251813576c4ee,feedback,How helpful is the “individual selection” of points feature?,4
+5f4c09077f5251813576c4ee,feedback,How helpful is the rectangle selection feature?,2
+5f4c09077f5251813576c4ee,feedback,How helpful is the paintbrush feature?,4
+5f4c09077f5251813576c4ee,feedback,How easy was the prediction interface to use?,4
+5f4c09077f5251813576c4ee,feedback,How accurate did you find the predictions?,4
+5f4c09077f5251813576c4ee,feedback,How helpful did you find the predictions?,4
+5f4c09077f5251813576c4ee,feedback,Do you prefer user-driven or computer supported selections?,3
+5f4c09077f5251813576c4ee,feedback,How experienced are you with scatterplots?,2
+5f4c09077f5251813576c4ee,feedback,How experienced are you with statistics?,4
+5f4c09077f5251813576c4ee,demographics,birthCountry,United Kingdom
+5f4c09077f5251813576c4ee,demographics,employment,Unemployed (and job seeking)
+5f4c09077f5251813576c4ee,demographics,nationality,Portugal
+5f4c09077f5251813576c4ee,demographics,sex,Male
+5f4c09077f5251813576c4ee,demographics,student,Yes
+5f4c09077f5251813576c4ee,results,averageAccuracy,0.7967246898759505
+5c5baaec192d350001d5c8e4,feedback,How helpful is the “individual selection” of points feature?,4
+5c5baaec192d350001d5c8e4,feedback,How helpful is the rectangle selection feature?,2
+5c5baaec192d350001d5c8e4,feedback,How helpful is the paintbrush feature?,5
+5c5baaec192d350001d5c8e4,feedback,How easy was the prediction interface to use?,4
+5c5baaec192d350001d5c8e4,feedback,How accurate did you find the predictions?,5
+5c5baaec192d350001d5c8e4,feedback,How helpful did you find the predictions?,4
+5c5baaec192d350001d5c8e4,feedback,Do you prefer user-driven or computer supported selections?,2
+5c5baaec192d350001d5c8e4,feedback,How experienced are you with scatterplots?,4
+5c5baaec192d350001d5c8e4,feedback,How experienced are you with statistics?,4
+5c5baaec192d350001d5c8e4,demographics,birthCountry,Portugal
+5c5baaec192d350001d5c8e4,demographics,employment,Unemployed (and job seeking)
+5c5baaec192d350001d5c8e4,demographics,nationality,Portugal
+5c5baaec192d350001d5c8e4,demographics,sex,Male
+5c5baaec192d350001d5c8e4,demographics,student,No
+5c5baaec192d350001d5c8e4,results,averageAccuracy,0.5113883877234378
+5e6796a0ae143c03b3033195,feedback,How helpful is the “individual selection” of points feature?,2
+5e6796a0ae143c03b3033195,feedback,How helpful is the rectangle selection feature?,2
+5e6796a0ae143c03b3033195,feedback,How helpful is the paintbrush feature?,5
+5e6796a0ae143c03b3033195,feedback,How easy was the prediction interface to use?,5
+5e6796a0ae143c03b3033195,feedback,How accurate did you find the predictions?,3
+5e6796a0ae143c03b3033195,feedback,How helpful did you find the predictions?,5
+5e6796a0ae143c03b3033195,feedback,Do you prefer user-driven or computer supported selections?,5
+5e6796a0ae143c03b3033195,feedback,How experienced are you with scatterplots?,3
+5e6796a0ae143c03b3033195,feedback,How experienced are you with statistics?,3
+5e6796a0ae143c03b3033195,demographics,birthCountry,Poland
+5e6796a0ae143c03b3033195,demographics,employment,"Not in paid work (e.g. homemaker', 'retired or disabled)"
+5e6796a0ae143c03b3033195,demographics,nationality,Poland
+5e6796a0ae143c03b3033195,demographics,sex,Male
+5e6796a0ae143c03b3033195,demographics,student,Yes
+5e6796a0ae143c03b3033195,results,averageAccuracy,0.5400850340136055
+5bef0e8f1e78580001dbedf1,feedback,How helpful is the “individual selection” of points feature?,2
+5bef0e8f1e78580001dbedf1,feedback,How helpful is the rectangle selection feature?,1
+5bef0e8f1e78580001dbedf1,feedback,How helpful is the paintbrush feature?,1
+5bef0e8f1e78580001dbedf1,feedback,How easy was the prediction interface to use?,3
+5bef0e8f1e78580001dbedf1,feedback,How accurate did you find the predictions?,2
+5bef0e8f1e78580001dbedf1,feedback,How helpful did you find the predictions?,3
+5bef0e8f1e78580001dbedf1,feedback,Do you prefer user-driven or computer supported selections?,1
+5bef0e8f1e78580001dbedf1,feedback,How experienced are you with scatterplots?,1
+5bef0e8f1e78580001dbedf1,feedback,How experienced are you with statistics?,2
+5bef0e8f1e78580001dbedf1,demographics,birthCountry,Poland
+5bef0e8f1e78580001dbedf1,demographics,employment,Unemployed (and job seeking)
+5bef0e8f1e78580001dbedf1,demographics,nationality,Poland
+5bef0e8f1e78580001dbedf1,demographics,sex,Male
+5bef0e8f1e78580001dbedf1,demographics,student,No
+5bef0e8f1e78580001dbedf1,results,averageAccuracy,0.67061137275423
+5d391da321c802001a00cf6b,feedback,How helpful is the “individual selection” of points feature?,5
+5d391da321c802001a00cf6b,feedback,How helpful is the rectangle selection feature?,5
+5d391da321c802001a00cf6b,feedback,How helpful is the paintbrush feature?,5
+5d391da321c802001a00cf6b,feedback,How easy was the prediction interface to use?,5
+5d391da321c802001a00cf6b,feedback,How accurate did you find the predictions?,5
+5d391da321c802001a00cf6b,feedback,How helpful did you find the predictions?,5
+5d391da321c802001a00cf6b,feedback,Do you prefer user-driven or computer supported selections?,4
+5d391da321c802001a00cf6b,feedback,How experienced are you with scatterplots?,1
+5d391da321c802001a00cf6b,feedback,How experienced are you with statistics?,2
+5d391da321c802001a00cf6b,demographics,birthCountry,Togo
+5d391da321c802001a00cf6b,demographics,employment,Full-Time
+5d391da321c802001a00cf6b,demographics,nationality,United Kingdom
+5d391da321c802001a00cf6b,demographics,sex,Female
+5d391da321c802001a00cf6b,demographics,student,No
+5d391da321c802001a00cf6b,results,averageAccuracy,0.54531012404962
+5f57c66f9524b62ca5ba27d4,feedback,How helpful is the “individual selection” of points feature?,1
+5f57c66f9524b62ca5ba27d4,feedback,How helpful is the rectangle selection feature?,1
+5f57c66f9524b62ca5ba27d4,feedback,How helpful is the paintbrush feature?,5
+5f57c66f9524b62ca5ba27d4,feedback,How easy was the prediction interface to use?,4
+5f57c66f9524b62ca5ba27d4,feedback,How accurate did you find the predictions?,4
+5f57c66f9524b62ca5ba27d4,feedback,How helpful did you find the predictions?,2
+5f57c66f9524b62ca5ba27d4,feedback,Do you prefer user-driven or computer supported selections?,2
+5f57c66f9524b62ca5ba27d4,feedback,How experienced are you with scatterplots?,5
+5f57c66f9524b62ca5ba27d4,feedback,How experienced are you with statistics?,2
+5f57c66f9524b62ca5ba27d4,demographics,birthCountry,Chile
+5f57c66f9524b62ca5ba27d4,demographics,employment,"Not in paid work (e.g. homemaker', 'retired or disabled)"
+5f57c66f9524b62ca5ba27d4,demographics,nationality,Chile
+5f57c66f9524b62ca5ba27d4,demographics,sex,Male
+5f57c66f9524b62ca5ba27d4,demographics,student,Yes
+5f57c66f9524b62ca5ba27d4,results,averageAccuracy,0.8920545141133377
+5e9b9eaee0e30b0b27983c50,feedback,How helpful is the “individual selection” of points feature?,4
+5e9b9eaee0e30b0b27983c50,feedback,How helpful is the rectangle selection feature?,3
+5e9b9eaee0e30b0b27983c50,feedback,How helpful is the paintbrush feature?,5
+5e9b9eaee0e30b0b27983c50,feedback,How easy was the prediction interface to use?,5
+5e9b9eaee0e30b0b27983c50,feedback,How accurate did you find the predictions?,4
+5e9b9eaee0e30b0b27983c50,feedback,How helpful did you find the predictions?,4
+5e9b9eaee0e30b0b27983c50,feedback,Do you prefer user-driven or computer supported selections?,4
+5e9b9eaee0e30b0b27983c50,feedback,How experienced are you with scatterplots?,4
+5e9b9eaee0e30b0b27983c50,feedback,How experienced are you with statistics?,4
+5e9b9eaee0e30b0b27983c50,demographics,birthCountry,China
+5e9b9eaee0e30b0b27983c50,demographics,employment,Other
+5e9b9eaee0e30b0b27983c50,demographics,nationality,United Kingdom
+5e9b9eaee0e30b0b27983c50,demographics,sex,Female
+5e9b9eaee0e30b0b27983c50,demographics,student,Yes
+5e9b9eaee0e30b0b27983c50,results,averageAccuracy,0.6735584233693477
+5f4e76560bf65505c2d9d781,feedback,How helpful is the “individual selection” of points feature?,1
+5f4e76560bf65505c2d9d781,feedback,How helpful is the rectangle selection feature?,2
+5f4e76560bf65505c2d9d781,feedback,How helpful is the paintbrush feature?,5
+5f4e76560bf65505c2d9d781,feedback,How easy was the prediction interface to use?,5
+5f4e76560bf65505c2d9d781,feedback,How accurate did you find the predictions?,3
+5f4e76560bf65505c2d9d781,feedback,How helpful did you find the predictions?,4
+5f4e76560bf65505c2d9d781,feedback,Do you prefer user-driven or computer supported selections?,1
+5f4e76560bf65505c2d9d781,feedback,How experienced are you with scatterplots?,3
+5f4e76560bf65505c2d9d781,feedback,How experienced are you with statistics?,4
+5f4e76560bf65505c2d9d781,demographics,birthCountry,Poland
+5f4e76560bf65505c2d9d781,demographics,employment,Unemployed (and job seeking)
+5f4e76560bf65505c2d9d781,demographics,nationality,Poland
+5f4e76560bf65505c2d9d781,demographics,sex,Male
+5f4e76560bf65505c2d9d781,demographics,student,Yes
+5f4e76560bf65505c2d9d781,results,averageAccuracy,0.694646127681842
+5f32a496a026e809d7d55cbd,feedback,How helpful is the “individual selection” of points feature?,2
+5f32a496a026e809d7d55cbd,feedback,How helpful is the rectangle selection feature?,1
+5f32a496a026e809d7d55cbd,feedback,How helpful is the paintbrush feature?,5
+5f32a496a026e809d7d55cbd,feedback,How easy was the prediction interface to use?,4
+5f32a496a026e809d7d55cbd,feedback,How accurate did you find the predictions?,3
+5f32a496a026e809d7d55cbd,feedback,How helpful did you find the predictions?,1
+5f32a496a026e809d7d55cbd,feedback,Do you prefer user-driven or computer supported selections?,4
+5f32a496a026e809d7d55cbd,feedback,How experienced are you with scatterplots?,5
+5f32a496a026e809d7d55cbd,feedback,How experienced are you with statistics?,5
+5f32a496a026e809d7d55cbd,demographics,birthCountry,Canada
+5f32a496a026e809d7d55cbd,demographics,employment,Full-Time
+5f32a496a026e809d7d55cbd,demographics,nationality,Canada
+5f32a496a026e809d7d55cbd,demographics,sex,Male
+5f32a496a026e809d7d55cbd,demographics,student,No
+5f32a496a026e809d7d55cbd,results,averageAccuracy,0.5169605526748383
+5dd6d2d11228d9667276c3b7,feedback,How helpful is the “individual selection” of points feature?,5
+5dd6d2d11228d9667276c3b7,feedback,How helpful is the rectangle selection feature?,4
+5dd6d2d11228d9667276c3b7,feedback,How helpful is the paintbrush feature?,5
+5dd6d2d11228d9667276c3b7,feedback,How easy was the prediction interface to use?,5
+5dd6d2d11228d9667276c3b7,feedback,How accurate did you find the predictions?,4
+5dd6d2d11228d9667276c3b7,feedback,How helpful did you find the predictions?,4
+5dd6d2d11228d9667276c3b7,feedback,Do you prefer user-driven or computer supported selections?,2
+5dd6d2d11228d9667276c3b7,feedback,How experienced are you with scatterplots?,4
+5dd6d2d11228d9667276c3b7,feedback,How experienced are you with statistics?,4
+5dd6d2d11228d9667276c3b7,demographics,birthCountry,Philippines
+5dd6d2d11228d9667276c3b7,demographics,employment,Other
+5dd6d2d11228d9667276c3b7,demographics,nationality,United States
+5dd6d2d11228d9667276c3b7,demographics,sex,Male
+5dd6d2d11228d9667276c3b7,demographics,student,No
+5dd6d2d11228d9667276c3b7,results,averageAccuracy,0.6656351584923014
+5eeb7b4164ff080a9e23701b,feedback,How helpful is the “individual selection” of points feature?,2
+5eeb7b4164ff080a9e23701b,feedback,How helpful is the rectangle selection feature?,2
+5eeb7b4164ff080a9e23701b,feedback,How helpful is the paintbrush feature?,3
+5eeb7b4164ff080a9e23701b,feedback,How easy was the prediction interface to use?,5
+5eeb7b4164ff080a9e23701b,feedback,How accurate did you find the predictions?,5
+5eeb7b4164ff080a9e23701b,feedback,How helpful did you find the predictions?,5
+5eeb7b4164ff080a9e23701b,feedback,Do you prefer user-driven or computer supported selections?,4
+5eeb7b4164ff080a9e23701b,feedback,How experienced are you with scatterplots?,2
+5eeb7b4164ff080a9e23701b,feedback,How experienced are you with statistics?,3
+5eeb7b4164ff080a9e23701b,demographics,birthCountry,Poland
+5eeb7b4164ff080a9e23701b,demographics,employment,Full-Time
+5eeb7b4164ff080a9e23701b,demographics,nationality,Poland
+5eeb7b4164ff080a9e23701b,demographics,sex,Male
+5eeb7b4164ff080a9e23701b,demographics,student,No
+5eeb7b4164ff080a9e23701b,results,averageAccuracy,0.5527223431669082
+5ea93d40fb690101aa21e97a,feedback,How helpful is the “individual selection” of points feature?,1
+5ea93d40fb690101aa21e97a,feedback,How helpful is the rectangle selection feature?,4
+5ea93d40fb690101aa21e97a,feedback,How helpful is the paintbrush feature?,5
+5ea93d40fb690101aa21e97a,feedback,How easy was the prediction interface to use?,4
+5ea93d40fb690101aa21e97a,feedback,How accurate did you find the predictions?,5
+5ea93d40fb690101aa21e97a,feedback,How helpful did you find the predictions?,5
+5ea93d40fb690101aa21e97a,feedback,Do you prefer user-driven or computer supported selections?,4
+5ea93d40fb690101aa21e97a,feedback,How experienced are you with scatterplots?,1
+5ea93d40fb690101aa21e97a,feedback,How experienced are you with statistics?,1
+5ea93d40fb690101aa21e97a,demographics,birthCountry,Poland
+5ea93d40fb690101aa21e97a,demographics,employment,"Not in paid work (e.g. homemaker', 'retired or disabled)"
+5ea93d40fb690101aa21e97a,demographics,nationality,Poland
+5ea93d40fb690101aa21e97a,demographics,sex,Female
+5ea93d40fb690101aa21e97a,demographics,student,No
+5ea93d40fb690101aa21e97a,results,averageAccuracy,0.7241562009419151
+5f2a020652f67f1c74e72b83,feedback,How helpful is the “individual selection” of points feature?,4
+5f2a020652f67f1c74e72b83,feedback,How helpful is the rectangle selection feature?,3
+5f2a020652f67f1c74e72b83,feedback,How helpful is the paintbrush feature?,4
+5f2a020652f67f1c74e72b83,feedback,How easy was the prediction interface to use?,4
+5f2a020652f67f1c74e72b83,feedback,How accurate did you find the predictions?,3
+5f2a020652f67f1c74e72b83,feedback,How helpful did you find the predictions?,4
+5f2a020652f67f1c74e72b83,feedback,Do you prefer user-driven or computer supported selections?,3
+5f2a020652f67f1c74e72b83,feedback,How experienced are you with scatterplots?,2
+5f2a020652f67f1c74e72b83,feedback,How experienced are you with statistics?,4
+5f2a020652f67f1c74e72b83,demographics,birthCountry,Portugal
+5f2a020652f67f1c74e72b83,demographics,employment,Other
+5f2a020652f67f1c74e72b83,demographics,nationality,Portugal
+5f2a020652f67f1c74e72b83,demographics,sex,Male
+5f2a020652f67f1c74e72b83,demographics,student,Yes
+5f2a020652f67f1c74e72b83,results,averageAccuracy,0.702468679779604
+5f41b3e5d54b8c16a59402f1,feedback,How helpful is the “individual selection” of points feature?,4
+5f41b3e5d54b8c16a59402f1,feedback,How helpful is the rectangle selection feature?,2
+5f41b3e5d54b8c16a59402f1,feedback,How helpful is the paintbrush feature?,5
+5f41b3e5d54b8c16a59402f1,feedback,How easy was the prediction interface to use?,5
+5f41b3e5d54b8c16a59402f1,feedback,How accurate did you find the predictions?,4
+5f41b3e5d54b8c16a59402f1,feedback,How helpful did you find the predictions?,4
+5f41b3e5d54b8c16a59402f1,feedback,Do you prefer user-driven or computer supported selections?,4
+5f41b3e5d54b8c16a59402f1,feedback,How experienced are you with scatterplots?,1
+5f41b3e5d54b8c16a59402f1,feedback,How experienced are you with statistics?,1
+5f41b3e5d54b8c16a59402f1,demographics,birthCountry,United States
+5f41b3e5d54b8c16a59402f1,demographics,employment,Unemployed (and job seeking)
+5f41b3e5d54b8c16a59402f1,demographics,nationality,United States
+5f41b3e5d54b8c16a59402f1,demographics,sex,Female
+5f41b3e5d54b8c16a59402f1,demographics,student,No
+5f41b3e5d54b8c16a59402f1,results,averageAccuracy,0.6535163064398629
+5dd954f1e08a368cd335e1af,feedback,How helpful is the “individual selection” of points feature?,4
+5dd954f1e08a368cd335e1af,feedback,How helpful is the rectangle selection feature?,2
+5dd954f1e08a368cd335e1af,feedback,How helpful is the paintbrush feature?,4
+5dd954f1e08a368cd335e1af,feedback,How easy was the prediction interface to use?,5
+5dd954f1e08a368cd335e1af,feedback,How accurate did you find the predictions?,5
+5dd954f1e08a368cd335e1af,feedback,How helpful did you find the predictions?,5
+5dd954f1e08a368cd335e1af,feedback,Do you prefer user-driven or computer supported selections?,4
+5dd954f1e08a368cd335e1af,feedback,How experienced are you with scatterplots?,5
+5dd954f1e08a368cd335e1af,feedback,How experienced are you with statistics?,4
+5dd954f1e08a368cd335e1af,demographics,birthCountry,Greece
+5dd954f1e08a368cd335e1af,demographics,employment,Part-Time
+5dd954f1e08a368cd335e1af,demographics,nationality,Greece
+5dd954f1e08a368cd335e1af,demographics,sex,Male
+5dd954f1e08a368cd335e1af,demographics,student,Yes
+5dd954f1e08a368cd335e1af,results,averageAccuracy,0.6902876535229476
+5f07759f859dcb38b8d4c6b5,feedback,How helpful is the “individual selection” of points feature?,3
+5f07759f859dcb38b8d4c6b5,feedback,How helpful is the rectangle selection feature?,2
+5f07759f859dcb38b8d4c6b5,feedback,How helpful is the paintbrush feature?,5
+5f07759f859dcb38b8d4c6b5,feedback,How easy was the prediction interface to use?,4
+5f07759f859dcb38b8d4c6b5,feedback,How accurate did you find the predictions?,5
+5f07759f859dcb38b8d4c6b5,feedback,How helpful did you find the predictions?,5
+5f07759f859dcb38b8d4c6b5,feedback,Do you prefer user-driven or computer supported selections?,5
+5f07759f859dcb38b8d4c6b5,feedback,How experienced are you with scatterplots?,1
+5f07759f859dcb38b8d4c6b5,feedback,How experienced are you with statistics?,1
+5f07759f859dcb38b8d4c6b5,demographics,birthCountry,Estonia
+5f07759f859dcb38b8d4c6b5,demographics,employment,Due to start a new job within the next month
+5f07759f859dcb38b8d4c6b5,demographics,nationality,Estonia
+5f07759f859dcb38b8d4c6b5,demographics,sex,Male
+5f07759f859dcb38b8d4c6b5,demographics,student,Yes
+5f07759f859dcb38b8d4c6b5,results,averageAccuracy,0.6341648430934146
+5f3a9a7746aeb90f4525893c,feedback,How helpful is the “individual selection” of points feature?,4
+5f3a9a7746aeb90f4525893c,feedback,How helpful is the rectangle selection feature?,3
+5f3a9a7746aeb90f4525893c,feedback,How helpful is the paintbrush feature?,5
+5f3a9a7746aeb90f4525893c,feedback,How easy was the prediction interface to use?,5
+5f3a9a7746aeb90f4525893c,feedback,How accurate did you find the predictions?,3
+5f3a9a7746aeb90f4525893c,feedback,How helpful did you find the predictions?,3
+5f3a9a7746aeb90f4525893c,feedback,Do you prefer user-driven or computer supported selections?,1
+5f3a9a7746aeb90f4525893c,feedback,How experienced are you with scatterplots?,5
+5f3a9a7746aeb90f4525893c,feedback,How experienced are you with statistics?,5
+5f3a9a7746aeb90f4525893c,demographics,birthCountry,United Kingdom
+5f3a9a7746aeb90f4525893c,demographics,employment,Part-Time
+5f3a9a7746aeb90f4525893c,demographics,nationality,United Kingdom
+5f3a9a7746aeb90f4525893c,demographics,sex,Male
+5f3a9a7746aeb90f4525893c,demographics,student,Yes
+5f3a9a7746aeb90f4525893c,results,averageAccuracy,0.6779452665620292
+5ee19552fb6eba1caba328ae,feedback,How helpful is the “individual selection” of points feature?,5
+5ee19552fb6eba1caba328ae,feedback,How helpful is the rectangle selection feature?,3
+5ee19552fb6eba1caba328ae,feedback,How helpful is the paintbrush feature?,3
+5ee19552fb6eba1caba328ae,feedback,How easy was the prediction interface to use?,5
+5ee19552fb6eba1caba328ae,feedback,How accurate did you find the predictions?,4
+5ee19552fb6eba1caba328ae,feedback,How helpful did you find the predictions?,5
+5ee19552fb6eba1caba328ae,feedback,Do you prefer user-driven or computer supported selections?,4
+5ee19552fb6eba1caba328ae,feedback,How experienced are you with scatterplots?,2
+5ee19552fb6eba1caba328ae,feedback,How experienced are you with statistics?,3
+5ee19552fb6eba1caba328ae,demographics,birthCountry,Canada
+5ee19552fb6eba1caba328ae,demographics,employment,Full-Time
+5ee19552fb6eba1caba328ae,demographics,nationality,Canada
+5ee19552fb6eba1caba328ae,demographics,sex,Female
+5ee19552fb6eba1caba328ae,demographics,student,Yes
+5ee19552fb6eba1caba328ae,results,averageAccuracy,0.8126797642133777
+5d7e6ca9e7d6cc0018914ee9,feedback,How helpful is the “individual selection” of points feature?,4
+5d7e6ca9e7d6cc0018914ee9,feedback,How helpful is the rectangle selection feature?,1
+5d7e6ca9e7d6cc0018914ee9,feedback,How helpful is the paintbrush feature?,5
+5d7e6ca9e7d6cc0018914ee9,feedback,How easy was the prediction interface to use?,5
+5d7e6ca9e7d6cc0018914ee9,feedback,How accurate did you find the predictions?,4
+5d7e6ca9e7d6cc0018914ee9,feedback,How helpful did you find the predictions?,4
+5d7e6ca9e7d6cc0018914ee9,feedback,Do you prefer user-driven or computer supported selections?,3
+5d7e6ca9e7d6cc0018914ee9,feedback,How experienced are you with scatterplots?,1
+5d7e6ca9e7d6cc0018914ee9,feedback,How experienced are you with statistics?,2
+5d7e6ca9e7d6cc0018914ee9,demographics,birthCountry,Poland
+5d7e6ca9e7d6cc0018914ee9,demographics,employment,Part-Time
+5d7e6ca9e7d6cc0018914ee9,demographics,nationality,Poland
+5d7e6ca9e7d6cc0018914ee9,demographics,sex,Female
+5d7e6ca9e7d6cc0018914ee9,demographics,student,Yes
+5d7e6ca9e7d6cc0018914ee9,results,averageAccuracy,0.5213499627466046
+5d775016384b51001555a7d0,feedback,How helpful is the “individual selection” of points feature?,3
+5d775016384b51001555a7d0,feedback,How helpful is the rectangle selection feature?,5
+5d775016384b51001555a7d0,feedback,How helpful is the paintbrush feature?,3
+5d775016384b51001555a7d0,feedback,How easy was the prediction interface to use?,5
+5d775016384b51001555a7d0,feedback,How accurate did you find the predictions?,4
+5d775016384b51001555a7d0,feedback,How helpful did you find the predictions?,5
+5d775016384b51001555a7d0,feedback,Do you prefer user-driven or computer supported selections?,4
+5d775016384b51001555a7d0,feedback,How experienced are you with scatterplots?,1
+5d775016384b51001555a7d0,feedback,How experienced are you with statistics?,4
+5d775016384b51001555a7d0,demographics,birthCountry,Poland
+5d775016384b51001555a7d0,demographics,employment,Full-Time
+5d775016384b51001555a7d0,demographics,nationality,Poland
+5d775016384b51001555a7d0,demographics,sex,Male
+5d775016384b51001555a7d0,demographics,student,No
+5d775016384b51001555a7d0,results,averageAccuracy,0.5306318168292958
+5f44f0eadbc7ce032d4aff53,feedback,How helpful is the “individual selection” of points feature?,4
+5f44f0eadbc7ce032d4aff53,feedback,How helpful is the rectangle selection feature?,1
+5f44f0eadbc7ce032d4aff53,feedback,How helpful is the paintbrush feature?,5
+5f44f0eadbc7ce032d4aff53,feedback,How easy was the prediction interface to use?,2
+5f44f0eadbc7ce032d4aff53,feedback,How accurate did you find the predictions?,4
+5f44f0eadbc7ce032d4aff53,feedback,How helpful did you find the predictions?,1
+5f44f0eadbc7ce032d4aff53,feedback,Do you prefer user-driven or computer supported selections?,2
+5f44f0eadbc7ce032d4aff53,feedback,How experienced are you with scatterplots?,4
+5f44f0eadbc7ce032d4aff53,feedback,How experienced are you with statistics?,5
+5f44f0eadbc7ce032d4aff53,demographics,birthCountry,United Kingdom
+5f44f0eadbc7ce032d4aff53,demographics,employment,Unemployed (and job seeking)
+5f44f0eadbc7ce032d4aff53,demographics,nationality,United Kingdom
+5f44f0eadbc7ce032d4aff53,demographics,sex,Male
+5f44f0eadbc7ce032d4aff53,demographics,student,Yes
+5f44f0eadbc7ce032d4aff53,results,averageAccuracy,0.8869614512471655
+5f07029606cf5e08f1ac1ec5,feedback,How helpful is the “individual selection” of points feature?,5
+5f07029606cf5e08f1ac1ec5,feedback,How helpful is the rectangle selection feature?,2
+5f07029606cf5e08f1ac1ec5,feedback,How helpful is the paintbrush feature?,5
+5f07029606cf5e08f1ac1ec5,feedback,How easy was the prediction interface to use?,5
+5f07029606cf5e08f1ac1ec5,feedback,How accurate did you find the predictions?,5
+5f07029606cf5e08f1ac1ec5,feedback,How helpful did you find the predictions?,5
+5f07029606cf5e08f1ac1ec5,feedback,Do you prefer user-driven or computer supported selections?,5
+5f07029606cf5e08f1ac1ec5,feedback,How experienced are you with scatterplots?,3
+5f07029606cf5e08f1ac1ec5,feedback,How experienced are you with statistics?,4
+5f07029606cf5e08f1ac1ec5,demographics,birthCountry,Spain
+5f07029606cf5e08f1ac1ec5,demographics,employment,Part-Time
+5f07029606cf5e08f1ac1ec5,demographics,nationality,Spain
+5f07029606cf5e08f1ac1ec5,demographics,sex,Male
+5f07029606cf5e08f1ac1ec5,demographics,student,No
+5f07029606cf5e08f1ac1ec5,results,averageAccuracy,0.8344374672946102
