@@ -1,5 +1,5 @@
 ---
-title: "analysis-outlier"
+title: "analysis-outlier-final"
 date: "09/15/2020"
 output: html_document
 ---
@@ -27,13 +27,16 @@ theme_set(theme_tidybayes() + panel_border() + background_grid())
 
 
 #df <- read.csv("../../results/pilot/CSV/TidyR.csv")
+# df_all <- read.csv("../../results/pilot/CSV/TidyR.csv")
+# dfp_all <- read.csv("../../results/pilot/CSV/participantInfoTidyR.csv")
 df <- read.csv("../../results/outlier/CSV/TidyR.csv")
 dfp <- read.csv("../../results/outlier/CSV/participantInfoTidyR.csv")
 
+# df <- rbind(df_all, df_out)
+# dfp <- rbind(dfp_out, dfp_out)
+
 filteredData <- df %>% 
   filter( measure=="accuracy" | measure == "secondsOnTask")
-
-
   filteredData$value = as.numeric( as.character(filteredData$value ))
   
   filteredData %>% 

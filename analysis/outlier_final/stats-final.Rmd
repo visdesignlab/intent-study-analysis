@@ -1,0 +1,927 @@
+---
+  title: "analysis"
+date: "8/23/2019"
+output: html_document
+---
+  
+  ## Setup
+  
+```{r setup}
+# Import libraries
+library(tidyverse)
+library(ggridges)
+library(pwr) 
+library(grid)
+library(gtable)
+library(boot)
+library(bootES)
+library(ggbeeswarm)
+library(tidybayes)
+library(cowplot)
+library(broom)
+library(scales)
+
+# Set the plot themes
+theme_set(theme_tidybayes() + panel_border() + background_grid())
+
+# Import data
+
+# Load original study
+df_old <- read.csv("../../results/pilot/CSV/TidyR.csv")
+dfp_old <- read.csv("../../results/pilot/CSV/participantInfoTidyR.csv")
+# Load revised study
+df_revised <- read.csv("../../results/outlier/CSV/TidyR.csv")
+dfp_revised <- read.csv("../../results/outlier/CSV/participantInfoTidyR.csv")
+
+# Rename revised outlier taskType to outlier_revised
+df_revised["taskType"] = "outlier_revised"
+df_revised$orig_group <- sub("$", "_revised", df_revised$orig_group)
+# Rename old outlier taskType to outlier_old
+df_old$taskType[df_old$taskType == "outlier"] = "outlier_old"
+
+
+
+df <- rbind(df_old, df_revised)
+dfp <- rbind(dfp_old, dfp_revised)
+
+
+# Update numeric and character variable types
+df$value = as.numeric( as.character(df$value ))
+df$userDriven = as.character(df$userDriven) 
+
+dfp$value = as.numeric( as.character(dfp$value ))
+dfp_old$value = as.numeric( as.character(dfp_old$value ))
+dfp_revised$value = as.numeric( as.character(dfp_revised$value ))
+  
+# Declare string variables for patterns
+lr <- "Linear\nRegression"
+qr <- "Quadratic\nRegression"
+cluster <- "Cluster"
+outold <- "Outlier\nOld"
+outrev <- "Outlier\nRevised"
+mo <- "Multivariate\nOptimization"
+
+# Declare string variables for measures
+acc <- "Accuracy"
+time <- "Time (seconds)"
+con <- "Confidence"
+diff <- "Difficulty"
+
+# Refactor the factor variables into the right order
+df$taskType_f = factor(
+  df$taskType, 
+  levels=c("cluster","linear regression", "quadratic regression","skyline", "outlier_old", "outlier_revised"),
+  labels=c(cluster,lr, qr, mo, outold, outrev)
+)
+df_old$taskType_f = factor(
+  df_old$taskType, 
+  levels=c("cluster","linear regression", "quadratic regression","skyline", "outlier_old", "outlier_revised"),
+  labels=c(cluster,lr, qr, mo, outold, outrev)
+)
+df_revised$taskType_f = factor(
+  df_revised$taskType, 
+  levels=c("cluster","linear regression", "quadratic regression","skyline", "outlier_old", "outlier_revised"),
+  labels=c(cluster,lr, qr, mo, outold, outrev)
+)
+
+
+df$measure_f = factor(
+  df$measure, 
+  levels = c("accuracy","secondsOnTask", "confidence", "difficulty"),
+  labels = c(acc,time, con, diff)
+)
+df_old$measure_f = factor(
+  df_old$measure, 
+  levels = c("accuracy","secondsOnTask", "confidence", "difficulty"),
+  labels = c(acc,time, con, diff)
+)
+df_revised$measure_f = factor(
+  df_revised$measure, 
+  levels = c("accuracy","secondsOnTask", "confidence", "difficulty"),
+  labels = c(acc,time, con, diff)
+)
+
+
+df$userLabel = factor(
+  df$userDriven, 
+  levels = c("supported","manual"),
+  labels = c("CS","UD")
+)
+df_old$userLabel = factor(
+  df_old$userDriven, 
+  levels = c("supported","manual"),
+  labels = c("CS","UD")
+)
+df_revised$userLabel = factor(
+  df_revised$userDriven, 
+  levels = c("supported","manual"),
+  labels = c("CS","UD")
+)
+
+
+# # This will be deleted starting here
+# # Create new variables
+# df$custom_group = ifelse(df$taskDifficulty == 'easy', "easy", "medium_hard")
+# 
+# # Filter the dataframe into some commonly used smaller sets
+# df_medium_hard = df %>%
+#   filter(custom_group == "medium_hard" & measure_f == "Accuracy")
+# # Ending here
+
+
+# Accuracies for all easy tasks
+df_easy = df %>%
+  filter(taskDifficulty == "easy")
+
+# Accuracies for all medium tasks
+df_med = df %>%
+  filter(taskDifficulty == "medium")
+
+# Accuracies for all hard tasks
+df_hard = df %>%
+  filter(taskDifficulty == "hard")
+
+# Accuracies for medium-hard
+df_mh = df %>%
+  filter(taskDifficulty == "hard" | taskDifficulty == "medium")
+
+df_acc = df %>% 
+  filter(measure_f=="Accuracy")
+
+df_time = df %>% 
+  filter(measure_f=="Time (seconds)")
+
+# Set plotting colors
+userDriven.colors = c("UD" ="#05b4dd", "CS" = "#f4aa4a")
+```
+
+
+
+```{r}
+# Generates the paired wilcox test for a taskType with a given dataset
+test <<- "Hello"
+wtest = function(data, measure, type) {
+  t_manual = data %>% 
+    filter(taskType_f == type & userDriven == "manual" & measure_f == !!measure) %>%
+    arrange(prolificId, taskId, dataset)
+  test <<- t_manual
+  t_supported = data %>% 
+    filter(taskType_f == type & userDriven == "supported" & measure_f == !!measure) %>%
+    arrange(prolificId, taskId, dataset)
+  
+  print(type)
+  test = wilcox.test(t_manual$value, t_supported$value, paired = TRUE)
+  print(test)
+  
+  return(
+    list(
+      statistic = test$statistic,
+      p.value = test$p.value,
+      sample.size1 = t_manual %>% nrow(),
+      sample.size2 = t_supported %>% nrow()
+    )
+  )
+}
+
+# All
+cluster_wilcox = wtest(df, acc, cluster)
+LR_wilcox = wtest(df,acc, lr)
+QR_wilcox = wtest(df,acc, qr)
+outlier_old_wilcox = wtest(df,acc, outold)
+outlier_revised_wilcox = wtest(df,acc, outrev)
+MO_wilcox = wtest(df,acc, mo)
+
+# Easy
+print("Easy")
+easy_cluster_wilcox = wtest(df_easy, acc, cluster)
+easy_LR_wilcox = wtest(df_easy,acc, lr)
+easy_QR_wilcox = wtest(df_easy,acc, qr)
+easy_outlier_old_wilcox = wtest(df_easy,acc, outold)
+easy_outlier_revised_wilcox = wtest(df_easy,acc, outrev)
+easy_MO_wilcox = wtest(df_easy,acc, mo)
+print("----------------------------------------------------------------------")
+# Medium
+print("Medium")
+med_cluster_wilcox = wtest(df_med,acc, cluster)
+med_LR_wilcox = wtest(df_med,acc, lr)
+med_QR_wilcox = wtest(df_med,acc, qr)
+med_outlier_old_wilcox = wtest(df_med,acc, outold)
+med_outlier_revised_wilcox = wtest(df_med,acc, outrev)
+med_MO_wilcox = wtest(df_med,acc, mo)
+print("----------------------------------------------------------------------")
+# Hard
+print("Hard")
+hard_cluster_wilcox = wtest(df_hard,acc, cluster)
+hard_LR_wilcox = wtest(df_hard,acc, lr)
+hard_QR_wilcox = wtest(df_hard,acc, qr)
+hard_outlier_old_wilcox = wtest(df_hard,acc, outold)
+hard_outlier_revised_wilcox = wtest(df_hard,acc, outrev)
+hard_MO_wilcox = wtest(df_hard,acc, mo)
+print("----------------------------------------------------------------------")
+
+
+```
+
+
+```{r}
+# Generates the bootstrapped effect size for a given type and measure
+estext = function(measure_, type) {
+  # Filter the dataset based on measure and type
+  filtered_data = df %>% 
+    filter(measure_f == measure_ & taskType_f == type)
+  
+  # Get the levels
+  lvs = levels(as.factor(filtered_data[["userDriven"]]))
+
+  # Do the bootstrap
+  b = bootES(
+    filtered_data,
+    data.col="value",
+    group.col="userDriven",
+    contrast=lvs, # normal cases c(group1=1, group2=-1), but for 2 groups, it's simplified.
+    effect.type="cohens.d"
+  )
+  
+  # Return the data
+  cat(paste0(type, "\n"))
+  cat( "d=", round( b$t0, 2), "~",
+       "[", round( b$bounds[1], 2), ",",
+       round( b$bounds[2], 2), "]",  "\n",  "\n",
+       sep="")
+  
+  return(
+    list(
+      lower = b$bounds[1], 
+      mean = b$t0, 
+      upper = b$bounds[2]
+    )
+  )
+}
+
+estext_spec = function(data, measure_, type) {
+  # Filter the dataset based on measure and type
+  filtered_data = data %>% 
+    filter(measure_f == measure_ & taskType_f == type)
+  
+  # Get the levels
+  lvs = levels(as.factor(filtered_data[["userDriven"]]))
+
+  # Do the bootstrap
+  b = bootES(
+    filtered_data,
+    data.col="value",
+    group.col="userDriven",
+    contrast=lvs, # normal cases c(group1=1, group2=-1), but for 2 groups, it's simplified.
+    effect.type="cohens.d"
+  )
+  
+  # Return the data
+  cat(paste0(type, "\n"))
+  cat( "d=", round( b$t0, 2), "~",
+       "[", round( b$bounds[1], 2), ",",
+       round( b$bounds[2], 2), "]",  "\n",  "\n",
+       sep="")
+  
+  return(
+    list(
+      lower = b$bounds[1], 
+      mean = b$t0, 
+      upper = b$bounds[2]
+    )
+  )
+}
+
+# All
+print("All")
+d_acc_cluster = estext(acc, cluster)
+d_acc_LR = estext(acc, lr)
+d_acc_outlier_old = estext(acc, outold)
+d_acc_outlier_revised = estext(acc, outrev)
+d_acc_QR = estext(acc, qr)
+d_acc_MO = estext(acc, mo)
+
+# Easy
+print("Easy")
+d_acc_cluster_easy = estext_spec(df_easy, acc, cluster)
+d_acc_LR_easy = estext_spec(df_easy, acc, lr)
+d_acc_outlier_old_easy = estext_spec(df_easy, acc, outold)
+d_acc_outlier_revised_easy = estext_spec(df_easy, acc, outrev)
+d_acc_QR_easy = estext_spec(df_easy, acc, qr)
+d_acc_MO_easy = estext_spec(df_easy, acc, mo)
+
+# Medium
+print("Medium")
+d_acc_cluster_med = estext_spec(df_med, acc, cluster)
+d_acc_LR_med = estext_spec(df_med, acc, lr)
+d_acc_outlier_old_med = estext_spec(df_med, acc, outold)
+d_acc_outlier_revised_med = estext_spec(df_med, acc, outrev)
+d_acc_QR_med = estext_spec(df_med, acc, qr)
+d_acc_MO_med = estext_spec(df_med, acc, mo)
+
+# Hard
+print("Hard")
+d_acc_cluster_hard = estext_spec(df_hard, acc, cluster)
+d_acc_LR_hard = estext_spec(df_hard, acc, lr)
+d_acc_outlier_old_hard = estext_spec(df_hard, acc, outold)
+d_acc_outlier_revised_hard = estext_spec(df_hard, acc, outrev)
+d_acc_QR_hard = estext_spec(df_hard, acc, qr)
+d_acc_MO_hard = estext_spec(df_hard, acc, mo)
+```
+
+
+
+```{r fig.width=5, fig.height=5 }
+gridLines = function(x) { 
+ if (max(as.numeric(x))<2) seq(0,1, .25) 
+  else if (max(as.numeric(x))<10) seq(1, 5, 1) 
+  else (c(0,100))
+}
+axisRange = function(x) { 
+  if (max(as.numeric(x))<2) c(0,1)
+   else  if (max(as.numeric(x))<10) c(0,5)
+  else (c(0,100))
+}
+
+accuracy_violin <- function(data, measure, difficulty, filename) {
+  filteredData = data %>%
+    filter(measure_f == !!measure)
+  
+  # Get the data for the statistics
+  d_values = bind_rows(d_acc_cluster, d_acc_LR, d_acc_outlier_old, d_acc_outlier_revised, d_acc_QR, d_acc_MO)
+  statistics = bind_rows(easy_cluster_wilcox, easy_LR_wilcox, easy_outlier_old_wilcox, easy_outlier_revised_wilcox, easy_QR_wilcox, easy_MO_wilcox)
+  
+  if (difficulty == "easy") {
+    d_values = bind_rows(d_acc_cluster_easy, d_acc_LR_easy, d_acc_outlier_old_easy, d_acc_outlier_revised_easy, d_acc_QR_easy, d_acc_MO_easy)
+    statistics = bind_rows(easy_cluster_wilcox, easy_LR_wilcox, easy_outlier_old_wilcox, easy_outlier_revised_wilcox, easy_QR_wilcox, easy_MO_wilcox)
+  } else if (difficulty == "medium") {
+    d_values = bind_rows(d_acc_cluster_med, d_acc_LR_med, d_acc_outlier_old_med, d_acc_outlier_revised_med, d_acc_QR_med, d_acc_MO_med)
+    statistics = bind_rows(med_cluster_wilcox, med_LR_wilcox, med_outlier_old_wilcox, med_outlier_revised_wilcox, med_QR_wilcox, med_MO_wilcox)
+  } else if (difficulty == "hard") {
+    d_values = bind_rows(d_acc_cluster_hard, d_acc_LR_hard, d_acc_outlier_old_hard, d_acc_outlier_revised_hard, d_acc_QR_hard, d_acc_MO_hard)
+    statistics = bind_rows(hard_cluster_wilcox, hard_LR_wilcox, hard_outlier_old_wilcox, hard_outlier_revised_wilcox, hard_QR_wilcox, hard_MO_wilcox)
+  } else if (difficulty == "all") {
+    d_values = bind_rows(d_acc_cluster, d_acc_LR, d_acc_outlier_old, d_acc_outlier_revised, d_acc_QR, d_acc_MO)
+    statistics = bind_rows(cluster_wilcox, LR_wilcox, outlier_old_wilcox, outlier_revised_wilcox, QR_wilcox, MO_wilcox)
+  }
+  
+  joined_stats = rownames_to_column(statistics) %>%
+    inner_join(rownames_to_column(d_values)) %>%
+    mutate(taskType_f = c(cluster, lr, outold, outrev, qr, mo))
+  joined_stats$taskType_f = factor(
+    joined_stats$taskType_f,
+    levels = c(cluster, lr, qr, mo, outold, outrev)
+  )
+  
+  
+  # Make the full chart minus the CI labels
+  g = ggplot(filteredData, aes(x = userLabel, y = value, fill = userLabel, color = userLabel)) +
+    geom_violin(show.legend = FALSE) +
+    geom_hline(yintercept = seq(0,1,0.25), color = "white") + 
+    coord_flip() +
+    stat_summary(fun.data = "mean_cl_boot", geom="linerange", size=1,alpha=1, color = "#5c5c5c", show.legend = FALSE) +
+    facet_grid(taskType_f ~ .) +
+    scale_color_manual(values=userDriven.colors) +
+    scale_fill_manual(values=userDriven.colors) +
+    scale_y_continuous(breaks = gridLines, limits = axisRange, expand = c(0, 0.01)) + 
+    theme(
+      panel.spacing.x = unit(0, "pt"),
+      panel.border = element_blank(),
+      panel.grid.major.y = element_blank(),
+      panel.grid.major.x = element_line(color = "white"),
+      panel.spacing.y = unit(1, "lines"),
+      axis.title.x = element_blank(),
+      axis.line.x = element_blank(),
+      axis.text.x = element_text(size = 6),
+      axis.title.y = element_blank(),
+      axis.line.y = element_blank(),
+      axis.ticks.y = element_blank(),
+      axis.text.y = element_text(size = 5, hjust = 1, margin = margin(0, unit = "pt")),
+      strip.text.y = element_text(angle = 0, hjust = 0, face = "bold", margin = margin(0, unit = "pt")),
+      strip.background = element_blank(),
+      legend.position = "none"
+    )
+  
+  
+  stt = ggplot_build(g)$data[[3]]
+  
+  stt$PANEL = as.numeric( as.character(stt$PANEL ))
+  stt$taskType = ifelse((stt$PANEL <2), cluster, ifelse((stt$PANEL <3), lr, ifelse((stt$PANEL <4), qr, ifelse((stt$PANEL <5), mo, ifelse((stt$PANEL<6), outold, outrev)))))
+  
+  stt$taskType_f = factor(stt$taskType, levels=c(cluster, lr, qr, mo, outold, outrev));
+  
+  stt$userLabel = ifelse(stt$group=="2", 'UD', 'CS')
+  
+  # Add the geom_text with the calculated information
+  g = g + geom_point(data = stt, aes(x = userLabel, y = y), color = "#5c5c5c", size = 4, alpha=0.5, show.legend = FALSE) +
+    geom_text(
+      data = stt,
+      aes(
+        x = userLabel,
+        label = paste(
+          round(ymin,3), ' - ',
+          round(y,3), ' - ',
+          round(ymax,3),
+          sep=" "
+        ),
+        vjust = ifelse(userLabel == "UD", -0.7, 2)
+      ),
+      color = "#5c5c5c",
+      y = 0,
+      size = 2,
+      hjust = 0
+    ) +
+    geom_text(
+      data = joined_stats,
+      aes(
+        label = paste0("n=", sample.size1, ", W=", statistic, ", p=", scientific(p.value, 3), ", d=", round(mean, 3)),
+        fill = NULL,
+        color = NULL,
+        x = "",
+        y = 1
+      ),
+      color = "#5c5c5c",
+      size = 2,
+      hjust = 1
+    ) +
+    scale_x_discrete(limits = c("", "CS", "UD"))
+  
+  print(difficulty)
+  print(g)
+  ggsave(filename, width=5, height=5, units="in")
+}
+
+# # Save the plot to pdf
+# ggsave("accuracy_medium_hard.pdf", width = 4, height = 4, units = "in")
+```
+
+```{r fig.width=5, fig.height=5 }
+accuracy_violin(df_easy, acc, "easy", "accuracy/easy.pdf")
+```
+```{r fig.width=5, fig.height=5 }
+accuracy_violin(df_med, acc, "medium", "accuracy/med.pdf")
+```
+
+```{r fig.width=5, fig.height=5 }
+accuracy_violin(df_hard, acc, "hard", "accuracy/hard.pdf")
+```
+
+```{r fig.width=5, fig.height=5 }
+accuracy_violin(df, acc, "all", "accuracy/all.pdf")
+```
+
+```{r fig.width=8, fig.height=5}
+
+gridLines = function(x) { 
+ if (max(as.numeric(x))<2) c(0,1)
+  else if (max(as.numeric(x))<10) seq(1, 5, 1) 
+  else (c(0,100))
+}
+
+accuracy_time_violin = function(data, filename) {
+  df_data = data %>%
+    filter((measure_f == acc | measure_f == time))
+  g = df_data %>%
+     ggplot( aes(x=userLabel, y=value, fill = userLabel, color = userLabel) ) +
+      facet_grid(taskType_f ~ measure_f, scales="free")+
+      geom_violin(show.legend=FALSE) +
+      stat_summary(fun.data = "mean_cl_boot", geom="linerange", size=1,alpha=1, colour = "#5c5c5c", show.legend=FALSE) +
+      stat_summary(fun.data = "mean_cl_boot", colour = "#5c5c5c", size = 1, alpha=0.5, show.legend=FALSE) +
+      coord_flip() +
+      scale_color_manual(values=userDriven.colors)+
+      scale_fill_manual(values=userDriven.colors)+
+      theme(strip.text.y = element_text(angle = 0))+
+      scale_y_continuous(breaks = gridLines, limits = axisRange)+
+    theme(
+      panel.spacing.x = unit(0, "pt"),
+      panel.border = element_blank(),
+      panel.grid.major.y = element_blank(),
+      panel.grid.major.x = element_line(color = "white"),
+      panel.spacing.y = unit(1, "lines"),
+      axis.title.x = element_blank(),
+      axis.line.x = element_blank(),
+      axis.text.x = element_text(size = 6),
+      axis.title.y = element_blank(),
+      axis.line.y = element_blank(),
+      axis.ticks.y = element_blank(),
+      axis.text.y = element_text(size = 5, hjust = 1, margin = margin(0, unit = "pt")),
+      strip.text.y = element_text(angle = 0, hjust = 0, face = "bold", margin = margin(0, unit = "pt")),
+      strip.background = element_blank(),
+      legend.position = "none"
+    )
+  
+  stt = ggplot_build(g)$data[[3]]
+  
+  stt$PANEL = as.numeric( as.character(stt$PANEL ))
+  stt$taskType = ifelse((stt$PANEL <3), cluster, ifelse((stt$PANEL <5), lr, ifelse((stt$PANEL <7), qr, ifelse((stt$PANEL <9), mo, ifelse((stt$PANEL < 11), outold, outrev)))))
+  
+  stt$taskType_f = factor(stt$taskType, levels=c(cluster, lr, qr, mo, outold, outrev));
+  
+  stt$measure = ifelse((stt$PANEL %% 2 == 1), "Accuracy", "Time (seconds)")
+  stt$measure_f = factor(stt$measure, levels=c("Accuracy","Time (seconds)"));
+  
+  stt$userLabel = ifelse(stt$group=="2", 'UD', 'CS')
+  
+  
+  g = g + geom_text(
+      data = stt,
+      aes(
+        x = userLabel, 
+        label = paste(round(y,3) , '[' , round(ymin,3) ,  ',' , round(ymax,3) , ']', sep=" "),
+        y = ifelse(measure_f == "Accuracy", 0, 100),
+        hjust = ifelse(measure_f == "Accuracy", 0.02, 0.98),
+        vjust = ifelse(userLabel == "UD", -0.7, 2)
+      ),
+      color = "#5c5c5c",
+      size=2
+    ) +
+    facet_grid(taskType_f ~ measure_f,scales = "free") +
+    theme(
+      panel.background = element_rect(fill = NA),
+      panel.border = element_blank(),
+      panel.grid.major.y = element_blank(),
+      panel.grid.major.x = element_line(color = "white"),
+      panel.spacing.y = unit(1, "lines"),
+      axis.line.y = element_blank(),
+      axis.line.x = element_blank(),
+      axis.ticks.y = element_blank()
+    )
+  print(g)
+  ggsave(filename, width=10, height=5, units='in')
+}
+```
+
+```{r}
+accuracy_time_violin(df_easy, "accuracy_time/easy.pdf")
+```
+
+```{r}
+accuracy_time_violin(df_med, "accuracy_time/medium.pdf")
+```
+
+```{r}
+accuracy_time_violin(df_hard, "accuracy_time/hard.pdf")
+```
+
+```{r  fig.width=7, fig.height=10}
+
+survey_responses = function(dat, filename) {
+  dfp_filtered = dat %>% 
+    filter(type=="feedback")
+  dfp_filtered$value = as.numeric( as.character(dfp_filtered$value ))
+  # Feedback histogram point and line data
+  mean_cl_boot_data = dfp_filtered %>%
+    group_by(measure) %>%
+    do(data.frame(rbind(Hmisc::smean.cl.boot(.$value))))
+  
+  test <<- dfp_filtered
+  
+  # Feedback histogram
+  g = ggplot(dfp_filtered) +
+    geom_histogram(aes(x = value), binwidth = 1, boundary = 0.5) +
+    geom_point(
+      data = mean_cl_boot_data,
+      aes(x = Mean, y = -25),
+        colour = "#5c5c5c",
+      alpha=0.5
+    ) +
+    geom_line(
+      data = reshape2::melt(mean_cl_boot_data),
+      aes(x = value, y = -25),
+      colour = "#5c5c5c",
+      alpha=1
+    ) + 
+    geom_text(
+      data = mean_cl_boot_data,
+      aes(label = paste(round(Mean,3) , '[' , round(Lower,3) ,  ',' , round(Upper,3) , ']', sep=" "), y = -25, x = 0.5,  hjust = 0),
+      colour = "#5c5c5c",
+      size = 2
+    ) +
+    facet_grid(measure ~ .)+
+    scale_y_continuous(limits = c(-50,100), breaks = c(0,100))+
+    theme(
+      panel.background = element_rect(fill = NA),
+      panel.border = element_blank(),
+      panel.grid.major.y = element_blank(),
+      panel.grid.major.x = element_line(color = "white"),
+      panel.spacing.y = unit(1, "lines"),
+      axis.title.y.left = element_blank(),
+      axis.text.y.left = element_blank(),
+      axis.line.y = element_blank(),
+      axis.ticks.y = element_blank(),
+      strip.background = element_blank(),
+      strip.text = element_text(hjust = 0),
+      strip.text.y = element_text(angle = 0)
+    ) 
+  
+  print(g)
+  ggsave(filename, width = 7, height = 8, units = "in")
+}
+```
+
+```{r  fig.width=7, fig.height=8}
+survey_responses(dfp, "survey/all.pdf")
+```
+
+```{r  fig.width=7, fig.height=8}
+survey_responses(dfp_old, "survey/old.pdf")
+```
+
+```{r  fig.width=7, fig.height=8}
+survey_responses(dfp_revised, "survey/revised.pdf")
+```
+
+```{r fig.width=10, fig.height=8}
+confidence_difficulty_plots = function(data, filename) {
+  mean_cl_boot_conf_diff = data %>%
+    filter(measure_f=="Confidence" | measure_f=="Difficulty") %>%
+    group_by(measure_f, userLabel, taskType_f) %>%
+    do(data.frame(rbind(Hmisc::smean.cl.boot(.$value))))
+  
+  df_data_conf_diff= data %>%
+    filter(measure_f=="Confidence" | measure_f=="Difficulty")
+  
+  reshape2::melt(mean_cl_boot_conf_diff)
+  
+  # Confidence and difficulty histograms
+  g = ggplot(df_data_conf_diff, aes(x=value) ) +
+    geom_histogram(aes(y=..density.., fill = userLabel, color = userLabel), binwidth = 1, boundary = 0.5, show.legend = FALSE) + 
+    geom_point(
+      data = mean_cl_boot_conf_diff,
+  
+      aes(x = Mean, y = -0.1),
+      colour = "#5c5c5c"
+    ) +
+    geom_line(
+      data = reshape2::melt(mean_cl_boot_conf_diff),
+      aes(x = value, y = -0.1),
+       colour = "#5c5c5c",
+      alpha=1
+    ) +
+    geom_text(
+      data = mean_cl_boot_conf_diff,
+      aes(label = paste(round(Mean,3) , '[' , round(Lower,3) ,  ',' , round(Upper,3) , ']', sep=" "), y = -0.1, x = 5.5, hjust=1),
+      colour = "#5c5c5c",
+      size = 2
+    ) +
+    facet_grid(taskType_f + userLabel ~ measure_f, scales="free") +
+    theme(strip.text.y = element_text(angle = 0)) +
+    scale_y_continuous(expand = c(0, 0.1)) +
+    scale_color_manual(values=userDriven.colors) +
+    scale_fill_manual(values=userDriven.colors) +
+    theme(
+      panel.background = element_rect(fill = NA),
+      panel.border = element_blank(),
+      panel.grid.major.y = element_blank(),
+      panel.grid.major.x = element_line(color = "white"),
+      panel.spacing.y = unit(1, "lines"),
+      axis.title.y.left = element_blank(),
+      axis.text.y.left = element_blank(),
+      axis.line.y = element_blank(),
+      axis.ticks.y = element_blank(),
+      strip.background = element_blank(),
+      strip.text.y = element_text(hjust = 0)
+    ) 
+  print(g)
+  ggsave(filename, width = 10, height = 8, units = "in")
+}
+```
+
+```{r fig.width=10, fig.height=8}
+confidence_difficulty_plots(df_easy, "confidence/easy.pdf")
+```
+
+```{r fig.width=10, fig.height=8}
+confidence_difficulty_plots(df_med, "confidence/medium.pdf")
+```
+
+```{r fig.width=10, fig.height=8}
+confidence_difficulty_plots(df_hard, "confidence/hard.pdf")
+```
+
+```{r fig.width=8, fig.height=12}
+gridLines = function(x) { 
+ if (max(as.numeric(x))<2) c(0,1)
+  else if (max(as.numeric(x))<10) seq(1, 5, 1) 
+  else (c(0,100))
+}
+axisRange = function(x) { 
+  if (max(as.numeric(x))<2) c(0,1)
+   else  if (max(as.numeric(x))<10) c(0,5)
+  else (c(0,100))
+}
+
+df_data =  df_old %>%
+  filter (measure == "accuracy" | measure == "secondsOnTask")
+
+df_data$orig_group = factor(
+  df_data$orig_group,
+  levels = c(
+    "easy_manual_cluster",
+    "easy_supported_cluster",
+    "easy_manual_linear regression",
+    "easy_supported_linear regression",
+    "easy_manual_outlier_cluster",
+    "easy_supported_outlier_cluster",
+    "easy_manual_outlier_linear",
+    "easy_supported_outlier_linear",
+    "easy_manual_quadratic regression",
+    "easy_supported_quadratic regression",
+    "easy_manual_skyline",
+    "easy_supported_skyline",
+    "hard_manual_cluster",
+    "hard_supported_cluster",
+    "hard_manual_linear regression",
+    "hard_supported_linear regression",
+    "hard_manual_outlier_cluster",
+    "hard_supported_outlier_cluster",
+    "hard_manual_outlier_linear",
+    "hard_supported_outlier_linear",
+    "hard_manual_quadratic regression",
+    "hard_supported_quadratic regression",
+    "hard_manual_skyline",
+    "hard_supported_skyline",
+    "medium_manual_cluster",
+    "medium_supported_cluster",
+    "medium_manual_linear regression",
+    "medium_supported_linear regression",
+    "medium_manual_outlier_cluster",
+    "medium_supported_outlier_cluster",
+    "medium_manual_outlier_linear",
+    "medium_supported_outlier_linear",
+    "medium_manual_quadratic regression",
+    "medium_supported_quadratic regression",
+    "medium_manual_skyline",
+    "medium_supported_skyline"
+  )
+)
+
+mean_cl_boot = df_data %>%
+  group_by(measure_f, taskType_f, orig_group) %>%
+  do(data.frame(rbind(Hmisc::smean.cl.boot(.$value))))
+  
+g = ggplot(df_data, aes(x = 1, y=value, fill = userLabel, color = userLabel) ) +
+  facet_grid(orig_group ~ measure_f, scales="free")+
+  geom_violin(show.legend=FALSE) +
+  coord_flip() +
+  scale_y_continuous(breaks = gridLines, limits = axisRange) + 
+  scale_x_continuous(limits = c(-0.5,2)) + 
+  geom_point(
+    data = mean_cl_boot,
+    aes(y = Mean, x = 1, fill = NULL, color = NULL),
+    colour = "#5c5c5c"
+  ) +
+  geom_line(
+    data = reshape2::melt(mean_cl_boot),
+    aes(y = value, x = 1, fill = NULL, color = NULL),
+    colour = "#5c5c5c",
+    alpha=0.5
+  ) +
+  geom_text(
+    data = mean_cl_boot,
+    aes(
+      label = paste(round(Mean,3) , '[' , round(Lower,3) ,  ',' , round(Upper,3) , ']', sep=" "),
+      x = 0, fill = NULL, color = NULL,
+      y = ifelse(measure_f == "Accuracy", 0, 100),
+      hjust = ifelse(measure_f == "Accuracy", 0, 1)
+    ),
+    colour = "#5c5c5c",
+    size = 2
+  ) +
+  scale_color_manual(values=userDriven.colors)+
+  scale_fill_manual(values=userDriven.colors)+
+  theme(
+    panel.spacing.x = unit(0, "pt"),
+    panel.border = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.major.x = element_line(color = "white"),
+    panel.spacing.y = unit(1, "lines"),
+    axis.title.x = element_blank(),
+    axis.line.x = element_blank(),
+    axis.text.x = element_text(size = 6),
+    axis.title.y = element_blank(),
+    axis.line.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.text.y = element_blank(),
+    strip.text.y = element_text(angle = 0, hjust = 0, face = "bold", margin = margin(0, unit = "pt")),
+    strip.background = element_blank(),
+    legend.position = "none"
+  )
+print(g)
+filename = paste("individual/old.pdf")
+ggsave(filename, width = 10, height = 20, units = "in")
+ 
+```
+```{r fig.width=8, fig.height=5}
+gridLines = function(x) { 
+ if (max(as.numeric(x))<2) c(0,1)
+  else if (max(as.numeric(x))<10) seq(1, 5, 1) 
+  else (c(0,100))
+}
+axisRange = function(x) { 
+  if (max(as.numeric(x))<2) c(0,1)
+   else  if (max(as.numeric(x))<10) c(0,5)
+  else (c(0,100))
+}
+
+df_data =  df_revised %>%
+  filter (measure == "accuracy" | measure == "secondsOnTask")
+
+df_data$orig_group = factor(
+  df_data$orig_group,
+  levels = c(
+    "easy_manual_outlier_cluster_revised",
+    "easy_supported_outlier_cluster_revised",
+    "easy_manual_outlier_linear_revised",
+    "easy_supported_outlier_linear_revised",
+    "hard_manual_outlier_cluster_revised",
+    "hard_supported_outlier_cluster_revised",
+    "hard_manual_outlier_linear_revised",
+    "hard_supported_outlier_linear_revised",
+    "medium_manual_outlier_cluster_revised",
+    "medium_supported_outlier_cluster_revised",
+    "medium_manual_outlier_linear_revised",
+    "medium_supported_outlier_linear_revised"
+  )
+)
+
+mean_cl_boot = df_data %>%
+  group_by(measure_f, taskType_f, orig_group) %>%
+  do(data.frame(rbind(Hmisc::smean.cl.boot(.$value))))
+  
+g = ggplot(df_data, aes(x = 1, y=value, fill = userLabel, color = userLabel) ) +
+  facet_grid(orig_group ~ measure_f, scales="free")+
+  geom_violin(show.legend=FALSE) +
+  coord_flip() +
+  scale_y_continuous(breaks = gridLines, limits = axisRange) + 
+  scale_x_continuous(limits = c(-0.5,2)) + 
+  geom_point(
+    data = mean_cl_boot,
+    aes(y = Mean, x = 1, fill = NULL, color = NULL),
+    colour = "#5c5c5c"
+  ) +
+  geom_line(
+    data = reshape2::melt(mean_cl_boot),
+    aes(y = value, x = 1, fill = NULL, color = NULL),
+    colour = "#5c5c5c",
+    alpha=0.5
+  ) +
+  geom_text(
+    data = mean_cl_boot,
+    aes(
+      label = paste(round(Mean,3) , '[' , round(Lower,3) ,  ',' , round(Upper,3) , ']', sep=" "),
+      x = 0, fill = NULL, color = NULL,
+      y = ifelse(measure_f == "Accuracy", 0, 100),
+      hjust = ifelse(measure_f == "Accuracy", 0, 1)
+    ),
+    colour = "#5c5c5c",
+    size = 2
+  ) +
+  scale_color_manual(values=userDriven.colors)+
+  scale_fill_manual(values=userDriven.colors)+
+  theme(
+    panel.spacing.x = unit(0, "pt"),
+    panel.border = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.major.x = element_line(color = "white"),
+    panel.spacing.y = unit(1, "lines"),
+    axis.title.x = element_blank(),
+    axis.line.x = element_blank(),
+    axis.text.x = element_text(size = 6),
+    axis.title.y = element_blank(),
+    axis.line.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.text.y = element_blank(),
+    strip.text.y = element_text(angle = 0, hjust = 0, face = "bold", margin = margin(0, unit = "pt")),
+    strip.background = element_blank(),
+    legend.position = "none"
+  )
+print(g)
+filename = paste("individual/revised.pdf")
+ggsave(filename, width = 10, height = 20, units = "in")
+ 
+```
+
+```{r}
+
+test = df_revised %>%
+  filter(df_revised$userDriven == "supported")
+
+test %>%
+  count(test$taskDifficulty)
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

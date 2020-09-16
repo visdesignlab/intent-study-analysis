@@ -61,7 +61,7 @@ dfp_filtered = dfp %>%
 
 dfp_filtered$value = as.numeric( as.character(dfp_filtered$value ))
  
- dfp_filtered%>% 
+g <- dfp_filtered%>% 
   ggplot( aes(x=0, y=value) ) +
     geom_jitter( shape=1 , color="grey", position = position_jitter(w = 0.1, h = 0)) +
        geom_violin(show.legend=FALSE,alpha=0.5) +
@@ -76,7 +76,7 @@ dfp_filtered$value = as.numeric( as.character(dfp_filtered$value ))
 # testData <- ggplot_build(g)$data
 stg <- ggplot_build(g)$data[[2]]
 print (stg)
-
+g
 
 # //add userDriven column
 
