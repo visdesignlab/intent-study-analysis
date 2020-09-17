@@ -219,6 +219,15 @@ hard_outlier_revised_wilcox = wtest(df_hard,acc, outrev)
 hard_MO_wilcox = wtest(df_hard,acc, mo)
 print("----------------------------------------------------------------------")
 
+# Medium-Hard
+print("MH")
+mh_cluster_wilcox = wtest(df_mh,acc, cluster)
+mh_LR_wilcox = wtest(df_mh,acc, lr)
+mh_QR_wilcox = wtest(df_mh,acc, qr)
+mh_outlier_old_wilcox = wtest(df_mh,acc, outold)
+mh_outlier_revised_wilcox = wtest(df_mh,acc, outrev)
+mh_MO_wilcox = wtest(df_mh,acc, mo)
+print("----------------------------------------------------------------------")
 
 ```
 
@@ -597,7 +606,7 @@ survey_responses = function(dat, filename) {
       size = 2
     ) +
     facet_grid(measure ~ .)+
-    scale_y_continuous(limits = c(-50,100), breaks = c(0,100))+
+    scale_y_continuous(limits = c(-50,200), breaks = c(0,100))+
     theme(
       panel.background = element_rect(fill = NA),
       panel.border = element_blank(),
@@ -897,7 +906,7 @@ g = ggplot(df_data, aes(x = 1, y=value, fill = userLabel, color = userLabel) ) +
   )
 print(g)
 filename = paste("individual/revised.pdf")
-ggsave(filename, width = 10, height = 20, units = "in")
+ggsave(filename, width = 8, height = 5, units = "in")
  
 ```
 
