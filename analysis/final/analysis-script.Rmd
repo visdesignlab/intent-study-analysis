@@ -400,11 +400,11 @@ accuracy_violin <- function(data, measure, difficulty, filename) {
       panel.spacing.y = unit(1, "lines"),
       axis.title.x = element_blank(),
       axis.line.x = element_blank(),
-      axis.text.x = element_text(size = 6),
+      axis.text.x = element_text(size = 8),
       axis.title.y = element_blank(),
       axis.line.y = element_blank(),
       axis.ticks.y = element_blank(),
-      axis.text.y = element_text(size = 5, hjust = 1, margin = margin(0, unit = "pt")),
+      axis.text.y = element_text(size = 8, hjust = 1, margin = margin(0, unit = "pt")),
       strip.text.y = element_text(angle = 0, hjust = 0, face = "bold", margin = margin(0, unit = "pt")),
       strip.background = element_blank(),
       legend.position = "none"
@@ -432,11 +432,11 @@ accuracy_violin <- function(data, measure, difficulty, filename) {
           round(ymax,3),
           sep=" "
         ),
-        vjust = ifelse(userLabel == "UD", -0.7, 2)
+        vjust = ifelse(userLabel == "UD", -0.3, 2)
       ),
       color = "#5c5c5c",
       y = 0,
-      size = 2,
+      size = 3,
       hjust = 0
     ) +
     geom_text(
@@ -449,7 +449,7 @@ accuracy_violin <- function(data, measure, difficulty, filename) {
         y = 1
       ),
       color = "#5c5c5c",
-      size = 2,
+      size = 3,
       hjust = 1
     ) +
     scale_x_discrete(limits = c("", "CS", "UD"))
